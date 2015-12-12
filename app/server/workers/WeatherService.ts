@@ -1,50 +1,36 @@
 import {RtBroker} from '../RtBroker';
-import {WeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+import * as Rx from '@reactivex/rxjs';
 
-export module WeatherService {
+export class WeatherService {
 
-	let rtBroker:RtBroker = null;
-	let sleepTime = 10000;
-	let weatherMonitor: WeatherMonitor;
+	sleepTime = 10000;
+	weatherPub: Rx.BehaviorSubject<IWeatherUpdate>;
+	timer: any;
 
-	export function StartService(broker:RtBroker) {
-		rtBroker = broker;
-		weatherMonitor = new WeatherMonitor();
+	constructor(public rtBroker:RtBroker) {
+		this.start();
 	}
 
-	export function StopService() {
-		if (weatherMonitor) {
-			weatherMonitor.stop();
+	start() {
+		this.timer = setInterval(() => {
+			this.monitorWeather();
+		}, this.sleepTime);
+	}
+
+	stop() {
+		if (this.timer) {
+			clearInterval(this.timer);
 		}
 	}
 
-	class WeatherMonitor {
+	monitorWeather() {
+		let update:IWeatherUpdate = {
+			city: 'New York',
+			time: new Date(),
+			tempFarenheight: 80
+		};
 
-		timer: NodeJS.Timer;
-
-		constructor() {
-			this.start();
-		}
-
-		start() {
-			this.timer = setInterval(() => {
-				this.monitorWeather();
-			}, sleepTime);
-		}
-
-		stop() {
-			if (this.timer) {
-				clearInterval(this.timer);
-			}
-		}
-		monitorWeather() {
-			let update:WeatherUpdate = {
-				city: 'New York',
-				time: new Date(),
-				tempFarenheight: 80
-			};
-
-			rtBroker.weatherUpdate(update);
-		}
+		this.rtBroker.weatherUpdate(update);
 	}
 }

@@ -5,7 +5,7 @@ import {
   ROUTER_DIRECTIVES, Router
 } from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
-import {WeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
 
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
@@ -60,7 +60,7 @@ export class AppCmp {
 
   constructor(public auth: Authentication, public router:Router) {
     this.socket = io.connect();
-    this.socket.on('weatherUpdate', (update:WeatherUpdate) => {
+    this.socket.on('weatherUpdate', (update:IWeatherUpdate) => {
         console.log(`Weather update for ${update.city} on ${update.time}: Temp: ${update.tempFarenheight} degrees.`);
     });
   }

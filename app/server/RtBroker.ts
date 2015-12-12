@@ -1,11 +1,13 @@
 import {WeatherService} from './workers/WeatherService';
-import {WeatherUpdate} from '../common/interfaces/WeatherInterfaces';
+import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 
 export class RtBroker {
 
+	weatherService: WeatherService;
+
 	constructor(public io:SocketIO.Server) {
 
-		WeatherService.StartService(this);
+		this.weatherService = new WeatherService(this);
 
 		this.io.on('connection', function(socket:SocketIO.Socket){
 			//console.log(`Connect from ${socket.client.id}!`);
@@ -14,7 +16,7 @@ export class RtBroker {
 
 	}
 
-	weatherUpdate(update:WeatherUpdate) {
+	weatherUpdate(update:IWeatherUpdate) {
 		this.io.emit('weatherUpdate', update);
 	}
 }
