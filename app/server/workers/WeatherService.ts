@@ -1,4 +1,5 @@
 import {RtBroker} from '../RtBroker';
+import {WeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
 
 export module WeatherService {
 
@@ -37,8 +38,12 @@ export module WeatherService {
 			}
 		}
 		monitorWeather() {
-			let now = new Date();
-			let update = `Weather update at ${now}`;
+			let update:WeatherUpdate = {
+				city: 'New York',
+				time: new Date(),
+				tempFarenheight: 80
+			};
+
 			rtBroker.weatherUpdate(update);
 		}
 	}

@@ -1,4 +1,5 @@
 import {WeatherService} from './workers/WeatherService';
+import {WeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 
 export class RtBroker {
 
@@ -13,7 +14,7 @@ export class RtBroker {
 
 	}
 
-	weatherUpdate(update:string) {
+	weatherUpdate(update:WeatherUpdate) {
 		this.io.emit('weatherUpdate', update);
 	}
 }
