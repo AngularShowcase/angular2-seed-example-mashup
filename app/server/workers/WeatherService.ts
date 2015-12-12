@@ -1,9 +1,13 @@
+import {RtBroker} from '../RtBroker';
+
 export module WeatherService {
 
-	let sleepTime = 60000;
+	let rtBroker:RtBroker = null;
+	let sleepTime = 10000;
 	let weatherMonitor: WeatherMonitor;
 
-	export function StartService() {
+	export function StartService(broker:RtBroker) {
+		rtBroker = broker;
 		weatherMonitor = new WeatherMonitor();
 	}
 
@@ -34,7 +38,8 @@ export module WeatherService {
 		}
 		monitorWeather() {
 			let now = new Date();
-			console.log(`Weather monitor awake at ${now}`);
+			let update = `Weather update at ${now}`;
+			rtBroker.weatherUpdate(update);
 		}
 	}
 }

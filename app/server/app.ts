@@ -3,8 +3,7 @@ import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as logger from 'morgan';
 import * as socketIO from 'socket.io';
-
-import {WeatherService} from './workers/WeatherService';
+import {RtBroker} from './RtBroker';
 
 var mongoskin = require('mongoskin');   //Using require since there is not tsd file
 
@@ -79,21 +78,8 @@ app.set('port', config.port || 3000);
 
 var http_server = require('http').createServer(app);
 var io = socketIO(http_server);
-io.on('connection', function(){
-    console.log('Connect!');
 
-    setTimeout(function(){
-        console.log('sending weather update.')
-        io.emit('weatherUpdate', 1);
-        io.emit('weatherUpdate', 2);
-        io.emit('weatherUpdate', 3);
-        io.emit('weatherUpdate', 4);
-        io.emit('weatherUpdate', 5);
-        console.log('sent weather update');
-    }, 1000);
-});
-
-var huh = http_server.listen(app.get('port'), function() {
+http_server.listen(app.get('port'), function() {
      console.log('Express server listening on port ' + app.get('port'));
 });
 
@@ -101,6 +87,5 @@ var huh = http_server.listen(app.get('port'), function() {
 //     console.log('Express server listening on port ' + express_server.address().port);
 // });
 
-// Start workers
-
-WeatherService.StartService();
+var broker = new RtBroker(io);
+console.log(`Created real time broker ${broker}`);
