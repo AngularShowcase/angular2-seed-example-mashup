@@ -6,18 +6,9 @@ export class RtBroker {
 
 		WeatherService.StartService(this);
 
-		this.io.on('connection', function(){
-			console.log('Connect!');
-
-			setTimeout(function(){
-				console.log('sending weather update from broker.');
-				io.emit('weatherUpdate', 1);
-				io.emit('weatherUpdate', 2);
-				io.emit('weatherUpdate', 3);
-				io.emit('weatherUpdate', 4);
-				io.emit('weatherUpdate', 5);
-				console.log('sent weather update');
-			}, 1000);
+		this.io.on('connection', function(socket:SocketIO.Socket){
+			//console.log(`Connect from ${socket.client.id}!`);
+			console.log('Got a connection.');
 		});
 
 	}
