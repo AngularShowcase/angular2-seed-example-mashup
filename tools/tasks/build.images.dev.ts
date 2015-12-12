@@ -1,13 +1,13 @@
 import {join} from 'path';
-import {APP_SRC, APP_DEST} from '../config';
+import {PATH} from '../config';
 
 export = function buildImagesDev(gulp, plugins) {
   return function () {
     return gulp.src([
-        join(APP_SRC, '**/*.png'),
-        join(APP_SRC, '**/*.jpg'),
-        join(APP_SRC, '**/*.svg')
+        join(PATH.src.all, '**/*.png'),
+        join(PATH.src.all, '**/*.jpg'),
+        join(PATH.src.all, '**/*.svg')
       ])
-      .pipe(gulp.dest(APP_DEST));
+      .pipe(gulp.dest(PATH.dest.dev.all));
   };
 }

@@ -1,0 +1,12 @@
+<div class="container">
+	<h1>Create a Custom Quiz!</h1>
+
+	<p>Selecte the categories you'd like to be quizzed on</p>
+	<multi-category-select (categories)="selectCategories($event)"></multi-category-select>
+
+	<label for="questionCount">How many questions?</label>
+	<input id="questionCount" type="number" [(ng-model)]="questionCount" [min]="selectedCategories.length" />
+
+	<input type="button" value="Create" (click)="createQuiz()" />
+
+</div>

@@ -1,13 +1,13 @@
 import {join} from 'path';
-import {APP_SRC, TOOLS_DIR} from '../config';
+import {PATH} from '../config';
 
 export = function tslint(gulp, plugins) {
   return function () {
     let src = [
-                join(APP_SRC, '**/*.ts'),
-                '!' + join(APP_SRC, '**/*.d.ts'),
-                join(TOOLS_DIR, '**/*.ts'),
-                '!' + join(TOOLS_DIR, '**/*.d.ts')
+                join(PATH.src.all, '**/*.ts'),
+                '!' + join(PATH.src.all, '**/*.d.ts'),
+                join(PATH.tools, '**/*.ts'),
+                '!' + join(PATH.tools, '**/*.d.ts')
               ];
 
     return gulp.src(src)

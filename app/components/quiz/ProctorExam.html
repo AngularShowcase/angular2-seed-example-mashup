@@ -1,0 +1,60 @@
+<div class="container">
+	<table id="quizHeader">
+		<tbody>
+			<tr>
+				<td>Quiz Id:</td>
+				<td>{{quiz.quizId}}</td>
+			</tr>
+			<tr>
+				<td>Categories:</td>
+				<td>{{quiz.categories}}</td>
+			</tr>
+			<tr>
+				<td>Number of Questions</td>
+				<td>{{quiz.questionCount}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<section id="quizBody">
+		<div [ng-switch]="proctorState">
+			<template [ng-switch-when]="0">
+				<h1>Initializing...</h1>
+			</template>
+			<template [ng-switch-when]="1">
+				<div>
+					<label>Enter your name and then click start</label>
+					<input type="text" placeholder="Name" [(ng-model)]="name" />
+				</div>
+				<div>
+					<input type="button" value="Start" (click)="startQuiz()" />
+				</div>
+			</template>
+			<template [ng-switch-when]="2">
+
+				<div id="questionPanel">
+					<div id="questionNumber">
+						Question number {{currentQuestion.questionNumber}} ({{currentQuestion.category}}) of {{quiz.questionCount}}
+					</div>
+
+					<div id="choices">
+						<div id="question">
+							{{currentQuestion.question}}
+						</div>
+						<div class="choice" *ng-for="#choice of currentQuestion.responsesShown; #i = index">
+							<input class="answerSelectButton" type="button" [value]="i+1" (click)="userChecked(i)" />
+							<label [ng-class]="getAnswerClass(i)">{{choice}}</label>
+						</div>
+					</div>
+				</div>
+				<div id="navButtons">
+					<button (click)="previousQuestion()" [hidden]="currentQuestion.questionNumber === 1">Back</button>
+					<button (click)="nextQuestion()" [hidden]="currentQuestion.questionNumber === quiz.questionCount">Next</button>
+					<button (click)="scoreTest()" [hidden]="currentQuestion.questionNumber !== quiz.questionCount">Submit for Grading</button>
+				</div>
+			</template>
+			<template ng-switch-default>
+				<div>Oops. I'm in an unknown state!</div>
+			</template>
+		</div>
+	</section>
+</div>

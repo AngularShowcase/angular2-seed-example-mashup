@@ -1,11 +1,11 @@
 import * as runSequence from 'run-sequence';
 import {join} from 'path';
-import {APP_SRC} from '../config';
+import {PATH} from '../config';
 import {notifyLiveReload} from '../utils';
 
 export = function watchServe(gulp, plugins) {
   return function () {
-    plugins.watch(join(APP_SRC, '**'), e =>
+    plugins.watch(join(PATH.src.all, '**'), e =>
       runSequence('build.dev', () => notifyLiveReload(e))
     );
   };

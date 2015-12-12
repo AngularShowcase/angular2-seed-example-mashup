@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-5">
+			<h2>Upload Verizon Usage File</h2>
+			<form ng-no-form style="font-size:16pt" name="usageUploadForm" id="usageUploadForm" method="post" action="/api/celldata/uploadUsage/{{personId}}" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="person">Person:</label>
+					<select class="input-large" id="person" [(ng-model)]="personId">
+						<option *ng-for="#p of model.people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="datafile">
+						Data File:
+					</label>
+					<input class="input-large" id="datafile" name="datafile" type="file" #datafile placeholder="Data File" />
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Upload File" />
+				</div>
+			</form>
+
+		</div>
+		<div class="col-md-7">
+			<div class="form-group">
+				<label for="cycle">Billing cycle:</label>
+				<select id="cycle" [(ng-model)]="cycleId">
+					<option *ng-for="#c of model.cycles" [value]="c.cycleId">{{c.description}}</option>
+				</select>
+			</div>
+			<div id="usageHeader">
+				Usage for {{getCurrentPersonName()}}<br/>
+				{{getCycleDescription()}}<br/>
+				Data usage: {{model.totalUsage | number}} gigabytes
+			</div>
+			<h2>Details</h2>
+			<div id="usageEntryDetails">
+				<usage-details [usage]="model.usage"></usage-details>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+div#usageContainer {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+div#usageDetails {
+  height: 300px;
+  border: 1px solid black;
+  overflow-y: scroll;
+  color: black;
+  margin-left: auto;
+  margin-right: auto; }
+
+div.gaugeDiv {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+div#usageDetails .totalRow {
+  color: blue; }
+
+label {
+  text-align: right; }
+
+div#usageWarning {
+  text-align: center;
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20pt;
+  color: red;
+  width: 100%; }
+
+div#inputsDiv label {
+  margin-left: 100px; }
+
+div#inputsDiv {
+  font-size: 20pt; }
+
+div#inputsDiv select option {
+  font-size: 20pt; }

@@ -1,0 +1,66 @@
+<div id="usageContainer">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-3">
+			<div class="gaugeDiv" usage-gauge
+					[value]="totalPeriodUsage"
+					label="GB"
+					[max]="15"
+					[animation-time]="animationTime"
+					[animation-count]="100"
+					[width]="200"
+					[height]="200">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div id="usageWarning">Don't let the left gauge beat the right gauge!</div>
+		</div>
+		<div class="col-md-3">
+			<div class="gaugeDiv" usage-gauge
+				[value]="daysIntoPeriod"
+				label="Days"
+				[max]="daysInCurrentPeriod"
+				[animation-time]="animationTime"
+				[animation-count]="100"
+				[width]="200"
+				[height]="200">
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row">
+		<div id="inputsDiv" class="col-md-12">
+
+			<label for="cycle">Billing cycle:</label>
+			<select class="input-lg" id="cycle" [(ng-model)]="cycleId">
+				<option *ng-for="#c of cycles" [value]="c.cycleId">{{c.description()}}</option>
+			</select>
+
+			<label for="person">Person:</label>
+			<select class="input-lg" id="person" [(ng-model)]="personId">
+				<option *ng-for="#p of people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
+			</select>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<span period-usage-chart [animation-time]="animationTime" width="700" height="300" [usage-data]="periodUsage" />
+		</div>
+		<div class="col-md-6">
+			<span usage-line-chart [animation-time]="animationTime" width="650" height="300" [usage-data]="personCumUsage" [person]="getCurrentPerson()" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<span usage-bar-chart [animation-time]="animationTime" width="936" height="300" [usage-data]="personUsage" [person]="getCurrentPerson()" />
+		</div>
+		<div class="col-md-4">
+			<div id="usageDetails">
+				<usage-details [usage]="personUsage"></usage-details>
+			</div>
+		</div>
+	</div>
+</div>

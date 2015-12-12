@@ -1,0 +1,73 @@
+<div class="container">
+	<h1>Question Entry</h1>
+
+	<table id="questionInputTable">
+		<tbody>
+			<tr>
+				<td>Category:</td>
+				<td>
+					<select id="category" [(ng-model)]="selectedCategory">
+						<option *ng-for="#c of categories" [value]="c">{{c}}</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" placeholder="New Category" [(ng-model)]="newCategory" />
+				</td>
+			</tr>
+			<tr>
+				<td>Question:</td>
+				<td colspan="2">
+					<input type="text" [(ng-model)]="question" required />
+				</td>
+			</tr>
+			<tr>
+				<td>Answer Category:</td>
+				<td>
+					<select id="answerCategory" [(ng-model)]="selectedAnswerCategory">
+						<option *ng-for="#c of answerCategories" [value]="c">{{c}}</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" placeholder="New Answer Category" [(ng-model)]="newAnswerCategory" />
+				</td>
+			</tr>
+			<tr>
+				<td>Answer:</td>
+				<td colspan="2">
+					<input type="text" [(ng-model)]="answer" required />
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type="button" value="Add" (click)="addQuestion()" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="questionsDiv">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Question</th>
+					<th>Answer Category</th>
+					<th>Answer</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ng-for="#q of allQuestions">
+					<td>{{q.questionId}}</td>
+					<td>{{q.question}}</td>
+					<td>{{q.answerCategory}}</td>
+					<td>{{q.answer}}</td>
+					<td>
+						<button class="btn btn-danger" (click)="deleteQuestion(q)">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -28,9 +28,8 @@ node_modules
 .lock-wscript
 .tsdrc
 
-#IDE configuration files
+#IntelliJ configuration files
 .idea
-.vscode
 
 dist
 dev
@@ -38,3 +37,5 @@ docs
 lib
 test
 tools/typings/tsd
+*.js.map
+{username:*

@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Category</th>
+			<th>Question</th>
+			<th>Answer</th>
+			<th>Your Answer</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ng-for="#q of questions">
+			<td title="{{q.questionId}}">{{q.questionNumber}}</td>
+			<td title="{{q.answerCategory}}">{{q.category}}</td>
+			<td>{{q.question}}</td>
+			<td>{{q.correctAnswer}}</td>
+			<td [ng-class]="q.isCorrect ? 'correct' : 'incorrect'">{{q.userAnswer}}</td>
+		</tr>
+	</tbody>
+</table>

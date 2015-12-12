@@ -1,0 +1,21 @@
+<div class="container">
+	<h2>People</h2>
+		<ul>
+			<li *ng-for="#person of model.people">
+				{{person.firstName}} {{person.lastName}}
+			</li>
+		</ul>
+	<h2>Enter Person</h2>
+	<form action="">
+		<div class="form-group">
+			<input style="font-size:20pt; color:blue" id="firstName" autofocus type="text" placeholder="First Name" [(ng-model)]="model.firstName" />
+		</div>
+		<div class="form-group">
+			<input style="font-size:20pt; color:blue" id="lastName" type="text" placeholder="Last Name" class="input-control" [(ng-model)]="model.lastName" />
+		</div>
+		<div class="form-group">
+			<input type="button" [ng-class]="buttonClass()" (click)="submit()" class="btn btn-lg" placeholder="Submit" class="input-control" value="Submit" />
+		</div>
+	</form>
+	<div>{{model.errors}}</div>
+</div>

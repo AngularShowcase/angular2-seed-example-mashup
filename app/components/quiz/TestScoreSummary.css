@@ -1,0 +1,10 @@
+table {
+  font-size: 16pt; }
+  table tr td, table tr th {
+    padding: 5px;
+    text-align: center; }
+  table tr:nth-child(2n+1) {
+    background-color: turquoise; }
+  table tr:last-child {
+    background-color: black;
+    color: yellow; }

@@ -1,6 +1,5 @@
 // Karma configuration
 // Generated on Wed Jul 15 2015 09:44:02 GMT+0200 (Romance Daylight Time)
-'use strict';
 
 module.exports = function(config) {
   config.set({
@@ -12,7 +11,6 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
@@ -84,7 +82,6 @@ module.exports = function(config) {
       }
     },
 
-
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
@@ -93,7 +90,7 @@ module.exports = function(config) {
   if (process.env.APPVEYOR) {
     config.browsers = ['IE'];
     config.singleRun = true;
-    config.browserNoActivityTimeout = 90000; // Note: default value (10000) is not enough
+    config.browserNoActivityTimeout = 60000; // Note: default value (10000) is not enough
   }
 
   if (process.env.TRAVIS || process.env.CIRCLECI) {

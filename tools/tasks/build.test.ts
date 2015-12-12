@@ -1,13 +1,13 @@
 import {join} from 'path';
-import {APP_SRC, TEST_DEST} from '../config';
+import {PATH, APP_SRC} from '../config';
 import {tsProjectFn} from '../utils';
 
 export = function buildTest(gulp, plugins) {
   return function () {
     let tsProject = tsProjectFn(plugins);
     let src = [
-                join(APP_SRC, '**/*.ts'),
-                '!' + join(APP_SRC, 'bootstrap.ts')
+                join(PATH.src.all, '**/*.ts'),
+                '!' + join(PATH.src.all, 'bootstrap.ts')
               ];
 
     let result = gulp.src(src)
@@ -16,6 +16,6 @@ export = function buildTest(gulp, plugins) {
       .pipe(plugins.typescript(tsProject));
 
     return result.js
-      .pipe(gulp.dest(TEST_DEST));
+      .pipe(gulp.dest(PATH.dest.test));
   };
 };

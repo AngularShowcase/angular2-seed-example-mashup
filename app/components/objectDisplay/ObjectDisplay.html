@@ -1,0 +1,23 @@
+<div class="object-display" [ng-switch]="getType()">
+	<template ng-switch-when="object">
+		<span (click)="toggleCollapsed()" class="glyphicon glyphicon-arrow-down" *ng-if="collapsed"></span>
+		<table>
+			<tr *ng-for="#prop of getObjectProperties(collapsed)">
+				<td>{{propNameToLabel(prop)}}</td>
+				<td>
+					<object-display (selectobject)="objectSelected($event)" [display-object]="displayObject[prop]"></object-display>
+				</td>
+			</tr>
+		</table>
+	</template>
+	<template ng-switch-when="array">
+		<ol>
+			<li *ng-for="#val of displayObject">
+				<object-display [collapsed]="getTheType(val)==='object'" (selectobject)="objectSelected($event)" [display-object]="val"></object-display>
+			</li>
+		</ol>
+	</template>
+	<template ng-switch-default>
+		<span class="clickable" (click)="objectClick($event)">{{displayObject}}</span>
+	</template>
+</div>

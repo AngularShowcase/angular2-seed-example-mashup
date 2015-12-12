@@ -1,0 +1,27 @@
+h1 {
+  color: orange; }
+
+table#questionInputTable {
+  font-size: 18pt; }
+  table#questionInputTable tr td {
+    padding: 6px;
+    font-size: 18pt; }
+    table#questionInputTable tr td input {
+      font-size: 18pt; }
+    table#questionInputTable tr td select {
+      background-color: inherit;
+      font-size: 18pt;
+      color: blue; }
+      table#questionInputTable tr td select#answerCategory {
+        color: red; }
+  table#questionInputTable tr td:nth-child(1) {
+    text-align: right; }
+  table#questionInputTable tr:nth-child(2) input, table#questionInputTable tr:nth-child(4) input {
+    width: 100%; }
+  table#questionInputTable tr:nth-child(5) td {
+    text-align: center; }
+
+div#questionsDiv {
+  height: 200px;
+  overflow: scroll;
+  border: 2px solid black; }

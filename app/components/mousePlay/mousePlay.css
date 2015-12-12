@@ -1,0 +1,19 @@
+.box {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border: 5px solid yellow;
+  color: white;
+  word-wrap: normal;
+  cursor: move; }
+
+div.numDisplay {
+  display: inline-block;
+  margin: 20px;
+  border: 10px solid red;
+  background-color: black;
+  width: 100px;
+  height: 100px;
+  color: yellow;
+  text-align: center; }

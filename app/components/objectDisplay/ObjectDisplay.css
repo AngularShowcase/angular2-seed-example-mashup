@@ -1,0 +1,26 @@
+.object-display {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt; }
+
+.object-display .clickable {
+  cursor: pointer; }
+
+.object-display li table {
+  display: inline-flex; }
+
+.object-display table {
+  border: 1px solid black; }
+
+.object-display table td {
+  padding: 5px; }
+
+.object-display table tr td:first-child {
+  background-color: black;
+  color: yellow;
+  border: solid 1px white;
+  text-align: right; }
+
+.object-display table tr td:nth-child(2) {
+  font-weight: bold;
+  color: blue;
+  border: solid 1px black; }

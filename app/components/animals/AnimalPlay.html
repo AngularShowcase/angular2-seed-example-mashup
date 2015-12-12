@@ -1,0 +1,52 @@
+<div [ng-switch]="model.state">
+	<template [ng-switch-when]="1">
+		<div>
+			<div class="bigPrompt">{{initialCap(model.question.text)}}?</div>
+			<yes-no (yes)="questionAnswer('y')" (no)="questionAnswer('n')"></yes-no>
+		</div>
+	</template>
+	<template [ng-switch-when]="2">
+		<div>
+			<span class="bigPrompt">Is it {{prefixedNoun(model.guess.text)}}?</span>
+			<yes-no (yes)="gotIt()" (no)="wrongAnswer()"></yes-no>
+		</div>
+	</template>
+	<template [ng-switch-when]="3">
+		<div>
+			<span class="bigPrompt">Would you like to play again?</span>
+			<yes-no (yes)="playAgain()" (no)="donePlaying()"></yes-no>
+		</div>
+	</template>
+	<template [ng-switch-when]="4">
+		<div>
+			<h2>I knew you were thinking of {{prefixedNoun(model.guess.text)}}!</h2>
+			<span class="bigPrompt">Do you want to play again?</span>
+			<yes-no (yes)="playAgain()" (no)="donePlaying()"></yes-no>
+		</div>
+	</template>
+	<template [ng-switch-when]="5">
+		<div>
+			<h1>Argh!!!</h1>
+			<h2>I really thought you were thinking of {{prefixedNoun(model.guess.text)}}!</h2>
+			<div class="bigPrompt">What animal were you thinking of?</div>
+			<input class="bigInput" type=text [(ng-model)]="model.newAnimal" />
+			<input type=button value="Submit" (click)="learn()"/>
+		</div>
+	</template>
+	<template [ng-switch-when]="6">
+		<div>
+			<div class="bigPrompt">Can you enter a question that would help me distiguish between {{prefixedNoun(model.guess.text)}} and {{prefixedNoun(model.newAnimal)}}</div>
+			<input class="mediumInput" type=text [(ng-model)]="model.newQuestion" />
+			<input type=button value="Submit" (click)="recordNewQuestion()"/>
+		</div>
+	</template>
+	<template [ng-switch-when]="7">
+		<div>
+			<span class="bigPrompt">{{model.alteredQuestion}}?</span>
+			<yes-no (answer)="addNewAnimal($event)"></yes-no>
+		</div>
+	</template>
+	<template ng-switch-default>
+		<div>Oops.  I'm in an unknown state!</div>
+	</template>
+</div>

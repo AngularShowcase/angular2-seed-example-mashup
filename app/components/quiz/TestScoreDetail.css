@@ -1,0 +1,12 @@
+table {
+  font-size: 12pt; }
+  table thead tr {
+    background-color: black;
+    color: yellow; }
+  table tbody tr td, table tbody tr th, table thead tr td, table thead tr th {
+    border: 1px solid black;
+    padding: 4px; }
+    table tbody tr td.correct, table tbody tr th.correct, table thead tr td.correct, table thead tr th.correct {
+      color: green; }
+    table tbody tr td.incorrect, table tbody tr th.incorrect, table thead tr td.incorrect, table thead tr th.incorrect {
+      color: red; }

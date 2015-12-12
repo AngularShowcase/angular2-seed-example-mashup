@@ -1,0 +1,10 @@
+<div class="container">
+	<label for="person">Person:</label>
+	<select class="input-lg" id="person" [(ng-model)]="personId">
+		<option *ng-for="#p of people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
+	</select>
+
+	<div>
+		<span usage-column-chart [animation-time]="animationTime" width="1200" height="700" [usage-data]="personUsage" [person]="getCurrentPerson()" />
+	</div>
+</div>

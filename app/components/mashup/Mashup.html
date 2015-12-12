@@ -1,0 +1,29 @@
+<h1>MashUp</h1>
+<div class='container'>
+	<input type='range' min='1' max='20' placeholder='Min name length' [(ng-model)]='minNameLength' />
+	<input type='text ' placeholder='Github username ' autofocus #name (keyup)='onKeyUp(name)' />
+	<span id='charLengthHelp'>{{currentNameLength}} of mininum of {{minNameLength}} characters</span>
+	<img style='display:block' [src]='userInfo.avatar_url' />
+	<div class='row '>
+		<div class='col-md-6 '>
+			<div class='panel '>
+				<div class='panel-title '>
+					Github User
+				</div>
+				<div class='panel-body '>
+					<object-display (selectobject)='objectSelected($event)' [display-object]='userDisplayData'></object-display>
+				</div>
+			</div>
+		</div>
+		<div class='col-md-6 '>
+			<div class='panel '>
+				<div class='panel-title '>
+					Repos for {{userInfo.login}}
+				</div>
+				<div class='panel-body '>
+					<object-display (selectobject)='objectSelected($event)' [display-object]='reposDisplayData'></object-display>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

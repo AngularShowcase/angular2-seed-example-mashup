@@ -1,0 +1,21 @@
+<div class="container" style="width:100%">
+	<div>
+		<tree-display-control [max-levels]="model.treeDisplay.maxTreeLevels" [canvas-background-color]="model.treeDisplay.canvasBackgroundColor"
+		[node-color]="model.treeDisplay.nodeColor" [node-label-color]="model.treeDisplay.nodeLabelColor" [connector-color]="model.treeDisplay.connectorColor"
+		[connector-label-color]="model.treeDisplay.connectorLabelColor" input-label-color="black" input-value-color="blue" (valuechange)="onValueChanged($event)">
+		</tree-display-control>
+	</div>
+	<div style="width:100%; height: 500px; overflow-x:scroll; overflow-y:scroll" 
+		tree-display 
+		[tree]="model.questionTree" 
+		[max-levels]="model.treeDisplay.maxTreeLevels"
+		left-label="Yes"
+		right-label="No"
+		[canvas-background-color]="model.treeDisplay.canvasBackgroundColor"
+		[node-color]="model.treeDisplay.nodeColor"
+		[node-label-color]="model.treeDisplay.nodeLabelColor"
+		[connector-color]="model.treeDisplay.connectorColor"
+		[connector-label-color]="model.treeDisplay.connectorLabelColor"
+		>
+	</div>
+</div>

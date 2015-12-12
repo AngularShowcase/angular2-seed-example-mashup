@@ -1,0 +1,52 @@
+div.aaAnimalList {
+  height: 550px;
+  overflow-y: scroll; }
+
+div.aaAnimalList table {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12pt; }
+
+div.aaAnimalList table tr {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12pt;
+  background-color: #eeeeee; }
+
+div.aaAnimalList table thead tr th {
+  background-color: black;
+  color: yellow;
+  font-weight: normal; }
+
+div.aaAnimalList table tr:nth-child(odd) {
+  background-color: #cccccc; }
+
+div.aaAnimalList table td {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 2px; }
+
+div.aaAnimalList table td:nth-child(3) {
+  text-align: center; }
+
+div.aaAnimalList table td:first-child {
+  text-align: right; }
+
+div.aaAnimalList table tr.dupQuestion {
+  color: red; }
+
+div.aaAnimalList table th {
+  padding: 2px; }
+
+div#dupAnimals table td {
+  text-decoration: underline;
+  cursor: pointer; }
+
+input.deleteButton {
+  background-color: red;
+  color: black;
+  font-size: 14pt;
+  border-radius: 5pt;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px; }

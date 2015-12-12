@@ -2,11 +2,11 @@ import * as gulp from 'gulp';
 import * as plugins from 'gulp-load-plugins';
 import {readdirSync, existsSync, lstatSync} from 'fs';
 import {join} from 'path';
-import {TOOLS_DIR} from '../config';
+import {PATH} from '../config';
 
-const TASKS_PATH = join(TOOLS_DIR, 'tasks');
+const TASKS_PATH = join(PATH.tools, 'tasks');
 
-export function loadTasks(): void {
+export function autoRegisterTasks(): void {
   scanDir(TASKS_PATH, (taskname) => registerTask(taskname));
 }
 

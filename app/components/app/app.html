@@ -2,7 +2,38 @@
   <nav>
     <a [router-link]="['/Home']">Home</a>
     <a [router-link]="['/About']">About</a>
-  </nav>
+    <a [router-link]="['/Mashup']">MashUp</a>
+    <a [router-link]="['/Mouseplay']">Mouse Play</a>
 
+    <div class="dropdown" style="display:inline-block">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Animal Game <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+          <li><a [router-link]="['/Animalgame']">Play</a></li>
+          <li><a [router-link]="['/Animalanalyze']">Analyze</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown" style="display:inline-block">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Cell Data <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+          <li><a [router-link]="['/People']">People</a></li>
+          <li><a [router-link]="['/Usage']">Usage</a></li>
+          <li><a [router-link]="['/Cycleentry']">Cycle Entry</a></li>
+          <li><a [router-link]="['/Usageentry']">Usage Entry</a></li>
+          <li><a [router-link]="['/HistoricUsage']">Historic Usage</a></li>
+      </ul>
+    </div>
+    <div class="dropdown" style="display:inline-block">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quiz <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+          <li><a [router-link]="['/QuestionEntry']">Enter Questions</a></li>
+          <li><a [router-link]="['/QuizCreation']">Create a Quiz</a></li>
+      </ul>
+    </div>
+    <button id="userBadge" class="top-button pull-right" (click)="userInfo()">&nbsp;{{getUser()}}</button>
+    <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="login()">Login</button>
+    <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="register()">Register</button>
+    <button [hidden]="!auth.isLoggedIn()" class="top-button pull-right" (click)="logout()">Logout</button>
+  </nav>
   <router-outlet></router-outlet>
 </section>

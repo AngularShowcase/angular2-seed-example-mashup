@@ -1,0 +1,18 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Usage</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="totalRow">
+			<td>Total</td>
+			<td>{{getTotalUsage() | number}}</td>
+		</tr>
+		<tr *ng-for="#usage of dataUsage">
+			<td>{{usage.date | date}}</td>
+			<td>{{usage.usage | number}}</td>
+		</tr>
+	</tbody>
+</table>

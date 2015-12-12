@@ -1,0 +1,12 @@
+
+<h1>Mouse Play</h1>
+<h2>Max drags {{maxDrags}}</h2>
+<div>
+	<div class="numDisplay">{{dragNumber >= maxDrags ? "Maxed Out!" : dragNumber}}</div>
+	<div class="numDisplay">{{x}}</div>
+	<div class="numDisplay">{{y}}</div>
+	&nbsp;
+</div>
+<div hp-drag (dragging)="gotDrag($event)" class="box">
+	Grab Me and Drag Me
+</div>

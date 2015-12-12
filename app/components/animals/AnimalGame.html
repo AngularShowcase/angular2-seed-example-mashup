@@ -1,0 +1,15 @@
+<div class="container" style="width:100%">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="animalTitle">Animal Game</div>
+			<div><span style="font-size:14pt">Latest animal I learned: {{model.latestLearnedAnimal}}</span></div>
+		</div>
+		<div class="col-md-8">
+			<animal-play (dbupdated)="dbUpdated($event)" (questionchange)="questionChanged($event)"></animal-play>
+		</div>
+	</div>
+</div>
+<div>
+<hr/>
+<animal-list (dbreloaded)="animalListReloaded()" [reload-flag]="model.reloadAnimalList" [current-question]="model.currentQuestion"></animal-list>
+

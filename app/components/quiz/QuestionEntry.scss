@@ -1,0 +1,52 @@
+$inputSize: 18pt;
+
+h1 {
+	color: orange;
+}
+
+table#questionInputTable {
+
+	font-size: $inputSize;
+
+	tr {
+		td {
+			padding: 6px;
+			font-size: $inputSize;
+			input {
+				font-size:$inputSize;
+			}
+			select {
+				background-color: inherit;
+				font-size: $inputSize;
+				color: blue;
+
+				&#answerCategory {
+					color: red;
+				}
+			}
+		}
+
+		// These are the labels
+		td:nth-child(1) {
+			text-align: right;
+		}
+	}
+
+	tr:nth-child(2), tr:nth-child(4) {
+		input {
+			width: 100%;
+		}
+	}
+
+	tr:nth-child(5) {
+		td {
+			text-align: center;
+		}
+	}
+}
+
+div#questionsDiv {
+	height: 200px;
+	overflow: scroll;
+	border: 2px solid black;
+}

@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<h3>Dup Animals</h3>
+			<div id="dupAnimals" class="aaAnimalList">
+				<table>
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Animal</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ng-for="#animal of duplicateAnimals" (click)="dupCheck(animal)">
+							<td>{{animal.questionId}}</td>
+							<td>{{animal.text}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div *ng-for="#dup of dupPaths" class="col-md-3">
+			<h2>{{dup.startNode.text}} ({{dup.startNode.id}})</h2>
+			<div class="aaAnimalList">
+				<table>
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Text</th>
+							<th>Answer</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ng-for="#segment of dup.path" [ng-class]="getDupIndicatorClass(segment.question.id)">
+							<td>{{segment.question.id}}</td>
+							<td>{{segment.question.text}}
+							</td>
+							<td>{{segment.answer}}
+								<span *ng-if="!segment.question.left">
+									<input type="button" class="deleteButton" value="Delete" (click)="deleteAnimal(segment.question)" />
+								</span>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -14,6 +14,8 @@ import {RootRouter} from 'angular2/src/router/router';
 
 import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {AppCmp} from './app';
+import {Authentication} from '../../services/Authentication';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 export function main() {
 
@@ -29,7 +31,9 @@ export function main() {
           useFactory:
             (registry, location) => { return new RootRouter(registry, location, AppCmp); },
           deps: [RouteRegistry, Location]
-        })
+        }),
+       HTTP_PROVIDERS,
+       Authentication
     ]);
 
     it('should work',

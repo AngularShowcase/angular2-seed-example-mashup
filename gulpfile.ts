@@ -1,12 +1,19 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
-import {ENV} from './tools/config';
-import {loadTasks, task} from './tools/utils';
+import {ENV, PATH} from './tools/config';
+import {
+  autoRegisterTasks,
+  registerInjectableAssetsRef,
+  task
+} from './tools/utils';
 
 
 // --------------
 // Configuration.
-loadTasks();
+autoRegisterTasks();
+
+registerInjectableAssetsRef(PATH.src.jslib_inject, PATH.dest.dev.lib);
+registerInjectableAssetsRef(PATH.src.csslib, PATH.dest.dev.css);
 
 // --------------
 // Clean (override).
@@ -19,6 +26,7 @@ gulp.task('clean.test',  task('clean', 'test'));
 gulp.task('postinstall', done =>
   runSequence('clean',
               'npm',
+              'build.dev',   // Needed for heroku
               done));
 
 // --------------
@@ -26,10 +34,14 @@ gulp.task('postinstall', done =>
 gulp.task('build.dev', done =>
   runSequence('clean.dist',
               'tslint',
+              'build.jslib.dev',
               'build.sass.dev',
-              'build.images.dev',
               'build.js.dev',
+              'build.csslib.dev',
+              'build.assets',
+              'build.fonts',
               'build.index.dev',
+              'build.images.dev',
               done));
 
 gulp.task('build.dev.watch', done =>

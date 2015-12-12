@@ -1,0 +1,38 @@
+select {
+	/* For some reason, the styling wont take unless you specify a border */
+    border: 1px solid black;
+    width: 200px;
+    font-size:14pt;
+}
+
+select#cycle {
+    width:400px;
+}
+
+input[type=file] {
+	/* For some reason, the styling wont take unless you specify a border */
+    border: 1px solid black;
+    width: 400px;
+    font-size:14pt;
+}
+
+label {
+	font-size:14pt;
+	color: green;
+}
+
+div#usageHeader {
+    font-size:18pt;
+    padding:15px;
+    background-color: #999999;
+    color: black;
+    border-radius: 15px;
+}
+
+div#usageEntryDetails {
+    height: 350px;
+    overflow-y: scroll;
+    background-color: darkred;
+    color: white;
+    border-radius: 15px;
+}

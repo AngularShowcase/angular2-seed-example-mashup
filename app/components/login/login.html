@@ -1,0 +1,16 @@
+<div class="container">
+	<h2>Login</h2>
+	<hp-fly-text [duration]="3000" [remove-delay]='0' [remove-source]="false" source-id="username" target-id="userBadge" [text]="model.flyText1" (complete)="onAnimationComplete()"></hp-fly-text>
+	<form action="">
+		<div class="form-group">
+			<input style="font-size:20pt; color:blue" id="username" autofocus type="text" placeholder="Username" [(ng-model)]="model.username" />
+		</div>
+		<div class="form-group">
+			<input style="font-size:20pt" type="password" #password placeholder="Password" class="input-control" [(ng-model)]="model.password" />
+		</div>
+		<div class="form-group">
+			<input type="button" (click)="login()" [ng-class]="buttonClass()" class="btn btn-lg" placeholder="Submit" class="input-control" value="Submit" />
+		</div>
+	</form>
+	<div>{{model.errors}}</div>
+</div>

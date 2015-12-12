@@ -1,0 +1,46 @@
+.animal {
+	color: red;
+}
+
+.question {
+	color: indigo;
+}
+
+.bigPrompt {
+	font-size:24pt;
+	font-weight: bold;
+	color: darkred;
+}
+
+.bigInput {
+	font-size:13pt;	
+}
+
+.mediumInput {
+	font-size:16pt;	
+}
+
+.animalTitle {
+	font-size: 24pt;
+	color: darkred;
+	font-weight: bold;
+}
+label {
+	width: 200px
+}
+
+div.treeSettings {
+	width: 100%;
+	background-color:black;
+	color: white;
+}
+	
+
+div.treeSettings label {
+	color:red
+}
+
+div.treeSettings label input {
+	background-color: yellow;
+	color: black;
+}
