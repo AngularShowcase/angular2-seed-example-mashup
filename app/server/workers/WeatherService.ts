@@ -3,11 +3,13 @@ import * as Rx from '@reactivex/rxjs';
 
 export class WeatherService {
 
-	sleepTime = 10000;
+	sleepTime = 1000;
 	weatherPub: Rx.Subject<IWeatherUpdate>;
 	timer: any;
+	cities:string[];
 
 	constructor() {
+		this.cities = ['New York', 'Los Angeles', 'Chicago', 'Miami', 'Dallas', 'Washington'];
 		this.weatherPub = new Rx.Subject<IWeatherUpdate>();
 		this.start();
 	}
@@ -29,10 +31,12 @@ export class WeatherService {
 	}
 
 	monitorWeather() {
+		let index:number = Math.floor(Math.random() * this.cities.length);
+
 		let update:IWeatherUpdate = {
-			city: 'New York',
+			city: this.cities[index],
 			time: new Date(),
-			tempFarenheight: 80
+			tempFarenheight: Math.floor(Math.random() * 80) + 20
 		};
 
 		this.weatherPub.next(update);
