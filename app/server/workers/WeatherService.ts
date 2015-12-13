@@ -1,15 +1,19 @@
-import {RtBroker} from '../RtBroker';
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
 import * as Rx from '@reactivex/rxjs';
 
 export class WeatherService {
 
 	sleepTime = 10000;
-	weatherPub: Rx.BehaviorSubject<IWeatherUpdate>;
+	weatherPub: Rx.Subject<IWeatherUpdate>;
 	timer: any;
 
-	constructor(public rtBroker:RtBroker) {
+	constructor() {
+		this.weatherPub = new Rx.Subject<IWeatherUpdate>();
 		this.start();
+	}
+
+	getWeatherUpdatePub() : Rx.Subject<IWeatherUpdate> {
+		return this.weatherPub;
 	}
 
 	start() {
@@ -31,6 +35,6 @@ export class WeatherService {
 			tempFarenheight: 80
 		};
 
-		this.rtBroker.weatherUpdate(update);
+		this.weatherPub.next(update);
 	}
 }
