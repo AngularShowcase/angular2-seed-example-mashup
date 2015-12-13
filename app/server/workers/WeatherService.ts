@@ -36,7 +36,7 @@ export class WeatherService {
 		let update:IWeatherUpdate = {
 			city: this.cities[index],
 			time: new Date(),
-			tempFarenheight: Math.floor(Math.random() * 80) + 20
+			tempFarenheit: Math.floor(Math.random() * 80) + 20
 		};
 
 		this.weatherPub.next(update);
