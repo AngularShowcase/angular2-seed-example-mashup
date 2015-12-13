@@ -5,8 +5,7 @@ import {
   ROUTER_DIRECTIVES, Router
 } from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
-import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
-
+import {MessageBroker} from '../../services/MessageBroker';
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
 import {HomeCmp} from '../home/home';
@@ -25,11 +24,11 @@ import {QuestionEntry} from '../quiz/QuestionEntry';
 import {QuizCreation} from '../quiz/QuizCreation';
 import {ProctorExam} from '../quiz/ProctorExam';
 import {ReviewTest} from '../quiz/ReviewTest';
+import {Weather} from '../streaming/Weather';
 
 @Component({
   selector: 'app',
-  viewBindings: [NameList],
-  viewProviders: [NameList],
+  viewProviders: [NameList, MessageBroker],
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
   encapsulation: ViewEncapsulation.None,
@@ -52,17 +51,15 @@ import {ReviewTest} from '../quiz/ReviewTest';
   { path: '/quiz/questionentry', component: QuestionEntry, as: 'QuestionEntry'},
   { path: '/quiz/quizcreation', component: QuizCreation, as: 'QuizCreation'},
   { path: '/quiz/proctorexam/:quizId', component: ProctorExam, as: 'ProctorExam'},
-  { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'}
+  { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'},
+  { path: '/weather', component: Weather, as: 'Weather'}
 ])
 export class AppCmp {
 
   socket: SocketIOClient.Socket;
 
-  constructor(public auth: Authentication, public router:Router) {
-    this.socket = io.connect();
-    this.socket.on('weatherUpdate', (update:IWeatherUpdate) => {
-        console.log(`Weather update for ${update.city} on ${update.time}: Temp: ${update.tempFarenheight} degrees.`);
-    });
+  constructor(public auth: Authentication, public router:Router, public messageBroker:MessageBroker) {
+
   }
 
   getUser(): string {

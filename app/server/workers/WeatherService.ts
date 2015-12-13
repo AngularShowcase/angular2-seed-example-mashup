@@ -3,7 +3,7 @@ import * as Rx from '@reactivex/rxjs';
 
 export class WeatherService {
 
-	sleepTime = 1000;
+	sleepTime = 2000;
 	weatherPub: Rx.Subject<IWeatherUpdate>;
 	timer: any;
 	cities:string[];

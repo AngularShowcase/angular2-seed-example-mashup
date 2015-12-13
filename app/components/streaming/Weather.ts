@@ -1,0 +1,31 @@
+import {Component, EventEmitter, NgFor, AsyncPipe} from 'angular2/angular2';
+import {MessageBroker} from '../../services/MessageBroker';
+import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+
+@Component({
+    selector: 'weather',
+    templateUrl: './components/streaming/Weather.html',
+    styleUrls: ['./components/streaming/Weather.css'],
+    viewProviders: [MessageBroker],
+    pipes: [AsyncPipe],
+    directives: [NgFor]
+})
+export class Weather {
+
+    weatherUpdates:EventEmitter<IWeatherUpdate>;
+    updates:IWeatherUpdate[] = [];
+    MaxLen:number = 10;
+
+    constructor(public messaageBroker:MessageBroker) {
+        this.weatherUpdates = messaageBroker.getWeatherUpdates();
+
+        this.weatherUpdates.subscribe(w => {
+            //console.log('Got ', w);
+            this.updates.unshift(w);
+
+            if (this.updates.length > this.MaxLen) {
+                this.updates.pop();
+            }
+        });
+    }
+}

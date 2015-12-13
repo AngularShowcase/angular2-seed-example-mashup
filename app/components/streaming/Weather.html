@@ -1,0 +1,9 @@
+<div class="container">
+	<h1>Weather Updates</h1>
+	<ul>
+		<li *ng-for="#update of updates">
+			{{update.city}} is {{update.tempFarenheight}} degrees.
+		</li>
+	</ul>
+
+</div>
