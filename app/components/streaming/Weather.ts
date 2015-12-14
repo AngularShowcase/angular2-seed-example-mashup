@@ -16,12 +16,16 @@ export class Weather {
     weatherUpdates:EventEmitter<IWeatherUpdate>;
     updates:IWeatherUpdate[] = [];
     MaxLen:number = 10;
+    lastUpdate:IWeatherUpdate = { city: '', lnglat: [0,0], tempFarenheit: 0, time: new Date() };
 
     constructor(public messaageBroker:MessageBroker) {
         this.weatherUpdates = messaageBroker.getWeatherUpdates();
 
         this.weatherUpdates.subscribe(w => {
             //console.log('Got ', w);
+
+            this.lastUpdate = w;
+
             this.updates.unshift(w);
 
             if (this.updates.length > this.MaxLen) {
