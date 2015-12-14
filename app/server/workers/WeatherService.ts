@@ -11,7 +11,7 @@ export class WeatherService {
 	constructor() {
 		this.cities = ['New York', 'Los Angeles', 'Chicago', 'Miami', 'Dallas', 'Washington'];
 		this.weatherPub = new Rx.Subject<IWeatherUpdate>();
-		this.start();
+		//this.start();
 	}
 
 	getWeatherUpdatePub() : Rx.Subject<IWeatherUpdate> {

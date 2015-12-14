@@ -1,9 +1,9 @@
 <div class="container">
 	<h1>Weather Updates</h1>
+	<weather-map></weather-map>
 	<ul>
 		<li *ng-for="#update of updates">
 			{{update.city}} is {{update.tempFarenheit}} degrees.
 		</li>
 	</ul>
-
 </div>

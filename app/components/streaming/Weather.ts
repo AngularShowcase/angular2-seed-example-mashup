@@ -1,6 +1,7 @@
 import {Component, EventEmitter, NgFor, AsyncPipe} from 'angular2/angular2';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+import {WeatherMap} from '../../directives/WeatherMap';
 
 @Component({
     selector: 'weather',
@@ -8,7 +9,7 @@ import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
     styleUrls: ['./components/streaming/Weather.css'],
     viewProviders: [MessageBroker],
     pipes: [AsyncPipe],
-    directives: [NgFor]
+    directives: [NgFor, WeatherMap]
 })
 export class Weather {
 
