@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Weather Updates</h1>
-	<weather-map></weather-map>
+	<weather-map [lastupdate]="lastUpdate"></weather-map>
 
 	<div>
 	{{lastUpdate.city}} at {{lastUpdate.lnglat[0]}},{{lastUpdate.lnglat[1]}} is {{lastUpdate.tempFarenheit}} degrees.

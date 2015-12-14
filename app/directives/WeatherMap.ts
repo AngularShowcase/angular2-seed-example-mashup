@@ -1,9 +1,11 @@
 import {Directive, ElementRef, Renderer} from 'angular2/angular2';
 import {MapServices} from '../services/MapServices';
+import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 
 @Directive({
 	selector: 'weather-map',		// Not sure why you need to put it in brackets
 	providers: [MapServices],
+	inputs: ['lastUpdate:lastupdate'],
 	host: {
 		'(click)': 'onClick($event)',
 		'(load)': 'onLoad($event)',
@@ -11,6 +13,18 @@ import {MapServices} from '../services/MapServices';
 	}
 })
 export class WeatherMap {
+
+	_lastUpdate:IWeatherUpdate;
+
+	get lastUpdate() : IWeatherUpdate {
+		return this._lastUpdate;
+	}
+
+	set lastUpdate(val:IWeatherUpdate) {
+		this._lastUpdate = val;
+		console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
+	}
+	
 	svg: d3.Selection<any>;
 	canvasBackgroundColor: string = 'teal';
 	width: number = 1100;
