@@ -13,8 +13,8 @@ import {MapServices} from '../services/MapServices';
 export class WeatherMap {
 	svg: d3.Selection<any>;
 	canvasBackgroundColor: string = 'teal';
-	width: number = 800;
-	height: number = 500;
+	width: number = 1100;
+	height: number = 600;
 	mapData: any;
 	lngScale:d3.scale.Linear<number,number>;
 	latScale:d3.scale.Linear<number,number>;
@@ -55,14 +55,17 @@ export class WeatherMap {
 		this.svg.style({border: '1px solid black'});
 
 		this.mapServices.loadMap('us.json')
-			.subscribe(mapData => self.plotMapData(mapData));
+			.subscribe(mapData => self.plotMapData(mapData, ['Alaska','Hawaii', 'Puerto Rico']));
 	}
 
-	public plotMapData(mapData) {
+	public plotMapData(mapData:any, excludedFeatures:string[]) {
 
 		var self = this;
 
-		this.mapData = mapData;    //save the list of features
+		this.mapData = mapData;
+
+		this.mapData.features = _.filter(this.mapData.features,
+									(f:any) => _.indexOf(excludedFeatures, f.properties.NAME) == -1);
 
 		this.svg.selectAll('*').remove();
 
@@ -74,6 +77,7 @@ export class WeatherMap {
 		var maxLng = bounds[1][0];
 		var maxLat = bounds[1][1];
 
+		/*
 		if (minLng > maxLng) {
 			[minLng,maxLng] = [maxLng,minLng];
 		}
@@ -81,6 +85,7 @@ export class WeatherMap {
 		if (minLat > maxLat) {
 			[minLat, maxLat] = [maxLat, maxLng];
 		}
+		*/
 
 		//var padding = 30;
 		var padding = 0;
