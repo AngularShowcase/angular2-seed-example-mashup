@@ -3,7 +3,7 @@
 	<weather-map></weather-map>
 	<ul>
 		<li *ng-for="#update of updates">
-			{{update.city}} is {{update.tempFarenheit}} degrees.
+			{{update.city}} [{{update.lnglat[0]}},{{update.lnglat[1]}}] is {{update.tempFarenheit}} degrees.
 		</li>
 	</ul>
 </div>
