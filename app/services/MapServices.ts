@@ -7,7 +7,7 @@ export class MapServices {
 	mapRoot:string = '/assets/data/maps/';
 
 	constructor(public http:Http) {
-
+		console.log(`Constructed MapServices at ${new Date()}`);
 	}
 
 	loadMap(mapfile:string) : Observable<any> {

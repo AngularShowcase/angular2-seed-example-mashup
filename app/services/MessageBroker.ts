@@ -11,6 +11,8 @@ export class MessageBroker {
 	accidentUpdates: EventEmitter<IAccident>;
 
 	constructor() {
+        console.log(`Constructed MessageBroker at ${new Date()}`);
+
 		// Connect to the server
 		this.io = io;
 		this.socket = io.connect();
