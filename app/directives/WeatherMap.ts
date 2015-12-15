@@ -136,6 +136,11 @@ export class WeatherMap {
 
 		let x = this.lngScale(update.lnglat[0]);
 		let y = this.latScale(update.lnglat[1]);
+
+		if (x < 0) {
+			x = 0;
+		}
+		
 		let id = this.makeIdFromLngLat(update.lnglat);
 
 		let cities = this.svg.select("g#cities");
@@ -167,14 +172,17 @@ export class WeatherMap {
 				})
 				.text(`${update.tempFarenheit} deg.`)
 				.style({
-
-					'font-size': '12pt',
+					'font-size': '24pt',
 					'font-weight': 'bold'
 				});
 
 		temp.transition()
-                .duration(1000)
-				.attr({fill: 'yellow'});
+                .duration(3000)
+				.attr({fill: 'black'})
+				.style({
+					'font-size' : '14pt',
+					'font-weight' : 'normal'
+				});
 	}
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {
