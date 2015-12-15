@@ -140,7 +140,11 @@ export class WeatherMap {
 		if (x < 0) {
 			x = 0;
 		}
-		
+
+		if (x + 100 > this.width) {
+			x -= 100;
+		}
+
 		let id = this.makeIdFromLngLat(update.lnglat);
 
 		let cities = this.svg.select("g#cities");
@@ -154,7 +158,7 @@ export class WeatherMap {
 				.attr({
 					x: x,
 					y: y,
-					'text-anchor': 'middle',
+					'text-anchor': 'left',
 					fill: 'black'
 				})
 				.text(update.city)
@@ -167,7 +171,7 @@ export class WeatherMap {
 				.attr({
 					x: x,
 					y: y + 30,
-					'text-anchor': 'middle',
+					'text-anchor': 'left',
 					fill: 'red'
 				})
 				.text(`${update.tempFarenheit} deg.`)
