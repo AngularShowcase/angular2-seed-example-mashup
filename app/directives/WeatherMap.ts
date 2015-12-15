@@ -21,10 +21,16 @@ export class WeatherMap {
 	}
 
 	set lastUpdate(val:IWeatherUpdate) {
-		this._lastUpdate = val;
-		console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
+		if (val.city) {
+			this._lastUpdate = val;
+			console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
+			this.cityMap.set(val.city, val);
+			this.updateCities();
+		}
 	}
-	
+
+	cityMap:Map<string, IWeatherUpdate> = new Map<string, IWeatherUpdate>();
+
 	svg: d3.Selection<any>;
 	canvasBackgroundColor: string = 'teal';
 	width: number = 1100;
@@ -79,7 +85,7 @@ export class WeatherMap {
 		this.mapData = mapData;
 
 		this.mapData.features = _.filter(this.mapData.features,
-									(f:any) => _.indexOf(excludedFeatures, f.properties.NAME) == -1);
+									(f:any) => _.indexOf(excludedFeatures, f.properties.NAME) === -1);
 
 		this.svg.selectAll('*').remove();
 
@@ -90,16 +96,6 @@ export class WeatherMap {
 		var minLat = bounds[0][1];
 		var maxLng = bounds[1][0];
 		var maxLat = bounds[1][1];
-
-		/*
-		if (minLng > maxLng) {
-			[minLng,maxLng] = [maxLng,minLng];
-		}
-
-		if (minLat > maxLat) {
-			[minLat, maxLat] = [maxLat, maxLng];
-		}
-		*/
 
 		//var padding = 30;
 		var padding = 0;
@@ -134,5 +130,53 @@ export class WeatherMap {
 				return self.palette1[i % self.palette1.length];
 			})
 			.attr('stroke', 'black');
+	}
+
+	updateCities() {
+		this.cityMap.forEach((weatherUpdate, city) => {
+			console.log(`We have ${weatherUpdate.city} - ${city} at ${weatherUpdate.tempFarenheit} degrees.`);
+        });
+	}
+
+	removeFeatureLabels() {
+		var featureGroup = this.svg.select('g#featureLabels');
+		featureGroup.remove();
+    }
+
+    drawFeatureLabels() {
+		var self = this;
+		var features = this.mapData.features;
+		self.removeFeatureLabels();
+		var featureGroup:d3.Selection<any> = self.svg.append('g').attr({id:'featureLabels'});
+		for (var i = 0; i<features.length; ++i) {
+			self.drawFeatureLabel(features[i], featureGroup);
+		}
+	}
+
+	drawFeatureLabel(feature, featureGroup:d3.Selection<any>) {
+		var featureName = feature.properties.NAME;
+		var center;
+		console.log('Adding label for feature ' + featureName);
+
+		var bounds = d3.geo.bounds(feature);
+		center = [(bounds[1][0] + bounds[0][0]) /2, (bounds[1][1] + bounds[0][1]) /2 ];
+
+		//center = d3.geo.centroid(feature);
+
+		var x = this.lngScale(center[0]);
+		var y = this.latScale(center[1]);
+
+		featureGroup.append('text')
+			.attr({
+				x: x,
+				y: y,
+				'text-anchor': 'middle',
+				fill: 'black'
+			})
+			.text(featureName)
+			.style({
+				'font-size':'7pt',
+				'font-weight': 'bold'
+			});
 	}
 }

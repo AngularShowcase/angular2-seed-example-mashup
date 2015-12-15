@@ -22,8 +22,6 @@ export class Weather {
         this.weatherUpdates = messaageBroker.getWeatherUpdates();
 
         this.weatherUpdates.subscribe(w => {
-            //console.log('Got ', w);
-
             this.lastUpdate = w;
 
             this.updates.unshift(w);
