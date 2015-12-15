@@ -2,6 +2,11 @@ import {Directive, ElementRef, Renderer} from 'angular2/angular2';
 import {MapServices} from '../services/MapServices';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 
+interface IState {
+	state: string;
+	lnglat: [number, number];
+}
+
 @Directive({
 	selector: 'weather-map',		// Not sure why you need to put it in brackets
 	providers: [MapServices],
@@ -14,6 +19,7 @@ import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 })
 export class WeatherMap {
 
+	states:Map<string, IState>;
 	readyForUpdates: boolean;
 	_lastUpdate:IWeatherUpdate;
 
@@ -51,6 +57,7 @@ export class WeatherMap {
 
 	constructor(public _element: ElementRef, public _renderer: Renderer, public mapServices:MapServices) {
 		console.log('Directive WeatherMap constructed.');
+		this.states = new Map<string, IState>();
 		this.renderMap();
 	}
 
@@ -89,6 +96,17 @@ export class WeatherMap {
 
 		this.mapData.features = _.filter(this.mapData.features,
 									(f:any) => _.indexOf(excludedFeatures, f.properties.NAME) === -1);
+
+		// For each state in the map, store a lnglat that is somewhere in the state
+		_.each(this.mapData.features, (f:any) => {
+			let stateName = f.properties.NAME;
+			let lnglat = d3.geo.centroid(f);
+			this.states.set(stateName, { state: stateName, lnglat: lnglat});
+		});
+
+		this.states.forEach((state, stateName) => {
+			console.log(`State ${stateName} has object with name ${state.state} at ${state.lnglat}.`);
+		});
 
 		var bounds = this.mapServices.getBoundsOfFeatures(this.mapData.features);
 
