@@ -23,7 +23,7 @@ export class WeatherMap {
 	set lastUpdate(val:IWeatherUpdate) {
 		if (val.city) {
 			this._lastUpdate = val;
-			console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
+			//console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
 			this.cityMap.set(val.city, val);
 			this.updateCity(val);
 		}
@@ -158,7 +158,7 @@ export class WeatherMap {
 					'font-weight': 'bold'
 				});
 
-		city.append('text')
+		let temp = city.append('text')
 				.attr({
 					x: x,
 					y: y + 30,
@@ -171,6 +171,10 @@ export class WeatherMap {
 					'font-size': '12pt',
 					'font-weight': 'bold'
 				});
+
+		temp.transition()
+                .duration(1000)
+				.attr({fill: 'yellow'});
 	}
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {
