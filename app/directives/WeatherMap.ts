@@ -14,6 +14,7 @@ import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 })
 export class WeatherMap {
 
+	readyForUpdates: boolean;
 	_lastUpdate:IWeatherUpdate;
 
 	get lastUpdate() : IWeatherUpdate {
@@ -21,7 +22,7 @@ export class WeatherMap {
 	}
 
 	set lastUpdate(val:IWeatherUpdate) {
-		if (val.city) {
+		if (val.city && this.readyForUpdates) {
 			this._lastUpdate = val;
 			//console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
 			this.cityMap.set(val.city, val);
@@ -130,6 +131,8 @@ export class WeatherMap {
 				return self.palette1[i % self.palette1.length];
 			})
 			.attr('stroke', 'black');
+
+		this.readyForUpdates = true;
 	}
 
 	updateCity(update:IWeatherUpdate) {
