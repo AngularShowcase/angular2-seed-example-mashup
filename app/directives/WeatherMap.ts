@@ -73,6 +73,8 @@ export class WeatherMap {
 		this.svg = root.append('svg');
 		this.svg.attr({width: this.width, height: this.height});
 		this.svg.style({border: '1px solid black'});
+		this.svg.append("g").attr({id: "cities"});
+		this.svg.append("g").attr({id: "map"});
 
 		this.mapServices.loadMap('us.json')
 			.subscribe(mapData => self.plotMapData(mapData, ['Alaska','Hawaii', 'Puerto Rico']));
@@ -86,8 +88,6 @@ export class WeatherMap {
 
 		this.mapData.features = _.filter(this.mapData.features,
 									(f:any) => _.indexOf(excludedFeatures, f.properties.NAME) === -1);
-
-		this.svg.selectAll('*').remove();
 
 		var bounds = this.mapServices.getBoundsOfFeatures(this.mapData.features);
 
@@ -121,7 +121,7 @@ export class WeatherMap {
 		var path = d3.geo.path()
 			.projection(customProjection);
 
-		this.svg.selectAll('path')
+		this.svg.select("g#map").selectAll('path')
 			.data(this.mapData.features)
 			.enter()
 			.append('path')
