@@ -25,7 +25,7 @@ export class WeatherMap {
 			this._lastUpdate = val;
 			console.log(`Weather map got an update for ${this._lastUpdate.city}.`);
 			this.cityMap.set(val.city, val);
-			this.updateCities();
+			this.updateCity(val);
 		}
 	}
 
@@ -73,8 +73,8 @@ export class WeatherMap {
 		this.svg = root.append('svg');
 		this.svg.attr({width: this.width, height: this.height});
 		this.svg.style({border: '1px solid black'});
-		this.svg.append("g").attr({id: "cities"});
 		this.svg.append("g").attr({id: "map"});
+		this.svg.append("g").attr({id: "cities"});
 
 		this.mapServices.loadMap('us.json')
 			.subscribe(mapData => self.plotMapData(mapData, ['Alaska','Hawaii', 'Puerto Rico']));
@@ -132,10 +132,52 @@ export class WeatherMap {
 			.attr('stroke', 'black');
 	}
 
-	updateCities() {
-		this.cityMap.forEach((weatherUpdate, city) => {
-			console.log(`We have ${weatherUpdate.city} - ${city} at ${weatherUpdate.tempFarenheit} degrees.`);
-        });
+	updateCity(update:IWeatherUpdate) {
+
+		let x = this.lngScale(update.lnglat[0]);
+		let y = this.latScale(update.lnglat[1]);
+		let id = this.makeIdFromLngLat(update.lnglat);
+
+		let cities = this.svg.select("g#cities");
+
+		let city = cities.select(`g#${id}`);
+		city.remove();
+
+		city = cities.append("g").attr({id: id});
+
+		city.append('text')
+				.attr({
+					x: x,
+					y: y,
+					'text-anchor': 'middle',
+					fill: 'black'
+				})
+				.text(update.city)
+				.style({
+					'font-size':'14pt',
+					'font-weight': 'bold'
+				});
+
+		city.append('text')
+				.attr({
+					x: x,
+					y: y + 30,
+					'text-anchor': 'middle',
+					fill: 'red'
+				})
+				.text(`${update.tempFarenheit} deg.`)
+				.style({
+
+					'font-size': '12pt',
+					'font-weight': 'bold'
+				});
+	}
+
+	makeIdFromLngLat(lnglat:[number, number]) : string {
+		let str1 = lnglat[0].toString().replace('.', '').replace('-', '');
+		let str2 = lnglat[1].toString().replace('.', '').replace('-', '');
+
+		return "city_" + str1 + str2;
 	}
 
 	removeFeatureLabels() {
