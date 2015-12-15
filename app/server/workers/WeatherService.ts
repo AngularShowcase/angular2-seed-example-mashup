@@ -3,12 +3,12 @@ import * as Rx from '@reactivex/rxjs';
 
 interface ILocation {
 	name: string;
-	lnglat: [number, number]
+	lnglat: [number, number];
 };
 
 export class WeatherService {
 
-	sleepTime = 5;
+	sleepTime = 2000;
 	weatherPub: Rx.Subject<IWeatherUpdate>;
 	timer: any;
 	cities:ILocation[];

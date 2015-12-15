@@ -41,9 +41,9 @@ export class WeatherMap {
 	latScale:d3.scale.Linear<number,number>;
 	lineFun:d3.svg.Line<number>;
 
-	private palette0:string[] = ['rgb(215,48,39)','rgb(244,109,67)','rgb(253,174,97)',
-								 'rgb(254,224,144)','rgb(255,255,191)','rgb(224,243,248)',
-								 'rgb(171,217,233)','rgb(116,173,209)','rgb(69,117,180)'];
+	// private palette0:string[] = ['rgb(215,48,39)','rgb(244,109,67)','rgb(253,174,97)',
+	// 							 'rgb(254,224,144)','rgb(255,255,191)','rgb(224,243,248)',
+	// 							 'rgb(171,217,233)','rgb(116,173,209)','rgb(69,117,180)'];
 
 	private palette1:string[] = ['rgb(244,109,67)','rgb(253,174,97)','rgb(254,224,144)',
 							     'rgb(255,255,191)','rgb(224,243,248)','rgb(171,217,233)',
@@ -74,8 +74,8 @@ export class WeatherMap {
 		this.svg = root.append('svg');
 		this.svg.attr({width: this.width, height: this.height});
 		this.svg.style({border: '1px solid black'});
-		this.svg.append("g").attr({id: "map"});
-		this.svg.append("g").attr({id: "cities"});
+		this.svg.append('g').attr({id: 'map'});
+		this.svg.append('g').attr({id: 'cities'});
 
 		this.mapServices.loadMap('us.json')
 			.subscribe(mapData => self.plotMapData(mapData, ['Alaska','Hawaii', 'Puerto Rico']));
@@ -122,7 +122,7 @@ export class WeatherMap {
 		var path = d3.geo.path()
 			.projection(customProjection);
 
-		this.svg.select("g#map").selectAll('path')
+		this.svg.select('g#map').selectAll('path')
 			.data(this.mapData.features)
 			.enter()
 			.append('path')
@@ -150,12 +150,12 @@ export class WeatherMap {
 
 		let id = this.makeIdFromLngLat(update.lnglat);
 
-		let cities = this.svg.select("g#cities");
+		let cities = this.svg.select('g#cities');
 
 		let city = cities.select(`g#${id}`);
 		city.remove();
 
-		city = cities.append("g").attr({id: id});
+		city = cities.append('g').attr({id: id});
 
 		city.append('text')
 				.attr({
@@ -196,7 +196,7 @@ export class WeatherMap {
 		let str1 = lnglat[0].toString().replace('.', '').replace('-', '');
 		let str2 = lnglat[1].toString().replace('.', '').replace('-', '');
 
-		return "city_" + str1 + str2;
+		return 'city_' + str1 + str2;
 	}
 
 	removeFeatureLabels() {
