@@ -5,7 +5,6 @@ import {
   ROUTER_DIRECTIVES, Router
 } from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
-import {MessageBroker} from '../../services/MessageBroker';
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
 import {HomeCmp} from '../home/home';
@@ -28,7 +27,7 @@ import {Weather} from '../streaming/Weather';
 
 @Component({
   selector: 'app',
-  viewProviders: [NameList, MessageBroker],
+  viewProviders: [NameList],
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
   encapsulation: ViewEncapsulation.None,
@@ -58,7 +57,7 @@ export class AppCmp {
 
   socket: SocketIOClient.Socket;
 
-  constructor(public auth: Authentication, public router:Router, public messageBroker:MessageBroker) {
+  constructor(public auth: Authentication, public router:Router) {
 
   }
 

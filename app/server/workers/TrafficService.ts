@@ -22,8 +22,7 @@ export class TrafficService {
 		fs.readFile(this.mapFile, 'utf-8', (err, data) => {
 			if (err) {
 				console.log(err.message);
-			}
-			else {
+			} else {
 				let map = JSON.parse(data);
 				_.each(map.features, (f:any) => {
 					this.states.push(f.properties.NAME);

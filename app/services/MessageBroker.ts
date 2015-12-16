@@ -27,7 +27,7 @@ export class MessageBroker {
 		});
 
 		this.socket.on('accident', (accident:IAccident) => {
-			console.log(`Accident involving ${accident.vehiclesInvolved} vehicles in ${accident.state} at ${accident.time}.`);
+			//console.log(`Accident involving ${accident.vehiclesInvolved} vehicles in ${accident.state} at ${accident.time}.`);
 			this.accidentUpdates.next(accident);
 		});
 	}
@@ -35,4 +35,8 @@ export class MessageBroker {
 	getWeatherUpdates() : EventEmitter<IWeatherUpdate> {
 		return this.weatherUpdates;
 	}
+
+    getAccidentUpdate() : EventEmitter<IAccident> {
+        return this.accidentUpdates;
+    }
 }

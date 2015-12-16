@@ -1,14 +1,4 @@
 <div class="container">
 	<h1>Weather Updates</h1>
-	<weather-map [lastupdate]="lastUpdate"></weather-map>
-
-	<div>
-	{{lastUpdate.city}} at {{lastUpdate.lnglat[0]}},{{lastUpdate.lnglat[1]}} is {{lastUpdate.tempFarenheit}} degrees.
-	</div>
-
-	<!--<ul>
-		<li *ng-for="#update of updates">
-			{{update.city}} [{{update.lnglat[0]}},{{update.lnglat[1]}}] is {{update.tempFarenheit}} degrees.
-		</li>
-	</ul>-->
+	<weather-map [lastupdate]="lastUpdate" [lastaccident]="lastAccident"></weather-map>
 </div>

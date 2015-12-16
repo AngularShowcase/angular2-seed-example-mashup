@@ -1,6 +1,7 @@
 import {Directive, ElementRef, Renderer} from 'angular2/angular2';
 import {MapServices} from '../services/MapServices';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
+import {IAccident} from '../common/interfaces/TrafficInterfaces';
 
 interface IState {
 	state: string;
@@ -10,7 +11,7 @@ interface IState {
 @Directive({
 	selector: 'weather-map',		// Not sure why you need to put it in brackets
 	providers: [MapServices],
-	inputs: ['lastUpdate:lastupdate'],
+	inputs: ['lastUpdate:lastupdate', 'lastAccident:lastaccident'],
 	host: {
 		'(click)': 'onClick($event)',
 		'(load)': 'onLoad($event)',
@@ -22,6 +23,7 @@ export class WeatherMap {
 	states:Map<string, IState>;
 	readyForUpdates: boolean;
 	_lastUpdate:IWeatherUpdate;
+    _lastAccident:IAccident;
 
 	get lastUpdate() : IWeatherUpdate {
 		return this._lastUpdate;
@@ -35,6 +37,17 @@ export class WeatherMap {
 			this.updateCity(val);
 		}
 	}
+
+    get lastAccident() : IAccident {
+        return this._lastAccident;
+    }
+
+    set lastAccident(val:IAccident) {
+        if (val.state && this.readyForUpdates) {
+            this._lastAccident = val;
+            this.reportAccident(val);
+        }
+    }
 
 	cityMap:Map<string, IWeatherUpdate> = new Map<string, IWeatherUpdate>();
 
@@ -104,9 +117,9 @@ export class WeatherMap {
 			this.states.set(stateName, { state: stateName, lnglat: lnglat});
 		});
 
-		this.states.forEach((state, stateName) => {
-			console.log(`State ${stateName} has object with name ${state.state} at ${state.lnglat}.`);
-		});
+		// this.states.forEach((state, stateName) => {
+		// 	console.log(`State ${stateName} has object with name ${state.state} at ${state.lnglat}.`);
+		// });
 
 		var bounds = this.mapServices.getBoundsOfFeatures(this.mapData.features);
 
@@ -209,6 +222,10 @@ export class WeatherMap {
 					'font-weight' : 'normal'
 				});
 	}
+
+    reportAccident(accident:IAccident) {
+        console.log(`Accident report at ${accident.time} in ${accident.state} at ${accident.time}.`);
+    }
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {
 		let str1 = lnglat[0].toString().replace('.', '').replace('-', '');
