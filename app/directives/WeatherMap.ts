@@ -53,8 +53,8 @@ export class WeatherMap {
 
 	svg: d3.Selection<any>;
 	canvasBackgroundColor: string = 'teal';
-	width: number = 1100;
-	height: number = 600;
+	width: number = 800;
+	height: number = 500;
 	mapData: any;
 	lngScale:d3.scale.Linear<number,number>;
 	latScale:d3.scale.Linear<number,number>;
@@ -96,6 +96,7 @@ export class WeatherMap {
 		this.svg.style({border: '1px solid black'});
 		this.svg.append('g').attr({id: 'map'});
 		this.svg.append('g').attr({id: 'cities'});
+        this.svg.append('g').attr({id: 'accidents'});
 
 		this.mapServices.loadMap('us.json')
 			.subscribe(mapData => self.plotMapData(mapData, ['Alaska','Hawaii', 'Puerto Rico']));
@@ -224,7 +225,47 @@ export class WeatherMap {
 	}
 
     reportAccident(accident:IAccident) {
-        console.log(`Accident report at ${accident.time} in ${accident.state} at ${accident.time}.`);
+        //console.log(`Accident report at ${accident.time} in ${accident.state} at ${accident.time}.`);
+        let state = accident.state;
+        if (!this.states.has(state)) {
+            console.log(`I don't know where to plot accident for state ${state}.`);
+            return;
+        }
+        let lnglat = this.states.get(state).lnglat;
+        let message = `${accident.vehiclesInvolved} vehicle accident reported at ${accident.time} in ${accident.state}`;
+		let x = this.lngScale(lnglat[0]);
+		let y = this.latScale(lnglat[1]);
+
+		if (x < 0) {
+			x = 0;
+		}
+
+		if (x + 100 > this.width) {
+			x -= 100;
+		}
+
+		let accidents = this.svg.select('g#accidents');
+		let temp = accidents.append('text')
+				.attr({
+					x: x,
+					y: y + 30,
+					'text-anchor': 'left',
+					fill: 'red'
+				})
+				.text(message)
+				.style({
+					'font-size': '14pt',
+					'font-weight': 'bold'
+				});
+
+		temp.transition()
+                .duration(3000)
+				.attr({fill: 'black'})
+				.style({
+					'font-size' : '8pt',
+					'font-weight' : 'normal'
+				})
+                .each('end', () => temp.remove());
     }
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {
