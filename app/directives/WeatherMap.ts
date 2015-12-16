@@ -24,6 +24,8 @@ export class WeatherMap {
 	readyForUpdates: boolean;
 	_lastUpdate:IWeatherUpdate;
     _lastAccident:IAccident;
+    fadeTime = 1500;
+    tempUpdateTime = 3000;
 
 	get lastUpdate() : IWeatherUpdate {
 		return this._lastUpdate;
@@ -216,7 +218,7 @@ export class WeatherMap {
 				});
 
 		temp.transition()
-                .duration(3000)
+                .duration(this.tempUpdateTime)
 				.attr({fill: 'black'})
 				.style({
 					'font-size' : '14pt',
@@ -266,7 +268,7 @@ export class WeatherMap {
 
         [circle,label].forEach(elem => {
             elem.transition()
-                    .duration(6000)
+                    .duration(this.fadeTime)
                     .style({
                         opacity: 0
                     })

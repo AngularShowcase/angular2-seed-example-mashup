@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 export class TrafficService {
 
 	mapFile = './app/assets/data/maps/us.json';
-	sleepTime = 2000;
+	sleepTime = 1000;
 	accidentPub: Rx.Subject<IAccident>;
 	timer: any;
 	states:string[] = [];
