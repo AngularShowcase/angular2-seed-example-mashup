@@ -1,7 +1,11 @@
-<div class="container">
     <div class="row">
         <div class="col-md-9">
-        	<weather-map [lastupdate]="lastUpdate" [lastaccident]="lastAccident"></weather-map>
+            <div id="mapAndMessage">
+                <weather-map [lastupdate]="lastUpdate" [lastaccident]="lastAccident"></weather-map>
+                <div class="col-md-9">
+                    <span id="lastAccidentReport">{{lastAccidentReport}}</span>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
             <h2>Traffic Info</h2>
@@ -23,9 +27,3 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-9">
-            <span id="lastAccidentReport">{{lastAccidentReport}}</span>
-        </div>
-    </div>
-</div>

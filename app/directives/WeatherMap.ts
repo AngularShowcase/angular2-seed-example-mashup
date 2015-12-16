@@ -53,8 +53,8 @@ export class WeatherMap {
 
 	svg: d3.Selection<any>;
 	canvasBackgroundColor: string = 'teal';
-	width: number = 800;
-	height: number = 500;
+	width: number = 1000;
+	height: number = 600;
 	mapData: any;
 	lngScale:d3.scale.Linear<number,number>;
 	latScale:d3.scale.Linear<number,number>;
