@@ -231,41 +231,50 @@ export class WeatherMap {
             console.log(`I don't know where to plot accident for state ${state}.`);
             return;
         }
+
         let lnglat = this.states.get(state).lnglat;
-        let message = `${accident.vehiclesInvolved} vehicle accident reported at ${accident.time} in ${accident.state}`;
+        // let message = `${accident.vehiclesInvolved} vehicle accident reported at ${accident.time} in ${accident.state}`;
 		let x = this.lngScale(lnglat[0]);
 		let y = this.latScale(lnglat[1]);
 
-		if (x < 0) {
-			x = 0;
-		}
-
-		if (x + 100 > this.width) {
-			x -= 100;
-		}
-
 		let accidents = this.svg.select('g#accidents');
-		let temp = accidents.append('text')
+
+        let circle = accidents.append('circle')
 				.attr({
-					x: x,
-					y: y + 30,
-					'text-anchor': 'left',
+					cx: x,
+					cy: y,
+                    r: 25,
 					fill: 'red'
 				})
-				.text(message)
+                .style({
+                    opacity: 0.5
+                });
+
+        let label = accidents.append('text')
+				.text(accident.vehiclesInvolved.toString())
+                .attr({x: x,
+                       y: y + 5,
+                       fill: 'black',
+                       'text-anchor': 'middle'
+                 })
 				.style({
+                    opacity: 1,
 					'font-size': '14pt',
-					'font-weight': 'bold'
+					'font-weight': 'bold',
+                    'color' : 'black'
 				});
 
-		temp.transition()
-                .duration(3000)
-				.attr({fill: 'black'})
-				.style({
-					'font-size' : '8pt',
-					'font-weight' : 'normal'
-				})
-                .each('end', () => temp.remove());
+        [circle,label].forEach(elem => {
+            elem.transition()
+                    .duration(6000)
+                    .style({
+                        opacity: 0
+                    })
+                    .each('end', () => {
+                        elem.remove();
+                    });
+
+        });
     }
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {

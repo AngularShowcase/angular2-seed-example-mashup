@@ -1,5 +1,4 @@
 <div class="container">
-	<h1>Weather & Traffic Updates</h1>
     <div class="row">
         <div class="col-md-9">
         	<weather-map [lastupdate]="lastUpdate" [lastaccident]="lastAccident"></weather-map>
@@ -10,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-md-9">
-            {{lastAccidentReport}}
+            <span id="lastAccidentReport">{{lastAccidentReport}}</span>
         </div>
     </div>
 </div>
