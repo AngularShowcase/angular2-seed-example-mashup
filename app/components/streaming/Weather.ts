@@ -18,13 +18,16 @@ export class Weather {
 
     lastUpdate:IWeatherUpdate = { city: '', lnglat: [0,0], tempFarenheit: 0, time: new Date() };
     lastAccident:IAccident = { state: '', vehiclesInvolved: 0, time: new Date() };
+    lastAccidentReport:string = '';
 
     constructor(public messaageBroker:MessageBroker) {
         this.weatherUpdates = messaageBroker.getWeatherUpdates();
         this.accidentUpdates = messaageBroker.getAccidentUpdate();
 
-        this.accidentUpdates.subscribe(accident => {
+        this.accidentUpdates.subscribe((accident:IAccident) => {
             this.lastAccident = accident;
+            this.lastAccidentReport = `${accident.vehiclesInvolved} vehicle accident reported
+                                        in ${accident.state} at ${accident.time}.`;
         });
 
         this.weatherUpdates.subscribe(w => {
