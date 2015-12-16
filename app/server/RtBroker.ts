@@ -12,16 +12,25 @@ export class RtBroker {
 
 	weatherPub: Rx.Subject<IWeatherUpdate>;
 	accidentPub: Rx.Subject<IAccident>;
+    online:number = 0;
 
 	constructor(public io:SocketIO.Server) {
 
 		this.weatherService = new WeatherService();
 		this.trafficService = new TrafficService();
 
-		this.io.on('connection', function(socket:SocketIO.Socket){
+		this.io.on('connection', (socket:SocketIO.Socket) => {
 			console.log(`Connect from ${socket.client.id}!`);
-			//console.log('Got a connection.');
+            this.online += 1;
+            console.log(`${this.online} clients online.`);
 		});
+
+        this.io.on('disconnect',  (who) => {
+            console.log(`Disconnect from ${who}.`);
+            this.online -= 1;
+            console.log(`${this.online} clients online.`);
+        });
+
 
 		this.weatherPub = this.weatherService.getWeatherUpdatePub();
 		this.weatherPub.subscribe(weatherUpdate => this.io.emit('weatherUpdate', weatherUpdate));
