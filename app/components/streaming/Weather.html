@@ -5,6 +5,22 @@
         </div>
         <div class="col-md-3">
             <h2>Traffic Info</h2>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Accidents</th>
+                        <th>Vehicles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ng-for="#stat of stateStats">
+                        <td>{{stat.state}}</td>
+                        <td>{{stat.numberOfAccidents}}</td>
+                        <td>{{stat.numberOfVehicles}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">
