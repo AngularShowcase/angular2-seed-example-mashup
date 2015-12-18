@@ -33,7 +33,7 @@
 
     <a [router-link]="['/Weather']">Weather</a>
     <a [router-link]="['/Chat']">Chat</a>
-
+    <span>{{lastChatMessage.username}} {{lastChatMessage.time}}</span>
     <button id="userBadge" class="top-button pull-right" (click)="userInfo()">&nbsp;{{getUser()}}</button>
     <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="login()">Login</button>
     <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="register()">Register</button>

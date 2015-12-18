@@ -1,10 +1,13 @@
 /// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
-import {Component, ViewEncapsulation} from 'angular2/angular2';
+import {Component, ViewEncapsulation, EventEmitter} from 'angular2/angular2';
 import {
   RouteConfig,
   ROUTER_DIRECTIVES, Router
 } from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
+import {MessageBroker} from '../../services/MessageBroker';
+import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
+
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
 import {HomeCmp} from '../home/home';
@@ -58,9 +61,11 @@ import {Chat} from '../streaming/Chat';
 export class AppCmp {
 
   socket: SocketIOClient.Socket;
+  lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
 
-  constructor(public auth: Authentication, public router:Router) {
-
+  constructor(public auth: Authentication, public router:Router, public messageBroker:MessageBroker) {
+      this.messageBroker.getChatMessages()
+        .subscribe((msg:IChatMessage) => this.lastChatMessage = msg);
   }
 
   getUser(): string {
