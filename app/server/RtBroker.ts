@@ -2,6 +2,7 @@ import {WeatherService} from './workers/WeatherService';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
 import {TrafficService} from './workers/TrafficService';
+import {IChatMessage} from '../common/interfaces/ChatInterfaces';
 
 import * as Rx from '@reactivex/rxjs';
 
@@ -24,8 +25,9 @@ export class RtBroker {
             this.online += 1;
             console.log(`${this.online} clients online.`);
 
-            socket.on('chat', (msg:string) => {
-                console.log(`Got chat message from ${socket.client.id}.  Msg: ${msg}`);
+            socket.on('chat', (msg:IChatMessage) => {
+                console.log(`Got chat message from ${socket.client.id} user ${msg.username}.  Msg: ${msg.message}`);
+                this.io.emit('usermessage', msg);
             });
 
             socket.on('disconnect',  (reason) => {

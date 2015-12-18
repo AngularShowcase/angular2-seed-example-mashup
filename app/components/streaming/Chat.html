@@ -1,11 +1,30 @@
 <div class="container">
     <h1>Chat</h1>
-    <!--<h2>{{user.username}}</h2>-->
+    <h2>{{user.username}}</h2>
     <section id="compose">
         <div>Enter your message:</div>
         <textarea id="messageEntry" #msg [(ng-model)]="message"></textarea>
         <div>
             <button (click)="sendMessage(msg.value)">Send</button>
         </div>
+    </section>
+
+    <section id="thread">
+        <table class="table" id="messageTable">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>User</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ng-for="#chatmessage of thread">
+                    <td>{{chatmessage.time}}</td>
+                    <td>{{chatmessage.username}}</td>
+                    <td>{{chatmessage.message}}</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </div>

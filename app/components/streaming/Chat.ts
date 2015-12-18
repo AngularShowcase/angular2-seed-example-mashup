@@ -3,7 +3,7 @@ import {FORM_DIRECTIVES} from 'angular2/angular2';
 import {MessageBroker} from '../../services/MessageBroker';
 import {Authentication} from '../../services/Authentication';
 import {IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
-//import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
+import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
 
 @Component({
     selector: 'chat',
@@ -16,18 +16,21 @@ export class Chat {
 
     user: IRegisteredUser;
     message: string = '';
+    thread: IChatMessage[] = [];
 
     constructor(public messaageBroker:MessageBroker, public authentication:Authentication) {
-        // if (!this.authentication.authenticate()) {
-        //     return;
-        // }
+        if (!this.authentication.authenticate()) {
+            return;
+        }
 
         this.user = this.authentication.user;
+        this.messaageBroker.getChatMessages()
+            .subscribe((msg:IChatMessage) => this.thread.push(msg));
     }
 
     sendMessage(msg:string) {
         this.messaageBroker.sendChatMessage({
-            username: 'need to login',
+            username: this.user.username,
             time: new Date(),
             message: msg
         });

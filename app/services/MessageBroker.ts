@@ -10,6 +10,8 @@ export class MessageBroker {
 	socket: SocketIOClient.Socket;
 	weatherUpdates: EventEmitter<IWeatherUpdate>;
 	accidentUpdates: EventEmitter<IAccident>;
+    chatMessages: EventEmitter<IChatMessage>;
+
     weatherUpdateCount: number = 0;
 
 	constructor() {
@@ -22,6 +24,7 @@ export class MessageBroker {
 		// Create publications
 		this.weatherUpdates = new EventEmitter<IWeatherUpdate>();
 		this.accidentUpdates = new EventEmitter<IAccident>();
+        this.chatMessages = new EventEmitter<IChatMessage>();
 
 		// Set up publication updating
 		this.socket.on('weatherUpdate', (update:IWeatherUpdate) => {
@@ -34,6 +37,11 @@ export class MessageBroker {
 			//console.log(`Accident involving ${accident.vehiclesInvolved} vehicles in ${accident.state} at ${accident.time}.`);
 			this.accidentUpdates.next(accident);
 		});
+
+		this.socket.on('usermessage', (message:IChatMessage) => {
+			console.log(`Server sent chat message from ${message.username} at ${message.time}.`);
+            this.chatMessages.next(message);
+		});
 	}
 
 	getWeatherUpdates() : EventEmitter<IWeatherUpdate> {
@@ -44,6 +52,10 @@ export class MessageBroker {
         return this.accidentUpdates;
     }
 
+    getChatMessages() : EventEmitter<IChatMessage> {
+        return this.chatMessages;
+    }
+    
     sendChatMessage(message:IChatMessage) {
         if (!this.socket) {
             return;
