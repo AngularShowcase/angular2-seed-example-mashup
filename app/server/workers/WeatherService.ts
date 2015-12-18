@@ -8,7 +8,7 @@ interface ILocation {
 
 export class WeatherService {
 
-	sleepTime = 500;
+	sleepTime = 2000;
 	weatherPub: Rx.Subject<IWeatherUpdate>;
 	timer: any;
 	cities:ILocation[];

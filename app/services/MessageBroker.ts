@@ -9,6 +9,7 @@ export class MessageBroker {
 	socket: SocketIOClient.Socket;
 	weatherUpdates: EventEmitter<IWeatherUpdate>;
 	accidentUpdates: EventEmitter<IAccident>;
+    weatherUpdateCount: number = 0;
 
 	constructor() {
         console.log(`Constructed MessageBroker at ${new Date()}`);
@@ -24,6 +25,8 @@ export class MessageBroker {
 		// Set up publication updating
 		this.socket.on('weatherUpdate', (update:IWeatherUpdate) => {
 			this.weatherUpdates.next(update);
+            this.weatherUpdateCount += 1;
+            //this.socket.emit('chat', `Thanks.  You've sent me ${this.weatherUpdateCount} weather updates.`);
 		});
 
 		this.socket.on('accident', (accident:IAccident) => {

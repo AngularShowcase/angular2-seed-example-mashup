@@ -24,6 +24,10 @@ export class RtBroker {
             this.online += 1;
             console.log(`${this.online} clients online.`);
 
+            socket.on('chat', (msg:string) => {
+                console.log(`Got chat message from ${socket.client.id}.  Msg: ${msg}`);
+            });
+            
             socket.on('disconnect',  (reason) => {
                 console.log(`Disconnect from ${socket.client.id}; reason: ${reason}.`);
                 this.online -= 1;
