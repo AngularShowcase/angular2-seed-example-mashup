@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable} from 'angular2/angular2';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
+import {IChatMessage} from '../common/interfaces/ChatInterfaces';
 
 @Injectable()
 export class MessageBroker {
@@ -41,5 +42,13 @@ export class MessageBroker {
 
     getAccidentUpdate() : EventEmitter<IAccident> {
         return this.accidentUpdates;
+    }
+
+    sendChatMessage(message:IChatMessage) {
+        if (!this.socket) {
+            return;
+        }
+
+        this.socket.emit('chat', message);
     }
 }

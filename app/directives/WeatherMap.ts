@@ -243,7 +243,7 @@ export class WeatherMap {
 
         let accidentGroup = accidents.append('g');
 
-        let circle = accidentGroup.append('circle')
+        accidentGroup.append('circle')
 				.attr({
 					cx: x,
 					cy: y,
@@ -254,7 +254,7 @@ export class WeatherMap {
                     opacity: 0.75
                 });
 
-        let label = accidentGroup.append('text')
+        accidentGroup.append('text')
 				.text(accident.vehiclesInvolved.toString())
                 .attr({x: x,
                        y: y + 5,

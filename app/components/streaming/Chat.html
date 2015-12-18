@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Chat</h1>
+    <!--<h2>{{user.username}}</h2>-->
+    <section id="compose">
+        <div>Enter your message:</div>
+        <textarea id="messageEntry" #msg [(ng-model)]="message"></textarea>
+        <div>
+            <button (click)="sendMessage(msg.value)">Send</button>
+        </div>
+    </section>
+</div>

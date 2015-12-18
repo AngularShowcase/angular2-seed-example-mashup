@@ -24,6 +24,7 @@ import {QuizCreation} from '../quiz/QuizCreation';
 import {ProctorExam} from '../quiz/ProctorExam';
 import {ReviewTest} from '../quiz/ReviewTest';
 import {Weather} from '../streaming/Weather';
+import {Chat} from '../streaming/Chat';
 
 @Component({
   selector: 'app',
@@ -51,7 +52,8 @@ import {Weather} from '../streaming/Weather';
   { path: '/quiz/quizcreation', component: QuizCreation, as: 'QuizCreation'},
   { path: '/quiz/proctorexam/:quizId', component: ProctorExam, as: 'ProctorExam'},
   { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'},
-  { path: '/weather', component: Weather, as: 'Weather'}
+  { path: '/weather', component: Weather, as: 'Weather'},
+  { path: '/chat', component: Chat, as: 'Chat'}
 ])
 export class AppCmp {
 
