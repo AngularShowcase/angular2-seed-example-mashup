@@ -24,7 +24,7 @@ export class WeatherMap {
 	readyForUpdates: boolean;
 	_lastUpdate:IWeatherUpdate;
     _lastAccident:IAccident;
-    fadeTime = 1500;
+    fadeTime = 2500;
     tempUpdateTime = 3000;
 
 	get lastUpdate() : IWeatherUpdate {
@@ -241,7 +241,9 @@ export class WeatherMap {
 
 		let accidents = this.svg.select('g#accidents');
 
-        let circle = accidents.append('circle')
+        let accidentGroup = accidents.append('g');
+
+        let circle = accidentGroup.append('circle')
 				.attr({
 					cx: x,
 					cy: y,
@@ -249,10 +251,10 @@ export class WeatherMap {
 					fill: 'red'
 				})
                 .style({
-                    opacity: 0.5
+                    opacity: 0.75
                 });
 
-        let label = accidents.append('text')
+        let label = accidentGroup.append('text')
 				.text(accident.vehiclesInvolved.toString())
                 .attr({x: x,
                        y: y + 5,
@@ -266,17 +268,14 @@ export class WeatherMap {
                     'color' : 'black'
 				});
 
-        [circle,label].forEach(elem => {
-            elem.transition()
+        accidentGroup.transition()
                     .duration(this.fadeTime)
                     .style({
                         opacity: 0
                     })
                     .each('end', () => {
-                        elem.remove();
+                        accidentGroup.remove();
                     });
-
-        });
     }
 
 	makeIdFromLngLat(lnglat:[number, number]) : string {
