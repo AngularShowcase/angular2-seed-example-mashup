@@ -23,14 +23,13 @@ export class RtBroker {
 			console.log(`Connect from ${socket.client.id}!`);
             this.online += 1;
             console.log(`${this.online} clients online.`);
+
+            socket.on('disconnect',  (reason) => {
+                console.log(`Disconnect from ${socket.client.id}; reason: ${reason}.`);
+                this.online -= 1;
+                console.log(`${this.online} clients online.`);
+            });
 		});
-
-        this.io.on('disconnect',  (who) => {
-            console.log(`Disconnect from ${who}.`);
-            this.online -= 1;
-            console.log(`${this.online} clients online.`);
-        });
-
 
 		this.weatherPub = this.weatherService.getWeatherUpdatePub();
 		this.weatherPub.subscribe(weatherUpdate => this.io.emit('weatherUpdate', weatherUpdate));
