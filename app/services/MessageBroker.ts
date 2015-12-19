@@ -38,7 +38,12 @@ export class MessageBroker {
 			this.accidentUpdates.next(accident);
 		});
 
+        // For some reason, dates are coming across
+        // the wire as strings.  We need to convert them.
 		this.socket.on('usermessage', (message:IChatMessage) => {
+            if (typeof(message.time) === "string") {
+                message.time = new Date(<any> message.time);
+            }
 			console.log(`Server sent chat message from ${message.username} at ${message.time}.`);
             this.chatMessages.next(message);
 		});
@@ -55,7 +60,7 @@ export class MessageBroker {
     getChatMessages() : EventEmitter<IChatMessage> {
         return this.chatMessages;
     }
-    
+
     sendChatMessage(message:IChatMessage) {
         if (!this.socket) {
             return;

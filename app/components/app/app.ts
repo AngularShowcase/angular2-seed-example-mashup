@@ -1,9 +1,6 @@
 /// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
 import {Component, ViewEncapsulation, EventEmitter} from 'angular2/angular2';
-import {
-  RouteConfig,
-  ROUTER_DIRECTIVES, Router
-} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../common/interfaces/ChatInterfaces';

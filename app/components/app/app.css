@@ -37,3 +37,12 @@
   font-size: 14pt;
   background: lightskyblue;
   margin-top: 0px; }
+
+div#lastChat {
+  color: yellow;
+  font-size: 12pt;
+  font-style: italic;
+  margin-right: 10px;
+  background: black;
+  padding: 3px;
+  border-radius: 5px; }
