@@ -39,3 +39,4 @@ test
 tools/typings/tsd
 *.js.map
 {username:*
+tmp

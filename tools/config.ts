@@ -19,64 +19,78 @@ export const APP_DOCS         = 'docs';
 export const ANGULAR_BUNDLES  = './node_modules/angular2/bundles';
 export const VERSION          = version();
 
-export const VERSION_NPM      = '3.0.0';
-export const VERSION_NODE     = '4.0.0';
+export const TOOLS_DIR            = 'tools';
+export const TMP_DIR              = 'tmp';
+export const TEST_DEST            = 'test';
+export const DOCS_DEST            = 'docs';
+export const APP_DEST             = `dist/${ENV}`;
+export const ASSETS_DEST          = `${APP_DEST}/assets`;
+export const BUNDLES_DEST         = `${APP_DEST}/bundles`;
+export const CSS_DEST             = `${APP_DEST}/css`;
+export const FONTS_DEST           = `${APP_DEST}/fonts`;
+export const LIB_DEST             = `${APP_DEST}/lib`;
+export const APP_ROOT             = ENV === 'dev' ? `${APP_BASE}${APP_DEST}/` : `${APP_BASE}`;
+export const VERSION              = appVersion();
 
-export const PATH = {
-  cwd: process.cwd(),
-  tools: 'tools',
-  docs :`${APP_DEST}/${APP_DOCS}`,
-  dest: {
-    all: APP_DEST,
-    dev: {
-      all: `${APP_DEST}/${ENV}`,
-      lib: `${APP_DEST}/${ENV}/lib`,
-      css: `${APP_DEST}/${ENV}/css`,
-      assets: `${APP_DEST}/${ENV}/assets`,
-      fonts: `${APP_DEST}/${ENV}/fonts`
-    },
-    test: 'test',
-    tmp: '.tmp'
-  },
-  src: {
-    all: APP_SRC,
-    jslib_inject: [
-      // Order is quite important here for the HTML tag injection.
-      resolve('es6-shim/es6-shim.min.js'),
-      resolve('es6-shim/es6-shim.map'),
-      resolve('reflect-metadata/Reflect.js'),
-      resolve('reflect-metadata/Reflect.js.map'),
-      resolve('systemjs/dist/system.src.js'),
-      `${APP_SRC}/system.config.js`,
-      `${ANGULAR_BUNDLES}/angular2.dev.js`,
-      `${ANGULAR_BUNDLES}/router.dev.js`,
-      `${ANGULAR_BUNDLES}/http.dev.js`,
-      resolve('rx/dist/rx.all.js'),
-      resolve('underscore/underscore.js'),
-      resolve('jquery/dist/jquery.js'),
-      resolve('d3/d3.js'),
-      resolve('bootstrap/dist/js/bootstrap.js'),
-      resolve('moment/moment.js'),
-      resolve('socket.io-client/socket.io.js')
-    ],
-    jslib_copy_only: [
-      resolve('systemjs/dist/system-polyfills.js'),
-      resolve('systemjs/dist/system-polyfills.js.map')
-    ],
-    csslib: [
-      resolve('bootstrap/dist/css/bootstrap.css'),
-      resolve('bootstrap/dist/css/bootstrap.css.map')
-    ],
-    assets: [
-      `${APP_SRC}/assets/**/*`
-    ],
-    fonts: [
-      resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.eot'),
-      resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.svg'),
-      resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.ttf'),
-      resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.woff'),
-      resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.woff2')
-    ]
+export const VERSION_NPM          = '2.14.7';
+export const VERSION_NODE         = '4.0.0';
+
+// Declare NPM dependencies (Note that globs should not be injected).
+export const NPM_DEPENDENCIES = [
+  { src: 'systemjs/dist/system-polyfills.js', dest: LIB_DEST },
+
+  { src: 'es6-shim/es6-shim.min.js', inject: 'shims', dest: LIB_DEST },
+  { src: 'reflect-metadata/Reflect.js', inject: 'shims', dest: LIB_DEST },
+  { src: 'systemjs/dist/system.src.js', inject: 'shims', dest: LIB_DEST },
+  { src: 'angular2/bundles/angular2-polyfills.js', inject: 'shims', dest: LIB_DEST },
+
+  // Faster dev page load
+  { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'angular2/bundles/angular2.min.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'angular2/bundles/router.js', inject: 'libs', dest: LIB_DEST }, // use router.min.js with alpha47
+  { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
+
+  { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST }
+];
+
+// Declare local files that needs to be injected
+export const APP_ASSETS = [
+  { src: `${ASSETS_SRC}/main.css`, inject: true, dest: CSS_DEST }
+];
+
+NPM_DEPENDENCIES
+  .filter(d => !/\*/.test(d.src)) // Skip globs
+  .forEach(d => d.src = require.resolve(d.src));
+
+export const DEPENDENCIES = NPM_DEPENDENCIES.concat(APP_ASSETS);
+
+
+// ----------------
+// SystemsJS Configuration.
+const SYSTEM_CONFIG_DEV = {
+  defaultJSExtensions: true,
+  paths: {
+    'bootstrap': `${APP_ROOT}bootstrap`,
+    '*': `${APP_BASE}node_modules/*`
+  }
+};
+
+const SYSTEM_CONFIG_PROD = {
+  defaultJSExtensions: true,
+  bundles: {
+    'bundles/app': ['bootstrap']
+  }
+};
+
+export const SYSTEM_CONFIG = ENV === 'dev' ? SYSTEM_CONFIG_DEV : SYSTEM_CONFIG_PROD;
+
+// This is important to keep clean module names as 'module name == module uri'.
+export const SYSTEM_CONFIG_BUILDER = {
+  defaultJSExtensions: true,
+  paths: {
+    '*': `${TMP_DIR}/*`,
+    'angular2/*': 'node_modules/angular2/*',
+    'rxjs/*': 'node_modules/rxjs/*'
   }
 };
 

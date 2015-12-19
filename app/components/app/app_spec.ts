@@ -5,14 +5,14 @@ import {
   injectAsync,
   it,
   beforeEachProviders
-} from 'angular2/testing';
-import {Component, View, provide, DirectiveResolver} from 'angular2/angular2';
+} from 'angular2/testing_internal';
+import {Component, View, provide, DirectiveResolver} from 'angular2/core';
 
-import {Location, Router, RouteRegistry} from 'angular2/router';
+import {Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
+import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {AppCmp} from './app';
 import {Authentication} from '../../services/Authentication';
 import {HTTP_PROVIDERS} from 'angular2/http';
@@ -26,24 +26,18 @@ export function main() {
       RouteRegistry,
       DirectiveResolver,
       provide(Location, {useClass: SpyLocation}),
-      provide(Router,
-        {
-          useFactory:
-            (registry, location) => { return new RootRouter(registry, location, AppCmp); },
-          deps: [RouteRegistry, Location]
-        }),
-       HTTP_PROVIDERS,
-       Authentication
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppCmp}),
+      provide(Router, {useClass: RootRouter})
     ]);
 
     it('should work',
       injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.overrideTemplate(TestComponent, '<div><app></app></div>')
           .createAsync(TestComponent)
-          .then((rootTC) => {
+          .then(rootTC => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
-            expect(DOM.querySelectorAll(appDOMEl, 'section > nav > a')[1].href).toEqual('http://localhost:9876/about');
+            expect(DOM.querySelectorAll(appDOMEl, 'section > nav > a')[1].href).toMatch(/http:\/\/localhost:\d+\/about/);
           });
       }));
   });

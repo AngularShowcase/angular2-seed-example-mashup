@@ -1,7 +1,6 @@
 import * as async from 'async';
 import * as del from 'del';
-import {join} from 'path';
-import {PATH} from '../config';
+import {APP_DEST, TEST_DEST, TMP_DIR} from '../config';
 
 export = function clean(gulp, plugins, option) {
   return function (done) {
@@ -32,4 +31,7 @@ function cleanTest(done) {
 }
 function cleanTmp(done) {
   del(join(PATH.dest.tmp), done);
+}
+function cleanTmp(done) {
+  del(TMP_DIR, done);
 }

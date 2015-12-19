@@ -4,9 +4,9 @@ import {
   expect,
   injectAsync,
   it,
-} from 'angular2/testing';
-import {Component, View} from 'angular2/angular2';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
+} from 'angular2/testing_internal';
+import {Component, View} from 'angular2/core';
+import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {HomeCmp} from './home';
 
 export function main() {
