@@ -9,3 +9,17 @@ textarea#messageEntry {
     border: 3px solid black;
     border-radius: 10px;
 }
+
+div.panel {
+    width: 500px;
+}
+
+div.panel-heading {
+    background-color: black;
+    color: yellow;
+}
+
+div.panel-body {
+    background-color: lightcyan;
+    font-size:20pt;
+}

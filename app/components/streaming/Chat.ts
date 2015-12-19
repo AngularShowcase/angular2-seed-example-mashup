@@ -25,7 +25,7 @@ export class Chat {
 
         this.user = this.authentication.user;
         this.messaageBroker.getChatMessages()
-            .subscribe((msg:IChatMessage) => this.thread.push(msg));
+            .subscribe((msg:IChatMessage) => this.thread.unshift(msg));
     }
 
     sendMessage(msg:string) {
