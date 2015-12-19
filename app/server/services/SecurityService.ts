@@ -5,7 +5,7 @@ var mongoskin = require('mongoskin');
 import {IRegistration, IRegistrationResponse, IRegisteredUser, ILoginResult} from '../../common/interfaces/RegistrationInterfaces';
 
 var config = {
-	mongo_url: process.env.USERDATA_URL || 'mongodb://@localhost:27017/security'
+	mongo_url: process.env.SECURITYDATA_URL || 'mongodb://@localhost:27017/security'
 };
 
 export class SecurityService {
