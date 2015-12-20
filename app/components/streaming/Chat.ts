@@ -1,5 +1,5 @@
-import {Component, NgFor, NgModel} from 'angular2/angular2';
-import {FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {MessageBroker} from '../../services/MessageBroker';
 import {Authentication} from '../../services/Authentication';
 import {IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
@@ -10,7 +10,7 @@ import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
     templateUrl: './components/streaming/Chat.html',
     styleUrls: ['./components/streaming/Chat.css'],
     pipes: [],
-    directives: [FORM_DIRECTIVES, NgFor, NgModel]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class Chat {
 

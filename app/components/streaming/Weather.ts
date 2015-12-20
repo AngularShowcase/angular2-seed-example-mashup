@@ -1,4 +1,5 @@
-import {Component, EventEmitter, NgFor, AsyncPipe} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../../common/interfaces/TrafficInterfaces';
@@ -14,8 +15,8 @@ interface IStateAccidentStats {
     selector: 'weather',
     templateUrl: './components/streaming/Weather.html',
     styleUrls: ['./components/streaming/Weather.css'],
-    pipes: [AsyncPipe],
-    directives: [NgFor, WeatherMap]
+    pipes: [],
+    directives: [CORE_DIRECTIVES, WeatherMap]
 })
 export class Weather {
 

@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Authentication} from '../../services/Authentication';
 import {Router} from 'angular2/router';
 import {IRegistration} from '../../common/interfaces/RegistrationInterfaces';
