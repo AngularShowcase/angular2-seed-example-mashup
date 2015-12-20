@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, NgFor} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import {MultiCategorySelect} from './MultiCategorySelect';
@@ -10,7 +11,7 @@ import {Router} from 'angular2/router';
     styleUrls: ['./components/quiz/QuizCreation.css'],
 
     viewProviders: [QuizServices],
-    directives: [FORM_DIRECTIVES, NgFor, MultiCategorySelect]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MultiCategorySelect]
 })
 export class QuizCreation {
 

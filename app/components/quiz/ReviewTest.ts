@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, NgFor, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import * as RouterMod from 'angular2/router';
 import {IQuiz, ITest} from '../../common/interfaces/QuizInterfaces';
@@ -11,7 +12,7 @@ import {TestScoreDetail} from './TestScoreDetail';
     styleUrls: ['./components/quiz/ReviewTest.css'],
 
     viewBindings: [QuizServices],
-    directives: [FORM_DIRECTIVES, NgFor, NgClass, TestScoreSummary, TestScoreDetail]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, TestScoreSummary, TestScoreDetail]
 })
 export class ReviewTest {
 

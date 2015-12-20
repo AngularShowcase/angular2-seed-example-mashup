@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, NgFor} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {IQuizQuestion} from '../../common/interfaces/QuizInterfaces';
 import {Router} from 'angular2/router';
@@ -12,7 +13,7 @@ import {Authentication} from '../../services/Authentication';
     styleUrls: ['./components/quiz/QuestionEntry.css'],
 
     viewProviders: [QuizServices],
-    directives: [FORM_DIRECTIVES, NgFor]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 
 export class QuestionEntry {

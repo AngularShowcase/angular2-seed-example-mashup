@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, NgFor, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import * as RouterMod from 'angular2/router';
@@ -16,7 +17,7 @@ enum ProctorState {
     styleUrls: ['./components/quiz/ProctorExam.css'],
 
     viewBindings: [QuizServices],
-    directives: [FORM_DIRECTIVES, NgFor, NgClass]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class ProctorExam {
 

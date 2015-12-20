@@ -1,4 +1,5 @@
-import {Component, NgFor, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITest, IQuiz} from '../../common/interfaces/QuizInterfaces';
 
 @Component({
@@ -7,7 +8,7 @@ import {ITest, IQuiz} from '../../common/interfaces/QuizInterfaces';
     styleUrls: ['./components/quiz/TestScoreDetail.css'],
     inputs: ['test', 'quiz'],
     viewBindings: [],
-    directives: [NgFor, NgClass]
+    directives: [CORE_DIRECTIVES]
 })
 export class TestScoreDetail {
 

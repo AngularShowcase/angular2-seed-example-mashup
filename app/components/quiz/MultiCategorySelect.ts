@@ -1,4 +1,5 @@
-import {Component, FORM_DIRECTIVES, NgFor, EventEmitter} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 
 @Component({
@@ -7,7 +8,7 @@ import {QuizServices} from '../../services/QuizServices';
     styleUrls: ['./components/quiz/MultiCategorySelect.css'],
     outputs: ['categories'],
     viewBindings: [QuizServices],
-    directives: [FORM_DIRECTIVES, NgFor]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class MultiCategorySelect {
 
