@@ -4,7 +4,7 @@ import {ObjectDisplay} from '../objectDisplay/ObjectDisplay';
 import {IGithubUser} from '../../services/ServiceInterfaces';
 import {GithubServices} from '../../services/GithubServices';
 import {GithubUser} from '../../models/GithubUser';
-import {Http, Response} from 'angular2/http';
+import {Http} from 'angular2/http';
 import {Subject} from 'rxjs/Subject';
 // import 'rxjs/add/operators/map';
 // import 'rxjs/add/observable/interval';
@@ -55,7 +55,6 @@ export class Mashup {
 
         this.nameUpdate.subscribe(name => this.currentNameLength = name ? name.length : 0);
 
-        this.nameUpdate
         var lookupNamePub = this.nameUpdate
             .filter(name => name.length >= this.minNameLength);
 

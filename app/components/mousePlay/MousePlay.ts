@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/operators/map';

@@ -1,4 +1,5 @@
-import {Component, EventEmitter, NgFor, NgSwitch, NgSwitchWhen, NgIf, NgSwitchDefault} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Parser} from '../../services/Parser';
 
 @Component({
@@ -8,7 +9,7 @@ import {Parser} from '../../services/Parser';
     outputs: ['selectobject:selectobject'],
     templateUrl: './components/objectDisplay/ObjectDisplay.html',
     styleUrls: ['./components/objectDisplay/ObjectDisplay.css'],
-    directives: [NgFor, NgIf, NgSwitch, NgSwitchWhen, NgSwitchDefault, ObjectDisplay]
+    directives: [CORE_DIRECTIVES, ObjectDisplay]
 })
 export class ObjectDisplay {
 
