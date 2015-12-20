@@ -24,13 +24,10 @@ function cleanAll(done) {
   ], done);
 }
 function cleanDist(done) {
-  del(PATH.dest.all, done);
+  del(APP_DEST, done);
 }
 function cleanTest(done) {
-  del(PATH.dest.test, done);
-}
-function cleanTmp(done) {
-  del(join(PATH.dest.tmp), done);
+  del(TEST_DEST, done);
 }
 function cleanTmp(done) {
   del(TMP_DIR, done);

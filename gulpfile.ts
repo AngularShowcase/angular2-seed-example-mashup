@@ -15,7 +15,6 @@ gulp.task('check.versions', task('check.versions'));
 gulp.task('postinstall', done =>
   runSequence('clean',
               'npm',
-              'build.dev',   // Needed for heroku
               done));
 
 // --------------
@@ -23,7 +22,6 @@ gulp.task('postinstall', done =>
 gulp.task('build.dev', done =>
   runSequence('clean.dist',
               'tslint',
-              'build.jslib.dev',
               'build.sass.dev',
               'build.img.dev',
               'build.js.dev',

@@ -17,7 +17,6 @@ export function registerInjectableAssetsRef(paths: string[], target: string = ''
 }
 
 export function transformPath(plugins, env) {
-  let v = '?v=' + VERSION;
   return function (filepath) {
     filepath = ENV === 'prod' ? filepath.replace(`/${APP_DEST}`, '') : filepath;
     arguments[0] = join(APP_BASE, filepath);

@@ -50,9 +50,6 @@
     "d3/d3.d.ts": {
       "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     },
-    "requirejs/require.d.ts": {
-      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
-    },
     "body-parser/body-parser.d.ts": {
       "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     },
