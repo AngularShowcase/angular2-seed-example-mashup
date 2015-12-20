@@ -1,5 +1,5 @@
-import {Component, NgModel, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass, NgSelectOption} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';
 import {IUsage, ICycle, IPerson} from '../../common/interfaces/CellDataInterfaces';
 import {UsageDetails} from './UsageDetails';
@@ -30,7 +30,7 @@ interface IModel {
     selector: 'usage',
     viewBindings: [CellDataServices, Parser],
     templateUrl: './components/celldata/Usage.html',
-    directives: [NgModel, NgClass, NgFor, FORM_DIRECTIVES, NgSelectOption, UsageBarChart,
+    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageBarChart,
                  UsageLineChart, PeriodUsageChart, UsageDetails, UsageGauge],
     styleUrls: ['./components/celldata/Usage.css']
 })

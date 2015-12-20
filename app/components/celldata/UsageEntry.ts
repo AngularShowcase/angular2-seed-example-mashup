@@ -1,5 +1,7 @@
-import {Component, NgForm, NgModel, NgFor, Observable} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass, NgSelectOption} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm} from 'angular2/common';
+import {Observable} from 'rxjs/Observable';
+
 import {CellDataServices} from '../../services/CellDataServices';
 import {UsageDetails} from './UsageDetails';
 import {IUsage, ICycle, IPerson} from '../../common/interfaces/CellDataInterfaces';
@@ -15,7 +17,7 @@ interface IExtendedCycle extends ICycle {
     selector: 'usage-entry',
     viewBindings: [CellDataServices],
     templateUrl: './components/celldata/UsageEntry.html',
-    directives: [NgModel, NgClass, NgFor, UsageDetails, formDirectives, NgSelectOption],
+    directives: [CORE_DIRECTIVES, UsageDetails, formDirectives],
     styleUrls: ['./components/celldata/UsageEntry.css']
 })
 export class UsageEntry {

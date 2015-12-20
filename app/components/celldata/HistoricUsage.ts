@@ -1,8 +1,8 @@
 /// <reference path='../../../tools/typings/tsd/moment/moment.d.ts' />
 /// <reference path='../../../tools/typings/tsd/underscore/underscore.d.ts' />
 
-import {Component, NgModel, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass, NgSelectOption} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';
 import {IUsage, ICycle, IPerson} from '../../common/interfaces/CellDataInterfaces';
 import {UsageDetails} from './UsageDetails';
@@ -22,8 +22,7 @@ interface IModel {
     selector: 'historic-usage',
     viewBindings: [CellDataServices],
     templateUrl: './components/celldata/HistoricUsage.html',
-    directives: [NgModel, NgClass, NgFor, FORM_DIRECTIVES, NgSelectOption, UsageColumnChart,
-                 UsageDetails],
+    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageColumnChart, UsageDetails],
     styleUrls: ['./components/celldata/HistoricUsage.css']
 })
 export class HistoricUsage implements IModel {

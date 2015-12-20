@@ -1,13 +1,13 @@
-import {Component, NgFor} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
 import {IUsage} from '../../common/interfaces/CellDataInterfaces';
 
 @Component({
 	selector: 'usage-details',
 	inputs: ['dataUsage:usage'],
 	templateUrl: './components/celldata/UsageDetails.html',
-	directives: [FORM_DIRECTIVES, NgClass, NgFor]
+	directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 
 export class UsageDetails {

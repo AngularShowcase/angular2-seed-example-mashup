@@ -1,12 +1,12 @@
-import {Component, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';
 
 @Component({
     selector: 'celldata-people',
     bindings: [CellDataServices],
     templateUrl: './components/celldata/People.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class People {
 
