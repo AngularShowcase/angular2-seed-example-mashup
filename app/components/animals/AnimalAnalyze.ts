@@ -1,5 +1,5 @@
-import {Component, NgFor, NgIf} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {AnimalServices, IQuestionAndAnswer} from '../../services/AnimalServices';
 import {IQuestion} from '../../common/interfaces/AnimalInterfaces';
 import {ITreeNode} from '../../directives/TreeDisplay';
@@ -13,7 +13,7 @@ interface INodeAndPath {
     selector: 'animal-analyze',
     bindings: [AnimalServices],
     templateUrl: './components/animals/AnimalAnalyze.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor, NgIf],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
     styleUrls: ['./components/animals/AnimalAnalyze.css']
 })
 export class AnimalAnalyze {

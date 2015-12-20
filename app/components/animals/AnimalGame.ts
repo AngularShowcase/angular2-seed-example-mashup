@@ -1,5 +1,5 @@
-import {Component, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {AnimalServices} from '../../services/AnimalServices';
 import {IQuestion} from '../../common/interfaces/AnimalInterfaces';
 import {AnimalList} from './AnimalList';
@@ -23,7 +23,7 @@ interface IModel {
     selector: 'animal-game',
     bindings: [AnimalServices],
     templateUrl: './components/animals/AnimalGame.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor, AnimalList, AnimalPlay],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, AnimalList, AnimalPlay],
     styleUrls: ['./components/animals/AnimalGame.css']
 })
 export class AnimalGame {

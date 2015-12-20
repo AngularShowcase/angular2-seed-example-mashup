@@ -39,7 +39,7 @@
       "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
     },
     "async/async.d.ts": {
-        "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
     },
     "jquery/jquery.d.ts": {
       "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
@@ -72,7 +72,7 @@
       "commit": "8cd79728efa7652d934b2703feeb68bb4802aebb"
     },
     "socket.io/socket.io.d.ts": {
-        "commit": "5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff"
+      "commit": "5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff"
     },
     "es6-promise/es6-promise.d.ts": {
       "commit": "923c5431d9447db9d5cf41adc5914e3c94c1ff10"
@@ -91,6 +91,9 @@
     },
     "chalk/chalk.d.ts": {
       "commit": "5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff"
+    },
+    "socket.io-client/socket.io-client.d.ts": {
+      "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
     }
   }
 }

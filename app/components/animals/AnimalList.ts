@@ -1,5 +1,7 @@
-import {Component, EventEmitter, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
+
+//import {Component, EventEmitter, NgFor} from 'angular2/angular2';
 import {AnimalServices} from '../../services/AnimalServices';
 import {IQuestion} from '../../common/interfaces/AnimalInterfaces';
 import {TreeDisplay, ITreeNode} from '../../directives/TreeDisplay';
@@ -36,7 +38,7 @@ var noQuestion:IQuestion = {
     inputs: ['currentQuestion:current-question','reloadFlag:reload-flag'],
     outputs: ['dbreloaded'],
     templateUrl: './components/animals/AnimalList.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor, TreeDisplay, TreeDisplayControl],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, TreeDisplay, TreeDisplayControl],
     styleUrls: ['./components/animals/AnimalList.css']
 })
 export class AnimalList {

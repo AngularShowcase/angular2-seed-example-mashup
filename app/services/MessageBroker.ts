@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from 'angular2/angular2';
+import {EventEmitter, Injectable} from 'angular2/core';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
 import {IChatMessage} from '../common/interfaces/ChatInterfaces';
@@ -41,7 +41,7 @@ export class MessageBroker {
         // For some reason, dates are coming across
         // the wire as strings.  We need to convert them.
 		this.socket.on('usermessage', (message:IChatMessage) => {
-            if (typeof(message.time) === "string") {
+            if (typeof(message.time) === 'string') {
                 message.time = new Date(<any> message.time);
             }
 			console.log(`Server sent chat message from ${message.username} at ${message.time}.`);
