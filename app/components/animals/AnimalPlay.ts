@@ -1,6 +1,6 @@
-import {Component, EventEmitter, NgFor, NgSwitch, NgSwitchWhen, NgSwitchDefault} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Router} from 'angular2/router';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
 import {AnimalServices} from '../../services/AnimalServices';
 import {IQuestion} from '../../common/interfaces/AnimalInterfaces';
 import {YesNo} from '../common/YesNo';
@@ -40,8 +40,7 @@ var noQuestion:IQuestion = {
     bindings: [AnimalServices],
     outputs: ['questionchange:questionchange','dbupdated'],
     templateUrl: './components/animals/AnimalPlay.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor, NgSwitch,
-                    NgSwitchWhen, NgSwitchDefault, YesNo],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, YesNo],
     styleUrls: ['./components/animals/AnimalPlay.css']
 })
 export class AnimalPlay {
