@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Renderer} from 'angular2/angular2';
+import {Directive, ElementRef, Renderer} from 'angular2/core';
 import {MapServices} from '../services/MapServices';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';

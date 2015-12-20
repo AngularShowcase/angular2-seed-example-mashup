@@ -1,5 +1,5 @@
-import {Component, EventEmitter, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {FORM_DIRECTIVES, COMMON_DIRECTIVES} from 'angular2/common';
 
 @Component({
     selector: 'tree-display-control',
@@ -16,7 +16,7 @@ import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
     ],
     outputs: ['valuechange'],
     templateUrl: './directives/TreeDisplayControl.html',
-    directives: [FORM_DIRECTIVES, NgClass, NgFor]
+    directives: [FORM_DIRECTIVES, COMMON_DIRECTIVES]
 })
 
 export class TreeDisplayControl {

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Renderer, EventEmitter} from 'angular2/angular2';
+import {Directive, EventEmitter, ElementRef, Renderer} from 'angular2/core';
 
 @Directive({
 	selector: '[hp-drag]',		// Not sure why you need to put it in brackets

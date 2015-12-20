@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Renderer} from 'angular2/angular2';
+import {Directive, ElementRef, Renderer} from 'angular2/core';
 
 interface IPropertyNotification {
     propertyName:string;

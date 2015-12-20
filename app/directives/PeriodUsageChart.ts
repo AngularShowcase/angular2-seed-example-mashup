@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Renderer} from 'angular2/angular2';
+import {Directive, ElementRef, Renderer} from 'angular2/core';
 
 @Directive({
     selector: '[period-usage-chart]',		// Not sure why you need to put it in brackets
