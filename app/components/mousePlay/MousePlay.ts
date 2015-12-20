@@ -1,4 +1,10 @@
-import {Component} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
+import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 import {HpDrag} from '../../directives/HpDrag';
 
 @Component({
@@ -9,7 +15,7 @@ import {HpDrag} from '../../directives/HpDrag';
 })
 export class MousePlay {
 
-    dragSubject: Rx.ISubject<any>;
+    dragSubject: Subject<any>;
     dragNumber: number;
     x: number;
     y: number;
@@ -19,18 +25,18 @@ export class MousePlay {
         var lastX:number = 0;
         var lastY:number = 0;
 
-        this.dragSubject = new Rx.Subject();
+        this.dragSubject = new Subject();
 
-        var dragCounts = Rx.Observable.generate(1, i => i <= this.maxDrags, i => i + 1, i => i);
+        var dragCounts = Observable.range(1, this.maxDrags);
 
         var uniqueDrags = this.dragSubject
-            .where(ev => ev.x !== lastX || ev.y !== lastY)
+            .filter(ev => ev.x !== lastX || ev.y !== lastY)
             .do(ev => {
                 lastX = ev.x;
                 lastY = ev.y;
             });
 
-        Rx.Observable.zip(dragCounts, uniqueDrags,
+        Observable.zip(dragCounts, uniqueDrags,
             (i, e) => {
                 return {
                     eventNumber: i,
@@ -59,6 +65,6 @@ export class MousePlay {
     }
 
     gotDrag(ev) {
-        this.dragSubject.onNext(ev);
+        this.dragSubject.next(ev);
     }
 }
