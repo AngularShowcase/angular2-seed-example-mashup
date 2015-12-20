@@ -1,11 +1,11 @@
-import {Component, EventEmitter} from 'angular2/angular2';
-import {FORM_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component, EventEmitter} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 @Component({
     selector: 'yes-no',
     outputs: ['yes','no','answer'],
     templateUrl: './components/common/YesNo.html',
-    directives: [FORM_DIRECTIVES, NgClass],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
     styleUrls: ['./components/common/YesNo.css']
 })
 export class YesNo {

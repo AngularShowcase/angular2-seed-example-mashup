@@ -36,6 +36,7 @@ After:
     <form #f="ngForm">
 
     End tags used to be tolerated for void elements with no content. They are no more allowed so that we more closely follow the HTML5 spec.
+
 Operators and Observables from RxJS (e.g. .map(), .toArray(), .toPromise(), etc ) now need to be explicitly imported (once per operator in your app)
 
 import {Observable} from 'rxjs/Observable';

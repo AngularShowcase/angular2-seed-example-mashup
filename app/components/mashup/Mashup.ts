@@ -1,22 +1,26 @@
-import {Component, NgFor} from 'angular2/angular2';
-import {FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {ObjectDisplay} from '../objectDisplay/ObjectDisplay';
 import {IGithubUser} from '../../services/ServiceInterfaces';
 import {GithubServices} from '../../services/GithubServices';
 import {GithubUser} from '../../models/GithubUser';
 import {Http, Response} from 'angular2/http';
+import {Subject} from 'rxjs/Subject';
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 
 @Component({
     selector: 'mashup',
     bindings: [GithubServices],
     templateUrl: './components/mashup/Mashup.html',
-    directives: [NgFor, ObjectDisplay, FORM_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, ObjectDisplay, FORM_DIRECTIVES]
 })
 export class Mashup {
 
     http:Http;
     userInfo: IGithubUser;
-    nameUpdate: Rx.ISubject<any>;
+    nameUpdate: Subject<any>;
     userDisplayData: any;
     reposDisplayData: any;
     minNameLength: number = 8;
@@ -47,12 +51,13 @@ export class Mashup {
     }
 
     setNameLookup() {
-        this.nameUpdate = new Rx.Subject();
+        this.nameUpdate = new Subject();
 
         this.nameUpdate.subscribe(name => this.currentNameLength = name ? name.length : 0);
 
+        this.nameUpdate
         var lookupNamePub = this.nameUpdate
-            .where(name => name.length >= this.minNameLength);
+            .filter(name => name.length >= this.minNameLength);
 
         var namePub = lookupNamePub
             .flatMap(name => this.githubServices.getUser(name).toPromise());
@@ -76,10 +81,9 @@ export class Mashup {
             console.log('Following url: ', url);
 
             this.http.get(url)
-                .map<Response, any>(response => response.json())
+                .map(response => response.json())
                 .subscribe(data => objDisplay.displayObject = { url: url, data: data },
                     error => console.log('Error', error));
-
         }
     }
 
@@ -95,6 +99,6 @@ export class Mashup {
     }
 
     onKeyUp(name) {
-        this.nameUpdate.onNext(name.value);
+        this.nameUpdate.next(name.value);
     }
 }

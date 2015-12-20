@@ -1,5 +1,5 @@
-import {Component} from 'angular2/angular2';
-import {FORM_DIRECTIVES, CORE_DIRECTIVES, NgClass} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Router} from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
 import {HpFlyText} from '../../directives/HpFlyText';
@@ -7,7 +7,7 @@ import {HpFlyText} from '../../directives/HpFlyText';
 @Component({
     selector: 'login',
     templateUrl: './components/login/login.html',
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, NgClass, HpFlyText]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, HpFlyText]
 })
 export class Login {
 
