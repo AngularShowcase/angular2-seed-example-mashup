@@ -33,12 +33,12 @@
 
 			<label for="cycle">Billing cycle:</label>
 			<select class="input-lg" id="cycle" [(ng-model)]="cycleId">
-				<option *ng-for="#c of cycles" [value]="c.cycleId">{{c.description()}}</option>
+				<option *ngFor="#c of cycles" [value]="c.cycleId">{{c.description()}}</option>
 			</select>
 
 			<label for="person">Person:</label>
 			<select class="input-lg" id="person" [(ng-model)]="personId">
-				<option *ng-for="#p of people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
+				<option *ngFor="#p of people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
 			</select>
 
 		</div>

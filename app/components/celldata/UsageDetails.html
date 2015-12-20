@@ -10,7 +10,7 @@
 			<td>Total</td>
 			<td>{{getTotalUsage() | number}}</td>
 		</tr>
-		<tr *ng-for="#usage of dataUsage">
+		<tr *ngFor="#usage of dataUsage">
 			<td>{{usage.date | date}}</td>
 			<td>{{usage.usage | number}}</td>
 		</tr>

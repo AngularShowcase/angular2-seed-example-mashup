@@ -7,7 +7,7 @@
 				<td>Category:</td>
 				<td>
 					<select id="category" [(ng-model)]="selectedCategory">
-						<option *ng-for="#c of categories" [value]="c">{{c}}</option>
+						<option *ngFor="#c of categories" [value]="c">{{c}}</option>
 					</select>
 				</td>
 				<td>
@@ -24,7 +24,7 @@
 				<td>Answer Category:</td>
 				<td>
 					<select id="answerCategory" [(ng-model)]="selectedAnswerCategory">
-						<option *ng-for="#c of answerCategories" [value]="c">{{c}}</option>
+						<option *ngFor="#c of answerCategories" [value]="c">{{c}}</option>
 					</select>
 				</td>
 				<td>
@@ -58,7 +58,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ng-for="#q of allQuestions">
+				<tr *ngFor="#q of allQuestions">
 					<td>{{q.questionId}}</td>
 					<td>{{q.question}}</td>
 					<td>{{q.answerCategory}}</td>

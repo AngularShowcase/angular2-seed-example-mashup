@@ -27,7 +27,7 @@
 					<th>Start</th>
 					<th>End</th>
 				</tr>
-				<tr *ng-for="#cycle of model.cycles">
+				<tr *ngFor="#cycle of model.cycles">
 					<td>{{cycle.cycleId}}</td>
 					<td>{{cycle.startDate | date:'medium'}}</td>
 					<td>{{cycle.endDate | date:'medium'}}</td>

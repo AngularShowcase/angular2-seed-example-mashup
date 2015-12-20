@@ -40,7 +40,7 @@
 						<div id="question">
 							{{currentQuestion.question}}
 						</div>
-						<div class="choice" *ng-for="#choice of currentQuestion.responsesShown; #i = index">
+						<div class="choice" *ngFor="#choice of currentQuestion.responsesShown; #i = index">
 							<input class="answerSelectButton" type="button" [value]="i+1" (click)="userChecked(i)" />
 							<label [ng-class]="getAnswerClass(i)">{{choice}}</label>
 						</div>

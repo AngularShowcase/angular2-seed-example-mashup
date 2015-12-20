@@ -10,7 +10,7 @@
     </section>
 
     <section id="thread">
-        <div *ng-for="#chatmessage of thread" class="panel panel-default">
+        <div *ngFor="#chatmessage of thread" class="panel panel-default">
             <div class="panel-heading">
                 <span>Message from {{chatmessage.username}} at {{chatmessage.time | date:'EEEE hh:mm:ss'}}</span>
             </div>

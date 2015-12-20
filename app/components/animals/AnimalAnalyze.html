@@ -11,7 +11,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ng-for="#animal of duplicateAnimals" (click)="dupCheck(animal)">
+						<tr *ngFor="#animal of duplicateAnimals" (click)="dupCheck(animal)">
 							<td>{{animal.questionId}}</td>
 							<td>{{animal.text}}</td>
 						</tr>
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 
-		<div *ng-for="#dup of dupPaths" class="col-md-3">
+		<div *ngFor="#dup of dupPaths" class="col-md-3">
 			<h2>{{dup.startNode.text}} ({{dup.startNode.id}})</h2>
 			<div class="aaAnimalList">
 				<table>
@@ -32,7 +32,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ng-for="#segment of dup.path" [ng-class]="getDupIndicatorClass(segment.question.id)">
+						<tr *ngFor="#segment of dup.path" [ng-class]="getDupIndicatorClass(segment.question.id)">
 							<td>{{segment.question.id}}</td>
 							<td>{{segment.question.text}}
 							</td>

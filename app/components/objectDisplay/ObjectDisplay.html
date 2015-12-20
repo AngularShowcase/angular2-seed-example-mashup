@@ -2,7 +2,7 @@
 	<template ng-switch-when="object">
 		<span (click)="toggleCollapsed()" class="glyphicon glyphicon-arrow-down" *ng-if="collapsed"></span>
 		<table>
-			<tr *ng-for="#prop of getObjectProperties(collapsed)">
+			<tr *ngFor="#prop of getObjectProperties(collapsed)">
 				<td>{{propNameToLabel(prop)}}</td>
 				<td>
 					<object-display (selectobject)="objectSelected($event)" [display-object]="displayObject[prop]"></object-display>
@@ -12,7 +12,7 @@
 	</template>
 	<template ng-switch-when="array">
 		<ol>
-			<li *ng-for="#val of displayObject">
+			<li *ngFor="#val of displayObject">
 				<object-display [collapsed]="getTheType(val)==='object'" (selectobject)="objectSelected($event)" [display-object]="val"></object-display>
 			</li>
 		</ol>
