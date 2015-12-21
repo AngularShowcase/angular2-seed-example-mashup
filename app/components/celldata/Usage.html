@@ -46,16 +46,19 @@
 
 	<div class="row">
 		<div class="col-md-6">
-			<span period-usage-chart [animation-time]="animationTime" width="700" height="300" [usage-data]="periodUsage" />
+			<span period-usage-chart [animation-time]="animationTime" width="700" height="300" [usage-data]="periodUsage">
+			</span>
 		</div>
 		<div class="col-md-6">
-			<span usage-line-chart [animation-time]="animationTime" width="650" height="300" [usage-data]="personCumUsage" [person]="getCurrentPerson()" />
+			<span usage-line-chart [animation-time]="animationTime" width="650" height="300" [usage-data]="personCumUsage" [person]="getCurrentPerson()">
+			</span>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-8">
-			<span usage-bar-chart [animation-time]="animationTime" width="936" height="300" [usage-data]="personUsage" [person]="getCurrentPerson()" />
+			<!--<span usage-bar-chart [animation-time]="animationTime" width="936" height="300" [usage-data]="personUsage" [person]="getCurrentPerson()">
+			</span>-->
 		</div>
 		<div class="col-md-4">
 			<div id="usageDetails">
