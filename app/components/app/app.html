@@ -1,43 +1,43 @@
 <section class="sample-app-content">
   <nav>
-    <a [router-link]="['/Home']">Home</a>
-    <a [router-link]="['/About']">About</a>
-    <a [router-link]="['/Mashup']">MashUp</a>
-    <a [router-link]="['/Mouseplay']">Mouse Play</a>
+    <a [routerLink]="['/Home']">Home</a>
+    <a [routerLink]="['/About']">About</a>
+    <a [routerLink]="['/Mashup']">MashUp</a>
+    <a [routerLink]="['/Mouseplay']">Mouse Play</a>
 
     <div class="dropdown" style="display:inline-block">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Animal Game <b class="caret"></b></a>
       <ul class="dropdown-menu">
-          <li><a [router-link]="['/Animalgame']">Play</a></li>
-          <li><a [router-link]="['/Animalanalyze']">Analyze</a></li>
+          <li><a [routerLink]="['/Animalgame']">Play</a></li>
+          <li><a [routerLink]="['/Animalanalyze']">Analyze</a></li>
       </ul>
     </div>
 
     <div class="dropdown" style="display:inline-block">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Cell Data <b class="caret"></b></a>
       <ul class="dropdown-menu">
-          <li><a [router-link]="['/People']">People</a></li>
-          <li><a [router-link]="['/Usage']">Usage</a></li>
-          <li><a [router-link]="['/Cycleentry']">Cycle Entry</a></li>
-          <li><a [router-link]="['/Usageentry']">Usage Entry</a></li>
-          <li><a [router-link]="['/HistoricUsage']">Historic Usage</a></li>
+          <li><a [routerLink]="['/People']">People</a></li>
+          <li><a [routerLink]="['/Usage']">Usage</a></li>
+          <li><a [routerLink]="['/Cycleentry']">Cycle Entry</a></li>
+          <li><a [routerLink]="['/Usageentry']">Usage Entry</a></li>
+          <li><a [routerLink]="['/HistoricUsage']">Historic Usage</a></li>
       </ul>
     </div>
     <div class="dropdown" style="display:inline-block">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quiz <b class="caret"></b></a>
       <ul class="dropdown-menu">
-          <li><a [router-link]="['/QuestionEntry']">Enter Questions</a></li>
-          <li><a [router-link]="['/QuizCreation']">Create a Quiz</a></li>
+          <li><a [routerLink]="['/QuestionEntry']">Enter Questions</a></li>
+          <li><a [routerLink]="['/QuizCreation']">Create a Quiz</a></li>
       </ul>
     </div>
 
-    <a [router-link]="['/Weather']">Weather</a>
-    <a [router-link]="['/Chat']">Chat</a>
+    <a [routerLink]="['/Weather']">Weather</a>
+    <a [routerLink]="['/Chat']">Chat</a>
     <button id="userBadge" class="top-button pull-right" (click)="userInfo()">&nbsp;{{getUser()}}</button>
     <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="login()">Login</button>
     <button [hidden]="auth.isLoggedIn()" class="top-button pull-right" (click)="register()">Register</button>
     <button [hidden]="!auth.isLoggedIn()" class="top-button pull-right" (click)="logout()">Logout</button>
-    <div id="lastChat" class="pull-right" *ng-if="lastChatMessage.username">
+    <div id="lastChat" class="pull-right" *ngIf="lastChatMessage.username">
         Last chat messgae from {{lastChatMessage.username}} at {{lastChatMessage.time | date:'hh:mm:ss'}}
     </div>
   </nav>

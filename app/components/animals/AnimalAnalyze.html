@@ -37,7 +37,7 @@
 							<td>{{segment.question.text}}
 							</td>
 							<td>{{segment.answer}}
-								<span *ng-if="!segment.question.left">
+								<span *ngIf="!segment.question.left">
 									<input type="button" class="deleteButton" value="Delete" (click)="deleteAnimal(segment.question)" />
 								</span>
 

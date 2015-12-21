@@ -26,7 +26,7 @@ console.log('Configuration: ', config);
 
 //var debug = debug('Mashup');
 
-config.staticRoot = path.join(__dirname, '..');
+config.staticRoot = path.join(__dirname, '../../..');
 
 console.log(`Static root is: ${config.staticRoot}`);
 

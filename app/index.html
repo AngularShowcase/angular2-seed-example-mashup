@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Angular Mashup</title>
-  <base href="<%= APP_BASE %>">
+  <title><%= APP_TITLE %></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
@@ -14,17 +13,14 @@
 
   <app>Loading...</app>
 
-  <!-- inject:js -->
+  <!-- shims:js -->
   <!-- endinject -->
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    function googleChartsLoaded() {
-      console.log("Google charts loaded!");
-    }
-    google.load('visualization', '1', { packages: ['corechart', 'line', 'bar','gauge'] });
-    google.setOnLoadCallback(googleChartsLoaded);
-</script>
+  <script>System.config(<%= JSON.stringify(SYSTEM_CONFIG) %>)</script>
+
+  <!-- libs:js -->
+  <!-- endinject -->
+
   <script>
     System.import('bootstrap')
       .catch(function (e) {
@@ -32,6 +28,19 @@
           'Report this error at https://github.com/mgechev/angular2-seed/issues');
       });
   </script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+        function googleChartsLoaded() {
+        console.log("Google charts loaded!");
+        }
+        google.load('visualization', '1', { packages: ['corechart', 'line', 'bar','gauge'] });
+        google.setOnLoadCallback(googleChartsLoaded);
+    </script>
+
+  <!-- inject:js -->
+  <!-- endinject -->
 
 </body>
 </html>

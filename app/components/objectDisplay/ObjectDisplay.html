@@ -1,6 +1,6 @@
 <div class="object-display" [ng-switch]="getType()">
 	<template ng-switch-when="object">
-		<span (click)="toggleCollapsed()" class="glyphicon glyphicon-arrow-down" *ng-if="collapsed"></span>
+		<span (click)="toggleCollapsed()" class="glyphicon glyphicon-arrow-down" *ngIf="collapsed"></span>
 		<table>
 			<tr *ngFor="#prop of getObjectProperties(collapsed)">
 				<td>{{propNameToLabel(prop)}}</td>
