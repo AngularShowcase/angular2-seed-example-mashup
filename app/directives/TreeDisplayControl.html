@@ -1,26 +1,26 @@
 <div>
 	<label [style.color]="inputLabelColor">
 		Max levels:
-		<input #maxlevels [style.color]="inputValueColor" type=number min="1" [(ng-model)]="maxTreeLevels" (change)="onValueChanged({property:'maxtreelevels', value: maxlevels.value})"/>
+		<input #maxlevels [style.color]="inputValueColor" type=number min="1" [(ngModel)]="maxTreeLevels" (change)="onValueChanged({property:'maxtreelevels', value: maxlevels.value})"/>
 	</label>
 	<label [style.color]="inputLabelColor">
 		Background:
-		<input #canvasbackgroundcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'canvasbackgroundcolor', value: canvasbackgroundcolor.value})" [(ng-model)]="canvasBackgroundColor" />
+		<input #canvasbackgroundcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'canvasbackgroundcolor', value: canvasbackgroundcolor.value})" [(ngModel)]="canvasBackgroundColor" />
 	</label>
 	<label [style.color]="inputLabelColor">
 		Node:
-		<input #nodecolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodecolor', value: nodecolor.value})" [(ng-model)]="nodeColor" />
+		<input #nodecolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodecolor', value: nodecolor.value})" [(ngModel)]="nodeColor" />
 	</label [style.color]="inputLabelColor">
 	<label>
 		Node Label:
-		<input #nodelabelcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodelabelcolor', value: nodelabelcolor.value})" [(ng-model)]="nodeLabelColor" />
+		<input #nodelabelcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodelabelcolor', value: nodelabelcolor.value})" [(ngModel)]="nodeLabelColor" />
 	</label [style.color]="inputLabelColor">
 	<label [style.color]="inputLabelColor">
 		Connector:
-		<input #connectorcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'connectorcolor', value: connectorcolor.value})" [(ng-model)]="connectorColor" />
+		<input #connectorcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'connectorcolor', value: connectorcolor.value})" [(ngModel)]="connectorColor" />
 	</label>
 	<label [style.color]="inputLabelColor">
 		Connector Label:
-		<input #connectorlabelcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'connectorlabelcolor', value: connectorlabelcolor.value})" [(ng-model)]="connectorLabelColor" />
+		<input #connectorlabelcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'connectorlabelcolor', value: connectorlabelcolor.value})" [(ngModel)]="connectorLabelColor" />
 	</label>
 </div>

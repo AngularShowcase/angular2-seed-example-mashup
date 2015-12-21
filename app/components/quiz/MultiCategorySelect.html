@@ -1,7 +1,7 @@
 <div id="multi-cat-select-div">
 	<ul>
 		<li *ngFor="#c of allCategories; #i=index">
-			<input #cb type="checkbox" [(ng-model)]="checkMarks[i]" (change)="checkedCategory(cb,c)" />
+			<input #cb type="checkbox" [(ngModel)]="checkMarks[i]" (change)="checkedCategory(cb,c)" />
 			<span>{{c}}</span>
 		</li>
 	</ul>

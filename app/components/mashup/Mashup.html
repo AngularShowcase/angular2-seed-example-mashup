@@ -1,6 +1,6 @@
 <h1>MashUp</h1>
 <div class='container'>
-	<input type='range' min='1' max='20' placeholder='Min name length' [(ng-model)]='minNameLength' />
+	<input type='range' min='1' max='20' placeholder='Min name length' [(ngModel)]='minNameLength' />
 	<input type='text ' placeholder='Github username ' autofocus #name (keyup)='onKeyUp(name)' />
 	<span id='charLengthHelp'>{{currentNameLength}} of mininum of {{minNameLength}} characters</span>
 	<img style='display:block' [src]='userInfo.avatar_url' />

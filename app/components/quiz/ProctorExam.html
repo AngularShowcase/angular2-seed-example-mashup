@@ -16,20 +16,20 @@
 		</tbody>
 	</table>
 	<section id="quizBody">
-		<div [ng-switch]="proctorState">
-			<template [ng-switch-when]="0">
+		<div [ngSwitch]="proctorState">
+			<template [ngSwitchWhen]="0">
 				<h1>Initializing...</h1>
 			</template>
-			<template [ng-switch-when]="1">
+			<template [ngSwitchWhen]="1">
 				<div>
 					<label>Enter your name and then click start</label>
-					<input type="text" placeholder="Name" [(ng-model)]="name" />
+					<input type="text" placeholder="Name" [(ngModel)]="name" />
 				</div>
 				<div>
 					<input type="button" value="Start" (click)="startQuiz()" />
 				</div>
 			</template>
-			<template [ng-switch-when]="2">
+			<template [ngSwitchWhen]="2">
 
 				<div id="questionPanel">
 					<div id="questionNumber">
@@ -52,7 +52,7 @@
 					<button (click)="scoreTest()" [hidden]="currentQuestion.questionNumber !== quiz.questionCount">Submit for Grading</button>
 				</div>
 			</template>
-			<template ng-switch-default>
+			<template ngSwitchDefault>
 				<div>Oops. I'm in an unknown state!</div>
 			</template>
 		</div>

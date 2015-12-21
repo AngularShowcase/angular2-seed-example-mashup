@@ -6,35 +6,35 @@
 			<tr>
 				<td>Category:</td>
 				<td>
-					<select id="category" [(ng-model)]="selectedCategory">
+					<select id="category" [(ngModel)]="selectedCategory">
 						<option *ngFor="#c of categories" [value]="c">{{c}}</option>
 					</select>
 				</td>
 				<td>
-					<input type="text" placeholder="New Category" [(ng-model)]="newCategory" />
+					<input type="text" placeholder="New Category" [(ngModel)]="newCategory" />
 				</td>
 			</tr>
 			<tr>
 				<td>Question:</td>
 				<td colspan="2">
-					<input type="text" [(ng-model)]="question" required />
+					<input type="text" [(ngModel)]="question" required />
 				</td>
 			</tr>
 			<tr>
 				<td>Answer Category:</td>
 				<td>
-					<select id="answerCategory" [(ng-model)]="selectedAnswerCategory">
+					<select id="answerCategory" [(ngModel)]="selectedAnswerCategory">
 						<option *ngFor="#c of answerCategories" [value]="c">{{c}}</option>
 					</select>
 				</td>
 				<td>
-					<input type="text" placeholder="New Answer Category" [(ng-model)]="newAnswerCategory" />
+					<input type="text" placeholder="New Answer Category" [(ngModel)]="newAnswerCategory" />
 				</td>
 			</tr>
 			<tr>
 				<td>Answer:</td>
 				<td colspan="2">
-					<input type="text" [(ng-model)]="answer" required />
+					<input type="text" [(ngModel)]="answer" required />
 				</td>
 				<td></td>
 			</tr>

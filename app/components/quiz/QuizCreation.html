@@ -5,7 +5,7 @@
 	<multi-category-select (categories)="selectCategories($event)"></multi-category-select>
 
 	<label for="questionCount">How many questions?</label>
-	<input id="questionCount" type="number" [(ng-model)]="questionCount" [min]="selectedCategories.length" />
+	<input id="questionCount" type="number" [(ngModel)]="questionCount" [min]="selectedCategories.length" />
 
 	<input type="button" value="Create" (click)="createQuiz()" />
 

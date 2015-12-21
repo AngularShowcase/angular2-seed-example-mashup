@@ -8,7 +8,7 @@
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" required
-          [(ng-model)]="registration.username"
+          [(ngModel)]="registration.username"
             ng-control="username" #username="form" >
         <div [hidden]="username.valid" class="alert alert-danger">
           Username is required
@@ -18,7 +18,7 @@
       <div class="form-group">
         <label for="firstname">First Name</label>
         <input type="text" class="form-control" required
-          [(ng-model)]="registration.firstName"
+          [(ngModel)]="registration.firstName"
             ng-control="firstname" #firstname="form" >
         <div [hidden]="firstname.valid" class="alert alert-danger">
           First name is required.
@@ -28,7 +28,7 @@
       <div class="form-group">
         <label for="lastname">Last Name</label>
         <input type="text" class="form-control" required
-          [(ng-model)]="registration.lastName"
+          [(ngModel)]="registration.lastName"
             ng-control="lastname" #lastname="form" >
         <div [hidden]="lastname.valid" class="alert alert-danger">
           Last name is required.
@@ -38,7 +38,7 @@
       <div class="form-group">
         <label for="emailaddress">Email Address</label>
         <input type="email" class="form-control" required
-          [(ng-model)]="registration.emailAddress"
+          [(ngModel)]="registration.emailAddress"
             ng-control="emailaddress" #emailaddress="form" >
         <div [hidden]="emailaddress.valid" class="alert alert-danger">
           Email address is required.
@@ -48,7 +48,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" required
-          [(ng-model)]="registration.password"
+          [(ngModel)]="registration.password"
             ng-control="password" #password="form" >
         <div [hidden]="password.valid" class="alert alert-danger">
           Password is required.
@@ -58,7 +58,7 @@
       <div class="form-group">
         <label for="password">Re-enter Password</label>
         <input type="password" class="form-control" required
-          [(ng-model)]="repeatedPassword"
+          [(ngModel)]="repeatedPassword"
             ng-control="password2" #password2="form" >
         <div [hidden]="password2.valid" class="alert alert-danger">
           Password is required.

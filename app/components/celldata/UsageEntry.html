@@ -5,7 +5,7 @@
 			<form ng-no-form style="font-size:16pt" name="usageUploadForm" id="usageUploadForm" method="post" action="/api/celldata/uploadUsage/{{personId}}" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="person">Person:</label>
-					<select class="input-large" id="person" [(ng-model)]="personId">
+					<select class="input-large" id="person" [(ngModel)]="personId">
 						<option *ngFor="#p of model.people" [value]="p.personId">{{p.firstName}} {{p.lastName}}</option>
 					</select>
 				</div>
@@ -24,7 +24,7 @@
 		<div class="col-md-7">
 			<div class="form-group">
 				<label for="cycle">Billing cycle:</label>
-				<select id="cycle" [(ng-model)]="cycleId">
+				<select id="cycle" [(ngModel)]="cycleId">
 					<option *ngFor="#c of model.cycles" [value]="c.cycleId">{{c.description}}</option>
 				</select>
 			</div>
