@@ -25,7 +25,7 @@ export class MousePlay {
         var lastY:number = 0;
 
         this.dragSubject = new Subject();
-
+        console.log('drag subject', this.dragSubject);
         var dragCounts = Observable.range(1, this.maxDrags);
 
         var uniqueDrags = this.dragSubject
@@ -35,7 +35,14 @@ export class MousePlay {
                 lastY = ev.y;
             });
 
-        Observable.zip(dragCounts, uniqueDrags,
+        // Observable.zip(dragCounts, uniqueDrags,
+        //     (i, e) => {
+        //         return {
+        //             eventNumber: i,
+        //             event: e
+        //         };
+        // })
+        dragCounts.zip(uniqueDrags,
             (i, e) => {
                 return {
                     eventNumber: i,
