@@ -35,13 +35,6 @@ export class MousePlay {
                 lastY = ev.y;
             });
 
-        // Observable.zip(dragCounts, uniqueDrags,
-        //     (i, e) => {
-        //         return {
-        //             eventNumber: i,
-        //             event: e
-        //         };
-        // })
         dragCounts.zip(uniqueDrags,
             (i, e) => {
                 return {
