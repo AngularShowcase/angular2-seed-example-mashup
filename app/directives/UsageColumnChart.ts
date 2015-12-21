@@ -91,10 +91,10 @@ export class UsageColumnChart {
                 startup: true
             },
             hAxis: {
-                title: 'Gigabytes'
+                title: 'Date'
             },
             vAxis: {
-                title: 'Date'
+                title: 'Gigabytes'
 
             },
             legend: {
