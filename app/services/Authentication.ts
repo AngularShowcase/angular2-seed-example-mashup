@@ -43,9 +43,10 @@ export class Authentication {
 	login(username: string, password: string): Observable<ILoginResult> {
 		var loginRequest: ILoginRequest = { username: username, password: password };
 
-		var result = this.http.post('/api/login',
-			JSON.stringify(loginRequest), this.getPostOptions())
-			.map(response => {
+		var p = this.http.post('/api/login',
+			JSON.stringify(loginRequest), this.getPostOptions());
+
+        var result = p.map(response => {
 				var loginResult = <ILoginResult>response.json();
 
 				if (loginResult.succeeded) {

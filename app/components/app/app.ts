@@ -1,6 +1,11 @@
 /// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+
+// Observable operators have to be imported explicitly -- but only once per app
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/interval';
+
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../common/interfaces/ChatInterfaces';

@@ -49,6 +49,10 @@ export const NPM_DEPENDENCIES = [
 
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST },
 
+  { src: 'jquery/dist/jquery.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'underscore/underscore.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'moment/moment.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'd3/d3.js', inject: 'libs', dest: LIB_DEST },
   { src: 'socket.io-client/socket.io.js', inject: 'libs', dest: LIB_DEST }
 ];
 
