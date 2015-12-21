@@ -4,6 +4,9 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
 // Observable operators have to be imported explicitly -- but only once per app
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/interval';
 
 import {Authentication} from '../../services/Authentication';

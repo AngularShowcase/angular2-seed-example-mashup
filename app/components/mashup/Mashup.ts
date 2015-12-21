@@ -59,7 +59,7 @@ export class Mashup {
             .filter(name => name.length >= this.minNameLength);
 
         var namePub = lookupNamePub
-            .flatMap(name => this.githubServices.getUser(name).toPromise());
+            .mergeMap(name => this.githubServices.getUser(name).toPromise());
 
         lookupNamePub.subscribe(name => console.log(`Lookup name observable returned name [${name}]`));
 
@@ -67,7 +67,7 @@ export class Mashup {
             error => console.log('Error', error));
 
 
-        var repoPub = namePub.flatMap((user:IGithubUser) => this.githubServices.lookupRepo(user).toPromise());
+        var repoPub = namePub.mergeMap((user:IGithubUser) => this.githubServices.lookupRepo(user).toPromise());
 
         repoPub.subscribe(this.setRepos.bind(this),
             error => console.log('repos error', error));

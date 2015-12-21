@@ -49,7 +49,7 @@ export class ReviewTest {
         let testId = parseInt(this.routeParams.get('testId'));
 
         this.quizServices.getTest(testId)
-            .flatMap(test => {
+            .mergeMap(test => {
                 this.test = test;
                 return this.quizServices.getQuiz(test.quizId);
             })
