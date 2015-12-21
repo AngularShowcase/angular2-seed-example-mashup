@@ -1,3 +1,5 @@
+import {Observable} from 'rxjs/Observable';
+
 export interface IGithubUser {
     login: string;
     id: number;
@@ -9,6 +11,6 @@ export interface IGithubUser {
 }
 
 export interface IGithubServices {
-	getUser(login:string):Rx.Observable<IGithubUser>;
-    lookupRepo(user: IGithubUser): Rx.Observable<any>;
+	getUser(login:string):Observable<IGithubUser>;
+    lookupRepo(user: IGithubUser): Observable<any>;
 }

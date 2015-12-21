@@ -1,5 +1,9 @@
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
-import * as Rx from '@reactivex/rxjs';
+import {Subject} from 'rxjs/Subject';
+
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 
 interface ILocation {
 	name: string;
@@ -9,7 +13,7 @@ interface ILocation {
 export class WeatherService {
 
 	sleepTime = 2000;
-	weatherPub: Rx.Subject<IWeatherUpdate>;
+	weatherPub: Subject<IWeatherUpdate>;
 	timer: any;
 	cities:ILocation[];
 
@@ -31,11 +35,11 @@ export class WeatherService {
 			{ name: 'Los Angeles', lnglat: [ -122.430957929966013, 37.8722420698438 ] },
 			{ name: 'Seattle', lnglat: [ -124.01366, 46.90363 ] }
 			];
-		this.weatherPub = new Rx.Subject<IWeatherUpdate>();
+		this.weatherPub = new Subject<IWeatherUpdate>();
         this.start();
 	}
 
-	getWeatherUpdatePub() : Rx.Subject<IWeatherUpdate> {
+	getWeatherUpdatePub() : Subject<IWeatherUpdate> {
 		return this.weatherPub;
 	}
 

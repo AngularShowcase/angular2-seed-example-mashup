@@ -1,5 +1,6 @@
-import {Injectable, Observable} from 'angular2/angular2';
-import {Http, Headers, Response, RequestOptions, RequestOptionsArgs} from 'angular2/http';
+import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
+import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {ICycle, IPerson, IUsage} from '../common/interfaces/CellDataInterfaces';
 
 @Injectable()
@@ -11,7 +12,7 @@ export class CellDataServices {
 
 	getPeople() : Observable<IPerson[]> {
 		var result = this.http.get('/api/celldata/people')
-			.map<Response, IPerson[]>(response => {
+			.map(response => {
                 return <IPerson[]>response.json();
             });
 
@@ -22,7 +23,7 @@ export class CellDataServices {
 		var result = this.http.post('/api/celldata/people',
 					JSON.stringify(person),
 					this.getPostOptions())
-			.map<Response, IPerson>(response => <IPerson> response.json());
+			.map(response => <IPerson> response.json());
 
 		return result;
 	}
@@ -34,7 +35,7 @@ export class CellDataServices {
 		//console.log('Querying usage with: ' + url);
 
 		var result = this.http.get(url)
-			.map<Response,IUsage[]>(response => {
+			.map(response => {
                 return this.convertUsageDates(<any[]>response.json());
             });
 
@@ -48,7 +49,7 @@ export class CellDataServices {
 		//console.log('Querying usage with: ' + url);
 
 		var result = this.http.get(url)
-			.map<Response,IUsage[]>(response => {
+			.map(response => {
                 return this.convertUsageDates(<any[]>response.json());
             });
 
@@ -57,7 +58,7 @@ export class CellDataServices {
 
 	getCyles() : Observable<ICycle[]> {
 		var result = this.http.get('/api/celldata/cycles')
-			.map<Response,ICycle[]>(response => {
+			.map(response => {
                 //console.log('cycles response', response);
                 var list = <any[]>response.json();
 				list.forEach(c => {
@@ -74,7 +75,7 @@ export class CellDataServices {
 		var result = this.http.post('/api/celldata/cycles',
 					JSON.stringify(newCycle),
 					this.getPostOptions())
-			.map<Response, ICycle>(request => <ICycle> request.json());
+			.map(request => <ICycle> request.json());
 
 		return result;
 	}

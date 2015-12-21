@@ -1,5 +1,6 @@
-import {Injectable, Observable} from 'angular2/angular2';
-import {Http, Headers, Response} from 'angular2/http';
+import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
+import {Http, Headers} from 'angular2/http';
 import {IQuestion, INewAnimalInfo} from '../common/interfaces/AnimalInterfaces';
 import {ITreeNode} from '../directives/TreeDisplay';
 
@@ -43,7 +44,7 @@ export class AnimalServices {
 		var httpRet = this.http.get('/api/animals/questions');
 
 		var result = httpRet
-			.map<Response, IQuestion[]>(response => {
+			.map(response => {
                 return <IQuestion[]>response.json();
             });
 
@@ -52,7 +53,7 @@ export class AnimalServices {
 
 	public getAnimals() : Observable<IQuestion[]> {
 		return this.http.get('/api/animals/questions')
-			.map<Response, IQuestion[]>(response => <IQuestion[]>response.json())
+			.map(response => <IQuestion[]>response.json())
 			.map((questions:IQuestion[]) => questions.filter(q => q.yes === 0 && q.no === 0))
 			.map((questions:IQuestion[]) =>
 				questions.sort((q1,q2) => (q1.text === q2.text ? 0 :
@@ -81,14 +82,14 @@ export class AnimalServices {
 		var httpRes = this.http.get('/api/animals/questions/root');
 
 		var result = httpRes
-			.map<Response, IQuestion>(response => <IQuestion>response.json());
+			.map(response => <IQuestion>response.json());
 
 		return result;
 	}
 
 	public getQuestion(questionId:number) : Observable<IQuestion> {
 		var result = this.http.get('/api/animals/questions/' + questionId)
-			.map<Response, IQuestion>(response => <IQuestion> response.json());
+			.map(response => <IQuestion> response.json());
 
 		return result;
 	}
@@ -96,7 +97,7 @@ export class AnimalServices {
 	public addNewAnimal(newAnimalInfo:INewAnimalInfo) : Observable<any> {
 		var result = this.http.post('/api/animals', JSON.stringify(newAnimalInfo), this.getPostOptions())
 
-			.map<Response,any>(response => response.json());
+			.map(response => response.json());
 
 		return result;
 	}
@@ -106,8 +107,7 @@ export class AnimalServices {
 		options.headers.append('Password', password);
 
 		var result = this.http.delete(`/api/animals/${animalId}`, options)
-
-			.map<Response,any>(response => response.json());
+			.map(response => response.json());
 
 		return result;
 	}

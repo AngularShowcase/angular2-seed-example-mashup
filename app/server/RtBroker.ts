@@ -1,18 +1,22 @@
+///<reference path="../../tools/typings/tsd/socket.io/socket.io.d.ts" />
 import {WeatherService} from './workers/WeatherService';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
 import {TrafficService} from './workers/TrafficService';
 import {IChatMessage} from '../common/interfaces/ChatInterfaces';
+import {Subject} from 'rxjs/Subject';
 
-import * as Rx from '@reactivex/rxjs';
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 
 export class RtBroker {
 
 	weatherService: WeatherService;
 	trafficService: TrafficService;
 
-	weatherPub: Rx.Subject<IWeatherUpdate>;
-	accidentPub: Rx.Subject<IAccident>;
+	weatherPub: Subject<IWeatherUpdate>;
+	accidentPub: Subject<IAccident>;
     online:number = 0;
 
 	constructor(public io:SocketIO.Server) {

@@ -1,18 +1,22 @@
 import {IAccident} from '../../common/interfaces/TrafficInterfaces';
-import * as Rx from '@reactivex/rxjs';
 import * as fs from 'fs';
 import * as _ from 'underscore';
+import {Subject} from 'rxjs/Subject';
+
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 
 export class TrafficService {
 
 	mapFile = './app/assets/data/maps/us.json';
 	sleepTime = 2500;
-	accidentPub: Rx.Subject<IAccident>;
+	accidentPub: Subject<IAccident>;
 	timer: any;
 	states:string[] = [];
 
 	constructor() {
-		this.accidentPub = new Rx.Subject<IAccident>();
+		this.accidentPub = new Subject<IAccident>();
 		this.readStates();
 	}
 
@@ -38,7 +42,7 @@ export class TrafficService {
 		this.start();
 	}
 
-	getAccidentPub() : Rx.Subject<IAccident> {
+	getAccidentPub() : Subject<IAccident> {
 		return this.accidentPub;
 	}
 

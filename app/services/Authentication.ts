@@ -1,6 +1,7 @@
-import {Injectable, Observable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
 import {Router} from 'angular2/router';
-import {Http, Headers, Response, RequestOptions, RequestOptionsArgs} from 'angular2/http';
+import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {IRegistration, IRegistrationResponse, ILoginRequest,
 	    ILoginResult, IRegisteredUser} from '../common/interfaces/RegistrationInterfaces';
 
@@ -44,7 +45,7 @@ export class Authentication {
 
 		var result = this.http.post('/api/login',
 			JSON.stringify(loginRequest), this.getPostOptions())
-			.map<Response, ILoginResult>(response => {
+			.map(response => {
 				var loginResult = <ILoginResult>response.json();
 
 				if (loginResult.succeeded) {
@@ -69,7 +70,7 @@ export class Authentication {
 			JSON.stringify(registrationRequest),
 			this.getPostOptions());
 
-		return result.map<Response, IRegistrationResponse>(r => <IRegistrationResponse>r.json());
+		return result.map(r => <IRegistrationResponse>r.json());
 	}
 
 	getPostOptions(): RequestOptions {

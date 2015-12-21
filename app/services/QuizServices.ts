@@ -1,7 +1,8 @@
-///<reference path='../../tools/typings/tsd/rx/rx.all.d.ts' />
-import {Injectable, Observable} from 'angular2/angular2';
-import {Http, Headers, RequestOptions, Response, RequestOptionsArgs} from 'angular2/http';
-import {IQuizQuestion, INewQuizRequest, IQuiz, IScoringResult, ITest, INewTestRequest} from '../common/interfaces/QuizInterfaces';
+import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
+import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
+import {IQuizQuestion, INewQuizRequest, IQuiz, IScoringResult,
+        ITest, INewTestRequest} from '../common/interfaces/QuizInterfaces';
 
 @Injectable()
 export class QuizServices {
@@ -12,7 +13,7 @@ export class QuizServices {
 
 	getQuestions() : Observable<IQuizQuestion[]> {
 		var result = this.http.get('/api/quiz/questions')
-			.map((response:Response) => {
+			.map(response => {
                 return <IQuizQuestion[]> response.json();
             });
 
@@ -21,7 +22,7 @@ export class QuizServices {
 
 	getQuestionsForCategory(category:string) : Observable<IQuizQuestion[]> {
 		var result = this.http.get(`/api/quiz/questions?category=${category}`)
-			.map((response:Response) => {
+			.map(response => {
                 return response.json();
             });
 
@@ -30,7 +31,7 @@ export class QuizServices {
 
 	getQuestionsForQAndACategory(category:string, answerCategory:string) : Observable<IQuizQuestion[]> {
 		var result = this.http.get(`/api/quiz/questions?category=${category}&answerCategory=${answerCategory}`)
-			.map((response:Response) => {
+			.map(response => {
                 return response.json();
             });
 
@@ -38,11 +39,11 @@ export class QuizServices {
 	}
 
 	getCategories() : Observable<string[]> {
-		return this.http.get('/api/quiz/categories').map((response:Response) => response.json());
+		return this.http.get('/api/quiz/categories').map(response => response.json());
 	}
 
 	getAnswerCategories() : Observable<string[]> {
-		return this.http.get('/api/quiz/answercategories').map((response:Response) => response.json());
+		return this.http.get('/api/quiz/answercategories').map(response => response.json());
 	}
 
 	addQuestion(newQuestion:IQuizQuestion) : Observable<IQuizQuestion> {
@@ -50,15 +51,15 @@ export class QuizServices {
 					JSON.stringify(newQuestion),
 					this.getPostOptions());
 
-		return pub.map((response:Response) => response.json());
+		return pub.map(response => response.json());
 	}
 
 	getQuiz(quizId:number) : Observable<IQuiz> {
-		return this.http.get(`/api/quiz/${quizId}`).map((response:Response) => response.json());
+		return this.http.get(`/api/quiz/${quizId}`).map(response => response.json());
 	}
 
 	getTest(testId:number) : Observable<ITest> {
-		return this.http.get(`/api/quiz/test/${testId}`).map((response:Response) => response.json());
+		return this.http.get(`/api/quiz/test/${testId}`).map(response => response.json());
 	}
 
 	createQuiz(categories:string[], questionCount:number) : Observable<IQuiz> {
@@ -70,7 +71,7 @@ export class QuizServices {
 		};
 
 		var pub = this.http.post('/api/quiz', JSON.stringify(request), this.getPostOptions());
-		return pub.map((response:Response) => response.json());
+		return pub.map(response => response.json());
 	}
 
 	createTest(quizId:number, user:string) : Observable<ITest> {
@@ -82,19 +83,19 @@ export class QuizServices {
 		};
 
 		return this.http.post('/api/quiz/test', JSON.stringify(request), this.getPostOptions())
-			.map((response:Response) => response.json());
+			.map(response => response.json());
 	}
 
 	recordAnswer(testId: number, questionNumber: number, userAnswer:string) : Observable<any> {
 		console.log(testId, questionNumber, userAnswer);
 		return this.http.post(`/api/quiz/test/${testId}/answer/${questionNumber}`,
 				JSON.stringify({userAnswer: userAnswer}), this.getPostOptions())
-				.map((response:Response) => response.json());
+				.map(response => response.json());
 	}
 
 	scoreTest(testId:number) : Observable<IScoringResult> {
 		return this.http.post(`/api/quiz/test/${testId}/score`, null, this.getPostOptions())
-				.map((response:Response) => response.json());
+				.map(response => response.json());
 	}
 
 	getPostOptions(): RequestOptions {

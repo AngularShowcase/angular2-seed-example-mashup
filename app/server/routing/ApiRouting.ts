@@ -1,6 +1,8 @@
 /// <reference path='../../../tools/typings/tsd/node/node.d.ts'/>
 /// <reference path='../../../tools/typings/tsd/express/express.d.ts'/>
 /// <reference path='../../../tools/typings/tsd/moment/moment.d.ts'/>
+/// <reference path='../../../tools/typings/tsd/multer/multer.d.ts'/>
+/// <reference path='../../../tools/typings/tsd/q/q.d.ts'/>
 
 import * as express from 'express';
 import * as multer from 'multer';

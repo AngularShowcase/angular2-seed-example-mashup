@@ -1,5 +1,6 @@
-import {Injectable, Observable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class MapServices {

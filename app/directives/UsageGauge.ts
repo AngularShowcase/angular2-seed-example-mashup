@@ -1,4 +1,9 @@
+///<reference path="../../tools/typings/tsd/google.visualization/google.visualization.d.ts" />
 import {Directive, ElementRef, Renderer} from 'angular2/core';
+import {Subject} from 'rxjs/Subject';
+// import 'rxjs/add/operators/map';
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/operators/where';
 
 interface IPropertyNotification {
     propertyName:string;
@@ -34,7 +39,7 @@ export class UsageGauge {
     _max:number = 15.0;
     animationIntervalId:any;
 
-    settingsPub = new Rx.Subject<IPropertyNotification>();
+    settingsPub = new Subject<IPropertyNotification>();
 
     animationTime:number = 5000;
     animationCount:number = 100;
@@ -96,14 +101,14 @@ export class UsageGauge {
     constructor(public _element: ElementRef, public _renderer: Renderer) {
         console.log('Directive Usage Gauge constructed.');
 
-        this.settingsPub.subscribeOnNext(this.propertyChanged.bind(this));
-        this.settingsPub.bufferWithTime(this.eventBufferTime)
-                    .where(events => events.length > 0)
-                    .subscribeOnNext(this.multiplePropertyChanged.bind(this));
+        this.settingsPub.subscribeOn(this.propertyChanged.bind(this));
+        this.settingsPub.bufferTime(this.eventBufferTime)
+                    .filter(events => events.length > 0)
+                    .subscribeOn(this.multiplePropertyChanged.bind(this));
     }
 
     notify(propertyName:string, value:any) {
-        this.settingsPub.onNext({propertyName: propertyName, value: value});
+        this.settingsPub.next({propertyName: propertyName, value: value});
     }
 
     propertyChanged(event:IPropertyNotification) {
