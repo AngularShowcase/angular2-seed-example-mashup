@@ -39,7 +39,7 @@ export class UsageGauge {
     _max:number = 15.0;
     animationIntervalId:any;
 
-    settingsPub = new Subject<IPropertyNotification>();
+    settingsPub:Subject<IPropertyNotification>;
 
     animationTime:number = 5000;
     animationCount:number = 100;
@@ -101,10 +101,11 @@ export class UsageGauge {
     constructor(public _element: ElementRef, public _renderer: Renderer) {
         console.log('Directive Usage Gauge constructed.');
 
-        this.settingsPub.subscribeOn(this.propertyChanged.bind(this));
+        this.settingsPub = new Subject<IPropertyNotification>();
+        this.settingsPub.subscribe(this.propertyChanged.bind(this));
         this.settingsPub.bufferTime(this.eventBufferTime)
                     .filter(events => events.length > 0)
-                    .subscribeOn(this.multiplePropertyChanged.bind(this));
+                    .subscribe(this.multiplePropertyChanged.bind(this));
     }
 
     notify(propertyName:string, value:any) {
