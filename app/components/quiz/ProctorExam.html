@@ -42,7 +42,7 @@
 						</div>
 						<div class="choice" *ngFor="#choice of currentQuestion.responsesShown; #i = index">
 							<input class="answerSelectButton" type="button" [value]="i+1" (click)="userChecked(i)" />
-							<label [ng-class]="getAnswerClass(i)">{{choice}}</label>
+							<label [ngClass]="getAnswerClass(i)">{{choice}}</label>
 						</div>
 					</div>
 				</div>

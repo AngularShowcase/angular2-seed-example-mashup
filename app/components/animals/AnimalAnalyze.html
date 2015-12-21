@@ -32,7 +32,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="#segment of dup.path" [ng-class]="getDupIndicatorClass(segment.question.id)">
+						<tr *ngFor="#segment of dup.path" [ngClass]="getDupIndicatorClass(segment.question.id)">
 							<td>{{segment.question.id}}</td>
 							<td>{{segment.question.text}}
 							</td>

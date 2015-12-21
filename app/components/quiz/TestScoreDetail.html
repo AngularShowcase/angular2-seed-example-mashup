@@ -16,7 +16,7 @@
 			<td title="{{q.answerCategory}}">{{q.category}}</td>
 			<td>{{q.question}}</td>
 			<td>{{q.correctAnswer}}</td>
-			<td [ng-class]="q.isCorrect ? 'correct' : 'incorrect'">{{q.userAnswer}}</td>
+			<td [ngClass]="q.isCorrect ? 'correct' : 'incorrect'">{{q.userAnswer}}</td>
 		</tr>
 	</tbody>
 </table>

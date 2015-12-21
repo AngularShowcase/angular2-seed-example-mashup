@@ -14,7 +14,7 @@
 			<input style="font-size:20pt; color:blue" id="lastName" type="text" placeholder="Last Name" class="input-control" [(ngModel)]="model.lastName" />
 		</div>
 		<div class="form-group">
-			<input type="button" [ng-class]="buttonClass()" (click)="submit()" class="btn btn-lg" placeholder="Submit" class="input-control" value="Submit" />
+			<input type="button" [ngClass]="buttonClass()" (click)="submit()" class="btn btn-lg" placeholder="Submit" class="input-control" value="Submit" />
 		</div>
 	</form>
 	<div>{{model.errors}}</div>
