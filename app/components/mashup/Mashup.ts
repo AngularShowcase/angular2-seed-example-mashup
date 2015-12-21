@@ -31,20 +31,24 @@ export class Mashup {
         this.userInfo = new GithubUser();
         this.userDisplayData = {
             name: 'Howard',
-            sports: ['lacrosse', 'bowling',
-                { name: 'football',
-                  rank: 1,
-                  players: [
-                        'Randy',
-                        { FirstName: 'Howard',
-                          LastName: 'Pinsley',
-                          Skills: ['Quarterback', 'WideReceiver', { Position: 'Running Back', Level: 'Expert'}]
-                        },
-                        'David'
-                    ]
-                  },
-                'Tetherball'
-            ]
+            address: {
+                city: 'Plainview',
+                state: 'New York'
+            }
+            // sports: ['lacrosse', 'bowling',
+            //     { name: 'football',
+            //       rank: 1,
+            //       players: [
+            //             'Randy',
+            //             { FirstName: 'Howard',
+            //               LastName: 'Pinsley',
+            //               Skills: ['Quarterback', 'WideReceiver', { Position: 'Running Back', Level: 'Expert'}]
+            //             },
+            //             'David'
+            //         ]
+            //       },
+            //     'Tetherball'
+            // ]
         };
         this.reposDisplayData = {};
         this.setNameLookup();

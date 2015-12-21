@@ -20,11 +20,11 @@ export class ObjectDisplay {
        parser:Parser;
 
        constructor(parser:Parser) {
-
+           console.log('In ObjectDisplay constructor');
            this.parser = parser;
            this.niceLabels = true;
            this.collapsed = false;
-           this.displayObject = {};
+           //this.displayObject = {};
            this.selectobject = new EventEmitter<any>();
        }
 
@@ -33,7 +33,7 @@ export class ObjectDisplay {
        }
 
        set displayObject(val) {
-           //console.log('Setting display object to: ', val);
+           console.log('Setting display object to: ', val);
            this._displayObject = val;
        }
 
@@ -74,7 +74,9 @@ export class ObjectDisplay {
                props.push(prop);
            }
 
-           return (firstOnly) ? props.slice(0,1) : props;
+           var result = (firstOnly) ? props.slice(0,1) : props;
+           console.log(`getObjectProperties: ${result}`);
+           return result;
        }
 
        toggleCollapsed() {
