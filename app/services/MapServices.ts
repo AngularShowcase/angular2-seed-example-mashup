@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class MapServices {
 
-	mapRoot:string = '/assets/data/maps/';
+	mapRoot:string = '/app/assets/data/maps/';
 
 	constructor(public http:Http) {
 		console.log(`Constructed MapServices at ${new Date()}`);
