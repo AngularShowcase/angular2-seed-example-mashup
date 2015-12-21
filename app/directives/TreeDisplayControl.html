@@ -10,11 +10,11 @@
 	<label [style.color]="inputLabelColor">
 		Node:
 		<input #nodecolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodecolor', value: nodecolor.value})" [(ngModel)]="nodeColor" />
-	</label [style.color]="inputLabelColor">
+	</label>
 	<label>
 		Node Label:
 		<input #nodelabelcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'nodelabelcolor', value: nodelabelcolor.value})" [(ngModel)]="nodeLabelColor" />
-	</label [style.color]="inputLabelColor">
+	</label>
 	<label [style.color]="inputLabelColor">
 		Connector:
 		<input #connectorcolor [style.color]="inputValueColor" type="text" (change)="onValueChanged({property:'connectorcolor', value: connectorcolor.value})" [(ngModel)]="connectorColor" />

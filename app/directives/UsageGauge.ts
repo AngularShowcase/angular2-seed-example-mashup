@@ -108,6 +108,7 @@ export class UsageGauge {
     }
 
     notify(propertyName:string, value:any) {
+        console.log(`notify called for property ${propertyName} with value ${value}.`);
         this.settingsPub.next({propertyName: propertyName, value: value});
     }
 
