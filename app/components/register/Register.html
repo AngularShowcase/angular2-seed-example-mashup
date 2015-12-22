@@ -3,13 +3,13 @@
 
     <h1>Registration</h1>
 
-    <form (ng-submit)="onSubmit()" #f="form">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
 
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" required
           [(ngModel)]="registration.username"
-            ng-control="username" #username="form" >
+            ngControl="username" #username="ngForm" >
         <div [hidden]="username.valid" class="alert alert-danger">
           Username is required
         </div>
@@ -19,7 +19,7 @@
         <label for="firstname">First Name</label>
         <input type="text" class="form-control" required
           [(ngModel)]="registration.firstName"
-            ng-control="firstname" #firstname="form" >
+            ngControl="firstname" #firstname="ngForm" >
         <div [hidden]="firstname.valid" class="alert alert-danger">
           First name is required.
         </div>
@@ -29,7 +29,7 @@
         <label for="lastname">Last Name</label>
         <input type="text" class="form-control" required
           [(ngModel)]="registration.lastName"
-            ng-control="lastname" #lastname="form" >
+            ngControl="lastname" #lastname="ngForm" >
         <div [hidden]="lastname.valid" class="alert alert-danger">
           Last name is required.
         </div>
@@ -39,7 +39,7 @@
         <label for="emailaddress">Email Address</label>
         <input type="email" class="form-control" required
           [(ngModel)]="registration.emailAddress"
-            ng-control="emailaddress" #emailaddress="form" >
+            ngControl="emailaddress" #emailaddress="ngForm" >
         <div [hidden]="emailaddress.valid" class="alert alert-danger">
           Email address is required.
         </div>
@@ -49,7 +49,7 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" required
           [(ngModel)]="registration.password"
-            ng-control="password" #password="form" >
+            ngControl="password" #password="ngForm" >
         <div [hidden]="password.valid" class="alert alert-danger">
           Password is required.
         </div>
@@ -59,7 +59,7 @@
         <label for="password">Re-enter Password</label>
         <input type="password" class="form-control" required
           [(ngModel)]="repeatedPassword"
-            ng-control="password2" #password2="form" >
+            ngControl="password2" #password2="ngForm" >
         <div [hidden]="password2.valid" class="alert alert-danger">
           Password is required.
         </div>
