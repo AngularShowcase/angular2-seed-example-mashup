@@ -14,6 +14,8 @@ export class Login {
     constructor(public auth:Authentication, public router:Router) {
     }
 
+    loggedIn: boolean = false;
+
     model:any = {
         username: '',
         password: '',
@@ -37,6 +39,7 @@ export class Login {
                 }
 
                 this.model.errors = '';
+                this.loggedIn = true;
                 this.model.flyText1 = this.auth.user.username;
             });
     }

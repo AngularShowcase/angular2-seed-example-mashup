@@ -22,6 +22,7 @@ import {Login} from '../login/Login';
 import {Register} from '../register/Register';
 import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
+import {FrontPage} from '../home/FrontPage';
 import {NameList} from '../../services/name_list';
 import {Mashup} from '../mashup/Mashup';
 import {MousePlay} from '../mousePlay/MousePlay';
@@ -48,7 +49,7 @@ import {Chat} from '../streaming/Chat';
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/', component: HomeCmp, as: 'Home' },
+  { path: '/', component: FrontPage, as: 'Home' },
   { path: '/login', component: Login, as: 'Login' },
   { path: '/register', component: Register, as: 'Register' },
   { path: '/about', component: AboutCmp, as: 'About' },

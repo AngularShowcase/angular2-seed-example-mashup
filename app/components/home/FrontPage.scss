@@ -1,0 +1,36 @@
+$buttonWidth: 370px;
+$buttonHeight: 220px;
+$borderPadding: 7px;
+
+h1 {
+    text-align: center;
+    font-size: 20pt;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.picture-button {
+  display: block;
+  padding: 10px;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  border: $borderPadding solid lightgray;
+  border-radius: 5px;
+  background: url("./assets/img/us-weather.png") no-repeat;
+
+  &:hover {
+      border: $borderPadding solid gray;
+  }
+}
+
+div.pic-caption {
+    width: $buttonWidth;
+    margin-top: 5px;
+    color: green;
+    text-align: center;
+    font-size: 16pt;
+}
+
+div.row {
+    margin-bottom: 50px;
+}
