@@ -96,7 +96,7 @@ export class WeatherMap {
 
 		this.svg = root.append('svg');
 		this.svg.attr({width: this.width, height: this.height});
-		this.svg.style({border: '1px solid black'});
+		//this.svg.style({border: '1px solid black'});
 		this.svg.append('g').attr({id: 'map'});
 		this.svg.append('g').attr({id: 'cities'});
         this.svg.append('g').attr({id: 'accidents'});
