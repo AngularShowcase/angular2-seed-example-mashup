@@ -10,7 +10,7 @@
         <input type="text" class="form-control" required
           [(ngModel)]="registration.username"
             ngControl="username" #username="ngForm" >
-        <div [hidden]="username.valid" class="alert alert-danger">
+        <div [hidden]="username.valid || !username.dirty" class="alert alert-danger">
           Username is required
         </div>
       </div>
@@ -20,7 +20,7 @@
         <input type="text" class="form-control" required
           [(ngModel)]="registration.firstName"
             ngControl="firstname" #firstname="ngForm" >
-        <div [hidden]="firstname.valid" class="alert alert-danger">
+        <div [hidden]="firstname.valid || !firstname.dirty" class="alert alert-danger">
           First name is required.
         </div>
       </div>
@@ -30,7 +30,7 @@
         <input type="text" class="form-control" required
           [(ngModel)]="registration.lastName"
             ngControl="lastname" #lastname="ngForm" >
-        <div [hidden]="lastname.valid" class="alert alert-danger">
+        <div [hidden]="lastname.valid || !lastname.dirty" class="alert alert-danger">
           Last name is required.
         </div>
       </div>
@@ -40,7 +40,7 @@
         <input type="email" class="form-control" required
           [(ngModel)]="registration.emailAddress"
             ngControl="emailaddress" #emailaddress="ngForm" >
-        <div [hidden]="emailaddress.valid" class="alert alert-danger">
+        <div [hidden]="emailaddress.valid || !emailaddress.dirty" class="alert alert-danger">
           Email address is required.
         </div>
       </div>
@@ -50,20 +50,20 @@
         <input type="password" class="form-control" required
           [(ngModel)]="registration.password"
             ngControl="password" #password="ngForm" >
-        <div [hidden]="password.valid" class="alert alert-danger">
+        <div [hidden]="password.valid || !password.dirty" class="alert alert-danger">
           Password is required.
         </div>
       </div>
-
+      
       <div class="form-group">
         <label for="password">Re-enter Password</label>
         <input type="password" class="form-control" required
           [(ngModel)]="repeatedPassword"
             ngControl="password2" #password2="ngForm" >
-        <div [hidden]="password2.valid" class="alert alert-danger">
+        <div [hidden]="password2.valid || !password2.dirty" class="alert alert-danger">
           Password is required.
         </div>
-        <div [hidden]="!password.valid || !password2.valid || password.value === password2.value" class="alert alert-danger">
+        <div [hidden]="!password.valid || !password2.valid || !password.dirty || !password2.dirty || password.value === password2.value" class="alert alert-danger">
           Password don't match!
         </div>
       </div>
