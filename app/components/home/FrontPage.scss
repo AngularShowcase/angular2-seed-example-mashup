@@ -16,7 +16,19 @@ h1 {
   height: $buttonHeight;
   border: $borderPadding solid lightgray;
   border-radius: 5px;
-  background: url("./assets/img/us-weather.png") no-repeat;
+
+  &#weather {
+      background: url("./assets/img/us-weather.png") no-repeat;
+  }
+  &#animals {
+      background: url("./assets/img/animals.png") no-repeat;
+  }
+  &#usage {
+      background: url("./assets/img/us-weather.png") no-repeat;
+  }
+  &#cat {
+      background: url("./assets/img/us-weather.png") no-repeat;
+  }
 
   &:hover {
       border: $borderPadding solid gray;
