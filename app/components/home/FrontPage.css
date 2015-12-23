@@ -16,9 +16,9 @@ h1 {
   .picture-button#animals {
     background: url("./assets/img/animals.png") no-repeat; }
   .picture-button#usage {
-    background: url("./assets/img/us-weather.png") no-repeat; }
-  .picture-button#cat {
-    background: url("./assets/img/us-weather.png") no-repeat; }
+    background: url("./assets/img/cellusage.png") no-repeat; }
+  .picture-button#chat {
+    background: url("./assets/img/chat.png") no-repeat; }
   .picture-button:hover {
     border: 7px solid gray; }
 
