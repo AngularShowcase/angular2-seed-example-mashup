@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  font-size: 20pt;
+  font-size: 24pt;
   color: black;
   margin-bottom: 20px; }
 
@@ -8,7 +8,7 @@ h1 {
   display: block;
   padding: 10px;
   width: 370px;
-  height: 220px;
+  height: 230px;
   border: 7px solid lightgray;
   border-radius: 5px; }
   .picture-button#weather {
@@ -19,6 +19,8 @@ h1 {
     background: url("./assets/img/cellusage.png") no-repeat; }
   .picture-button#chat {
     background: url("./assets/img/chat.png") no-repeat; }
+  .picture-button#quiz {
+    background: url("./assets/img/quiz.png") no-repeat; }
   .picture-button:hover {
     border: 7px solid gray; }
 
@@ -30,4 +32,4 @@ div.pic-caption {
   font-size: 16pt; }
 
 div.row {
-  margin-bottom: 50px; }
+  margin-bottom: 25px; }

@@ -1,10 +1,10 @@
 $buttonWidth: 370px;
-$buttonHeight: 220px;
+$buttonHeight: 230px;
 $borderPadding: 7px;
 
 h1 {
     text-align: center;
-    font-size: 20pt;
+    font-size: 24pt;
     color: black;
     margin-bottom: 20px;
 }
@@ -29,6 +29,9 @@ h1 {
   &#chat {
       background: url("./assets/img/chat.png") no-repeat;
   }
+  &#quiz {
+      background: url("./assets/img/quiz.png") no-repeat;
+  }
 
   &:hover {
       border: $borderPadding solid gray;
@@ -44,5 +47,5 @@ div.pic-caption {
 }
 
 div.row {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
