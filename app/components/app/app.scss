@@ -1,5 +1,6 @@
 .app-content {
     font-family: Verdana;
+    color: darkblue;
 
     .top-button {
         border-radius: 5px;
@@ -12,7 +13,7 @@
 
     div#lastChat {
         color: yellow;
-        font-size: 12pt;
+        font-size: 10pt;
         font-style: italic;
         margin-right: 10px;
         background: black;
@@ -20,6 +21,13 @@
         border-radius: 5px;
     }
 
-    .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
-    .navbar {min-height:32px !important}
+    .navbar-nav > li > a {
+        font-size:18pt;
+        padding-top:5px !important;
+        padding-bottom:5px !important;
+    }
+
+    .navbar {
+        min-height:32px !important
+    }
 }
