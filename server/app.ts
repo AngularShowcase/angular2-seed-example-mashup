@@ -8,7 +8,7 @@ import * as socketIO from 'socket.io';
 import {RtBroker} from './RtBroker';
 import {argv} from 'yargs';
 
-var env = argv['env'] || process.env.ENV || 'dev';
+var env = argv['env'] || 'dev';
 
 console.log(`Server startup: env: ${env}`);
 
