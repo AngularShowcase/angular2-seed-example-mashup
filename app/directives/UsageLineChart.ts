@@ -1,6 +1,6 @@
 ///<reference path="../../tools/typings/tsd/google.visualization/google.visualization.d.ts" />
 import {Directive, ElementRef, Renderer} from 'angular2/core';
-import {IUsage, IPerson} from '../common/interfaces/CellDataInterfaces';
+import {IUsage, IPerson} from '../../common/interfaces/CellDataInterfaces';
 
 @Directive({
     selector: '[usage-line-chart]',		// Not sure why you need to put it in brackets

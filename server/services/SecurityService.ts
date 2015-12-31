@@ -1,4 +1,4 @@
-/// <reference path='../../../tools/typings/tsd/bcrypt/bcrypt.d.ts'/>
+/// <reference path='../../tools/typings/tsd/bcrypt/bcrypt.d.ts'/>
 
 import Q = require('q');
 import bcrypt = require('bcrypt');

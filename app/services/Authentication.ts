@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Router} from 'angular2/router';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {IRegistration, IRegistrationResponse, ILoginRequest,
-	    ILoginResult, IRegisteredUser} from '../common/interfaces/RegistrationInterfaces';
+	    ILoginResult, IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
 
 @Injectable()
 export class Authentication {

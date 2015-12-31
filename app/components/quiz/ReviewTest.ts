@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import * as RouterMod from 'angular2/router';
-import {IQuiz, ITest} from '../../common/interfaces/QuizInterfaces';
+import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 import {TestScoreSummary} from './TestScoreSummary';
 import {TestScoreDetail} from './TestScoreDetail';
 

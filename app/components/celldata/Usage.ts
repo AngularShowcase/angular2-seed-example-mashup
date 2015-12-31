@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';
-import {IUsage, ICycle, IPerson} from '../../common/interfaces/CellDataInterfaces';
+import {IUsage, ICycle, IPerson} from '../../../common/interfaces/CellDataInterfaces';
 import {UsageDetails} from './UsageDetails';
 import {Parser} from '../../services/Parser';
 import {Cycle} from './Cycle';

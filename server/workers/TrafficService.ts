@@ -1,6 +1,7 @@
 import {IAccident} from '../../common/interfaces/TrafficInterfaces';
 import * as fs from 'fs';
 import * as _ from 'underscore';
+declare var Promise: any;
 import {Subject} from 'rxjs/Subject';
 
 // import 'rxjs/add/operators/map';

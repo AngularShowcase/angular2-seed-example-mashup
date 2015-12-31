@@ -1,3 +1,4 @@
+///<reference path="../../tools/typings/tsd/underscore/underscore.d.ts" />
 import Q = require('q');
 import _ = require('underscore');
 

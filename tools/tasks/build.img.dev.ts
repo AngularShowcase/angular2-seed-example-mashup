@@ -7,7 +7,8 @@ export = function buildImagesDev(gulp, plugins) {
         join(APP_SRC, '**/*.gif'),
         join(APP_SRC, '**/*.jpg'),
         join(APP_SRC, '**/*.png'),
-        join(APP_SRC, '**/*.svg')
+        join(APP_SRC, '**/*.svg'),
+        join(APP_SRC, '**/us.json')
       ])
       .pipe(gulp.dest(APP_DEST));
   };

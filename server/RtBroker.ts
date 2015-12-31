@@ -1,9 +1,11 @@
-///<reference path="../../tools/typings/tsd/socket.io/socket.io.d.ts" />
+///<reference path="../tools/typings/tsd/socket.io/socket.io.d.ts" />
 import {WeatherService} from './workers/WeatherService';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
 import {TrafficService} from './workers/TrafficService';
 import {IChatMessage} from '../common/interfaces/ChatInterfaces';
+
+declare var Promise: any;
 import {Subject} from 'rxjs/Subject';
 
 // import 'rxjs/add/operators/map';

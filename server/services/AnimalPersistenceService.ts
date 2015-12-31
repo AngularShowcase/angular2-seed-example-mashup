@@ -1,3 +1,5 @@
+///<reference path="../../tools/typings/tsd/underscore/underscore.d.ts" />
+
 import {IQuestion, INewAnimalInfo} from '../../common/interfaces/AnimalInterfaces';
 import Q = require('q');
 var mongoskin = require('mongoskin');		// Need to use require when there is no TSD file

@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {ITest} from '../../common/interfaces/QuizInterfaces';
+import {ITest} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'test-score-summary',

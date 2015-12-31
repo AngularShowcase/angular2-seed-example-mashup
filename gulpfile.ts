@@ -7,6 +7,7 @@ gulp.task('clean',       task('clean', 'all'));
 gulp.task('clean.dist',  task('clean', 'dist'));
 gulp.task('clean.test',  task('clean', 'test'));
 gulp.task('clean.tmp',   task('clean', 'tmp'));
+gulp.task('clean.server',   task('clean', 'server'));
 
 gulp.task('check.versions', task('check.versions'));
 
@@ -21,11 +22,13 @@ gulp.task('postinstall', done =>
 // Build dev.
 gulp.task('build.dev', done =>
   runSequence('clean.dist',
+              'clean.server',
               'tslint',
               'build.sass.dev',
               'build.img.dev',
               'build.js.dev',
               'build.index',
+              'build.server',
               done));
 
 // --------------
@@ -33,6 +36,7 @@ gulp.task('build.dev', done =>
 gulp.task('build.prod', done =>
   runSequence('clean.dist',
               'clean.tmp',
+              'clean.server',
               'tslint',
               'build.sass.dev',
               'build.img.dev',
@@ -41,6 +45,7 @@ gulp.task('build.prod', done =>
               'build.js.prod',
               'build.bundles',
               'build.index',
+              'build.server',
               done));
 
 // --------------

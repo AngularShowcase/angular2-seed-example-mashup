@@ -1,4 +1,5 @@
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
+declare var Promise: any;
 import {Subject} from 'rxjs/Subject';
 
 // import 'rxjs/add/operators/map';

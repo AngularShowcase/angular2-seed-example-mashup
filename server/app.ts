@@ -1,11 +1,16 @@
-/// <reference path="../../tools/typings/tsd/body-parser/body-parser.d.ts" />
-/// <reference path="../../tools/typings/tsd/morgan/morgan.d.ts" />
+/// <reference path="../tools/typings/tsd/body-parser/body-parser.d.ts" />
+/// <reference path="../tools/typings/tsd/morgan/morgan.d.ts" />
 import * as express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as logger from 'morgan';
 import * as socketIO from 'socket.io';
 import {RtBroker} from './RtBroker';
+import {argv} from 'yargs';
+
+var env = argv['env'] || process.env.ENV || 'dev';
+
+console.log(`Server startup: env: ${env}`);
 
 var mongoskin = require('mongoskin');   //Using require since there is not tsd file
 
@@ -22,14 +27,19 @@ if (process.env.PORT) {
     config.port = parseInt(process.env.PORT);
 }
 
-console.log('Configuration: ', config);
 console.log(`__dirname is ${__dirname}.`);
 
 //var debug = debug('Mashup');
 
-config.staticRoot = path.join(__dirname, '../../..');
+// For the dev environment, we serve at a root where node_modules can be referenced.  Not so for production.
+if (env === 'dev') {
+    config.staticRoot = path.join(__dirname, '../..');
+} else {
+    config.staticRoot = path.join(__dirname, '..', env);
+}
 
 console.log(`Static root is: ${config.staticRoot}`);
+console.log('Configuration: ', config);
 
 
 var app = express();

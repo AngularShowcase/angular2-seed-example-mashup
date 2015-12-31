@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
-import {ICycle, IPerson, IUsage} from '../common/interfaces/CellDataInterfaces';
+import {ICycle, IPerson, IUsage} from '../../common/interfaces/CellDataInterfaces';
 
 @Injectable()
 export class CellDataServices {

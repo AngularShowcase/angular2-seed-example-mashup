@@ -3,7 +3,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import * as RouterMod from 'angular2/router';
-import {IQuiz, ITest, IUserQuestion, IScoringResult} from '../../common/interfaces/QuizInterfaces';
+import {IQuiz, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
 
 enum ProctorState {
     Initializing = 0,

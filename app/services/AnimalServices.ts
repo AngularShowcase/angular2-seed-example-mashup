@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
-import {IQuestion, INewAnimalInfo} from '../common/interfaces/AnimalInterfaces';
+import {IQuestion, INewAnimalInfo} from '../../common/interfaces/AnimalInterfaces';
 import {ITreeNode} from '../directives/TreeDisplay';
 
 export interface IQuestionAndAnswer {

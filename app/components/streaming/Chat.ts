@@ -2,8 +2,8 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {MessageBroker} from '../../services/MessageBroker';
 import {Authentication} from '../../services/Authentication';
-import {IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
-import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
+import {IRegisteredUser} from '../../../common/interfaces/RegistrationInterfaces';
+import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
 
 @Component({
     selector: 'chat',

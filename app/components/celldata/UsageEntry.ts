@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {CellDataServices} from '../../services/CellDataServices';
 import {UsageDetails} from './UsageDetails';
-import {IUsage, ICycle, IPerson} from '../../common/interfaces/CellDataInterfaces';
+import {IUsage, ICycle, IPerson} from '../../../common/interfaces/CellDataInterfaces';
 
 //Need to take out NgForm so angular won't prevent form submission
 let formDirectives = FORM_DIRECTIVES.filter(f => f !== NgForm);

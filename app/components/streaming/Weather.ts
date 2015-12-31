@@ -1,8 +1,8 @@
 import {Component, EventEmitter} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {MessageBroker} from '../../services/MessageBroker';
-import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
-import {IAccident} from '../../common/interfaces/TrafficInterfaces';
+import {IWeatherUpdate} from '../../../common/interfaces/WeatherInterfaces';
+import {IAccident} from '../../../common/interfaces/TrafficInterfaces';
 import {WeatherMap} from '../../directives/WeatherMap';
 
 interface IStateAccidentStats {

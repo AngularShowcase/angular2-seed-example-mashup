@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
-import {IQuizQuestion} from '../../common/interfaces/QuizInterfaces';
+import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
 import {Router} from 'angular2/router';
 
 // The DI will fail if you import from '../../services/authentication' (case matters)

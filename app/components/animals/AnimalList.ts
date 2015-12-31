@@ -3,7 +3,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 //import {Component, EventEmitter, NgFor} from 'angular2/angular2';
 import {AnimalServices} from '../../services/AnimalServices';
-import {IQuestion} from '../../common/interfaces/AnimalInterfaces';
+import {IQuestion} from '../../../common/interfaces/AnimalInterfaces';
 import {TreeDisplay, ITreeNode} from '../../directives/TreeDisplay';
 import {TreeDisplayControl} from '../../directives/TreeDisplayControl';
 

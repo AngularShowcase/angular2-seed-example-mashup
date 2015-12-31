@@ -1,4 +1,4 @@
-import {ICycle} from '../../common/interfaces/CellDataInterfaces';
+import {ICycle} from '../../../common/interfaces/CellDataInterfaces';
 import {Parser} from '../../services/Parser';
 
 export class Cycle implements ICycle {

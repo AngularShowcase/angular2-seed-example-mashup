@@ -16,11 +16,10 @@ import 'rxjs/add/observable/range';
 
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
-import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
+import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
 
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
-import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
 import {FrontPage} from '../home/FrontPage';
 import {NameList} from '../../services/name_list';

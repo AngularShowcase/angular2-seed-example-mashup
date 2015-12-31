@@ -1,7 +1,6 @@
 import {readFileSync} from 'fs';
 import {argv} from 'yargs';
 
-
 // --------------
 // Configuration.
 export const ENV                  = argv['env']         || 'dev';
@@ -14,6 +13,7 @@ export const APP_BASE             = argv['base']        || '/';
 export const APP_TITLE            = 'My Angular2 App';
 
 export const APP_SRC              = 'app';
+export const SERVER_SRC              = 'server';
 export const ASSETS_SRC           = `${APP_SRC}/assets`;
 
 export const TOOLS_DIR            = 'tools';
@@ -21,6 +21,7 @@ export const TMP_DIR              = 'tmp';
 export const TEST_DEST            = 'test';
 export const DOCS_DEST            = 'docs';
 export const APP_DEST             = `dist/${ENV}`;
+export const SERVER_DEST          = `dist/server`;
 export const ASSETS_DEST          = `${APP_DEST}/assets`;
 export const BUNDLES_DEST         = `${APP_DEST}/bundles`;
 export const CSS_DEST             = `${APP_DEST}/css`;

@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {IQuizQuestion, INewQuizRequest, IQuiz, IScoringResult,
-        ITest, INewTestRequest} from '../common/interfaces/QuizInterfaces';
+        ITest, INewTestRequest} from '../../common/interfaces/QuizInterfaces';
 
 @Injectable()
 export class QuizServices {
