@@ -23,6 +23,7 @@ if (process.env.PORT) {
 }
 
 console.log('Configuration: ', config);
+console.log(`__dirname is ${__dirname}.`);
 
 //var debug = debug('Mashup');
 
