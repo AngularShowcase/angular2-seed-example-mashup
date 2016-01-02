@@ -4,7 +4,7 @@ import {Parser} from '../../services/Parser';
 
 @Component({
     selector: 'object-display',
-    viewBindings: [Parser],
+    providers: [Parser],
     inputs: ['displayObject:display-object','niceLabels:nice-labels','collapsed'],
     outputs: ['selectobject:selectobject'],
     templateUrl: './components/objectDisplay/ObjectDisplay.html',

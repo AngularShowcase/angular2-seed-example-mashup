@@ -20,7 +20,7 @@ interface IModel {
 
 @Component({
     selector: 'historic-usage',
-    viewBindings: [CellDataServices],
+    viewProviders: [CellDataServices],
     templateUrl: './components/celldata/HistoricUsage.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageColumnChart, UsageDetails],
     styleUrls: ['./components/celldata/HistoricUsage.css']

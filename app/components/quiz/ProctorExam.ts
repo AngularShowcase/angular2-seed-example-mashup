@@ -16,7 +16,7 @@ enum ProctorState {
     templateUrl: './components/quiz/ProctorExam.html',
     styleUrls: ['./components/quiz/ProctorExam.css'],
 
-    viewBindings: [QuizServices],
+    providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class ProctorExam {

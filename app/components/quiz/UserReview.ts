@@ -9,7 +9,7 @@ import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
     templateUrl: './components/quiz/UserReview.html',
     styleUrls: ['./components/quiz/UserReview.css'],
 
-    viewBindings: [QuizServices],
+    providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class ReviewTest {

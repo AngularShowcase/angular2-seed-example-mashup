@@ -34,7 +34,7 @@ var noQuestion:IQuestion = {
 
 @Component({
     selector: 'animal-list',
-    bindings: [AnimalServices],
+    providers: [AnimalServices],
     inputs: ['currentQuestion:current-question','reloadFlag:reload-flag'],
     outputs: ['dbreloaded'],
     templateUrl: './components/animals/AnimalList.html',

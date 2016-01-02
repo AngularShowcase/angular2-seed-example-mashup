@@ -12,7 +12,7 @@ import {Subject} from 'rxjs/Subject';
 
 @Component({
     selector: 'mashup',
-    bindings: [GithubServices],
+    providers: [GithubServices],
     templateUrl: './components/mashup/Mashup.html',
     directives: [CORE_DIRECTIVES, ObjectDisplay, FORM_DIRECTIVES]
 })

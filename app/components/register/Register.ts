@@ -9,7 +9,7 @@ import {IRegistration} from '../../../common/interfaces/RegistrationInterfaces';
     templateUrl: './components/register/Register.html',
     styleUrls: ['./components/register/Register.css'],
 
-    viewBindings: [Authentication],
+    providers: [Authentication],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class Register {

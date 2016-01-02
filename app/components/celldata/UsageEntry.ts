@@ -15,7 +15,7 @@ interface IExtendedCycle extends ICycle {
 
 @Component({
     selector: 'usage-entry',
-    viewBindings: [CellDataServices],
+    providers: [CellDataServices],
     templateUrl: './components/celldata/UsageEntry.html',
     directives: [CORE_DIRECTIVES, UsageDetails, formDirectives],
     styleUrls: ['./components/celldata/UsageEntry.css']

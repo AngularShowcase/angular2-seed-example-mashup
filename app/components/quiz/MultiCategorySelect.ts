@@ -7,7 +7,7 @@ import {QuizServices} from '../../services/QuizServices';
     templateUrl: './components/quiz/MultiCategorySelect.html',
     styleUrls: ['./components/quiz/MultiCategorySelect.css'],
     outputs: ['categories'],
-    viewBindings: [QuizServices],
+    providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class MultiCategorySelect {

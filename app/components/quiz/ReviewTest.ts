@@ -11,7 +11,7 @@ import {TestScoreDetail} from './TestScoreDetail';
     templateUrl: './components/quiz/ReviewTest.html',
     styleUrls: ['./components/quiz/ReviewTest.css'],
 
-    viewBindings: [QuizServices],
+    providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, TestScoreSummary, TestScoreDetail]
 })
 export class ReviewTest {

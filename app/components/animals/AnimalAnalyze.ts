@@ -11,7 +11,7 @@ interface INodeAndPath {
 
 @Component({
     selector: 'animal-analyze',
-    bindings: [AnimalServices],
+    providers: [AnimalServices],
     templateUrl: './components/animals/AnimalAnalyze.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
     styleUrls: ['./components/animals/AnimalAnalyze.css']

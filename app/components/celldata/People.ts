@@ -4,7 +4,7 @@ import {CellDataServices} from '../../services/CellDataServices';
 
 @Component({
     selector: 'celldata-people',
-    bindings: [CellDataServices],
+    providers: [CellDataServices],
     templateUrl: './components/celldata/People.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })

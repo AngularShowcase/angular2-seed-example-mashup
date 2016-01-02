@@ -28,7 +28,7 @@ interface IModel {
 
 @Component({
     selector: 'usage',
-    viewBindings: [CellDataServices, Parser],
+    providers: [CellDataServices, Parser],
     templateUrl: './components/celldata/Usage.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageBarChart,
                  UsageLineChart, PeriodUsageChart, UsageDetails, UsageGauge],

@@ -21,7 +21,7 @@ interface IModel {
 
 @Component({
     selector: 'animal-game',
-    bindings: [AnimalServices],
+    providers: [AnimalServices],
     templateUrl: './components/animals/AnimalGame.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, AnimalList, AnimalPlay],
     styleUrls: ['./components/animals/AnimalGame.css']

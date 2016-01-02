@@ -7,7 +7,7 @@ import {ITest} from '../../../common/interfaces/QuizInterfaces';
     templateUrl: './components/quiz/TestScoreSummary.html',
     styleUrls: ['./components/quiz/TestScoreSummary.css'],
     inputs: ['test'],
-    viewBindings: [],
+    providers: [],
     directives: [CORE_DIRECTIVES]
 })
 export class TestScoreSummary {

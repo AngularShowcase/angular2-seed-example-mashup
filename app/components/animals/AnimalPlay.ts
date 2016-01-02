@@ -37,7 +37,7 @@ var noQuestion:IQuestion = {
 
 @Component({
     selector: 'animal-play',
-    bindings: [AnimalServices],
+    providers: [AnimalServices],
     outputs: ['questionchange:questionchange','dbupdated'],
     templateUrl: './components/animals/AnimalPlay.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, YesNo],
