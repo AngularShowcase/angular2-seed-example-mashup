@@ -9,6 +9,10 @@ Thanks to the members of the angualar2-seed team
 :---: |:---: |:---: |:---: |:---: |:---: |
 [mgechev](https://github.com/mgechev) |[ludohenin](https://github.com/ludohenin) |[tarlepp](https://github.com/tarlepp) |[NathanWalker](https://github.com/NathanWalker) |[jesperronn](https://github.com/jesperronn) |[aboeglin](https://github.com/aboeglin) |
 
+# Live Sample
+
+This application is running at https://angular-mashup.herokuapp.com/
+
 # License
 
 MIT
