@@ -10,7 +10,7 @@ export const LIVE_RELOAD_PORT     = argv['reload-port'] || 4002;
 export const DOCS_PORT            = argv['docs-port']   || 4003;
 export const APP_BASE             = argv['base']        || '/';
 
-export const APP_TITLE            = 'My Angular2 App';
+export const APP_TITLE            = 'Angular Mashup';
 
 export const APP_SRC              = 'app';
 export const SERVER_SRC              = 'server';
