@@ -58,35 +58,35 @@ export class Weather {
     }
 
     ngOnInit() {
-        this.logLifecycleEvent('ngOnInit')
+        this.logLifecycleEvent('ngOnInit');
     }
 
     ngOnDestroy() {
-        this.logLifecycleEvent('ngOnDestroy')
+        this.logLifecycleEvent('ngOnDestroy');
     }
 
     ngOnChanges() {
-        this.logLifecycleEvent('ngOnChanges')
+        this.logLifecycleEvent('ngOnChanges');
     }
 
     ngAfterContentInit() {
-        this.logLifecycleEvent('ngAfterContentInit')
+        this.logLifecycleEvent('ngAfterContentInit');
     }
 
     ngDoCheck() {
-        //this.logLifecycleEvent('ngDoCheck')   // Fires frequently
+        //this.logLifecycleEvent('ngDoCheck');   // Fires frequently
     }
 
     ngAfterContentChecked() {
-        //this.logLifecycleEvent('ngAfterContentChecked') // Fires frequently
+        //this.logLifecycleEvent('ngAfterContentChecked'); // Fires frequently
     }
 
     ngAfterViewChecked() {
-        //this.logLifecycleEvent('ngAfterViewChecked')  // Fires frequently
+        //this.logLifecycleEvent('ngAfterViewChecked');  // Fires frequently
     }
 
     ngAfterViewInit() {
-        this.logLifecycleEvent('ngAfterViewInit')
+        this.logLifecycleEvent('ngAfterViewInit');
     }
 
     logLifecycleEvent(lifecycleMethod:string) {
