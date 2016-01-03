@@ -14,14 +14,14 @@
 			<td>{{s.questionCount}}</td>
 			<td style="color:green">{{s.correctCount}}</td>
 			<td style="color:red">{{s.incorrectCount}}</td>
-			<td>{{s.score}}</td>
+			<td>{{s.score | percent:'1.2-2'}}</td>
 		</tr>
 		<tr>
 			<td>Totals</td>
 			<td>{{test.testResult.questionCount}}</td>
 			<td style="color:green">{{test.testResult.correctCount}}</td>
 			<td style="color:red">{{test.testResult.incorrectCount}}</td>
-			<td>{{test.testResult.score}}</td>
+			<td>{{test.testResult.score | percent:'1.2-2'}}</td>
 		</tr>
 	</tbody>
 </table>
