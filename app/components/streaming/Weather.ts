@@ -28,6 +28,7 @@ export class Weather {
     stateStats:IStateAccidentStats[] = [];
 
     constructor(public messaageBroker:MessageBroker) {
+        console.log('Weather constructor');
         this.weatherUpdates = messaageBroker.getWeatherUpdates();
         this.accidentUpdates = messaageBroker.getAccidentUpdate();
 
@@ -54,5 +55,13 @@ export class Weather {
         this.weatherUpdates.subscribe(w => {
             this.lastUpdate = w;
         });
+    }
+
+    ngAfterContentInit() {
+      console.log('ngAfterContentInit called for weather');
+    }
+
+    ngOnDestroy() {
+        console.log('ngOnDestroy called for weather.');
     }
 }
