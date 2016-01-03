@@ -57,11 +57,39 @@ export class Weather {
         });
     }
 
-    ngAfterContentInit() {
-      console.log('ngAfterContentInit called for weather');
+    ngOnInit() {
+        this.logLifecycleEvent('ngOnInit')
     }
 
     ngOnDestroy() {
-        console.log('ngOnDestroy called for weather.');
+        this.logLifecycleEvent('ngOnDestroy')
+    }
+
+    ngOnChanges() {
+        this.logLifecycleEvent('ngOnChanges')
+    }
+
+    ngAfterContentInit() {
+        this.logLifecycleEvent('ngAfterContentInit')
+    }
+
+    ngDoCheck() {
+        //this.logLifecycleEvent('ngDoCheck')   // Fires frequently
+    }
+
+    ngAfterContentChecked() {
+        //this.logLifecycleEvent('ngAfterContentChecked') // Fires frequently
+    }
+
+    ngAfterViewChecked() {
+        //this.logLifecycleEvent('ngAfterViewChecked')  // Fires frequently
+    }
+
+    ngAfterViewInit() {
+        this.logLifecycleEvent('ngAfterViewInit')
+    }
+
+    logLifecycleEvent(lifecycleMethod:string) {
+        console.log(`Lifecycle method ${lifecycleMethod} invoked in Weather component.`);
     }
 }
