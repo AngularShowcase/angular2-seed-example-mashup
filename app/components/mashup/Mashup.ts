@@ -34,21 +34,21 @@ export class Mashup {
             address: {
                 city: 'Plainview',
                 state: 'New York'
-            }
-            // sports: ['lacrosse', 'bowling',
-            //     { name: 'football',
-            //       rank: 1,
-            //       players: [
-            //             'Randy',
-            //             { FirstName: 'Howard',
-            //               LastName: 'Pinsley',
-            //               Skills: ['Quarterback', 'WideReceiver', { Position: 'Running Back', Level: 'Expert'}]
-            //             },
-            //             'David'
-            //         ]
-            //       },
-            //     'Tetherball'
-            // ]
+            },
+            sports: ['lacrosse', 'bowling',
+                { name: 'football',
+                  rank: 1,
+                  players: [
+                        'Randy',
+                        { FirstName: 'Howard',
+                          LastName: 'Pinsley',
+                          Skills: ['Quarterback', 'WideReceiver', { Position: 'Running Back', Level: 'Expert'}]
+                        },
+                        'David'
+                    ]
+                  },
+                'Tetherball'
+            ]
         };
         this.reposDisplayData = {};
         this.setNameLookup();
@@ -63,7 +63,7 @@ export class Mashup {
             .filter(name => name.length >= this.minNameLength);
 
         var namePub = lookupNamePub
-            .mergeMap(name => this.githubServices.getUser(name).toPromise());
+            .mergeMap(name => this.githubServices.getUser(name));
 
         lookupNamePub.subscribe(name => console.log(`Lookup name observable returned name [${name}]`));
 
@@ -71,7 +71,7 @@ export class Mashup {
             error => console.log('Error', error));
 
 
-        var repoPub = namePub.mergeMap((user:IGithubUser) => this.githubServices.lookupRepo(user).toPromise());
+        var repoPub = namePub.mergeMap((user:IGithubUser) => this.githubServices.lookupRepo(user));
 
         repoPub.subscribe(this.setRepos.bind(this),
             error => console.log('repos error', error));

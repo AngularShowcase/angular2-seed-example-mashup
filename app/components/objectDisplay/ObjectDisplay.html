@@ -2,7 +2,7 @@
 	<template ngSwitchWhen="object">
 		<span (click)="toggleCollapsed()" class="glyphicon glyphicon-arrow-down" *ngIf="collapsed"></span>
 		<table>
-			<tr *ngFor="#prop of getObjectProperties(collapsed)">
+			<tr *ngFor="#prop of objectProperties">
 				<td>{{propNameToLabel(prop)}}</td>
 				<td>
 					<object-display (selectobject)="objectSelected($event)" [display-object]="displayObject[prop]"></object-display>

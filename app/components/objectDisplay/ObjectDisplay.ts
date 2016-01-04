@@ -18,6 +18,7 @@ export class ObjectDisplay {
        collapsed:boolean;
        selectobject: EventEmitter<any>;
        parser:Parser;
+       objectProperties: string[] = [];
 
        constructor(parser:Parser) {
            console.log('In ObjectDisplay constructor');
@@ -35,6 +36,7 @@ export class ObjectDisplay {
        set displayObject(val) {
            console.log('Setting display object to: ', val);
            this._displayObject = val;
+           this.objectProperties = this.getObjectProperties(this.collapsed);
        }
 
        getType():string {
@@ -60,7 +62,7 @@ export class ObjectDisplay {
        // want to show at least one property and an expander.  We favor any property with the word
        // name at the beginning.  If none is found, just return the first property.
 
-       getObjectProperties(firstOnly?:boolean):string[] {
+       private getObjectProperties(firstOnly?:boolean):string[] {
            var props:string[] = [];
 
            if (!this.isObject()) {
