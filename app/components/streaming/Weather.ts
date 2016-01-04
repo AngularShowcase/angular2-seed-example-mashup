@@ -4,19 +4,15 @@ import {MessageBroker} from '../../services/MessageBroker';
 import {IWeatherUpdate} from '../../../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../../../common/interfaces/TrafficInterfaces';
 import {WeatherMap} from '../../directives/WeatherMap';
-
-interface IStateAccidentStats {
-    state: string;
-    numberOfAccidents: number;
-    numberOfVehicles: number;
-}
+import {IStateAccidentStats} from './StateAccidentStats';
+import {StateStats} from './StateStats';
 
 @Component({
     selector: 'weather',
     templateUrl: './components/streaming/Weather.html',
     styleUrls: ['./components/streaming/Weather.css'],
     pipes: [],
-    directives: [CORE_DIRECTIVES, WeatherMap]
+    directives: [CORE_DIRECTIVES, WeatherMap, StateStats]
 })
 export class Weather {
 

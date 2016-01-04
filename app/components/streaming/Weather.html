@@ -8,22 +8,6 @@
             </div>
         </div>
         <div class="col-md-3">
-            <h2>Traffic Info</h2>
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>State</th>
-                        <th>Accidents</th>
-                        <th>Vehicles</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="#stat of stateStats">
-                        <td>{{stat.state}}</td>
-                        <td>{{stat.numberOfAccidents}}</td>
-                        <td>{{stat.numberOfVehicles}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <state-stats [stats]="stateStats"></state-stats>
         </div>
     </div>
