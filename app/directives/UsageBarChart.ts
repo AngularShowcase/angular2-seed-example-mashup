@@ -4,14 +4,14 @@ import {IUsage, IPerson} from '../../common/interfaces/CellDataInterfaces';
 
 @Directive({
     selector: '[usage-bar-chart]',		// Not sure why you need to put it in brackets
-    properties: [
+    inputs: [
         'usageData:usage-data',
         'person:person',
         'width',
         'height',
         'animationTime:animation-time'
     ],
-    events: [],
+    outputs: [],
     host: {
         '(click)': 'onClick($event)',
         '(load)': 'onLoad($event)',
