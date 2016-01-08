@@ -17,16 +17,20 @@ export class QuizAdmin {
 
     form:ControlGroup;
     categories:Observable<string[]>;
-    //category:Control = new Control();
+    answerCategories:Observable<string[]>;
+
+    answerCategory:Control = new Control();
 
     constructor(public quizServices:QuizServices,
                 public authentication:Authentication,
                 public fb:FormBuilder) {
 
         this.categories = this.quizServices.getAnswerCategories();
+        this.answerCategories = this.quizServices.getAnswerCategories();
 
         this.form = fb.group({
-            'category' : ['', Validators.required]
+            'category' : ['', Validators.required],
+            'answerCategory' : this.answerCategory
         });
     }
 }
