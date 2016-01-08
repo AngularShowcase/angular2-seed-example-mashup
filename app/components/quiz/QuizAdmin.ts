@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
-//import {IQuiz, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
+import {IQuiz, IQuizQuestion, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'quiz-admin',
@@ -18,29 +18,41 @@ export class QuizAdmin {
     form:ControlGroup;
     categories:Observable<string[]>;
     answerCategories:Observable<string[]>;
+    questions:Observable<IQuizQuestion[]>;
 
     answerCategory:Control = new Control();
+    category:Control = new Control();
 
     constructor(public quizServices:QuizServices,
                 public authentication:Authentication,
                 public fb:FormBuilder) {
 
-        this.categories = this.quizServices.getAnswerCategories();
+        this.categories = this.quizServices.getCategories();
         this.answerCategories = this.quizServices.getAnswerCategories();
 
         this.form = fb.group({
-            'category' : ['', Validators.required],
+            // 'category' : ['', Validators.required],
+            'category' : this.category,
             'answerCategory' : this.answerCategory
         });
 
         this.form.valueChanges
-            .subscribe(formUpdate =>{
-                console.log('Form Update', formUpdate);
+            .subscribe(formUpdate => {
+                //console.log('Form Update', formUpdate);
             });
+
+        this.questions = this.category.valueChanges.distinctUntilChanged()
+            .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
         this.answerCategory.valueChanges
             .subscribe(acUpdate => {
                 console.log('acUpdate', acUpdate);
             });
+        this.answerCategory.valueChanges.distinctUntilChanged()
+            .subscribe(acUpdate => {
+                console.log('acUpdate distinct', acUpdate);
+            });
+
+        this.answerCategory.value = 'color';
     }
 }
