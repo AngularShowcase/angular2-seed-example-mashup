@@ -30,6 +30,7 @@
                 <th>Question</th>
                 <th>Answer Category</th>
                 <th>Answer</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +38,8 @@
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>{{q.answerCategory}}</td>
-                <td>{{q.answer}}</td>
+                <td><input #answer [value]="q.answer" /></td>
+                <td><input type="button" value="Update" (click)="updateQuestion(q, answer)" /></td>
             </tr>
         </tbody>
     </table>

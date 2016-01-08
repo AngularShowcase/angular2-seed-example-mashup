@@ -55,4 +55,8 @@ export class QuizAdmin {
 
         this.answerCategory.value = 'color';
     }
+
+    updateQuestion(question:IQuizQuestion, answer:Control) {
+        console.log(`Updating ${question.question} to ${answer.value}.`);
+    }
 }
