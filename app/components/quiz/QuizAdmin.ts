@@ -1,9 +1,9 @@
 import {Component} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
-import {IQuiz, IQuizQuestion, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
+import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
 
 
 @Component({
@@ -20,6 +20,7 @@ export class QuizAdmin {
     categories:Observable<string[]>;
     answerCategories:Observable<string[]>;
     questions:Observable<IQuizQuestion[]>;
+    filteredQuestions:Observable<IQuizQuestion[]>;
 
     answerCategory:Control = new Control();
     category:Control = new Control();
@@ -45,6 +46,7 @@ export class QuizAdmin {
             .subscribe(acUpdate => {
                 console.log('acUpdate', acUpdate);
             });
+
         this.answerCategory.valueChanges.distinctUntilChanged()
             .subscribe(acUpdate => {
                 console.log('acUpdate distinct', acUpdate);
