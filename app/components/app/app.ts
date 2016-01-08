@@ -38,6 +38,7 @@ import {ProctorExam} from '../quiz/ProctorExam';
 import {ReviewTest} from '../quiz/ReviewTest';
 import {Weather} from '../streaming/Weather';
 import {Chat} from '../streaming/Chat';
+import {QuizAdmin} from '../quiz/QuizAdmin';
 
 @Component({
   selector: 'app',
@@ -62,6 +63,7 @@ import {Chat} from '../streaming/Chat';
   { path: '/animalgame', component: AnimalGame, as: 'Animalgame' },
   { path: '/animalanalyze', component: AnimalAnalyze, as: 'Animalanalyze' },
   { path: '/quiz/questionentry', component: QuestionEntry, as: 'QuestionEntry'},
+  { path: '/quiz/admin', component: QuizAdmin, as: 'QuizAdmin'},
   { path: '/quiz/quizcreation', component: QuizCreation, as: 'QuizCreation'},
   { path: '/quiz/proctorexam/:quizId', component: ProctorExam, as: 'ProctorExam'},
   { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'},

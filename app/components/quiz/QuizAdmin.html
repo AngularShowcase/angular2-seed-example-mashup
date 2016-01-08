@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Quiz Administration</h1>
+
+    <form [ngFormModel]="form">
+        <label>
+            <select ngControl="category">
+                <option *ngFor="#c of categories | async" [value]="c">{{c}}</option>
+            </select>
+        </label>
+    </form>
+</div>
