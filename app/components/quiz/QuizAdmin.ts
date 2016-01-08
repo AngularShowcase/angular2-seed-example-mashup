@@ -32,5 +32,15 @@ export class QuizAdmin {
             'category' : ['', Validators.required],
             'answerCategory' : this.answerCategory
         });
+
+        this.form.valueChanges
+            .subscribe(formUpdate =>{
+                console.log('Form Update', formUpdate);
+            });
+
+        this.answerCategory.valueChanges
+            .subscribe(acUpdate => {
+                console.log('acUpdate', acUpdate);
+            });
     }
 }
