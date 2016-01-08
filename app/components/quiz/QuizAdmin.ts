@@ -5,6 +5,7 @@ import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import {IQuiz, IQuizQuestion, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
 
+
 @Component({
     selector: 'quiz-admin',
     templateUrl: './components/quiz/QuizAdmin.html',
@@ -28,7 +29,6 @@ export class QuizAdmin {
                 public fb:FormBuilder) {
 
         this.categories = this.quizServices.getCategories();
-        this.answerCategories = this.quizServices.getAnswerCategories();
 
         this.form = fb.group({
             // 'category' : ['', Validators.required],
@@ -38,6 +38,8 @@ export class QuizAdmin {
 
         this.questions = this.category.valueChanges.distinctUntilChanged()
             .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
+
+        this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
 
         this.answerCategory.valueChanges
             .subscribe(acUpdate => {
