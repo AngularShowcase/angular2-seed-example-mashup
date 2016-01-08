@@ -9,17 +9,12 @@
                     <option *ngFor="#c of categories | async" [value]="c">{{c}}</option>
                 </select>
             </label>
-        </div>
-
-        <div class="form-group">
-            <div class="input-group">
-                <label>
-                    Answer Category:
-                    <select ngControl="answerCategory">
-                        <option *ngFor="#ac of answerCategories | async" [value]="ac">{{ac}}</option>
-                    </select>
-                </label>
-            </div>
+            <label>
+                Answer Category:
+                <select ngControl="answerCategory">
+                    <option *ngFor="#ac of answerCategories | async" [value]="ac">{{ac}}</option>
+                </select>
+            </label>
         </div>
     </form>
 

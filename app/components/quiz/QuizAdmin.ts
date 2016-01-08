@@ -36,11 +36,6 @@ export class QuizAdmin {
             'answerCategory' : this.answerCategory
         });
 
-        this.form.valueChanges
-            .subscribe(formUpdate => {
-                //console.log('Form Update', formUpdate);
-            });
-
         this.questions = this.category.valueChanges.distinctUntilChanged()
             .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
@@ -52,8 +47,6 @@ export class QuizAdmin {
             .subscribe(acUpdate => {
                 console.log('acUpdate distinct', acUpdate);
             });
-
-        this.answerCategory.value = 'color';
     }
 
     updateQuestion(question:IQuizQuestion, answer:Control) {
