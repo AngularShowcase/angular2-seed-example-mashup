@@ -45,7 +45,7 @@ export class QuizAdmin {
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
 
         // Whenever we get a new list of answer categories, clear any selection
-        this.answerCategories.subscribe(catList => this.answerCategoryControl.updateValue(''));
+        this.answerCategories.subscribe(_ => this.answerCategoryControl.updateValue(''));
 
         // Observable of selected categories including the one set above
         var selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
@@ -53,7 +53,7 @@ export class QuizAdmin {
         // Whenever the questions change or the selected category, refilter the question list
         this.filteredQuestions = this.questions.combineLatest(selectedCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
-                    latestQuestions.filter(q => !latestAnswerCategory || q.answerCategory === latestAnswerCategory));
+                    latestQuestions.filter(q => q.answerCategory === (latestAnswerCategory || q.answerCategory)));
 
     }
 
