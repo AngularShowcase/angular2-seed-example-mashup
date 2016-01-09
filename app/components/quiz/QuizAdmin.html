@@ -18,6 +18,10 @@
         </div>
     </form>
 
+    <div>
+        <span class="badge" *ngIf="categoryControl.value">Questions for category {{categoryControl.value}}</span>
+    </div>
+
     <table class="table table-condensed">
         <thead>
             <tr>
