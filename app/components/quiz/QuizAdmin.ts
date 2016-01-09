@@ -22,8 +22,8 @@ export class QuizAdmin {
     questions:Observable<IQuizQuestion[]>;
     filteredQuestions:Observable<IQuizQuestion[]>;
 
-    answerCategory:Control = new Control();
-    category:Control = new Control();
+    answerCategoryControl:Control = new Control();
+    categoryControl:Control = new Control();
 
     constructor(public quizServices:QuizServices,
                 public authentication:Authentication,
@@ -33,32 +33,31 @@ export class QuizAdmin {
 
         this.form = fb.group({
             // 'category' : ['', Validators.required],
-            'category' : this.category,
-            'answerCategory' : this.answerCategory
+            'category' : this.categoryControl,
+            'answerCategory' : this.answerCategoryControl
         });
 
-        this.questions = this.category.valueChanges.distinctUntilChanged()
+        // Whenever the category changes, emit a list of questions for that category
+        this.questions = this.categoryControl.valueChanges.distinctUntilChanged()
             .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
+        // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
-        this.answerCategories.subscribe(catList => {
-                console.log('Setting answer category to empty string');
-                this.answerCategory.updateValue('');
-            });
 
-        this.answerCategory.valueChanges
-            .subscribe(acUpdate => {
-                console.log('acUpdate', acUpdate);
-            });
+        // Whenever we get a new list of answer categories, clear any selection
+        this.answerCategories.subscribe(catList => this.answerCategoryControl.updateValue(''));
 
-        var distinctAnswersCategories:Observable<string> = this.answerCategory.valueChanges.distinctUntilChanged();
+        // Observable of selected categories including the one set above
+        var selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
 
-        this.filteredQuestions = this.questions.combineLatest(distinctAnswersCategories,
+        // Whenever the questions change or the selected category, refilter the question list
+        this.filteredQuestions = this.questions.combineLatest(selectedCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
                     latestQuestions.filter(q => !latestAnswerCategory || q.answerCategory === latestAnswerCategory));
 
     }
 
+    // Action when update button is pressed
     updateQuestion(question:IQuizQuestion, answer:Control) {
         console.log(`Updating ${question.question} to ${answer.value}.`);
     }
