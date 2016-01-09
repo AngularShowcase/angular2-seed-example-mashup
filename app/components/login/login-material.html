@@ -1,29 +1,25 @@
 <hp-fly-text [duration]="3000" [remove-delay]='0' [remove-source]="false" source-id="username" target-id="userBadge" [text]="model.flyText1" (complete)="onAnimationComplete()"></hp-fly-text>
 
-<md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
-    <div flex="200" layout="column" flex-xs="100">
-        <md-card>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Mashup</span>
-                    <span class="md-subhead">Sign In</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content layout="row" layout-align="center">
-                <md-input-container>
-                    <label for="username">Username</label>
-                    <input md-input type="text" id="username" [(ngModel)]="model.username">
-                </md-input-container>
-                <md-input-container>
-                    <label for="password">Password</label>
-                    <input md-input type="password" id="password" [(ngModel)]="model.password">
-                </md-input-container>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="center">
-                <button md-raised-button class="md-raised md-primary" [disabled]="!model.username || !model.password" (click)="login()">Submit</button>
-            </md-card-actions>
-        </md-card>
-    </div>
-</md-content>
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Mashup</span>
+            <span class="md-subhead">Sign In</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="center">
+        <md-input-container>
+            <label for="username">Username</label>
+            <input md-input type="text" id="username" [(ngModel)]="model.username">
+        </md-input-container>
+        <md-input-container>
+            <label for="password">Password</label>
+            <input md-input type="password" id="password" [(ngModel)]="model.password">
+        </md-input-container>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="center">
+        <button md-raised-button class="md-raised md-primary" [disabled]="!model.username || !model.password" (click)="login()">Submit</button>
+    </md-card-actions>
+</md-card>
 <div>{{model.errors}}</div>
 <div *ngIf="loggedIn" style="font-size:14pt">Pardon the silly animation.  Just testing...</div>
