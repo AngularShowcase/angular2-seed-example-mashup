@@ -41,16 +41,22 @@ export class QuizAdmin {
             .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
+        this.answerCategories.subscribe(catList => {
+                console.log('Setting answer category to empty string');
+                this.answerCategory.updateValue('');
+            });
 
         this.answerCategory.valueChanges
             .subscribe(acUpdate => {
                 console.log('acUpdate', acUpdate);
             });
 
-        this.answerCategory.valueChanges.distinctUntilChanged()
-            .subscribe(acUpdate => {
-                console.log('acUpdate distinct', acUpdate);
-            });
+        var distinctAnswersCategories:Observable<string> = this.answerCategory.valueChanges.distinctUntilChanged();
+
+        this.filteredQuestions = this.questions.combineLatest(distinctAnswersCategories,
+                (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
+                    latestQuestions.filter(q => !latestAnswerCategory || q.answerCategory === latestAnswerCategory));
+
     }
 
     updateQuestion(question:IQuizQuestion, answer:Control) {

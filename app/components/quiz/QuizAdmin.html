@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="#q of questions | async">
+            <tr *ngFor="#q of filteredQuestions | async">
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>{{q.answerCategory}}</td>
