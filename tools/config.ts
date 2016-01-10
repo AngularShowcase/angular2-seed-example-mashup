@@ -47,6 +47,7 @@ export const NPM_DEPENDENCIES = [
   { src: 'angular2/bundles/angular2.min.js', inject: 'libs', dest: LIB_DEST },
   { src: 'angular2/bundles/router.js', inject: 'libs', dest: LIB_DEST }, // use router.min.js with alpha47
   { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'ng2-material/dist/ng2-material.js', inject: 'libs', dest: LIB_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST },
   { src: 'ng2-material/dist/ng2-material.css', inject: true, dest: CSS_DEST },
@@ -97,6 +98,7 @@ export const SYSTEM_CONFIG_BUILDER = {
   paths: {
     '*': `${TMP_DIR}/*`,
     'angular2/*': 'node_modules/angular2/*',
+    'ng2-material/*': 'node_modules/ng2-material/*',
     'rxjs/*': 'node_modules/rxjs/*'
   }
 };
