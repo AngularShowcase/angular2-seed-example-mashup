@@ -1,32 +1,20 @@
+<md-content>
+    <md-input-container>
+        <label for="newMessage">Chat Messsage</label>
+        <input md-input id="newMessage" #msg [(ngModel)]="message">
+    </md-input-container>
+    <button md-raised-button class="md-raised md-primary" (click)="sendMessage(msg.value)">Send</button>
+</md-content>
+
 <md-content class="md-padding" layout="row" layout-align="center">
-    <h1>Chat</h1>
-
-    <md-card>
+    <md-card blue-grey *ngFor="#chatmessage of thread">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-header">{{user.username}}</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="column" layout-align="center">
-            <md-input-container>
-                <input md-input id="newMessage" #msg [(ngModel)]="message">
-                <label for="newMessage">Messsage</label>
-            </md-input-container>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="center">
-            <button md-raised-button class="md-raised md-primary" (click)="sendMessage(msg.value)">Send</button>
-        </md-card-actions>
-    </md-card>
-
-    <md-card *ngFor="#chatmessage of thread">
-        <md-card-title>
-            <md-card-title-text>
-                <span>Message from {{chatmessage.username}} at {{chatmessage.time | date:'EEEE hh:mm:ss'}}</span>
+                <span class="md-headline">Message from {{chatmessage.username}} at {{chatmessage.time | date:'EEEE hh:mm:ss'}}</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="column" layout-align="center">
             {{chatmessage.message}}
         </md-card-content>
     </md-card>
-
 </md-content>
