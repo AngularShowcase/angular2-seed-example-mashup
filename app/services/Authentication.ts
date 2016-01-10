@@ -33,7 +33,8 @@ export class Authentication {
 	}
 
 	isLoggedIn(): boolean {
-		return !!this._user;
+		let result = !!this._user;
+        return result;
 	}
 
 	get user(): IRegisteredUser {

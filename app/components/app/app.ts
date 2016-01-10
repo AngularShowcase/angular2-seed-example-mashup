@@ -87,6 +87,10 @@ export class AppCmp {
     return this.auth.isLoggedIn() ? this.auth.user.username : '';
   }
 
+  isLoggedIn():boolean {
+      return this.auth.isLoggedIn();
+  }
+
   logout() {
       this.auth.logout();
       this.router.navigateByUrl('/login');
