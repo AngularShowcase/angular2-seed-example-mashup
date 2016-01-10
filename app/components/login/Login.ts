@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
+import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Router} from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
 
@@ -17,6 +17,17 @@ export class Login {
     constructor(public auth:Authentication, public router:Router) {
     }
 
+    register() {
+        this.router.navigateByUrl('/register');
+    }
+
+    ngOnInit() {
+        console.log('Login form initialized');
+    }
+
+    ngOnDestroy() {
+        console.log('Login form destroyed');
+    }
     login() {
         console.log('Last route in login() is: ', this.auth.getLastRoute());
 
