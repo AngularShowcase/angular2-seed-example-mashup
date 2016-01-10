@@ -67,10 +67,10 @@
                         Last chat messgae from {{lastChatMessage.username}} at {{lastChatMessage.time | date:'hh:mm:ss'}}
                     </div>
 
-                    <button [hidden]="!isLoggedIn()" (click)="logout()">Logout</button>
-                    <button [hidden]="isLoggedIn()" (click)="register()">Register</button>
-                    <button [hidden]="isLoggedIn()" (click)="login()">Login</button>
-                    <button [hidden]="!isLoggedIn()" (click)="userInfo()">{{getUser()}}</button>
+                    <button md-raised-button [disabled]="!isLoggedIn()" (click)="logout()">Logout</button>
+                    <button md-raised-button [disabled]="isLoggedIn()" (click)="register()">Register</button>
+                    <button md-raised-button [disabled]="isLoggedIn()" (click)="login()">Login</button>
+                    <button md-raised-button [disabled]="!isLoggedIn()" class="md-primary" (click)="userInfo()">{{getUser()}}</button>
 
                 </ul>
             </div>
