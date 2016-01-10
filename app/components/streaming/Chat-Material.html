@@ -17,4 +17,16 @@
             <button md-raised-button class="md-raised md-primary" (click)="sendMessage(msg.value)">Send</button>
         </md-card-actions>
     </md-card>
+
+    <md-card *ngFor="#chatmessage of thread">
+        <md-card-title>
+            <md-card-title-text>
+                <span>Message from {{chatmessage.username}} at {{chatmessage.time | date:'EEEE hh:mm:ss'}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column" layout-align="center">
+            {{chatmessage.message}}
+        </md-card-content>
+    </md-card>
+
 </md-content>
