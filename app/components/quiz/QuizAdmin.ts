@@ -37,9 +37,10 @@ export class QuizAdmin {
             'answerCategory' : this.answerCategoryControl
         });
 
+        let categoryChanges = this.categoryControl.valueChanges.distinctUntilChanged();
+
         // Whenever the category changes, emit a list of questions for that category
-        this.questions = this.categoryControl.valueChanges.distinctUntilChanged()
-            .mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
+        this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
         // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
@@ -48,7 +49,7 @@ export class QuizAdmin {
         this.answerCategories.subscribe(_ => this.answerCategoryControl.updateValue(''));
 
         // Observable of selected categories including the one set above
-        var selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
+        let selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
 
         // Whenever the questions change or the selected category, refilter the question list
         this.filteredQuestions = this.questions.combineLatest(selectedCategories,
