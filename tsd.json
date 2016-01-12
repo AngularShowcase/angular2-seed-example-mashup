@@ -42,7 +42,7 @@
       "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
     },
     "jquery/jquery.d.ts": {
-      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     },
     "underscore/underscore.d.ts": {
       "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
@@ -94,6 +94,9 @@
     },
     "socket.io-client/socket.io-client.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+    },
+    "jquery.dataTables/jquery.dataTables.d.ts": {
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     }
   }
 }

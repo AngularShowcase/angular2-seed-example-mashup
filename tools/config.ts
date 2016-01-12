@@ -52,13 +52,15 @@ export const NPM_DEPENDENCIES = [
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST },
   { src: 'ng2-material/dist/ng2-material.css', inject: true, dest: CSS_DEST },
   { src: 'ng2-material/dist/font.css', inject: true, dest: CSS_DEST },
+  { src: 'datatables/media/css/jquery.dataTables.css', inject: true, dest: CSS_DEST },
 
   { src: 'jquery/dist/jquery.js', inject: 'libs', dest: LIB_DEST },
   { src: 'underscore/underscore.js', inject: 'libs', dest: LIB_DEST },
   { src: 'moment/moment.js', inject: 'libs', dest: LIB_DEST },
   { src: 'd3/d3.js', inject: 'libs', dest: LIB_DEST },
   { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: LIB_DEST },
-  { src: 'socket.io-client/socket.io.js', inject: 'libs', dest: LIB_DEST }
+  { src: 'socket.io-client/socket.io.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'datatables/media/js/jquery.dataTables.js', inject: 'libs', dest: LIB_DEST }
 ];
 
 // Declare local files that needs to be injected

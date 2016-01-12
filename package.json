@@ -86,6 +86,7 @@
     "body-parser": "^1.13.2",
     "bootstrap": "^3.3.5",
     "d3": "^3.5.6",
+    "datatables": "^1.10.9",
     "debug": "^2.2.0",
     "es6-module-loader": "^0.17.8",
     "es6-shim": "^0.33.3",
