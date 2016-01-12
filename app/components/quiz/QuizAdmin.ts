@@ -39,8 +39,11 @@ export class QuizAdmin {
 
         let categoryChanges = this.categoryControl.valueChanges.distinctUntilChanged();
 
+
         // Whenever the category changes, emit a list of questions for that category
-        this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
+        this.questions = categoryChanges.mergeMap(cat =>
+            this.quizServices.getQuestionsForCategory(cat)
+                .do(questionArray => questionArray.forEach(q => q['editing'] = false)));
 
         // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
@@ -58,8 +61,12 @@ export class QuizAdmin {
 
     }
 
+    getQuestionClass(question:IQuizQuestion) {
+        return question['changed'] ? 'changed' : '';
+    }
+
     // Action when update button is pressed
-    updateQuestion(question:IQuizQuestion, answer:Control) {
-        console.log(`Updating ${question.question} to ${answer.value}.`);
+    updateQuestion(question:IQuizQuestion) {
+        console.log(`Updating ${question.question} to ${question.answer}.`);
     }
 }

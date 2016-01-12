@@ -1,4 +1,17 @@
-table {
-  height: 300px;
-  overflow-y: scroll;
-  border: 3px solid red; }
+label {
+  margin-left: 10px; }
+
+select.catSelect {
+  margin-left: 5px;
+  padding: 10px 16px;
+  font-size: 18px;
+  border-radius: 6px;
+  height: 46px;
+  line-height: 46px;
+  color: orangered; }
+
+.changed {
+  background-color: black;
+  padding: 10px;
+  color: orange;
+  font-weight: bold; }
