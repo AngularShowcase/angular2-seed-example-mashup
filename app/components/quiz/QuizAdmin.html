@@ -27,24 +27,18 @@
                 <th>Question</th>
                 <th>Answer Category</th>
                 <th>Answer</th>
-                <th></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="#q of filteredQuestions | async">
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
-                <td class="editable">
-                    <span [ngClass]="getQuestionClass(q)" [hidden]="q.editingAnswerCategory" (click)="q.editingAnswerCategory = true">{{q.answerCategory}}</span>
-                    <select [hidden]="!q.editingAnswerCategory || q.freeform" [(ngModel)]="q.answerCategory" (change)="q.editingAnswerCategory = false; q.changed = true">
-                        <option *ngFor="#ac of answerCategoryList" [value]="ac">{{ac}}</option>
-                    </select>
-                    <input [hidden]="!q.editingAnswerCategory || q.freeform" type="button" value="+" (click)="q.freeform = true" />
-                    <input [hidden]="!q.editingAnswerCategory || !q.freeform" [(ngModel)]="q.answerCategory" (blur)="q.editingAnswerCategory = false; q.changed = true" />
+                <td>
+                    <editable-field [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
                 </td>
-                <td class="editable">
-                    <span [ngClass]="getQuestionClass(q)" [hidden]="q.editingQuestion" (click)="q.editingQuestion = true">{{q.answer}}</span>
-                    <input [hidden]="!q.editingQuestion" [(ngModel)]="q.answer" (blur)="q.editingQuestion = false; q.changed = true" />
+                <td>
+                    <editable-field [val]="q.answer"></editable-field>
                 </td>
                 <td>
                     <input type="button" value="Update" (click)="updateQuestion(q)" />

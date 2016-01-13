@@ -9,10 +9,3 @@ select.catSelect {
   height: 46px;
   line-height: 46px;
   color: orangered; }
-
-.editable {
-  cursor: pointer; }
-
-.changed {
-  color: red;
-  font-weight: bold; }

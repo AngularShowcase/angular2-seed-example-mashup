@@ -1,0 +1,6 @@
+.editable {
+  cursor: pointer; }
+
+.changed {
+  color: red;
+  font-weight: bold; }

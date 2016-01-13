@@ -4,7 +4,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder} fr
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
-
+import {EditableField} from '../common/EditableField';
 
 @Component({
     selector: 'quiz-admin',
@@ -12,7 +12,7 @@ import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
     styleUrls: ['./components/quiz/QuizAdmin.css'],
 
     providers: [QuizServices],
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, EditableField]
 })
 export class QuizAdmin {
 
@@ -22,7 +22,7 @@ export class QuizAdmin {
     questions:Observable<IQuizQuestion[]>;
     filteredQuestions:Observable<IQuizQuestion[]>;
     answerCategoryList:string[];
-    
+
     answerCategoryControl:Control = new Control();
     categoryControl:Control = new Control();
 
@@ -61,10 +61,6 @@ export class QuizAdmin {
         this.filteredQuestions = this.questions.combineLatest(selectedCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
                     latestQuestions.filter(q => q.answerCategory === (latestAnswerCategory || q.answerCategory)));
-    }
-
-    getQuestionClass(question:IQuizQuestion) {
-        return question['changed'] ? 'changed' : '';
     }
 
     // Action when update button is pressed
