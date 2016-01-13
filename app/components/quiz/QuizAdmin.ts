@@ -21,7 +21,8 @@ export class QuizAdmin {
     answerCategories:Observable<string[]>;
     questions:Observable<IQuizQuestion[]>;
     filteredQuestions:Observable<IQuizQuestion[]>;
-
+    answerCategoryList:string[];
+    
     answerCategoryControl:Control = new Control();
     categoryControl:Control = new Control();
 
@@ -29,9 +30,12 @@ export class QuizAdmin {
                 public authentication:Authentication,
                 public fb:FormBuilder) {
 
+    }
+
+    ngOnInit() {
         this.categories = this.quizServices.getCategories();
 
-        this.form = fb.group({
+        this.form = this.fb.group({
             // 'category' : ['', Validators.required],
             'category' : this.categoryControl,
             'answerCategory' : this.answerCategoryControl
@@ -39,17 +43,16 @@ export class QuizAdmin {
 
         let categoryChanges = this.categoryControl.valueChanges.distinctUntilChanged();
 
-
         // Whenever the category changes, emit a list of questions for that category
-        this.questions = categoryChanges.mergeMap(cat =>
-            this.quizServices.getQuestionsForCategory(cat)
-                .do(questionArray => questionArray.forEach(q => q['editing'] = false)));
+        this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
         // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
 
         // Whenever we get a new list of answer categories, clear any selection
         this.answerCategories.subscribe(_ => this.answerCategoryControl.updateValue(''));
+
+        this.answerCategories.subscribe(ansCatList => this.answerCategoryList = ansCatList);
 
         // Observable of selected categories including the one set above
         let selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
@@ -58,7 +61,6 @@ export class QuizAdmin {
         this.filteredQuestions = this.questions.combineLatest(selectedCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
                     latestQuestions.filter(q => q.answerCategory === (latestAnswerCategory || q.answerCategory)));
-
     }
 
     getQuestionClass(question:IQuizQuestion) {

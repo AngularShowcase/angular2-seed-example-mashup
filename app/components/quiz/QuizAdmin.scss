@@ -12,9 +12,11 @@ select.catSelect {
   color: orangered;
 }
 
+.editable {
+    cursor: pointer;
+}
+
 .changed {
-    background-color: black;
-    padding: 10px;
-    color: orange;
+    color: red;
     font-weight: bold;
 }
