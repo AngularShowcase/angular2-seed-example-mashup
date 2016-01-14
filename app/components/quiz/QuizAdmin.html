@@ -5,7 +5,7 @@
         <div class="input-group">
             <label>
                 Question Category:
-                <select class="catSelect" ngControl="category">
+                <select style="color:purple" class="catSelect" ngControl="category">
                     <option *ngFor="#c of categories | async" [value]="c">{{c}}</option>
                 </select>
             </label>
@@ -35,10 +35,10 @@
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>
-                    <editable-field font-size="36pt" (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
+                    <editable-field font-size="32px" (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
                 </td>
                 <td>
-                    <editable-field (updates)="q.answer = $event" [val]="q.answer"></editable-field>
+                    <editable-field font-size="18pt" input-control-type="number" (updates)="q.answer = $event" [val]="q.answer"></editable-field>
                 </td>
                 <td>
                     <input type="button" value="Update" (click)="updateQuestion(q)" />
