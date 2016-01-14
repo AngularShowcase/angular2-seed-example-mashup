@@ -60,14 +60,14 @@ export class EditableField {
             'font-size' : this.fontSize
         };
 
+        // For some reason I don't understand, the font size is not
+        // picked up unless I specify border-radius (which appears to be ignored)
+
         this.selectStyle = {
-            'margin-left'   : '5px',
-            'padding'       : '10px 16px',
-            'font-size'     : '18px',
+            'font-size'     : this.fontSize,
             'border-radius' : '6px',
-            'height'        : '46px',
-            'line-height'   : '46px',
-            'color'         : 'orangered'
+            //'height'        : '146px',
+            'color'         : 'purple'
         };
     }
 
