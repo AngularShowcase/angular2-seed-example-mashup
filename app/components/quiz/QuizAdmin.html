@@ -35,10 +35,10 @@
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>
-                    <editable-field [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
+                    <editable-field (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
                 </td>
                 <td>
-                    <editable-field [val]="q.answer"></editable-field>
+                    <editable-field (updates)="q.answer = $event" [val]="q.answer"></editable-field>
                 </td>
                 <td>
                     <input type="button" value="Update" (click)="updateQuestion(q)" />

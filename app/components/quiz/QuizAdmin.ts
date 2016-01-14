@@ -65,6 +65,6 @@ export class QuizAdmin {
 
     // Action when update button is pressed
     updateQuestion(question:IQuizQuestion) {
-        console.log(`Updating ${question.question} to ${question.answer}.`);
+        console.log(`Updating ${question.question} to ${question.answerCategory} - ${question.answer}.`);
     }
 }
