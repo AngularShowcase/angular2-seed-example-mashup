@@ -65,9 +65,7 @@ export class EditableField {
 
         this.selectStyle = {
             'font-size'     : this.fontSize,
-            'border-radius' : '6px',
-            //'height'        : '146px',
-            'color'         : 'purple'
+            'border-radius' : '6px'
         };
     }
 
