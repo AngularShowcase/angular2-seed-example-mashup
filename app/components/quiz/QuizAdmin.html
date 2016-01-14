@@ -35,7 +35,7 @@
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>
-                    <editable-field (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
+                    <editable-field font-size="36pt" (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
                 </td>
                 <td>
                     <editable-field (updates)="q.answer = $event" [val]="q.answer"></editable-field>

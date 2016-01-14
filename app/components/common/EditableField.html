@@ -1,4 +1,4 @@
-<span [title]="getSpanTooltip()" class="editable" [ngClass]="getChangedClass()" [hidden]="editing" (click)="editing = true">{{val}}</span>
+<span [ngStyle]="spanStyle" [title]="getSpanTooltip()" class="editable" [ngClass]="getChangedClass()" [hidden]="editing" (click)="editing = true">{{val}}</span>
 
 <select #selectControl [hidden]="hidePickList" [(ngModel)]="val" (change)="valueChange(selectControl.value)">
     <option *ngFor="#optval of selectFrom" [value]="optval">{{optval}}</option>
