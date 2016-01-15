@@ -64,7 +64,14 @@ export class QuizAdmin {
     }
 
     // Action when update button is pressed
+
     updateQuestion(question:IQuizQuestion) {
         console.log(`Updating ${question.question} to ${question.answerCategory} - ${question.answer}.`);
+        this.quizServices.updateQuestion(question)
+            .subscribe( q => {
+                // Copy back fields in case they were normalized by the server
+                question.answer = q.answer;
+                question.answerCategory = q.answerCategory;
+            }, err => console.log('Error: ', err));
     }
 }

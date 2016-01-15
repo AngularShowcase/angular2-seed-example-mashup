@@ -65,6 +65,7 @@ export class ApiRouting {
 
 		this.router.get('/quiz/questions', this.getQuizQuestions.bind(this));
 		this.router.post('/quiz/questions', this.saveNewQuizQuestion.bind(this));
+        this.router.put('/quiz/questions/:questionId', this.updateQuestion.bind(this));
 		this.router.get('/quiz/categories', this.getQuizCategories.bind(this));
 		this.router.get('/quiz/answercategories', this.getQuizAnswerCategories.bind(this));
 
@@ -266,6 +267,20 @@ export class ApiRouting {
 			.then(response => res.send(response))
 			.catch(err => next(err));
 	}
+
+    updateQuestion(req, res, next) {
+		try {
+			var questionId = parseInt(req.params.questionId);
+            var question = <IQuizQuestion> req.body;
+
+            this.quizPersistenceService.updateQuestion(questionId, question)
+				.then(q => res.send(q))
+				.catch(err => next(err));
+
+		} catch (err) {
+			next(err);
+		}
+    }
 
 	createQuiz(req, res, next) {
 		var request:INewQuizRequest = req.body;

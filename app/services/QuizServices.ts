@@ -54,6 +54,14 @@ export class QuizServices {
 		return pub.map(response => response.json());
 	}
 
+	updateQuestion(question:IQuizQuestion) : Observable<IQuizQuestion> {
+		var pub = this.http.put(`/api/quiz/questions/${question.questionId}`,
+					JSON.stringify(question),
+					this.getPostOptions());
+
+		return pub.map(response => response.json());
+	}
+
 	getQuiz(quizId:number) : Observable<IQuiz> {
 		return this.http.get(`/api/quiz/${quizId}`).map(response => response.json());
 	}

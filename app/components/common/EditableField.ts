@@ -23,7 +23,7 @@ export class EditableField {
     origVal:string = '';
     editing:boolean = false;
     mode: InputMode = InputMode.PICKLIST;
-    fontSize: string = '24pt';
+    fontSize: string = '12pt';
     spanStyle:any;
     inputStyle:any;
     selectStyle:any;

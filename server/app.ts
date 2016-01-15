@@ -12,7 +12,7 @@ var env = argv['env'] || 'dev';
 
 console.log(`Server startup: env: ${env}`);
 
-var mongoskin = require('mongoskin');   //Using require since there is not tsd file
+var mongoskin = require('mongoskin');   //Using require since there is no tsd file
 
 import {ApiRouting} from './routing/ApiRouting';
 

@@ -94,6 +94,31 @@ export class QuizPersistenceService {
 		return defer.promise;
 	}
 
+    public updateQuestion(questionId: number, question:IQuizQuestion) : Q.Promise<IQuizQuestion> {
+
+		this.cleanQuestion(question);
+        var rawId = question['_id'];
+        question['_id']=mongoskin.ObjectID(rawId);
+
+		let defer = Q.defer<IQuizQuestion>();
+		var coll = this.questionsCollection;
+
+        if (questionId !== question.questionId) {
+            defer.reject('The question id parameter must match the id in the question.');
+        } else {
+            coll.update({questionId: questionId}, question, (e, res) => {
+                if (e) {
+                    defer.reject(e);
+                    return;
+                }
+                console.log(`Update result for question ${questionId} is ${res}.`);
+                defer.resolve(question);
+            });
+        }
+
+		return defer.promise;
+    }
+
 	public getCategories(): Q.Promise<string[]> {
 		let defer = Q.defer<string[]>();
 		var coll = this.questionsCollection;
