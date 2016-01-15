@@ -9,3 +9,20 @@ select.catSelect {
   height: 46px;
   line-height: 46px;
   color: orangered; }
+
+table#questionTable {
+  font-size: 16pt; }
+  table#questionTable td, table#questionTable th {
+    padding: 5px; }
+  table#questionTable thead tr {
+    background-color: black;
+    color: lightyellow; }
+    table#questionTable thead tr th:nth-child(1) {
+      text-align: right; }
+  table#questionTable tbody tr:nth-child(odd) {
+    background-color: lightskyblue; }
+  table#questionTable tbody td {
+    border: 1px solid black; }
+    table#questionTable tbody td:nth-child(1) {
+      background-color: white;
+      font-weight: bold; }

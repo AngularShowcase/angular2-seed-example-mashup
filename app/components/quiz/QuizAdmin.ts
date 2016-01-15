@@ -73,9 +73,12 @@ export class QuizAdmin {
     // Action when update button is pressed
 
     updateQuestion(question:IQuizQuestion) {
+
         console.log(`Updating ${question.question} to ${question.answerCategory} - ${question.answer}.`);
+
         this.quizServices.updateQuestion(question)
             .subscribe( q => {
+
                 // Copy back fields in case they were normalized by the server
                 question.answer = q.answer;
                 question.answerCategory = q.answerCategory;
@@ -84,6 +87,12 @@ export class QuizAdmin {
 
                 console.log(`Attempting to change category to ${this.categoryControl.value}`);
                 this.categoryControl.updateValue(q.category, {emitEvent: true});
+
+                // Wait a bit to get the new questions
+
+                setTimeout(() =>  {
+                    this.answerCategoryControl.updateValue(q.answerCategory, {emitEvent: true});
+                }, 1000);
 
             }, err => console.log('Error: ', err));
     }

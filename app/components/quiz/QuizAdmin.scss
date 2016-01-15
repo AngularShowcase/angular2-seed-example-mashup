@@ -11,3 +11,39 @@ select.catSelect {
   line-height: 46px;
   color: orangered;
 }
+
+table#questionTable {
+    font-size:16pt;
+
+    td, th {
+        padding: 5px;
+    }
+
+    thead {
+        tr {
+            background-color: black;
+            color: lightyellow;
+
+            th:nth-child(1) {
+                text-align: right;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background-color: lightskyblue
+            }
+        }
+
+        td {
+            border: 1px solid black;
+
+            &:nth-child(1) {
+                background-color: white;
+                font-weight: bold;
+            }
+        }
+    }
+}
