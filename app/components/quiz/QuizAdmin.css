@@ -11,18 +11,32 @@ select.catSelect {
   color: orangered; }
 
 table#questionTable {
-  font-size: 16pt; }
+  color: black;
+  font-size: 14pt; }
   table#questionTable td, table#questionTable th {
     padding: 5px; }
+    table#questionTable td:nth-child(2), table#questionTable th:nth-child(2) {
+      font-weight: bold;
+      color: red; }
+    table#questionTable td:nth-child(3), table#questionTable th:nth-child(3) {
+      color: blue; }
+    table#questionTable td:nth-child(4), table#questionTable th:nth-child(4) {
+      color: green; }
   table#questionTable thead tr {
     background-color: black;
-    color: lightyellow; }
+    color: yellow; }
+    table#questionTable thead tr th#actions {
+      width: 200px;
+      text-align: center; }
     table#questionTable thead tr th:nth-child(1) {
       text-align: right; }
   table#questionTable tbody tr:nth-child(odd) {
-    background-color: lightskyblue; }
-  table#questionTable tbody td {
-    border: 1px solid black; }
-    table#questionTable tbody td:nth-child(1) {
-      background-color: white;
-      font-weight: bold; }
+    background-color: #ccc; }
+  table#questionTable tbody td:nth-child(2) {
+    font-style: italic; }
+  table#questionTable tbody td.actionCell {
+    text-align: center; }
+    table#questionTable tbody td.actionCell span {
+      display: inline-block;
+      padding-left: 20px;
+      padding-right: 20px; }

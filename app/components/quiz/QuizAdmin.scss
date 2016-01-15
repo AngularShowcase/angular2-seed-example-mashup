@@ -1,3 +1,8 @@
+$catColor: blue;
+$ansColor: green;
+$questionColor: red;
+$stripeColor: #ccc;
+
 label {
     margin-left: 10px;
 }
@@ -13,19 +18,42 @@ select.catSelect {
 }
 
 table#questionTable {
-    font-size:16pt;
+
+    color: black;
+    font-size:14pt;
 
     td, th {
+
         padding: 5px;
+
+        &:nth-child(2) {
+            font-weight: bold;
+            color: $questionColor;
+        }
+
+        &:nth-child(3) {
+            color: $catColor;
+        }
+
+        &:nth-child(4) {
+            color: $ansColor;
+        }
     }
 
     thead {
         tr {
             background-color: black;
-            color: lightyellow;
+            color: yellow;
 
-            th:nth-child(1) {
-                text-align: right;
+            th {
+                &#actions {
+                    width: 200px;
+                    text-align: center;
+                }
+
+                &:nth-child(1) {
+                    text-align: right;
+                }
             }
         }
     }
@@ -33,16 +61,23 @@ table#questionTable {
     tbody {
         tr {
             &:nth-child(odd) {
-                background-color: lightskyblue
+                background-color: $stripeColor;
             }
         }
 
         td {
-            border: 1px solid black;
 
-            &:nth-child(1) {
-                background-color: white;
-                font-weight: bold;
+            &:nth-child(2) {
+                font-style: italic;
+            }
+            
+            &.actionCell {
+                text-align: center;
+                span {
+                    display:inline-block;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
             }
         }
     }

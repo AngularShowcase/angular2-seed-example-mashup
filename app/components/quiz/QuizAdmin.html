@@ -27,7 +27,7 @@
                 <th>Question</th>
                 <th>Answer Category</th>
                 <th>Answer</th>
-                <th>Actions</th>
+                <th id="actions">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,14 +35,14 @@
                 <td>{{q.questionId}}</td>
                 <td>{{q.question}}</td>
                 <td>
-                    <editable-field #ef1 font-size="16pt" (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
+                    <editable-field #ef1 font-size="14pt" (updates)="q.answerCategory = $event" [val]="q.answerCategory" [select-from]="answerCategoryList"></editable-field>
                 </td>
                 <td>
-                    <editable-field #ef2 font-size="16pt" input-control-type="text" (updates)="q.answer = $event" [val]="q.answer"></editable-field>
+                    <editable-field #ef2 font-size="14pt" input-control-type="text" (updates)="q.answer = $event" [val]="q.answer"></editable-field>
                 </td>
-                <td>
-                    <input type="button" value="Update" (click)="updateQuestion(q)" />
-                    <input type="button" value="Undo" (click)="undo(ef1, ef2)" />
+                <td class="actionCell">
+                    <span title="Update the question" class="glyphicon glyphicon-thumbs-up" (click)="updateQuestion(q)"></span>
+                    <span title="Undo your changes" class="glyphicon glyphicon-thumbs-down" (click)="undo(ef1, ef2)"></span>
                 </td>
             </tr>
         </tbody>
