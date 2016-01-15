@@ -96,4 +96,8 @@ export class QuizAdmin {
 
             }, err => console.log('Error: ', err));
     }
+
+    undo(...editableFields) {
+        editableFields.forEach(ef => ef.undo());
+    }
 }

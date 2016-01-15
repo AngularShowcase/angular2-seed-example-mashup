@@ -77,6 +77,10 @@ export class EditableField {
         return this.changed() ? 'changed' : '';
     }
 
+    undo() {
+        this.valueChange(this.origVal);
+    }
+
     valueChange(newVal:string) {
         console.log(newVal);
         this.val = newVal;
