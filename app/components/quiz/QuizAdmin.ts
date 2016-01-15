@@ -33,7 +33,6 @@ export class QuizAdmin {
     }
 
     ngOnInit() {
-        this.categories = this.quizServices.getCategories();
 
         this.form = this.fb.group({
             // 'category' : ['', Validators.required],
@@ -41,7 +40,15 @@ export class QuizAdmin {
             'answerCategory' : this.answerCategoryControl
         });
 
-        let categoryChanges = this.categoryControl.valueChanges.distinctUntilChanged();
+        this.loadData();
+    }
+
+    loadData() {
+
+        this.categories = this.quizServices.getCategories();
+        let categoryChanges = this.categoryControl.valueChanges; //.distinctUntilChanged();
+
+        categoryChanges.subscribe(category => console.log(`Category changed to ${category}.`));
 
         // Whenever the category changes, emit a list of questions for that category
         this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
@@ -72,6 +79,12 @@ export class QuizAdmin {
                 // Copy back fields in case they were normalized by the server
                 question.answer = q.answer;
                 question.answerCategory = q.answerCategory;
+
+                // Cause a requery for the questions category (whatever it may be)
+
+                console.log(`Attempting to change category to ${this.categoryControl.value}`);
+                this.categoryControl.updateValue(q.category, {emitEvent: true});
+
             }, err => console.log('Error: ', err));
     }
 }
