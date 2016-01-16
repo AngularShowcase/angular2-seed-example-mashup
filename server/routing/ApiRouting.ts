@@ -68,7 +68,7 @@ export class ApiRouting {
         this.router.put('/quiz/questions/:questionId', this.updateQuestion.bind(this));
 		this.router.get('/quiz/categories', this.getQuizCategories.bind(this));
 		this.router.get('/quiz/answercategories', this.getQuizAnswerCategories.bind(this));
-
+        this.router.get('/quiz/test/user/:username', this.getUserTests.bind(this));
 		this.router.post('/quiz/test/:testId/score', this.scoreTest.bind(this));
 		this.router.post('/quiz/test/:testId/answer/:questionNumber', this.recordTestAnswer.bind(this));
 		this.router.get('/quiz/test/:testId', this.getTest.bind(this));
@@ -248,6 +248,13 @@ export class ApiRouting {
 		promise.then(questions => res.send(questions))
 			.catch(err => next(err));
 	}
+
+    getUserTests(req, res, next) {
+        let username:string = req.params.username;
+        this.quizPersistenceService.getUserTests(username)
+            .then(tests => res.send(tests))
+            .catch(err => next(err));
+    }
 
 	getQuizCategories(req, res, next) {
 		this.quizPersistenceService.getCategories()

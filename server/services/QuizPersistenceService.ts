@@ -183,6 +183,18 @@ export class QuizPersistenceService {
 		return defer.promise;
 	}
 
+	public getUserTests(username:string): Q.Promise<ITest[]> {
+		let defer = Q.defer<ITest[]>();
+		this.testCollection.find({user: username}).sort({ testId: 1 }).toArray(function(e, tests: ITest[]) {
+			if (e) {
+				defer.reject(e);
+			} else {
+				defer.resolve(tests);
+			}
+		});
+		return defer.promise;
+	}
+
 	public createTest(quizId: number, user: string): Q.Promise<ITest> {
 		let defer = Q.defer<ITest>();
 		var coll = this.testCollection;
