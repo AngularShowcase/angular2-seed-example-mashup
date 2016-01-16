@@ -20,15 +20,6 @@
 			<template [ngSwitchWhen]="0">
 				<h1>Initializing...</h1>
 			</template>
-			<template [ngSwitchWhen]="1">
-				<div>
-					<label>Enter your name and then click start</label>
-					<input type="text" placeholder="Name" [(ngModel)]="name" />
-				</div>
-				<div>
-					<input type="button" value="Start" (click)="startQuiz()" />
-				</div>
-			</template>
 			<template [ngSwitchWhen]="2">
 
 				<div id="questionPanel">

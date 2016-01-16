@@ -63,6 +63,9 @@ export class ProctorExam {
                 public router:RouterMod.Router) {
 
 
+    }
+
+    ngOnInit() {
         this.quizId = parseInt(this.routeParams.get('quizId'));
 
         if (!this.authentication.authenticate()) {
@@ -70,24 +73,7 @@ export class ProctorExam {
         }
 
         this.name = this.authentication.user.username;
-        this.readQuiz();
-    }
-
-    startQuiz() {
-
-        if (!this.name || !this.name.trim()) {
-            return;
-        }
-
-        this.quizServices.createTest(this.quiz.quizId, this.name)
-            .subscribe(test => {
-                console.log('Test:', test);
-                this.test = test;
-                this.currentQuestion = this.quiz.userQuestions[0];
-                this.userAnswers = {};
-                this.proctorState = ProctorState.PresentQuestion;
-            },
-            err => console.log(err));
+        this.readQuiz(this.quizId);
     }
 
     previousQuestion() {
@@ -137,14 +123,20 @@ export class ProctorExam {
             ,err => console.log(err));
     }
 
-    private readQuiz() {
-        console.log(`Proctoring exam: quizId = ${this.quizId}`);
+    private readQuiz(quizId:number) {
+        console.log(`Proctoring exam: quizId = ${quizId}`);
 
-        this.quizServices.getQuiz(this.quizId)
-            .subscribe(quiz => {
-                this.quiz = quiz;
-                this.proctorState = ProctorState.GetName;
-            }
-            ,err => console.log(err));
+        this.quizServices.getQuiz(quizId)
+            .do(quiz => this.quiz = quiz)   // Save the quiz before creating the test
+            .flatMap<ITest>(quiz => this.quizServices.createTest(quiz.quizId, this.name))
+
+            .subscribe(test => {
+                console.log('Test:', test);
+                this.test = test;
+                this.currentQuestion = this.quiz.userQuestions[0];
+                this.userAnswers = {};
+                this.proctorState = ProctorState.PresentQuestion;
+
+            }, err => console.log(err));
     }
 }
