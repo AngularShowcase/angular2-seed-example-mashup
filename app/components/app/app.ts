@@ -39,6 +39,7 @@ import {QuestionEntry} from '../quiz/QuestionEntry';
 import {QuizCreation} from '../quiz/QuizCreation';
 import {ProctorExam} from '../quiz/ProctorExam';
 import {ReviewTest} from '../quiz/ReviewTest';
+import {UserReview} from '../quiz/UserReview';
 import {Weather} from '../streaming/Weather';
 import {Chat} from '../streaming/Chat';
 import {QuizAdmin} from '../quiz/QuizAdmin';
@@ -70,6 +71,7 @@ import {QuizAdmin} from '../quiz/QuizAdmin';
   { path: '/quiz/quizcreation', component: QuizCreation, as: 'QuizCreation'},
   { path: '/quiz/proctorexam/:quizId', component: ProctorExam, as: 'ProctorExam'},
   { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'},
+  { path: '/quiz/user/review', component: UserReview, as: 'UserReview'},
   { path: '/weather', component: Weather, as: 'Weather'},
   { path: '/chat', component: Chat, as: 'Chat'}
 ])

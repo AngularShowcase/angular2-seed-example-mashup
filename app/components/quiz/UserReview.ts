@@ -1,8 +1,8 @@
 import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
+import {CORE_DIRECTIVES} from 'angular2/common';
+import {Authentication} from '../../services/Authentication';
 import {QuizServices} from '../../services/QuizServices';
-import * as RouterMod from 'angular2/router';
-import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
+//import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'user-review',
@@ -10,48 +10,20 @@ import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
     styleUrls: ['./components/quiz/UserReview.css'],
 
     providers: [QuizServices],
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES]
 })
-export class ReviewTest {
+export class UserReview {
 
-    quiz:IQuiz = {
-        quizId: 0,
-        categories: [],
-        questionCount: 0,
-        userQuestions: []
-    };
+    username:string = '';
 
-    test:ITest = {
-        testId: 0,
-        quizId: 0,
-        user: '',
-        questionCount: 0,
-        dateTaken: new Date(),
-        completed: false,
-        answers: [],
-        sectionResults: [],
-        testResult: {
-            sectionName: 'total',
-            questionCount: 0,
-            correctCount: 0,
-            incorrectCount: 0,
-            score: 0
+    constructor(public authentication:Authentication, public quizServices:QuizServices) {
+    }
+
+    ngOnInit() {
+        if (!this.authentication.authenticate()) {
+            return;
         }
-    };
 
-    constructor(public quizServices:QuizServices, public routeParams:RouterMod.RouteParams) {
-        this.readTest();
+        this.username = this.authentication.user.username;
     }
-
-    readTest() {
-        let testId = parseInt(this.routeParams.get('testId'));
-
-        this.quizServices.getTest(testId)
-            .mergeMap(test => {
-                this.test = test;
-                return this.quizServices.getQuiz(test.quizId);
-            })
-            .subscribe((quiz:IQuiz) => this.quiz = quiz);
-    }
-
 }
