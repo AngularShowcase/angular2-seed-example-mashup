@@ -45,7 +45,9 @@ export class SecurityService {
 
 		this.getUserByUsernameInternal(username)
 			.then(user => {
-				if (bcrypt.compareSync(password, user.hashedPassword)) {
+                if (!user) {
+                    defer.resolve({succeeded: false});
+                } else if (bcrypt.compareSync(password, user.hashedPassword)) {
 					user.hashedPassword = null;
 					defer.resolve({succeeded: true, userInfo: user});
 				} else {
