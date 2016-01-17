@@ -16,7 +16,7 @@
         <tbody>
             <tr *ngFor="#userTest of userTests">
                 <td>
-                    <a [routerLink]="['ReviewTest', {testId: userTest.testId}]" >{{userTest.testId}}</a>
+                    <span (click)="reviewTest(userTest.testId)">{{userTest.testId}}</span>
                 </td>
                 <td>{{userTest.quizId}}</td>
                 <td>{{userTest.dateTaken | date}}</td>
@@ -29,3 +29,5 @@
         </tbody>
     </table>
 </div>
+<h2>Router outlet</h2>
+<router-outlet></router-outlet>

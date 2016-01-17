@@ -3,8 +3,14 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {Authentication} from '../../services/Authentication';
 import {QuizServices} from '../../services/QuizServices';
 import {ITest} from '../../../common/interfaces/QuizInterfaces';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {ReviewTest} from './ReviewTest';
+import {EmptyTestReview} from './EmptyTestReview';
 
+@RouteConfig([
+  { path: '/', component: EmptyTestReview, as: 'EmptyTestReview', useAsDefault: true },
+  { path: '/test/:testId/review', component: ReviewTest, as: 'ReviewTest' }
+])
 @Component({
     selector: 'user-review',
     templateUrl: './components/quiz/UserReview.html',
@@ -18,7 +24,8 @@ export class UserReview {
     username:string = '';
     userTests:ITest[] = [];
 
-    constructor(public authentication:Authentication, public quizServices:QuizServices) {
+    constructor(public authentication:Authentication, public quizServices:QuizServices,
+                public router:Router) {
     }
 
     ngOnInit() {
@@ -30,5 +37,10 @@ export class UserReview {
 
         this.quizServices.getUserTests(this.username)
             .subscribe(userTests => this.userTests = userTests);
+    }
+
+    reviewTest(testId:number) {
+        console.log(`He'd like to review test ${testId}.`);
+        this.router.navigate(['./ReviewTest', {testId: testId}]);
     }
 }
