@@ -44,7 +44,7 @@ export const NPM_DEPENDENCIES = [
 
   // Faster dev page load
   { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', dest: LIB_DEST },
-  { src: 'angular2/bundles/angular2.dev.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'angular2/bundles/angular2.min.js', inject: 'libs', dest: LIB_DEST },
   { src: 'angular2/bundles/router.js', inject: 'libs', dest: LIB_DEST }, // use router.min.js with alpha47
   { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
   { src: 'ng2-material/dist/ng2-material.js', inject: 'libs', dest: LIB_DEST },
@@ -58,7 +58,13 @@ export const NPM_DEPENDENCIES = [
   { src: 'moment/moment.js', inject: 'libs', dest: LIB_DEST },
   { src: 'd3/d3.js', inject: 'libs', dest: LIB_DEST },
   { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: LIB_DEST },
-  { src: 'socket.io-client/socket.io.js', inject: 'libs', dest: LIB_DEST }
+  { src: 'socket.io-client/socket.io.js', inject: 'libs', dest: LIB_DEST },
+
+  { src: 'bootstrap/dist/fonts/glyphicons-halflings-regular.eot'  , inject: false, dest: FONTS_DEST },
+  { src: 'bootstrap/dist/fonts/glyphicons-halflings-regular.ttf', inject: false, dest: FONTS_DEST },
+  { src: 'bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', inject: false, dest: FONTS_DEST },
+  { src: 'bootstrap/dist/fonts/glyphicons-halflings-regular.svg', inject: false, dest: FONTS_DEST },
+  { src: 'bootstrap/dist/fonts/glyphicons-halflings-regular.woff', inject: false, dest: FONTS_DEST }
 ];
 
 // Declare local files that needs to be injected
@@ -71,7 +77,6 @@ NPM_DEPENDENCIES
   .forEach(d => d.src = require.resolve(d.src));
 
 export const DEPENDENCIES = NPM_DEPENDENCIES.concat(APP_ASSETS);
-
 
 // ----------------
 // SystemsJS Configuration.
