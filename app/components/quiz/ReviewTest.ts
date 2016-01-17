@@ -42,6 +42,9 @@ export class ReviewTest {
     };
 
     constructor(public quizServices:QuizServices, public routeParams:RouterMod.RouteParams) {
+    }
+
+    ngOnInit() {
         this.readTest();
     }
 
