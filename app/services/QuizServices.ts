@@ -70,6 +70,13 @@ export class QuizServices {
 		return this.http.get(`/api/quiz/test/${testId}`).map(response => response.json());
 	}
 
+    getUserTests(username:string) : Observable<ITest[]> {
+        return this.http.get(`/api/quiz/test/user/${username}`)
+            .map(response => {
+                return this.convertTestDates(response.json());
+            });
+    }
+
 	createQuiz(categories:string[], questionCount:number) : Observable<IQuiz> {
 		console.log(`Creating a quiz with ${questionCount} questions for categories ${categories}`);
 
@@ -116,4 +123,13 @@ export class QuizServices {
 
 		return new RequestOptions(options);
 	}
+
+	convertTestDates(tests:any[]) : ITest[] {
+		tests.forEach(t => {
+			t.dateTaken = new Date(t.dateTaken);
+		});
+
+		return tests;
+	}
+
 }

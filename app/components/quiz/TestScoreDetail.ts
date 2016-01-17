@@ -68,8 +68,8 @@ export class TestScoreDetail {
                 category: q.category,
                 answerCategory: q.answerCategory,
                 correctAnswer: q.correctAnswer,
-                userAnswer: answer.userAnswer,
-                isCorrect: answer.isCorrect
+                userAnswer: answer ? answer.userAnswer : '',
+                isCorrect: answer ? answer.isCorrect : false
             };
         });
     }
