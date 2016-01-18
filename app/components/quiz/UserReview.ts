@@ -40,7 +40,7 @@ export class UserReview {
     }
 
     reviewTest(testId:number) {
-        console.log(`He'd like to review test ${testId}.`);
+        console.log(`He'    d like to review test ${testId}.`);
         this.router.navigate(['./ReviewTest', {testId: testId}]);
     }
 }

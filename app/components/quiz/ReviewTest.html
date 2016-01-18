@@ -1,5 +1,8 @@
-<div class="container">
-	<h1>Test Review</h1>
-	<test-score-summary [test]="test"></test-score-summary>
-	<test-score-detail [quiz]="quiz" [test]="test"></test-score-detail>
-</div>
+<h2>
+    Test {{test.testId}} -
+    <a [routerLink]="['/UserReview']">{{test.user}}</a>
+</h2>
+
+<test-score-summary [test]="test"></test-score-summary>
+<br />
+<test-score-detail [quiz]="quiz" [test]="test"></test-score-detail>

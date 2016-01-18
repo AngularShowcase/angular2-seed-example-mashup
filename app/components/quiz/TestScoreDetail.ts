@@ -31,7 +31,6 @@ export class TestScoreDetail {
         testResult: null
     };
 
-    title: string = '';
     questions:any[] = [];
 
     get quiz():IQuiz {
@@ -56,8 +55,6 @@ export class TestScoreDetail {
         if (this.test.testId === 0 || this.quiz.quizId === 0) {
             return;     //Not all necessary properties have been set
         }
-
-        this.title = `Test ${this.test.testId} results for quiz ${this.quiz.quizId}`;
 
         this.questions = this.quiz.userQuestions.map(q => {
             let answer = this.test.answers.find(a => a.questionNumber === q.questionNumber);

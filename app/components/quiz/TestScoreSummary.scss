@@ -1,18 +1,30 @@
 table {
 	font-size: 16pt;
 
-	tr {
-		td, th {
-			padding: 5px;
-			text-align: center;
-		}
+    td, th {
+        padding: 5px;
+        text-align: center;
+    }
 
-		&:nth-child(2n+1) {
-			background-color: turquoise;
-		}
-		&:last-child {
-			background-color:black;
-			color:yellow;
-		}
-	}
+    thead {
+        tr {
+            background-color:black;
+            color:yellow;
+        }
+    }
+
+    tbody {
+        tr {
+
+            &:nth-child(2n+1) {
+                background-color: lightgray;
+            }
+
+            &#totalsRow {
+                background-color:black;
+                color:yellow;
+            }
+        }
+
+    }
 }

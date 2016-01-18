@@ -1,33 +1,30 @@
 <div class="container">
-    <h1>User Review for {{username}}</h1>
-    <table id="reviewTable" class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Test Id</th>
-                <th>Quiz Id</th>
-                <th>Date Taken</th>
-                <th>Completed</th>
-                <th>Questions</th>
-                <th>Correct</th>
-                <th>Incorrect</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="#userTest of userTests">
-                <td>
-                    <span (click)="reviewTest(userTest.testId)">{{userTest.testId}}</span>
-                </td>
-                <td>{{userTest.quizId}}</td>
-                <td>{{userTest.dateTaken | date}}</td>
-                <td>{{userTest.completed}}</td>
-                <td>{{userTest.testResult.questionCount}}</td>
-                <td>{{userTest.testResult.correctCount}}</td>
-                <td>{{userTest.testResult.incorrectCount}}</td>
-                <td>{{userTest.testResult.score | percent:'1.2-2'}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>User Review for {{username}}</h1>
+            <table id="reviewTable">
+                <thead>
+                    <tr>
+                        <th>Test Id</th>
+                        <th>Quiz Id</th>
+                        <th>Date Taken</th>
+                        <th>Questions</th>
+                        <th class="score">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#userTest of userTests" (click)="reviewTest(userTest.testId)">
+                        <td>{{userTest.testId}}</td>
+                        <td>{{userTest.quizId}}</td>
+                        <td>{{userTest.dateTaken | date}}</td>
+                        <td>{{userTest.questionCount}}</td>
+                        <td class="score">{{userTest.testResult.score | percent:'1.2-2'}}</td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
-<h2>Router outlet</h2>
-<router-outlet></router-outlet>

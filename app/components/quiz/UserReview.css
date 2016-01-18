@@ -1,2 +1,17 @@
-h1 {
-  color: peachpuff; }
+table {
+  font-size: 12pt;
+  text-align: right;
+  border-left: solid 5px black;
+  border-right: solid 3px gray;
+  border-bottom: solid 2px gray; }
+  table td, table th {
+    padding-left: 10px;
+    padding-right: 10px; }
+  table thead tr {
+    background-color: black;
+    color: yellow; }
+  table tbody tr:nth-child(2n+1) {
+    background-color: lightgrey; }
+  table tbody tr:hover {
+    background-color: lightcoral !important;
+    cursor: pointer; }

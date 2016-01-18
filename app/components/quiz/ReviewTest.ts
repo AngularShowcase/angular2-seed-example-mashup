@@ -12,7 +12,7 @@ import {TestScoreDetail} from './TestScoreDetail';
     styleUrls: ['./components/quiz/ReviewTest.css'],
 
     providers: [QuizServices],
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, TestScoreSummary, TestScoreDetail]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, RouterMod.ROUTER_DIRECTIVES, TestScoreSummary, TestScoreDetail]
 })
 export class ReviewTest {
 
