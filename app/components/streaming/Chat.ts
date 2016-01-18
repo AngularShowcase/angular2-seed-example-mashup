@@ -30,11 +30,13 @@ export class Chat {
     }
 
     sendMessage(msg:string) {
-        this.messaageBroker.sendChatMessage({
-            username: this.user.username,
-            time: new Date(),
-            message: msg
-        });
+        if (msg) {
+            this.messaageBroker.sendChatMessage({
+                username: this.user.username,
+                time: new Date(),
+                message: msg
+            });
+        }
 
         this.message = '';
     }

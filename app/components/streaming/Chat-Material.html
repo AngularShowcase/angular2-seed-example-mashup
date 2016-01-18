@@ -1,7 +1,7 @@
 <md-content>
     <md-input-container>
         <label for="newMessage">Chat Messsage</label>
-        <input md-input id="newMessage" #msg [(ngModel)]="message">
+        <input md-input style="width:800px" id="newMessage" #msg [(ngModel)]="message">
     </md-input-container>
     <button md-raised-button class="md-raised md-primary" (click)="sendMessage(msg.value)">Send</button>
 </md-content>

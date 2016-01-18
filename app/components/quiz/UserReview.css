@@ -13,5 +13,6 @@ table {
   table tbody tr:nth-child(2n+1) {
     background-color: lightgrey; }
   table tbody tr:hover {
-    background-color: lightcoral !important;
+    background-color: black !important;
+    color: white !important;
     cursor: pointer; }
