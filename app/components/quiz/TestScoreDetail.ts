@@ -1,14 +1,21 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {ITest, IQuiz} from '../../../common/interfaces/QuizInterfaces';
+import {ITest, IQuiz, IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {EmptyQuestionReview} from './EmptyQuestionReview';
+import {ReviewQuestion} from './ReviewQuestion';
 
+@RouteConfig([
+  { path: '/', component: EmptyQuestionReview, as: 'EmptyQuestionReview', useAsDefault: true },
+  { path: '/question/:questionNumber', component: ReviewQuestion, as: 'ReviewQuestion' }
+])
 @Component({
     selector: 'test-score-detail',
     templateUrl: './components/quiz/TestScoreDetail.html',
     styleUrls: ['./components/quiz/TestScoreDetail.css'],
     inputs: ['test', 'quiz'],
     providers: [],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class TestScoreDetail {
 
@@ -51,6 +58,10 @@ export class TestScoreDetail {
         this.buildResults();
     }
 
+    reviewQuestion(q:IQuizQuestion, questionNumber:number) {
+        console.log(`Reviewing question number ${questionNumber} of quiz ${this.quiz.quizId} (questionId: ${q.questionId})`);
+    }
+    
     buildResults() {
         if (this.test.testId === 0 || this.quiz.quizId === 0) {
             return;     //Not all necessary properties have been set

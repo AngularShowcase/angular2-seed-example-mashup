@@ -7,6 +7,12 @@ table {
 	}
 	tbody, thead {
 		tr {
+            
+            &:nth-child(2n+1) {
+                background-color: lightgrey;
+
+            }
+
 			td, th {
 				border: 1px solid black;
 				padding: 4px;
@@ -17,6 +23,12 @@ table {
 					color: red;
 				}
 			}
+
+            &:hover {
+                background-color: black !important;
+                color: white !important;
+                cursor: pointer;
+            }
 		}
 	}
 }
