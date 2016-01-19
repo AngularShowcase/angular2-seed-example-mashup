@@ -9,7 +9,7 @@ import {EmptyTestReview} from './EmptyTestReview';
 
 @RouteConfig([
   { path: '/', component: EmptyTestReview, as: 'EmptyTestReview', useAsDefault: true },
-  { path: '/test/:testId/review', component: ReviewTest, as: 'ReviewTest' }
+  { path: '/test/:testId/review/...', component: ReviewTest, as: 'ReviewTest' }
 ])
 @Component({
     selector: 'user-review',

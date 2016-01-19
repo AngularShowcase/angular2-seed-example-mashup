@@ -2,13 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITest, IQuiz, IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {EmptyQuestionReview} from './EmptyQuestionReview';
-import {ReviewQuestion} from './ReviewQuestion';
 
-@RouteConfig([
-  { path: '/', component: EmptyQuestionReview, as: 'EmptyQuestionReview', useAsDefault: true },
-  { path: '/question/:questionNumber', component: ReviewQuestion, as: 'ReviewQuestion' }
-])
 @Component({
     selector: 'test-score-detail',
     templateUrl: './components/quiz/TestScoreDetail.html',
@@ -18,6 +12,10 @@ import {ReviewQuestion} from './ReviewQuestion';
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class TestScoreDetail {
+
+    constructor(public router:Router) {
+
+    }
 
     _quiz:IQuiz = {
         quizId: 0,
@@ -60,8 +58,9 @@ export class TestScoreDetail {
 
     reviewQuestion(q:IQuizQuestion, questionNumber:number) {
         console.log(`Reviewing question number ${questionNumber} of quiz ${this.quiz.quizId} (questionId: ${q.questionId})`);
+        this.router.navigate(['./ReviewQuestion', {questionId: q.questionId}]);
     }
-    
+
     buildResults() {
         if (this.test.testId === 0 || this.quiz.quizId === 0) {
             return;     //Not all necessary properties have been set

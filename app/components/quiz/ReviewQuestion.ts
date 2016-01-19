@@ -13,7 +13,7 @@ import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 })
 export class ReviewQuestion {
 
-    questionNumber:number = 0;
+    questionId:number = 0;
 
     quiz:IQuiz = {
         quizId: 0,
@@ -30,6 +30,6 @@ export class ReviewQuestion {
     }
 
     readQuiz() {
-        this.questionNumber = parseInt(this.routeParams.get('questionNumber'));
+        this.questionId = parseInt(this.routeParams.get('questionId'));
     }
 }

@@ -70,7 +70,7 @@ import {QuizAdmin} from '../quiz/QuizAdmin';
   { path: '/quiz/admin', component: QuizAdmin, as: 'QuizAdmin'},
   { path: '/quiz/quizcreation', component: QuizCreation, as: 'QuizCreation'},
   { path: '/quiz/proctorexam/:testId', component: ProctorExam, as: 'ProctorExam'},
-  { path: '/quiz/test/:testId/review', component: ReviewTest, as: 'ReviewTest'},
+  { path: '/quiz/test/:testId/review/...', component: ReviewTest, as: 'ReviewTest'},
   { path: '/quiz/user/review/...', component: UserReview, as: 'UserReview'},
   { path: '/weather', component: Weather, as: 'Weather'},
   { path: '/chat', component: Chat, as: 'Chat'}
