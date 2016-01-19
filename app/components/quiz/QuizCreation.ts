@@ -4,6 +4,7 @@ import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import {MultiCategorySelect} from './MultiCategorySelect';
 import {Router} from 'angular2/router';
+import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'quiz-creation',
@@ -17,12 +18,18 @@ export class QuizCreation {
 
     selectedCategories:string[] = [];
     questionCount:number = 0;
+    username:string = '';
 
     constructor(public quizServices:QuizServices, public router:Router, public authentication:Authentication) {
 
+    }
+
+    ngOnInit() {
         if (!this.authentication.authenticate()) {
             return;
         }
+
+        this.username = this.authentication.user.username;
     }
 
     selectCategories(categories:string[]) {
@@ -33,10 +40,16 @@ export class QuizCreation {
     }
 
     createQuiz() {
+        let quiz:IQuiz;
+
         this.quizServices.createQuiz(this.selectedCategories, this.questionCount)
-            .subscribe(q => {
-                    console.log(`Created quiz ${q.quizId} with ${q.questionCount} questions.`);
-                    this.router.navigateByUrl(`/quiz/proctorexam/${q.quizId}`);
+            .flatMap(q => {
+                quiz = q;
+                return this.quizServices.createTest(quiz.quizId, this.username);
+            })
+            .subscribe((test:ITest) => {
+                    console.log(`Created quiz ${quiz.quizId} (test ${test.testId}) with ${quiz.questionCount} questions.`);
+                    this.router.navigate(['/ProctorExam', {testId:test.testId}]);
                 },
                 err => console.log('Error', err));
     }

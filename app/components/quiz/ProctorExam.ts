@@ -25,6 +25,7 @@ export class ProctorExam {
     name: string = '';
 
     quizId = 0;
+    testId = 0;
 
     quiz:IQuiz = {
         quizId: 0,
@@ -66,14 +67,14 @@ export class ProctorExam {
     }
 
     ngOnInit() {
-        this.quizId = parseInt(this.routeParams.get('quizId'));
+        this.testId = parseInt(this.routeParams.get('testId'));
 
         if (!this.authentication.authenticate()) {
             return;
         }
 
         this.name = this.authentication.user.username;
-        this.readQuiz(this.quizId);
+        this.readTest(this.testId);
     }
 
     previousQuestion() {
@@ -123,16 +124,16 @@ export class ProctorExam {
             ,err => console.log(err));
     }
 
-    private readQuiz(quizId:number) {
-        console.log(`Proctoring exam: quizId = ${quizId}`);
+    private readTest(testId:number) {
+        console.log(`Proctoring exam: testId = ${testId}`);
 
-        this.quizServices.getQuiz(quizId)
-            .do(quiz => this.quiz = quiz)   // Save the quiz before creating the test
-            .flatMap<ITest>(quiz => this.quizServices.createTest(quiz.quizId, this.name))
+        this.quizServices.getTest(testId)
+            .do(t => this.test = t)
+            .flatMap(t => this.quizServices.getQuiz(t.quizId))
 
-            .subscribe(test => {
-                console.log('Test:', test);
-                this.test = test;
+            .subscribe((q:IQuiz) => {
+                console.log('Test corresponds to quiz:', q.quizId);
+                this.quiz = q;
                 this.currentQuestion = this.quiz.userQuestions[0];
                 this.userAnswers = {};
                 this.proctorState = ProctorState.PresentQuestion;
