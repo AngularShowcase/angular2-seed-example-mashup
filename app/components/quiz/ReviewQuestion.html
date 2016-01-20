@@ -1,2 +1,11 @@
-<h1>Question {{questionId}}</h1>
-<h3>Quiz {{quizId}}</h3>
+Question number {{userQuestion?.questionNumber}} ({{userQuestion?.category}})
+<br/>
+{{userQuestion?.question}} ({{userQuestion?.questionId}})
+<br/>
+Choices from category {{userQuestion?.answerCategory}}
+
+<ol>
+    <li *ngFor="#choice of userQuestion?.responsesShown">
+        {{choice}}
+    </li>
+</ol>

@@ -20,6 +20,15 @@ export class QuizServices {
 		return result;
 	}
 
+	getQuestion(questionId:number) : Observable<IQuizQuestion> {
+		var result = this.http.get(`/api/quiz/questions/${questionId}`)
+			.map(response => {
+                return <IQuizQuestion> response.json();
+            });
+
+		return result;
+	}
+
 	getQuestionsForCategory(category:string) : Observable<IQuizQuestion[]> {
 		var result = this.http.get(`/api/quiz/questions?category=${category}`)
 			.map(response => {
