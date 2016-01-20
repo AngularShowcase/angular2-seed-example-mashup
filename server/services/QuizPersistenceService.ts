@@ -201,7 +201,7 @@ export class QuizPersistenceService {
 
 	public getUserTests(username:string): Q.Promise<ITest[]> {
 		let defer = Q.defer<ITest[]>();
-		this.testCollection.find({user: username}).sort({ testId: 1 }).toArray(function(e, tests: ITest[]) {
+		this.testCollection.find({user: username}).sort({ testId: -1 }).toArray(function(e, tests: ITest[]) {
 			if (e) {
 				defer.reject(e);
 			} else {

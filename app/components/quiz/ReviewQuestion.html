@@ -1,11 +1,16 @@
-Question number {{userQuestion?.questionNumber}} ({{userQuestion?.category}})
-<br/>
-{{userQuestion?.question}} ({{userQuestion?.questionId}})
-<br/>
-Choices from category {{userQuestion?.answerCategory}}
+<section id="questionReview">
+    <div id="questionPanel">
+        <span>Question number {{userQuestion?.questionNumber}} ({{userQuestion?.category}})</span>
+        <br>
+        <span id="question">{{userQuestion?.question}} ({{userQuestion?.questionId}})</span>
+    </div>
 
-<ol>
-    <li *ngFor="#choice of userQuestion?.responsesShown">
-        {{choice}}
-    </li>
-</ol>
+    <div>
+        <span>Choices from category {{userQuestion?.answerCategory}}</span>
+    </div>
+    <ol>
+        <li *ngFor="#choice of userQuestion?.responsesShown">
+            <span [ngClass]="getChoiceClass(choice)">{{choice}}</span>
+        </li>
+    </ol>
+</section>

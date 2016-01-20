@@ -9,7 +9,7 @@ table {
     padding-right: 10px; }
   table thead tr {
     background-color: black;
-    color: yellow; }
+    color: gold; }
   table tbody tr:nth-child(2n+1) {
     background-color: lightgrey; }
   table tbody tr:hover {

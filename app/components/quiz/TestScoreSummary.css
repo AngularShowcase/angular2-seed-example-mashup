@@ -1,13 +1,13 @@
 table {
-  font-size: 16pt; }
+  font-size: 12pt; }
   table td, table th {
     padding: 5px;
     text-align: center; }
   table thead tr {
     background-color: black;
-    color: yellow; }
+    color: gold; }
   table tbody tr:nth-child(2n+1) {
     background-color: lightgray; }
   table tbody tr#totalsRow {
     background-color: black;
-    color: yellow; }
+    color: gold; }
