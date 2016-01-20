@@ -167,6 +167,22 @@ export class QuizPersistenceService {
 		return defer.promise;
 	}
 
+	public getQuestion(questionId: number): Q.Promise<IQuizQuestion> {
+		let defer = Q.defer<IQuizQuestion>();
+
+		var coll = this.questionsCollection;
+
+		coll.findOne({ questionId: questionId }, function(e, question: IQuizQuestion) {
+			if (e) {
+				defer.reject(e);
+			} else {
+				defer.resolve(question);
+			}
+		});
+
+		return defer.promise;
+	}
+
 	public getTest(testId:number) : Q.Promise<ITest> {
 		let defer = Q.defer<ITest>();
 

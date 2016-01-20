@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import * as RouterMod from 'angular2/router';
-import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
+import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     templateUrl: './components/quiz/ReviewQuestion.html',
@@ -14,13 +14,8 @@ import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 export class ReviewQuestion {
 
     questionId:number = 0;
-
-    quiz:IQuiz = {
-        quizId: 0,
-        categories: [],
-        questionCount: 0,
-        userQuestions: []
-    };
+    quizId:number = 0;
+    question:IQuizQuestion;
 
     constructor(public quizServices:QuizServices, public routeParams:RouterMod.RouteParams) {
     }
@@ -31,5 +26,6 @@ export class ReviewQuestion {
 
     readQuiz() {
         this.questionId = parseInt(this.routeParams.get('questionId'));
+        this.quizId = parseInt(this.routeParams.get('quizId'));
     }
 }

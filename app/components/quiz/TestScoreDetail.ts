@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITest, IQuiz, IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
 @Component({
     selector: 'test-score-detail',
@@ -58,7 +58,7 @@ export class TestScoreDetail {
 
     reviewQuestion(q:IQuizQuestion, questionNumber:number) {
         console.log(`Reviewing question number ${questionNumber} of quiz ${this.quiz.quizId} (questionId: ${q.questionId})`);
-        this.router.navigate(['./ReviewQuestion', {questionId: q.questionId}]);
+        this.router.navigate(['./ReviewQuestion', {quizId: this.quiz.quizId, questionId: q.questionId}]);
     }
 
     buildResults() {

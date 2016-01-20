@@ -10,7 +10,7 @@ import {ReviewQuestion} from './ReviewQuestion';
 
 @RouteConfig([
   { path: '/', component: EmptyQuestionReview, as: 'EmptyQuestionReview', useAsDefault: true },
-  { path: '/question/:questionId', component: ReviewQuestion, as: 'ReviewQuestion' }
+  { path: '/quiz/:quizId/question/:questionId', component: ReviewQuestion, as: 'ReviewQuestion' }
 ])
 
 @Component({

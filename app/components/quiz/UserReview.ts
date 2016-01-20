@@ -39,8 +39,8 @@ export class UserReview {
             .subscribe(userTests => this.userTests = userTests);
     }
 
-    reviewTest(testId:number) {
-        console.log(`He'    d like to review test ${testId}.`);
+    reviewTest(testId:number, quizId:number) {
+        console.log(`He'd like to review test ${testId}.`);
         this.router.navigate(['./ReviewTest', {testId: testId}]);
     }
 }
