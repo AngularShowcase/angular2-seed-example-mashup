@@ -74,7 +74,7 @@ export class QuizAdmin {
         // Observable of selected categories including the one set above
         let selectedAnswerCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
 
-        // Whenever the questions change or the selected category, refilter the question list
+        // Whenever the questions change or the selected answer category, refilter the question list
         this.filteredQuestions = this.questions.combineLatest(selectedAnswerCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
                     latestQuestions.filter(q => q.answerCategory === (latestAnswerCategory || q.answerCategory)));
