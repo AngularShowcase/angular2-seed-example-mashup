@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
+import {ReplaySubject} from 'rxjs/subject/ReplaySubject';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
@@ -46,12 +47,21 @@ export class QuizAdmin {
     loadData() {
 
         this.categories = this.quizServices.getCategories();
-        let categoryChanges = this.categoryControl.valueChanges; //.distinctUntilChanged();
+        let categoryChanges = this.categoryControl.valueChanges.distinctUntilChanged();
 
         categoryChanges.subscribe(category => console.log(`Category changed to ${category}.`));
 
         // Whenever the category changes, emit a list of questions for that category
-        this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
+        // We use ReplaySubject so that multiple subscriptions to the new questions
+        // do not result in separate HTTP GET requests.  From the documentation of
+        // ReplaySubject: "Each notification is broadcasted to all subscribed and FUTURE observers, subject to buffer trimming policies."
+        // For a discussion of this, see http://stackoverflow.com/questions/34018252/hot-and-shared-observable-from-an-eventemitter
+
+        let q:Observable<IQuizQuestion[]> = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
+        this.questions = new ReplaySubject<IQuizQuestion[]>(1);
+        q.subscribe(this.questions);
+
+        //// this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
 
         // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
@@ -62,10 +72,10 @@ export class QuizAdmin {
         this.answerCategories.subscribe(ansCatList => this.answerCategoryList = ansCatList);
 
         // Observable of selected categories including the one set above
-        let selectedCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
+        let selectedAnswerCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
 
         // Whenever the questions change or the selected category, refilter the question list
-        this.filteredQuestions = this.questions.combineLatest(selectedCategories,
+        this.filteredQuestions = this.questions.combineLatest(selectedAnswerCategories,
                 (latestQuestions:IQuizQuestion[], latestAnswerCategory:string) =>
                     latestQuestions.filter(q => q.answerCategory === (latestAnswerCategory || q.answerCategory)));
     }
