@@ -61,17 +61,17 @@ export class QuizAdmin {
         this.questions = new ReplaySubject<IQuizQuestion[]>(1);
         q.subscribe(this.questions);
 
-        //// this.questions = categoryChanges.mergeMap(cat => this.quizServices.getQuestionsForCategory(cat));
-
         // Whenever questions are emitted, emit a list of unique answer categories for those questions
         this.answerCategories = this.questions.map(questions => _.uniq(questions.map(q => q.answerCategory)));
 
         // Whenever we get a new list of answer categories, clear any selection
         this.answerCategories.subscribe(_ => this.answerCategoryControl.updateValue(''));
 
+        // We need to maintain a separate array of the latest values since this is passed
+        // to the EditableField components used in our template.
         this.answerCategories.subscribe(ansCatList => this.answerCategoryList = ansCatList);
 
-        // Observable of selected categories including the one set above
+        // Observable of selected answer categories including the one set above
         let selectedAnswerCategories:Observable<string> = this.answerCategoryControl.valueChanges.distinctUntilChanged();
 
         // Whenever the questions change or the selected answer category, refilter the question list
