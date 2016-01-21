@@ -14,7 +14,7 @@
                 Answer Category:
                 <select class="catSelect" ngControl="answerCategory">
                     <option value="">(all)</option>
-                    <option *ngFor="#ac of answerCategoryList" [value]="ac">{{ac}}</option>
+                    <option *ngFor="#ac of answerCategories | async" [value]="ac">{{ac}}</option>
                 </select>
             </label>
         </div>

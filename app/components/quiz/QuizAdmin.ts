@@ -22,7 +22,7 @@ export class QuizAdmin {
     answerCategories:Observable<string[]>;
     questions:Observable<IQuizQuestion[]>;
     filteredQuestions:Observable<IQuizQuestion[]>;
-    answerCategoryList:string[];
+    answerCategoryList:string[];    //We need this array to pass to the EditableField components in used in our template
 
     answerCategoryControl:Control = new Control();
     categoryControl:Control = new Control();
