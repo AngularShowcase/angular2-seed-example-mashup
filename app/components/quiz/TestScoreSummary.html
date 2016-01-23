@@ -9,14 +9,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="#s of test.sectionResults">
+		<tr *ngFor="#s of test.sectionResults" (click)="onSelectedCategory(s.sectionName)">
 			<td>{{s.sectionName}}</td>
 			<td>{{s.questionCount}}</td>
 			<td style="color:green">{{s.correctCount}}</td>
 			<td style="color:red">{{s.incorrectCount}}</td>
 			<td>{{s.score | percent:'1.2-2'}}</td>
 		</tr>
-		<tr id="totalsRow">
+		<tr id="totalsRow" (click)="onSelectedCategory(null)">
 			<td>Totals</td>
 			<td>{{test.testResult.questionCount}}</td>
 			<td style="color:green">{{test.testResult.correctCount}}</td>

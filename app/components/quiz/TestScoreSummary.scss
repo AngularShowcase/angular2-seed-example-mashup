@@ -24,6 +24,10 @@ table {
                 background-color:black;
                 color: gold;
             }
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
     }

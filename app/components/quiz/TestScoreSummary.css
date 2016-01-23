@@ -11,3 +11,5 @@ table {
   table tbody tr#totalsRow {
     background-color: black;
     color: gold; }
+  table tbody tr:hover {
+    cursor: pointer; }

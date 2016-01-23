@@ -3,7 +3,7 @@
     <a [routerLink]="['/UserReview']">{{test.user}}</a>
 </h2>
 
-<test-score-summary [test]="test"></test-score-summary>
+<test-score-summary [test]="test" (selectedCategory)="onSelectCategory($event)"></test-score-summary>
 <br />
-<test-score-detail [quiz]="quiz" [test]="test"></test-score-detail>
+<test-score-detail [quiz]="quiz" [test]="test" [categoryFilter]="categoryFilter"></test-score-detail>
 <router-outlet></router-outlet>

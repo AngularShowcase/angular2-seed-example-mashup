@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="#q of questions; #i=index" (click)="reviewQuestion(q, i+1)">
+		<tr *ngFor="#q of questions | CategoryFilter:categoryFilter; #i=index" (click)="reviewQuestion(q, i+1)">
 			<td title="{{q.questionId}}">{{q.questionNumber}}</td>
 			<td title="{{q.answerCategory}}">{{q.category}}</td>
 			<td>{{q.question}}</td>

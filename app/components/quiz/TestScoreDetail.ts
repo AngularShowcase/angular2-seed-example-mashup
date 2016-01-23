@@ -2,12 +2,14 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITest, IQuiz, IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {CategoryFilter} from './CategoryFilter';
 
 @Component({
     selector: 'test-score-detail',
     templateUrl: './components/quiz/TestScoreDetail.html',
     styleUrls: ['./components/quiz/TestScoreDetail.css'],
-    inputs: ['test', 'quiz'],
+    inputs: ['test', 'quiz', 'categoryFilter'],
+    pipes: [CategoryFilter],
     providers: [],
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
@@ -16,6 +18,7 @@ export class TestScoreDetail {
     _quiz:IQuiz;
     _test:ITest;
     questions:any[] = [];
+    categoryFilter:string = null;
 
     constructor(public router:Router) {
 

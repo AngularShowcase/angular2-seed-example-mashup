@@ -27,6 +27,7 @@ export class ReviewTest {
 
     quiz:IQuiz = new Quiz();
     test:ITest = new Test();
+    categoryFilter:string = null;
 
     constructor(public quizServices:QuizServices,
                 public routeParams:RouteParams) {
@@ -48,4 +49,8 @@ export class ReviewTest {
             .subscribe((quiz:IQuiz) => this.quiz = quiz);
     }
 
+    onSelectCategory(category:string) {
+        console.log(`The user selected category ${category}`);
+        this.categoryFilter = category;
+    }
 }
