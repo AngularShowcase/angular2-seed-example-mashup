@@ -4,6 +4,8 @@ import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import * as RouterMod from 'angular2/router';
 import {IQuiz, ITest, IUserQuestion, IScoringResult} from '../../../common/interfaces/QuizInterfaces';
+import {Quiz} from '../../models/Quiz';
+import {Test} from '../../models/Test';
 
 enum ProctorState {
     Initializing = 0,
@@ -27,24 +29,8 @@ export class ProctorExam {
     quizId = 0;
     testId = 0;
 
-    quiz:IQuiz = {
-        quizId: 0,
-        categories: [],
-        questionCount: 0,
-        userQuestions: []
-    };
-
-    test:ITest = {
-        testId: 0,
-        quizId: 0,
-        user: '',
-        questionCount: 0,
-        dateTaken: new Date(),
-        completed: false,
-        answers: [],
-        sectionResults: [],
-        testResult: null
-    };
+    quiz:IQuiz = new Quiz();
+    test:ITest = new Test();
 
     userAnswers: {};
 
