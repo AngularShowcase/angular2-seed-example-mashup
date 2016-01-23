@@ -18,3 +18,12 @@ div.panel-heading {
 div.panel-body {
   background-color: lightcyan;
   font-size: 20pt; }
+
+md-card {
+  color: gold;
+  font-size: 12pt;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5pt; }
+  md-card md-card-title {
+    text-decoration: underline; }
