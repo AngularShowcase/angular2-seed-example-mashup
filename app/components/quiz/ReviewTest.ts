@@ -7,6 +7,8 @@ import {TestScoreSummary} from './TestScoreSummary';
 import {TestScoreDetail} from './TestScoreDetail';
 import {EmptyQuestionReview} from './EmptyQuestionReview';
 import {ReviewQuestion} from './ReviewQuestion';
+import {Quiz} from '../../models/Quiz';
+import {Test} from '../../models/Test';
 
 @RouteConfig([
   { path: '/', component: EmptyQuestionReview, as: 'EmptyQuestionReview', useAsDefault: true },
@@ -23,32 +25,12 @@ import {ReviewQuestion} from './ReviewQuestion';
 })
 export class ReviewTest {
 
-    quiz:IQuiz = {
-        quizId: 0,
-        categories: [],
-        questionCount: 0,
-        userQuestions: []
-    };
+    quiz:IQuiz = new Quiz();
+    test:ITest = new Test();
 
-    test:ITest = {
-        testId: 0,
-        quizId: 0,
-        user: '',
-        questionCount: 0,
-        dateTaken: new Date(),
-        completed: false,
-        answers: [],
-        sectionResults: [],
-        testResult: {
-            sectionName: 'total',
-            questionCount: 0,
-            correctCount: 0,
-            incorrectCount: 0,
-            score: 0
-        }
-    };
+    constructor(public quizServices:QuizServices,
+                public routeParams:RouteParams) {
 
-    constructor(public quizServices:QuizServices, public routeParams:RouteParams) {
     }
 
     ngOnInit() {
