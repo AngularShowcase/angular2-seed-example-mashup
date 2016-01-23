@@ -41,6 +41,9 @@ export class UserReview {
 
     reviewTest(testId:number, quizId:number) {
         console.log(`He'd like to review test ${testId}.`);
+
+        //Switch to the detail tab.
+        $('#reviewTabs a[href="#testDetail"]')['tab']('show');
         this.router.navigate(['./ReviewTest', {testId: testId}]);
     }
 }
