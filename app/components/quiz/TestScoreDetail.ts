@@ -13,31 +13,15 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 })
 export class TestScoreDetail {
 
+    _quiz:IQuiz;
+    _test:ITest;
+    questions:any[] = [];
+
     constructor(public router:Router) {
 
     }
 
-    _quiz:IQuiz = {
-        quizId: 0,
-        categories: [],
-        questionCount: 0,
-        userQuestions: []
-    };
-
-    _test:ITest = {
-        testId: 0,
-        quizId: 0,
-        user: '',
-        questionCount: 0,
-        dateTaken: new Date(),
-        completed: false,
-        answers: [],
-        sectionResults: [],
-        testResult: null
-    };
-
-    questions:any[] = [];
-
+    // We build the data anew whenever the quiz or test properties change from the parent
     get quiz():IQuiz {
         return this._quiz;
     }
