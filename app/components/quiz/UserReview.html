@@ -10,27 +10,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="testList">
-                <h1>User Review for {{username}}</h1>
-                <table id="reviewTable">
-                    <thead>
-                        <tr>
-                            <th>Test Id</th>
-                            <th>Quiz Id</th>
-                            <th>Date Taken</th>
-                            <th>Questions</th>
-                            <th class="score">Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="#userTest of userTests" (click)="reviewTest(userTest.testId, userTest.quizId)">
-                            <td>{{userTest.testId}}</td>
-                            <td>{{userTest.quizId}}</td>
-                            <td>{{userTest.dateTaken | date}}</td>
-                            <td>{{userTest.questionCount}}</td>
-                            <td class="score">{{userTest.testResult.score | percent:'1.2-2'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <user-test-list [username]="username"></user-test-list>
             </div>
             <div role="tabpanel" class="tab-pane" id="testDetail">
                 <router-outlet></router-outlet>

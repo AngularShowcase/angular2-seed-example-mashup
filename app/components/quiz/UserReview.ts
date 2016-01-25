@@ -6,6 +6,7 @@ import {ITest} from '../../../common/interfaces/QuizInterfaces';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {ReviewTest} from './ReviewTest';
 import {EmptyTestReview} from './EmptyTestReview';
+import {UserTestList} from './UserTestList';
 
 @RouteConfig([
   { path: '/', component: EmptyTestReview, as: 'EmptyTestReview', useAsDefault: true },
@@ -17,7 +18,7 @@ import {EmptyTestReview} from './EmptyTestReview';
     styleUrls: ['./components/quiz/UserReview.css'],
 
     providers: [QuizServices],
-    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, UserTestList]
 })
 export class UserReview {
 
