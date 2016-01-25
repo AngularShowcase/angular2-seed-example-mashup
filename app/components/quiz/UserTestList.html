@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="#userTest of userTests" (click)="reviewTest(userTest.testId, userTest.quizId)">
+        <tr *ngFor="#userTest of userTests" (click)="reviewTest(userTest.testId)">
             <td>{{userTest.testId}}</td>
             <td>{{userTest.quizId}}</td>
             <td>{{userTest.dateTaken | date}}</td>

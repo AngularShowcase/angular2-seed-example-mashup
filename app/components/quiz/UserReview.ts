@@ -40,7 +40,7 @@ export class UserReview {
             .subscribe(userTests => this.userTests = userTests);
     }
 
-    reviewTest(testId:number, quizId:number) {
+    reviewTest(testId:number) {
         console.log(`He'd like to review test ${testId}.`);
 
         //Switch to the detail tab.

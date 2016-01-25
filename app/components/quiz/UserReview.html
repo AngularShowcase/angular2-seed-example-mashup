@@ -10,7 +10,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="testList">
-                <user-test-list [username]="username"></user-test-list>
+                <user-test-list [username]="username" (selectedTest)="reviewTest($event)"></user-test-list>
             </div>
             <div role="tabpanel" class="tab-pane" id="testDetail">
                 <router-outlet></router-outlet>

@@ -44,7 +44,7 @@ export const NPM_DEPENDENCIES = [
 
   // Faster dev page load
   { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', dest: LIB_DEST },
-  { src: 'angular2/bundles/angular2.min.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'angular2/bundles/angular2.dev.js', inject: 'libs', dest: LIB_DEST },
   { src: 'angular2/bundles/router.js', inject: 'libs', dest: LIB_DEST }, // use router.min.js with alpha47
   { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
   { src: 'ng2-material/dist/ng2-material.js', inject: 'libs', dest: LIB_DEST },
