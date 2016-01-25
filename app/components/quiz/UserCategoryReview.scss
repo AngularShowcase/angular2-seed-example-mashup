@@ -1,0 +1,34 @@
+table {
+	font-size: 12pt;
+    text-align: right;
+    border-left: solid 5px black;
+    border-right: solid 3px gray;
+    border-bottom: solid 2px gray;
+
+    td, th {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    thead {
+        tr {
+            background-color: black;
+            color: gold;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(2n+1) {
+                background-color: lightgrey;
+
+            }
+
+            &:hover {
+                background-color: black !important;
+                color: white !important;
+                cursor: pointer;
+            }
+        }
+    }
+}

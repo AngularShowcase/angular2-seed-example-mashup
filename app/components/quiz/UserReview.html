@@ -3,18 +3,26 @@
     <div>
         <!-- Nav tabs -->
         <ul id="reviewTabs" class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#testList" aria-controls="testList" role="tab" data-toggle="tab">Test List</a></li>
+            <li role="presentation" class="active"><a href="#userCategoryReview" aria-controls="userCategoryReview" role="tab" data-toggle="tab">Category List</a></li>
+            <li role="presentation"><a href="#testList" aria-controls="testList" role="tab" data-toggle="tab">Test List</a></li>
             <li role="presentation"><a href="#testDetail" aria-controls="testDetail" role="tab" data-toggle="tab">Test Detail</a></li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="testList">
+
+            <div role="tabpanel" class="tab-pane active" id="userCategoryReview">
+                <user-category-review [username]="username"></user-category-review>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="testList">
                 <user-test-list [username]="username" (selectedTest)="reviewTest($event)"></user-test-list>
             </div>
+
             <div role="tabpanel" class="tab-pane" id="testDetail">
                 <router-outlet></router-outlet>
             </div>
+
         </div>
     </div>
 </div>

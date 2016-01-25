@@ -7,6 +7,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {ReviewTest} from './ReviewTest';
 import {EmptyTestReview} from './EmptyTestReview';
 import {UserTestList} from './UserTestList';
+import {UserCategoryReview} from './UserCategoryReview';
 
 @RouteConfig([
   { path: '/', component: EmptyTestReview, as: 'EmptyTestReview', useAsDefault: true },
@@ -18,7 +19,7 @@ import {UserTestList} from './UserTestList';
     styleUrls: ['./components/quiz/UserReview.css'],
 
     providers: [QuizServices],
-    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, UserTestList]
+    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, UserCategoryReview, UserTestList]
 })
 export class UserReview {
 
