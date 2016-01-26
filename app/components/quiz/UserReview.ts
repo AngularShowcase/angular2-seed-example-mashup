@@ -25,6 +25,7 @@ export class UserReview {
 
     username:string = '';
     userTests:ITest[] = [];
+    filterCategory:string = null;
 
     constructor(public authentication:Authentication, public quizServices:QuizServices,
                 public router:Router) {
@@ -43,9 +44,18 @@ export class UserReview {
 
     reviewTest(testId:number) {
         console.log(`He'd like to review test ${testId}.`);
-
-        //Switch to the detail tab.
-        $('#reviewTabs a[href="#testDetail"]')['tab']('show');
+        this.switchToTab('testDetail');
         this.router.navigate(['./ReviewTest', {testId: testId}]);
+    }
+
+    selectCategory(category:string) {
+        console.log(`User wants to filter by catgory ${category}.`);
+        this.switchToTab('testList');
+        this.filterCategory = category;
+    }
+
+    switchToTab(tabName:string) {
+        console.log(`Switching to tab ${tabName}.`);
+        $(`#reviewTabs a[href="#${tabName}"]`)['tab']('show');
     }
 }

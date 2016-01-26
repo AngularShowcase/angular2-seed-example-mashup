@@ -171,7 +171,7 @@ export class QuizServices {
     }
 
     // Add up all sections regardless of section names.  Useful for grand totals
-    
+
     aggregateSectionResults(allSections:ISectionResult[]) : ISectionResult {
 
         let totals = _.reduce<ISectionResult,ISectionResult>(allSections, (acc, item) => {

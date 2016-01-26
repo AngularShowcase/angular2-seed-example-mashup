@@ -1,14 +1,14 @@
 import {Component, EventEmitter} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
-import {ITest, ISectionResult} from '../../../common/interfaces/QuizInterfaces';
-import {SectionResult} from '../../models/SectionResult';
+import {ISectionResult} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'user-category-review',
     templateUrl: './components/quiz/UserCategoryReview.html',
     styleUrls: ['./components/quiz/UserCategoryReview.css'],
     inputs: ['username'],
+    outputs: ['selectedCategory'],
     providers: [QuizServices],
     directives: [CORE_DIRECTIVES]
 })
@@ -16,8 +16,10 @@ export class UserCategoryReview {
 
     username:string = '';
     summarizedResults:ISectionResult[] = [];
+    selectedCategory:EventEmitter<string>;
 
     constructor(public quizServices:QuizServices) {
+        this.selectedCategory = new EventEmitter<string>();
     }
 
     ngOnInit() {
@@ -41,5 +43,11 @@ export class UserCategoryReview {
                 this.summarizedResults.push(grandTotals);
             });
         }
+    }
+
+    categoryClick(categoryName:string, index:number) {
+        console.log(`categoryClick for category ${categoryName}; index = ${index}.`);
+        let category:string = (index === this.summarizedResults.length - 1) ? null : categoryName;
+        this.selectedCategory.next(category);
     }
 }

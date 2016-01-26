@@ -12,11 +12,11 @@
         <div class="tab-content">
 
             <div role="tabpanel" class="tab-pane active" id="userCategoryReview">
-                <user-category-review [username]="username"></user-category-review>
+                <user-category-review (selectedCategory)="selectCategory($event)" [username]="username"></user-category-review>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="testList">
-                <user-test-list [username]="username" (selectedTest)="reviewTest($event)"></user-test-list>
+                <user-test-list [filterCategory]="filterCategory" [username]="username" (selectedTest)="reviewTest($event)"></user-test-list>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="testDetail">

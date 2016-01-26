@@ -10,11 +10,11 @@ interface IHaveCategory {
 export class CategoryFilter {
 
     transform(items:IHaveCategory[], [category]:[string]) : IHaveCategory[] {
-        console.log('CategoryFilter called with: ', items, category);
         if (!items || !category) {
             return items;
         }
 
+        console.log(`CategoryFilter: Filtering ${items.length} items by category ${category}.`);
         return items.filter(item => item.category === category);
     }
 }

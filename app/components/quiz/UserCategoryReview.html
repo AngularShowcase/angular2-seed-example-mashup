@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="#catResult of summarizedResults">
+        <tr (click)="categoryClick(catResult.sectionName, index)" *ngFor="#catResult of summarizedResults; #index=index">
             <td>{{catResult.sectionName}}</td>
             <td>{{catResult.questionCount}}</td>
             <td>{{catResult.correctCount}}</td>
