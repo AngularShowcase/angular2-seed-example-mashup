@@ -1,5 +1,8 @@
 <h1>User Test List Review for {{username}}</h1>
-<h2>{{filterCategory}}</h2>
+
+<h2 *ngIf="filterCategory">Showing tests convering category: {{filterCategory}}</h2>
+<h2 *ngIf="!filterCategory">Showing all tests</h2>
+
 <table id="reviewTable">
     <thead>
         <tr>
