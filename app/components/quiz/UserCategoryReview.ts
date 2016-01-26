@@ -2,6 +2,7 @@ import {Component, EventEmitter} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {QuizServices} from '../../services/QuizServices';
 import {ITest, ISectionResult} from '../../../common/interfaces/QuizInterfaces';
+import {SectionResult} from '../../models/SectionResult';
 
 @Component({
     selector: 'user-category-review',
@@ -22,26 +23,22 @@ export class UserCategoryReview {
     ngOnInit() {
 
         console.log(`UserCategoryReview invoked with username ${this.username}.`);
+
         if (this.username) {
-            // var x = this.quizServices.getUserTests(this.username)
-            //     .map(tests => {
-            //         let catResults:ISectionResult[] = [];
 
-            //         for (let t of tests) {
-            //             for (let s of t.sectionResults) {
-            //                 catResults.push(s);
-            //             }
-            //         }
-            //         return catResults;
-            //     });
+            // Get all user tests and get a flattened list of all the user's sectionName
+            // results;
 
-            var categoryResults
+            let categoryResults
                 = this.quizServices.getUserTests(this.username)
-                    .map(tests => <ISectionResult[]> _.flatten(tests.map(test => test.sectionResults)));
+                    .map(tests => _.flatten(tests.map(test => test.sectionResults)));
 
-            categoryResults.subscribe(catResults => {
-                let dict = _.groupBy(catResults, "sectionName");
-                console.log(dict);
+            categoryResults.subscribe(allUserResults => {
+                let summary = this.quizServices.aggregateSectionResultsBySectionName(allUserResults);
+                this.summarizedResults = _.sortBy(summary, 'sectionName');
+                let grandTotals = this.quizServices.aggregateSectionResults(this.summarizedResults);
+                grandTotals.sectionName = `All Categories`;
+                this.summarizedResults.push(grandTotals);
             });
         }
     }

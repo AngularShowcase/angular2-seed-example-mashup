@@ -2,7 +2,8 @@ import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {IQuizQuestion, INewQuizRequest, IQuiz, IScoringResult,
-        ITest, INewTestRequest} from '../../common/interfaces/QuizInterfaces';
+        ITest, INewTestRequest, ISectionResult} from '../../common/interfaces/QuizInterfaces';
+import {SectionResult} from '../models/SectionResult';
 
 @Injectable()
 export class QuizServices {
@@ -141,4 +142,48 @@ export class QuizServices {
 		return tests;
 	}
 
+    // Aggregate a list of section results by the section name.  Group by section name
+    // and compute the totals for each.
+    aggregateSectionResultsBySectionName(allSections:ISectionResult[]) : ISectionResult[] {
+
+        let sectionsByCategory = _.groupBy(allSections, 'sectionName');
+
+        let summary:ISectionResult[] = [];
+
+        for (let categoryName in sectionsByCategory) {
+            let categorySections = sectionsByCategory[categoryName];
+
+            let categoryTotals = _.reduce<ISectionResult,ISectionResult>(categorySections, (acc, item) => {
+                acc.correctCount += item.correctCount;
+                acc.incorrectCount += item.incorrectCount;
+                acc.questionCount += item.questionCount;
+
+                return acc;
+
+            }, new SectionResult());
+
+            categoryTotals.sectionName = categoryName;
+            categoryTotals.score = categoryTotals.questionCount === 0 ? 0 : categoryTotals.correctCount / categoryTotals.questionCount;
+            summary.push(categoryTotals);
+        }
+
+        return summary;
+    }
+
+    // Add up all sections regardless of section names.  Useful for grand totals
+    
+    aggregateSectionResults(allSections:ISectionResult[]) : ISectionResult {
+
+        let totals = _.reduce<ISectionResult,ISectionResult>(allSections, (acc, item) => {
+            acc.correctCount += item.correctCount;
+            acc.incorrectCount += item.incorrectCount;
+            acc.questionCount += item.questionCount;
+
+            return acc;
+
+        }, new SectionResult());
+
+        totals.score = totals.questionCount === 0 ? 0 : totals.correctCount / totals.questionCount;
+        return totals;
+    }
 }

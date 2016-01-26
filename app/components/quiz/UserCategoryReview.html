@@ -1,1 +1,21 @@
 <h1>User Category Review for {{username}}</h1>
+
+<table>
+    <thead>
+        <th>Category</th>
+        <th>Questions</th>
+        <th>Correct</th>
+        <th>Incorrect</th>
+        <th>Score</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="#catResult of summarizedResults">
+            <td>{{catResult.sectionName}}</td>
+            <td>{{catResult.questionCount}}</td>
+            <td>{{catResult.correctCount}}</td>
+            <td>{{catResult.incorrectCount}}</td>
+            <td>{{catResult.score | percent:'1.2-2'}}</td>
+        </tr>
+    </tbody>
+</table>
