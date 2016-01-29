@@ -25,8 +25,8 @@ export class Admin {
 
     ngOnInit() {
 
-        if (!this.authentication.authenticate()) {
-            return;
-        }
+        // if (!this.authentication.authenticate()) {
+        //     return;
+        // }
     }
 }
