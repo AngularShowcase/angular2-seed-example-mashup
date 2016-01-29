@@ -43,6 +43,7 @@ import {UserReview} from '../quiz/UserReview';
 import {Weather} from '../streaming/Weather';
 import {Chat} from '../streaming/Chat';
 import {QuizAdmin} from '../quiz/QuizAdmin';
+import {Admin} from '../admin/Admin';
 
 @Component({
   selector: 'app',
@@ -56,6 +57,7 @@ import {QuizAdmin} from '../quiz/QuizAdmin';
   { path: '/', component: FrontPage, as: 'Home' },
   { path: '/login', component: Login, as: 'Login' },
   { path: '/register', component: Register, as: 'Register' },
+  { path: '/admin', component: Admin, as: 'Admin' },
   { path: '/about', component: AboutCmp, as: 'About' },
   { path: '/mashup', component: Mashup, as: 'Mashup' },
   { path: '/mouseplay', component: MousePlay, as: 'Mouseplay' },
