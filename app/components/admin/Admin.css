@@ -1,0 +1,13 @@
+hr {
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
+section#menu {
+  width: 300px;
+  float: left;
+  margin-right: 20px;
+  border-right: 2px solid blue;
+  padding-right: 2px; }
+
+section#content {
+  float: left; }

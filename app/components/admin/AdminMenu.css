@@ -1,9 +1,7 @@
 div#menu {
-  height: 500px;
+  height: 560px;
   background-color: black;
-  font-size: 28pt;
-  border-radius: 10px;
-  border: 1px solid gray; }
+  font-size: 28pt; }
   div#menu a {
     display: block;
     color: gold;

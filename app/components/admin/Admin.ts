@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {Authentication} from '../../services/Authentication';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Menu} from './Menu';
+import {AdminMenu} from './AdminMenu';
 import {Users} from './Users';
 import {Roles} from './Roles';
 
@@ -16,7 +16,7 @@ import {Roles} from './Roles';
     selector: 'admin',
     templateUrl: './components/admin/Admin.html',
     styleUrls: ['./components/admin/Admin.css'],
-    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, Menu]
+    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, AdminMenu]
 })
 export class Admin {
 

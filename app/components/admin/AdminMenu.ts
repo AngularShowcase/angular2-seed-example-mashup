@@ -3,11 +3,11 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
-    selector: 'menu',
-    templateUrl: './components/admin/Menu.html',
-    styleUrls: ['./components/admin/Menu.css'],
+    selector: 'admin-menu',
+    templateUrl: './components/admin/AdminMenu.html',
+    styleUrls: ['./components/admin/AdminMenu.css'],
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
-export class Menu {
+export class AdminMenu {
 
 }
