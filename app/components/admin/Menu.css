@@ -1,0 +1,15 @@
+div#menu {
+  height: 500px;
+  background-color: black;
+  font-size: 28pt;
+  border-radius: 10px;
+  border: 1px solid gray; }
+  div#menu a {
+    display: block;
+    color: gold;
+    margin-left: 50px;
+    text-decoration: none;
+    transition: transform 100ms; }
+    div#menu a:hover {
+      transform: translateX(-4px);
+      color: orangered; }

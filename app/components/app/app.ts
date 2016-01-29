@@ -57,7 +57,7 @@ import {Admin} from '../admin/Admin';
   { path: '/', component: FrontPage, as: 'Home' },
   { path: '/login', component: Login, as: 'Login' },
   { path: '/register', component: Register, as: 'Register' },
-  { path: '/admin', component: Admin, as: 'Admin' },
+  { path: '/admin/...', component: Admin, as: 'Admin' },
   { path: '/about', component: AboutCmp, as: 'About' },
   { path: '/mashup', component: Mashup, as: 'Mashup' },
   { path: '/mouseplay', component: MousePlay, as: 'Mouseplay' },
