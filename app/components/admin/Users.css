@@ -5,6 +5,8 @@ table#users {
     color: gold; }
     table#users thead th {
       cursor: pointer; }
+      table#users thead th:hover {
+        color: yellow; }
   table#users tbody {
     background-color: lightgreen;
     color: black; }

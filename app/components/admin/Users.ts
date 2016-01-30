@@ -4,11 +4,13 @@ import {SecurityService} from '../../services/SecurityService';
 import {Observable} from 'rxjs/Observable';
 import {IRegisteredUser} from '../../../common/interfaces/RegistrationInterfaces';
 import {SortOrder} from '../../models/SortOrder';
+import {FieldSortPipe} from '../../pipes/FieldSortPipe';
 
 @Component({
     templateUrl: './components/admin/Users.html',
     styleUrls: ['./components/admin/Users.css'],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    pipes: [FieldSortPipe]
 })
 export class Users {
 

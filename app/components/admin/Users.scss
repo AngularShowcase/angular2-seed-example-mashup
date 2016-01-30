@@ -8,6 +8,10 @@ table#users {
 
         th {
             cursor: pointer;
+
+            &:hover {
+                color: yellow;
+            }
         }
     }
 
