@@ -1,13 +1,13 @@
 <h2>Users</h2>
 
-<table>
+<table id="users">
     <thead>
         <tr>
-            <th>User Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>LastName</th>
+            <th (click)="sortBy('userId')">User Id</th>
+            <th (click)="sortBy('username')">Username</th>
+            <th (click)="sortBy('emailAddress')">Email</th>
+            <th (click)="sortBy('firstName')">First Name</th>
+            <th (click)="sortBy('lastName')">LastName</th>
         </tr>
     </thead>
     <tbody>

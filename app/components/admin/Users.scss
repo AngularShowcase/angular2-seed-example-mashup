@@ -1,0 +1,27 @@
+table#users {
+
+    font-size: 14pt;
+
+    thead {
+        background-color: black;
+        color: gold;
+
+        th {
+            cursor: pointer;
+        }
+    }
+
+    tbody {
+        background-color: lightgreen;
+        color: black;
+
+        tr:nth-child(odd) {
+            background-color: lightblue;
+        }
+    }
+
+    td, th {
+        padding: 3px;
+        border: 1px solid black;
+    }
+}

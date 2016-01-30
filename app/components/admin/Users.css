@@ -1,0 +1,15 @@
+table#users {
+  font-size: 14pt; }
+  table#users thead {
+    background-color: black;
+    color: gold; }
+    table#users thead th {
+      cursor: pointer; }
+  table#users tbody {
+    background-color: lightgreen;
+    color: black; }
+    table#users tbody tr:nth-child(odd) {
+      background-color: lightblue; }
+  table#users td, table#users th {
+    padding: 3px;
+    border: 1px solid black; }

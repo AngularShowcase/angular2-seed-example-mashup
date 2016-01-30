@@ -3,6 +3,7 @@ div#menu {
   background-color: black;
   font-size: 28pt; }
   div#menu a {
+    padding-bottom: 50px;
     display: block;
     color: gold;
     margin-left: 50px;
