@@ -1,1 +1,22 @@
 <h2>Users</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>LastName</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="#user of users | async">
+            <td>{{user.userId}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.emailAddress}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+        </tr>
+    </tbody>
+</table>
