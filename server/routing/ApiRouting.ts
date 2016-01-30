@@ -48,6 +48,7 @@ export class ApiRouting {
 
 	configBasicRoutes() {
 
+		this.router.get('/users', this.getUsers.bind(this));
 		this.router.post('/users/register', this.registerUser.bind(this));
 		this.router.post('/login', this.login.bind(this));
 		this.router.get('/animals/questions/root', this.getRootQuestion.bind(this));
@@ -85,6 +86,13 @@ export class ApiRouting {
 			this.uploadUsage.bind(this)]);
 	}
 
+
+    getUsers(req, res, next) {
+		this.securityService.getUsers()
+			.then(users => res.send(users))
+			.catch(err => next(err));
+
+    }
 	// Login a user
 	login(req, res, next) {
 		var loginRequest:ILoginRequest = req.body;

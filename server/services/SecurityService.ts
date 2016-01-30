@@ -22,6 +22,19 @@ export class SecurityService {
 		this.usersCollection = this.db.collection('users');
 	}
 
+	public getUsers(): Q.Promise<IRegisteredUser[]> {
+		let defer = Q.defer<IRegisteredUser[]>();
+		this.usersCollection.find().sort({ userId: -1 }).toArray(function(e, users: IRegisteredUser[]) {
+			if (e) {
+				defer.reject(e);
+			} else {
+				defer.resolve(users);
+			}
+		});
+
+		return defer.promise;
+	}
+
 	public getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {
 		let defer = Q.defer<IRegisteredUser>();
 		var coll = this.usersCollection;
