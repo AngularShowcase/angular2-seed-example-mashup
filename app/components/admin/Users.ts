@@ -28,13 +28,7 @@ export class Users {
         this.users = this.securityService.getUsers();
     }
 
-    sortBy(fieldName:string) {
-        this.sortOrder = this.sortOrder.sortOnField(fieldName);
-        console.log(`Sort order changing to ${this.sortOrder.toString()}`);
+    sortOn(newSortOrder:SortOrder) {
+        this.sortOrder = newSortOrder;
     }
-
-    sortOn(sortOrder:SortOrder) {
-        console.log(`Directive Sort order changing to ${sortOrder.toString()}`);
-    }
-
 }
