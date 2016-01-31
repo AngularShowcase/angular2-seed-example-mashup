@@ -10,6 +10,8 @@ table {
   table thead tr {
     background-color: black;
     color: gold; }
+    table thead tr th:hover {
+      cursor: pointer; }
   table tbody tr:nth-child(2n+1) {
     background-color: lightgrey; }
   table tbody tr:hover {

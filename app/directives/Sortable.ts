@@ -11,13 +11,13 @@ export class Sortable {
     sortOrder:EventEmitter<SortOrder>;
 
     constructor(public _element: ElementRef, public _renderer: Renderer) {
-        console.log('Directive Sortable constructed.');
+        // console.log('Directive Sortable constructed.');
         this.currentSortOrder = new SortOrder('');
         this.sortOrder = new EventEmitter<SortOrder>();
     }
 
     processColumnClick(fieldName:string) {
-        console.log('Got a click on column ', fieldName);
+        // console.log('Got a click on column ', fieldName);
         this.currentSortOrder = this.currentSortOrder.sortOnField(fieldName);
         this.sortOrder.next(this.currentSortOrder);
     }

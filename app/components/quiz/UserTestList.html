@@ -3,18 +3,18 @@
 <h2 *ngIf="filterCategory">Showing tests convering category: {{filterCategory}}</h2>
 <h2 *ngIf="!filterCategory">Showing all tests</h2>
 
-<table id="reviewTable">
+<table id="reviewTable" hpSortable (sortOrder)="sortOn($event)">
     <thead>
         <tr>
-            <th>Test Id</th>
-            <th>Quiz Id</th>
-            <th>Date Taken</th>
-            <th>Questions</th>
-            <th class="score">Score</th>
+            <th hpSortKey="testId">Test Id</th>
+            <th hpSortKey="quizId">Quiz Id</th>
+            <th hpSortKey="dateTaken">Date Taken</th>
+            <th hpSortKey="questionCount">Questions</th>
+            <th hpSortKey="testResult.score" class="score">Score</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="#userTest of userTests | TestCategoryFilter:filterCategory" (click)="reviewTest(userTest.testId)">
+        <tr *ngFor="#userTest of userTests | TestCategoryFilter:filterCategory | fieldSort:sortOrder" (click)="reviewTest(userTest.testId)">
             <td>{{userTest.testId}}</td>
             <td>{{userTest.quizId}}</td>
             <td>{{userTest.dateTaken | date}}</td>
