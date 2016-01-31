@@ -1,9 +1,9 @@
 <h2>Users</h2>
 
-<table id="users">
+<table id="users" hpSortable (sortOrder)="sortOn($event)">
     <thead>
         <tr>
-            <th (click)="sortBy('userId')">User Id</th>
+            <th hpSortKey="userId">User Id</th>
             <th (click)="sortBy('username')">Username</th>
             <th (click)="sortBy('emailAddress')">Email</th>
             <th (click)="sortBy('firstName')">First Name</th>

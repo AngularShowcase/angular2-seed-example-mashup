@@ -1,5 +1,5 @@
 import {Pipe} from 'angular2/core';
-import {SortOrder, ISortOrder, SortDirection} from '../models/SortOrder';
+import {ISortOrder, SortDirection} from '../models/SortOrder';
 
 @Pipe({
     name: 'fieldSort'

@@ -5,11 +5,13 @@ import {Observable} from 'rxjs/Observable';
 import {IRegisteredUser} from '../../../common/interfaces/RegistrationInterfaces';
 import {SortOrder} from '../../models/SortOrder';
 import {FieldSortPipe} from '../../pipes/FieldSortPipe';
+import {Sortable} from '../../directives/Sortable';
+import {SortKey} from '../../directives/SortKey';
 
 @Component({
     templateUrl: './components/admin/Users.html',
     styleUrls: ['./components/admin/Users.css'],
-    directives: [CORE_DIRECTIVES],
+    directives: [CORE_DIRECTIVES, Sortable, SortKey],
     pipes: [FieldSortPipe]
 })
 export class Users {
@@ -30,4 +32,9 @@ export class Users {
         this.sortOrder = this.sortOrder.sortOnField(fieldName);
         console.log(`Sort order changing to ${this.sortOrder.toString()}`);
     }
+
+    sortOn(sortOrder:SortOrder) {
+        console.log(`Directive Sort order changing to ${sortOrder.toString()}`);
+    }
+
 }
