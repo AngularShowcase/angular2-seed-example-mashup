@@ -11,6 +11,7 @@ import {INewAnimalInfo} from '../../common/interfaces/AnimalInterfaces';
 import {IPerson, ICycle} from '../../common/interfaces/CellDataInterfaces';
 import {IQuizQuestion, INewQuizRequest, INewTestRequest, IScoringResult} from '../../common/interfaces/QuizInterfaces';
 import {IRegistration, ILoginRequest} from '../../common/interfaces/RegistrationInterfaces';
+import {IRole} from '../../common/interfaces/SecurityInterfaces';
 
 import {AnimalPersistenceService} from '../services/AnimalPersistenceService';
 import {CellDataPersistenceService} from '../services/CellDataPersistenceService';
@@ -49,6 +50,8 @@ export class ApiRouting {
 	configBasicRoutes() {
 
 		this.router.get('/users', this.getUsers.bind(this));
+		this.router.get('/roles', this.getRoles.bind(this));
+		this.router.post('/roles', this.addRole.bind(this));
 		this.router.post('/users/register', this.registerUser.bind(this));
 		this.router.post('/login', this.login.bind(this));
 		this.router.get('/animals/questions/root', this.getRootQuestion.bind(this));
@@ -93,6 +96,25 @@ export class ApiRouting {
 			.catch(err => next(err));
 
     }
+
+    getRoles(req, res, next) {
+		this.securityService.getRoles()
+			.then(roles => res.send(roles))
+			.catch(err => next(err));
+
+    }
+
+    // The security service add role method returns the revised, complete list of roles.
+    addRole(req, res, next) {
+		let newRole:IRole = req.body;
+		this.securityService.addRole(newRole)
+			.then(roles => res.send(roles))
+			.catch(err => {
+                    console.log('Calling next(err) in addRole with err = ', err);
+                    next(err);
+                });
+	}
+
 	// Login a user
 	login(req, res, next) {
 		var loginRequest:ILoginRequest = req.body;

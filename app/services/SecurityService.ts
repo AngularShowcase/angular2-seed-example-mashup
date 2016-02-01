@@ -2,6 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
 import {IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
+import {IRole} from '../../common/interfaces/SecurityInterfaces';
 
 @Injectable()
 export class SecurityService {
@@ -12,6 +13,23 @@ export class SecurityService {
 
 	getUsers() : Observable<IRegisteredUser[]> {
 		var result = this.http.get('/api/users')
+			.map(response => {
+                return response.json();
+            });
+
+		return result;
+	}
+
+    addRole(role:IRole) : Observable<IRole[]> {
+
+        var result = this.http.post('/api/Roles', JSON.stringify(role), this.getPostOptions())
+			.map(response => response.json());
+
+		return result;
+    }
+
+	getRoles() : Observable<IRole[]> {
+		var result = this.http.get('/api/Roles')
 			.map(response => {
                 return response.json();
             });

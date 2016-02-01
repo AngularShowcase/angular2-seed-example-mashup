@@ -12,7 +12,8 @@ export class FieldSortPipe {
             return items;
         }
 
-        console.log(`FieldSortPipe: Sorting ${items.length} items by field ${sortField.fieldName}.  Direction: ${sortField.sortDirection}.`);
+        console.log(
+            `FieldSortPipe: Sorting ${items.length} items by field ${sortField.fieldName}.  Direction: ${sortField.sortDirection}.`);
 
         var ascending = _.sortBy(items, sortField.fieldName);
         return sortField.sortDirection === SortDirection.Ascending ? ascending : ascending.reverse();

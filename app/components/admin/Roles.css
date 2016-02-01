@@ -1,0 +1,34 @@
+form {
+  font-size: 14pt;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  padding: 5px; }
+  form input {
+    color: black; }
+  form button {
+    padding: 5px;
+    background-color: black;
+    color: springgreen;
+    font-weight: bold; }
+    form button:disabled {
+      color: red;
+      font-weight: normal; }
+
+table#roles {
+  font-size: 14pt; }
+  table#roles thead {
+    background-color: black;
+    color: gold; }
+    table#roles thead th {
+      cursor: pointer; }
+      table#roles thead th:hover {
+        color: yellow; }
+  table#roles tbody {
+    background-color: lightgreen;
+    color: black; }
+    table#roles tbody tr:nth-child(odd) {
+      background-color: lightblue; }
+  table#roles td, table#roles th {
+    padding: 3px;
+    border: 1px solid black; }

@@ -1,0 +1,55 @@
+form {
+    font-size: 14pt;
+    margin-bottom: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+
+    input {
+        color: black;
+    }
+
+    button {
+        padding: 5px;
+        background-color: black;
+        color: springgreen;
+        font-weight: bold;
+
+        &:disabled {
+            color: red;
+            font-weight: normal;
+        }
+    }
+}
+
+table#roles {
+
+    font-size: 14pt;
+
+    thead {
+        background-color: black;
+        color: gold;
+
+        th {
+            cursor: pointer;
+
+            &:hover {
+                color: yellow;
+            }
+        }
+    }
+
+    tbody {
+        background-color: lightgreen;
+        color: black;
+
+        tr:nth-child(odd) {
+            background-color: lightblue;
+        }
+    }
+
+    td, th {
+        padding: 3px;
+        border: 1px solid black;
+    }
+}

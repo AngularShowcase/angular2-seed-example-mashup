@@ -1,1 +1,26 @@
 <h2>Roles</h2>
+
+<form #f="ngForm">
+    <div id="newRole">
+        <label>New Role</label>
+        <input #name ngControl="name" required />
+        <label>Description</label>
+        <input #description ngControl="description" required />
+        <button [disabled]="!f.valid" (click)="addRole(name.value, description.value)">Add</button>
+    </div>
+</form>
+
+<table id="roles" hpSortable (sortOrder)="sortOn($event)">
+    <thead>
+        <tr>
+            <th hpSortKey="name">Name</th>
+            <th hpSortKey="description">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="#role of roles | fieldSort:sortOrder">
+            <td>{{role.name}}</td>
+            <td>{{role.description}}</td>
+        </tr>
+    </tbody>
+</table>

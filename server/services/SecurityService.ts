@@ -1,10 +1,9 @@
-/// <reference path='../../tools/typings/tsd/bcrypt/bcrypt.d.ts'/>
-
 import Q = require('q');
 import bcrypt = require('bcrypt');
 
 var mongoskin = require('mongoskin');
 import {IRegistration, IRegistrationResponse, IRegisteredUser, ILoginResult} from '../../common/interfaces/RegistrationInterfaces';
+import {IRole} from '../../common/interfaces/SecurityInterfaces';
 
 var config = {
 	mongo_url: process.env.SECURITYDATA_URL || 'mongodb://@localhost:27017/security'
@@ -16,10 +15,12 @@ export class SecurityService {
 
 	db: any;
 	usersCollection: any;
+    rolesCollection: any;
 
 	constructor() {
 		this.db = mongoskin.db(config.mongo_url, { safe: true });
 		this.usersCollection = this.db.collection('users');
+		this.rolesCollection = this.db.collection('roles');
 	}
 
 	public getUsers(): Q.Promise<IRegisteredUser[]> {
@@ -33,6 +34,71 @@ export class SecurityService {
 		});
 
 		return defer.promise;
+	}
+
+	public getRoles(): Q.Promise<IRole[]> {
+		let defer = Q.defer<IRole[]>();
+		this.rolesCollection.find().sort({ name: -1 }).toArray(function(e, roles: IRole[]) {
+			if (e) {
+				defer.reject(e);
+			} else {
+				defer.resolve(roles);
+			}
+		});
+
+		return defer.promise;
+	}
+
+    // Add the new role and return the complete list of revised roles
+	public addRole(newRole:IRole): Q.Promise<IRole[]> {
+
+		let defer = Q.defer<IRole[]>();
+
+        try {
+            newRole.name = newRole.name.trim().toLowerCase();
+            newRole.description = newRole.description.trim().toLowerCase();
+
+            if (!newRole.name) {
+                throw new Error('Role name not specified.');
+            }
+
+            if (!newRole.description) {
+                throw new Error('Description not specified');
+            }
+
+            this.rolesCollection.findOne({name:newRole.name}, (e, existingRole:IRole) => {
+
+                try {
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (existingRole) {
+                        let errMsg = `Role ${existingRole.name} with description ${existingRole.description} already exists.`;
+                        throw { Message: errMsg };
+                    }
+
+                    this.rolesCollection.insert(newRole, (e, [addedRole]:IRole[]) => {
+
+                        if (e) {
+                            defer.reject(e);
+                        } else {
+                            console.log(`Added new role named ${addedRole.name} with description ${addedRole.description}.`);
+                            this.getRoles()
+                                .then(roles => defer.resolve(roles))
+                                .catch(err => defer.reject(err));
+                        }
+                    });
+                } catch (err) {
+                    defer.reject(err);
+                }
+            });
+
+        } catch(err) {
+            defer.reject(err);
+        }
+
+        return defer.promise;
 	}
 
 	public getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {
