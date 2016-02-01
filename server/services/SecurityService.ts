@@ -3,7 +3,7 @@ import bcrypt = require('bcrypt');
 
 var mongoskin = require('mongoskin');
 import {IRegistration, IRegistrationResponse, IRegisteredUser, ILoginResult} from '../../common/interfaces/RegistrationInterfaces';
-import {IRole} from '../../common/interfaces/SecurityInterfaces';
+import {IRole, IUser} from '../../common/interfaces/SecurityInterfaces';
 
 var config = {
 	mongo_url: process.env.SECURITYDATA_URL || 'mongodb://@localhost:27017/security'
@@ -23,13 +23,13 @@ export class SecurityService {
 		this.rolesCollection = this.db.collection('roles');
 	}
 
-	public getUsers(): Q.Promise<IRegisteredUser[]> {
-		let defer = Q.defer<IRegisteredUser[]>();
-		this.usersCollection.find().sort({ userId: -1 }).toArray(function(e, users: IRegisteredUser[]) {
+	public getUsers(): Q.Promise<IUser[]> {
+		let defer = Q.defer<IUser[]>();
+		this.usersCollection.find().sort({ userId: -1 }).toArray((e, users: IRegisteredUser[]) => {
 			if (e) {
 				defer.reject(e);
 			} else {
-				defer.resolve(users);
+				defer.resolve(<IUser[]>users.map(this.mapUser));
 			}
 		});
 
@@ -123,12 +123,11 @@ export class SecurityService {
 		username = username.trim().toLocaleLowerCase();
 
 		this.getUserByUsernameInternal(username)
-			.then(user => {
-                if (!user) {
+			.then(registeredUser => {
+                if (!registeredUser) {
                     defer.resolve({succeeded: false});
-                } else if (bcrypt.compareSync(password, user.hashedPassword)) {
-					user.hashedPassword = null;
-					defer.resolve({succeeded: true, userInfo: user});
+                } else if (bcrypt.compareSync(password, registeredUser.hashedPassword)) {
+					defer.resolve({succeeded: true, userInfo: this.mapUser(registeredUser)});
 				} else {
 					defer.resolve({succeeded: false});
 				}
@@ -202,4 +201,15 @@ export class SecurityService {
 
 		return defer.promise;
 	}
+
+    private mapUser(registeredUser:IRegisteredUser) : IUser {
+        return {
+            userId: registeredUser.userId,
+            username: registeredUser.username,
+            emailAddress: registeredUser.emailAddress,
+            firstName: registeredUser.firstName,
+            lastName: registeredUser.lastName,
+            roles: []
+        };
+    }
 }

@@ -1,8 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers, RequestOptions, RequestOptionsArgs} from 'angular2/http';
-import {IRegisteredUser} from '../../common/interfaces/RegistrationInterfaces';
-import {IRole} from '../../common/interfaces/SecurityInterfaces';
+import {IRole, IUser} from '../../common/interfaces/SecurityInterfaces';
 
 @Injectable()
 export class SecurityService {
@@ -11,7 +10,7 @@ export class SecurityService {
         console.log('Constructing the security service.');
 	}
 
-	getUsers() : Observable<IRegisteredUser[]> {
+	getUsers() : Observable<IUser[]> {
 		var result = this.http.get('/api/users')
 			.map(response => {
                 return response.json();

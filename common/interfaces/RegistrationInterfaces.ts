@@ -1,3 +1,5 @@
+import * as SecurityInterfaces from './SecurityInterfaces';
+
 export interface IRegistration {
 	username: string;
 	password: string;
@@ -27,5 +29,5 @@ export interface ILoginRequest {
 
 export interface ILoginResult {
 	succeeded: boolean;
-	userInfo?:IRegisteredUser;
+	userInfo?:SecurityInterfaces.IUser;
 };
