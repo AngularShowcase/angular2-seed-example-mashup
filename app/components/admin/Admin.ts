@@ -6,11 +6,13 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {AdminMenu} from './AdminMenu';
 import {Users} from './Users';
 import {Roles} from './Roles';
+import {RoleComponent} from './Role';
 
 @RouteConfig([
   { path: '/', component: Users, as: 'UsersDefault', useAsDefault: true },
   { path: '/Users', component: Users, as: 'Users' },
-  { path: '/Roles', component: Roles, as: 'Roles' }
+  { path: '/Roles', component: Roles, as: 'Roles' },
+  { path: '/Roles/:roleName', component: RoleComponent, as: 'Role' }
 ])
 
 @Component({

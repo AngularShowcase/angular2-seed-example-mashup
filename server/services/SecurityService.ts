@@ -101,21 +101,6 @@ export class SecurityService {
         return defer.promise;
 	}
 
-	public getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {
-		let defer = Q.defer<IRegisteredUser>();
-		var coll = this.usersCollection;
-
-		coll.findOne({ username: username }, function(e, user: IRegisteredUser) {
-			if (e) {
-				defer.reject(e);
-			} else {
-				defer.resolve(user);
-			}
-		});
-
-		return defer.promise;
-	}
-
 	public login(username:string, password:string) : Q.Promise<ILoginResult> {
 
 		var defer = Q.defer<ILoginResult>();
@@ -212,4 +197,19 @@ export class SecurityService {
             roles: []
         };
     }
+
+	private getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {
+		let defer = Q.defer<IRegisteredUser>();
+		var coll = this.usersCollection;
+
+		coll.findOne({ username: username }, function(e, user: IRegisteredUser) {
+			if (e) {
+				defer.reject(e);
+			} else {
+				defer.resolve(user);
+			}
+		});
+
+		return defer.promise;
+	}
 }
