@@ -27,6 +27,8 @@ table#roles {
   table#roles tbody {
     background-color: lightgreen;
     color: black; }
+    table#roles tbody tr td:nth-child(1):hover {
+      cursor: pointer; }
     table#roles tbody tr:nth-child(odd) {
       background-color: lightblue; }
   table#roles td, table#roles th {

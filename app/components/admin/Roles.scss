@@ -43,6 +43,15 @@ table#roles {
         background-color: lightgreen;
         color: black;
 
+        tr {
+            td {
+                &:nth-child(1) {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
         tr:nth-child(odd) {
             background-color: lightblue;
         }

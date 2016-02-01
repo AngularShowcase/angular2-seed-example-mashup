@@ -19,7 +19,7 @@
     </thead>
     <tbody>
         <tr *ngFor="#role of roles | fieldSort:sortOrder">
-            <td>{{role.name}}</td>
+            <td (click)="selectRole(role)">{{role.name}}</td>
             <td>{{role.description}}</td>
         </tr>
     </tbody>
