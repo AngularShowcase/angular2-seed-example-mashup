@@ -1,0 +1,34 @@
+div.roleContent {
+  font-size: 24pt;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+  div.roleContent div {
+    margin-top: 15px; }
+    div.roleContent div#roleName, div.roleContent div#roleDescription {
+      line-height: 80px; }
+    div.roleContent div#roleName {
+      font-size: 38.4pt;
+      float: left;
+      color: black; }
+    div.roleContent div#roleDescription {
+      float: left;
+      font-size: 28.8pt;
+      color: skyblue;
+      margin-left: 20px; }
+    div.roleContent div#currentUsersLabel {
+      clear: both;
+      font-size: 24pt;
+      font-weight: bold;
+      text-decoration: underline; }
+  div.roleContent ul#roleMembers {
+    list-style: none;
+    padding: 0px;
+    margin: 0px; }
+    div.roleContent ul#roleMembers li {
+      padding: 0;
+      margin: 0; }
+      div.roleContent ul#roleMembers li button {
+        background: yellowgreen;
+        border-radius: 10px; }
+      div.roleContent ul#roleMembers li i.glyphicon {
+        font-size: 16.8pt;
+        color: red; }

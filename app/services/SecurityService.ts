@@ -36,6 +36,15 @@ export class SecurityService {
 		return result;
 	}
 
+	getRoleMembers(roleName:string) : Observable<IUser[]> {
+		var result = this.http.get(`/api/Roles/${roleName}/members`)
+			.map(response => {
+                return response.json();
+            });
+
+		return result;
+	}
+
 	getPostOptions(): RequestOptions {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');

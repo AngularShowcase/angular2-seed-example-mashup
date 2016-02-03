@@ -1,0 +1,61 @@
+$baseFontSize: 24pt;
+$large: $baseFontSize * 1.6;
+$medium: $baseFontSize * 1.2;
+$small: $baseFontSize * 1.0;
+$glyph: $baseFontSize * 0.7;
+
+div.roleContent {
+
+    font-size: $baseFontSize;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    div {
+        margin-top: 15px;
+
+        &#roleName, &#roleDescription {
+            line-height: 80px;
+        }
+
+        &#roleName {
+            font-size: $large;
+            float: left;
+            color: black;
+        }
+
+        &#roleDescription {
+            float: left;
+            font-size: $medium;
+            color: skyblue;
+            margin-left: 20px;
+        }
+
+        &#currentUsersLabel {
+            clear: both;
+            font-size: $small;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    ul#roleMembers {
+
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+
+        li {
+            padding: 0;
+            margin: 0;
+
+            button {
+                background: yellowgreen;
+                border-radius: 10px;
+            }
+
+            i.glyphicon {
+                font-size: $glyph;
+                color: red;
+            }
+        }
+    }
+}

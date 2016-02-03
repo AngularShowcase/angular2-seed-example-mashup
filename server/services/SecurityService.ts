@@ -25,7 +25,7 @@ export class SecurityService {
 
 	public getUsers(): Q.Promise<IUser[]> {
 		let defer = Q.defer<IUser[]>();
-		this.usersCollection.find().sort({ username: 1 }).toArray((e, users: IRegisteredUser[]) => {
+		this.usersCollection.find().sort({ username: 1 }).toArray((e, users: any[]) => {
 			if (e) {
 				defer.reject(e);
 			} else {
@@ -199,14 +199,14 @@ export class SecurityService {
 		return defer.promise;
 	}
 
-    private mapUser(registeredUser:IRegisteredUser) : IUser {
+    private mapUser(registeredUser:any) : IUser {
         return {
             userId: registeredUser.userId,
             username: registeredUser.username,
             emailAddress: registeredUser.emailAddress,
             firstName: registeredUser.firstName,
             lastName: registeredUser.lastName,
-            roles: []
+            roles: registeredUser.roles || []
         };
     }
 

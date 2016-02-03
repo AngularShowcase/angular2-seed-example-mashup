@@ -1,8 +1,14 @@
-<h2>Role {{role?.name}}</h2>
-<h3>{{role?.description}}</h3>
+<div class="roleContent">
+    <div id="roleName">{{role?.name}}</div>
+    <div id="roleDescription">({{role?.description}})</div>
+    <div id="currentUsersLabel">Current Users</div>
 
-<h4>Current Users</h4>
-
-<ul>
-
-</ul>
+    <ul id="roleMembers">
+        <li *ngFor="#member of roleMembers">
+            <button (click)="removeMember(member)">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+            <span>{{member.username}}</span>
+        </li>
+    </ul>
+</div>

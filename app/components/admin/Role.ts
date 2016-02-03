@@ -27,7 +27,13 @@ export class RoleComponent {
                 this.role = roleList.find(r => r.name === roleName);
                 if (this.role !== null) {
                     console.log(`Looking up members of role ${this.role.name}.`);
+                    this.securityService.getRoleMembers(roleName)
+                        .subscribe(members => this.roleMembers = members);
                 }
             });
+    }
+
+    removeMember(member:IUser) {
+        console.log(`Remove user ${member.firstName} ${member.lastName} from group ${this.role.name}.`);
     }
 }
