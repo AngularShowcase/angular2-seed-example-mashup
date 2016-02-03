@@ -9,5 +9,5 @@ export interface IUser {
 	emailAddress:string;
 	firstName:string;
 	lastName:string;
-    roles: IRole[];
+    roles: string[];
 }

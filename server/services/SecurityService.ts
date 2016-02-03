@@ -25,7 +25,7 @@ export class SecurityService {
 
 	public getUsers(): Q.Promise<IUser[]> {
 		let defer = Q.defer<IUser[]>();
-		this.usersCollection.find().sort({ userId: -1 }).toArray((e, users: IRegisteredUser[]) => {
+		this.usersCollection.find().sort({ username: 1 }).toArray((e, users: IRegisteredUser[]) => {
 			if (e) {
 				defer.reject(e);
 			} else {
@@ -48,6 +48,18 @@ export class SecurityService {
 
 		return defer.promise;
 	}
+
+    public getRoleMembers(roleName:string) : Q.Promise<IUser[]> {
+		let defer = Q.defer<IUser[]>();
+        this.getUsers()
+            .then(users => {
+                let groupMembers = users.filter(u => u.roles.indexOf(roleName) >= 0);
+                defer.resolve(groupMembers);
+            })
+            .catch(err => defer.reject(err));
+
+        return defer.promise;
+    }
 
     // Add the new role and return the complete list of revised roles
 	public addRole(newRole:IRole): Q.Promise<IRole[]> {
