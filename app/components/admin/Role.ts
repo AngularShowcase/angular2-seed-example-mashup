@@ -15,6 +15,8 @@ import {UserPickList} from './UserPickList';
 export class RoleComponent {
 
     role:IRole;
+    selectedUser:IUser = null;
+
     roleMembers:IUser[] = [];
 
     constructor(public securityService:SecurityService, public routeParams:RouteParams) {
@@ -38,7 +40,12 @@ export class RoleComponent {
         console.log(`Remove user ${member.firstName} ${member.lastName} from group ${this.role.name}.`);
     }
 
-    addMember(username:string) {
-        console.log(`Adding ${username} to role ${this.role.name}.`);
+    selectUser(user:IUser) {
+        this.selectedUser = user;
+        console.log(`Changed selected user to ${this.selectedUser.username}.`);
+    }
+
+    addMember(member:IUser) {
+        console.log(`Adding ${member.username} to role ${this.role.name}.`);
     }
 }

@@ -13,8 +13,9 @@
     </ul>
 
     <div id="userPickList">
-        <userPickList #picker></userPickList>
+        <userPickList (selectedUser)="selectUser($event)"></userPickList>
     </div>
-    <button id="addMemberButton" [disabled]="!picker.selectedUsername" (click)="addMember(picker.selectedUsername)">Add {{picker.selectedUsername}}</button>
+
+    <button *ngIf="selectedUser" id="addMemberButton" (click)="addMember(selectedUser)">Add {{selectedUser?.username}}</button>
 
 </div>
