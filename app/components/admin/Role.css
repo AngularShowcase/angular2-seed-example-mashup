@@ -20,6 +20,7 @@ div.roleContent {
       font-weight: bold;
       text-decoration: underline; }
   div.roleContent ul#roleMembers {
+    float: left;
     list-style: none;
     padding: 0px;
     margin: 0px; }
@@ -32,3 +33,10 @@ div.roleContent {
       div.roleContent ul#roleMembers li i.glyphicon {
         font-size: 16.8pt;
         color: red; }
+  div.roleContent div#userPickList {
+    float: left;
+    margin-left: 100px; }
+  div.roleContent button#addMemberButton {
+    display: block;
+    float: left;
+    margin-left: 25px; }

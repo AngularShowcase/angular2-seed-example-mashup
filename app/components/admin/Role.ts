@@ -3,11 +3,12 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {SecurityService} from '../../services/SecurityService';
 import {IRole, IUser} from '../../../common/interfaces/SecurityInterfaces';
 import {RouteParams} from 'angular2/router';
+import {UserPickList} from './UserPickList';
 
 @Component({
     templateUrl: './components/admin/Role.html',
     styleUrls: ['./components/admin/Role.css'],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, UserPickList]
 })
 
 // Name this class RoleComponent to avoid a name collision with models Role object
@@ -35,5 +36,9 @@ export class RoleComponent {
 
     removeMember(member:IUser) {
         console.log(`Remove user ${member.firstName} ${member.lastName} from group ${this.role.name}.`);
+    }
+
+    addMember(username:string) {
+        console.log(`Adding ${username} to role ${this.role.name}.`);
     }
 }

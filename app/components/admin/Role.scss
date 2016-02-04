@@ -39,6 +39,7 @@ div.roleContent {
 
     ul#roleMembers {
 
+        float: left;
         list-style: none;
         padding: 0px;
         margin: 0px;
@@ -57,5 +58,16 @@ div.roleContent {
                 color: red;
             }
         }
+    }
+
+    div#userPickList {
+        float: left;
+        margin-left: 100px;
+    }
+
+    button#addMemberButton {
+        display: block;
+        float: left;
+        margin-left: 25px;
     }
 }

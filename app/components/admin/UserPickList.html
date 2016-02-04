@@ -1,0 +1,5 @@
+<div id="userPickListDiv">
+    <select id="userPickList" (change)="selectUser($event)">
+        <option *ngFor="#user of users | async" [value]="user.username">{{user.username}}</option>
+    </select>
+</div>

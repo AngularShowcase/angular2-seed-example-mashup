@@ -11,4 +11,10 @@
             <span>{{member.username}}</span>
         </li>
     </ul>
+
+    <div id="userPickList">
+        <userPickList #picker></userPickList>
+    </div>
+    <button id="addMemberButton" [disabled]="!picker.selectedUsername" (click)="addMember(picker.selectedUsername)">Add {{picker.selectedUsername}}</button>
+
 </div>

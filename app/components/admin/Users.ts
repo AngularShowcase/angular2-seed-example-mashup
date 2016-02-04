@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {SecurityService} from '../../services/SecurityService';
 import {Observable} from 'rxjs/Observable';
-import {IRegisteredUser} from '../../../common/interfaces/RegistrationInterfaces';
+import {IUser} from '../../../common/interfaces/SecurityInterfaces';
 import {SortOrder} from '../../models/SortOrder';
 import {FieldSortPipe} from '../../pipes/FieldSortPipe';
 import {Sortable} from '../../directives/Sortable';
@@ -16,7 +16,7 @@ import {SortKey} from '../../directives/SortKey';
 })
 export class Users {
 
-    users:Observable<IRegisteredUser[]>;
+    users:Observable<IUser[]>;
     sortOrder:SortOrder;
 
     constructor(public securityService:SecurityService) {
