@@ -4,7 +4,19 @@ import {DataService} from './DataService';
 class ActionNames {
     static IncrementCounter = 'INCREMENT_COUNTER';
     static DecrementCounter = 'DECREMENT_COUNTER';
+    static IncrementCounterNumber = 'INCREMENT_COUNTER_NUMBER';
+    static DecrementCounterNumber = 'DECREMENT_COUNTER_NUMBER';
 };
+
+class CounterState {
+
+    constructor(public counters:number[] = [0], public counterNumber:number = 0) {
+    }
+
+    getCounterVal() {
+        return this.counters[this.counterNumber];
+    }
+}
 
 @Injectable()
 export class CounterService {
@@ -13,23 +25,54 @@ export class CounterService {
     }
 
     // Reducer is static so that the data service can reference it without an object
-    static counterReducer(counter:number, action) {
+    static counterReducer(counterState:CounterState, action) : CounterState {
 
-        if (counter === undefined) {
-            return 0;   // Return initial state
+        if (counterState === undefined) {
+            return new CounterState();   // Undefined state.  Return initial state
         }
+
+        let index: number;
+        let counters: number[];
+        let newVal: number;
 
         switch(action.type) {
 
             case ActionNames.IncrementCounter:
-                return counter + 1;
+                index = counterState.counterNumber;
+                newVal = counterState.counters[index] + 1;
+                counters = [...counterState.counters.slice(0, index), newVal, ...counterState.counters.slice(index + 1)];
+                return new CounterState(counters, index);
 
             case ActionNames.DecrementCounter:
-                return counter - 1;
+                index = counterState.counterNumber;
+                newVal = counterState.counters[index] - 1;
+                counters = [...counterState.counters.slice(0, index), newVal, ...counterState.counters.slice(index + 1)];
+                return new CounterState(counters, index);
 
-            default:
-                return counter;
+            case ActionNames.IncrementCounterNumber:
+                return CounterService.IncrementCounterNumberInternal(counterState);
+
+            case ActionNames.DecrementCounterNumber:
+                return CounterService.DecrementCounterNumberInternal(counterState);
+
+            default:                        // Unknown action.  Don't change state
+                return counterState;
         }
+    }
+
+    // private static methods used by the reducer function
+
+    private static IncrementCounterNumberInternal(state:CounterState) : CounterState {
+        let newCounter:number = state.counterNumber + 1;
+        let counters:number[] = newCounter >= state.counters.length ?
+            [...state.counters, 0] : state.counters;
+
+        return new CounterState(counters, newCounter);
+    }
+
+    private static DecrementCounterNumberInternal(state:CounterState) : CounterState {
+        let newCounter:number = state.counterNumber - 1;
+        return new CounterState(state.counters, newCounter < 0 ? 0 : newCounter);
     }
 
     // Consumer methods to encapsulate DataService interaction
@@ -41,6 +84,7 @@ export class CounterService {
         return counterState;
     }
 
+    // additional public methods for the consumer of the service
     incrementCounter() {
         this.dataService.dispatch({
             type: ActionNames.IncrementCounter
@@ -50,6 +94,18 @@ export class CounterService {
     decrementCounter() {
         this.dataService.dispatch({
             type: ActionNames.DecrementCounter
+        });
+    }
+
+    incrementCounterNumber() {
+        this.dataService.dispatch({
+            type: ActionNames.IncrementCounterNumber
+        });
+    }
+
+    decrementCounterNumber() {
+        this.dataService.dispatch({
+            type: ActionNames.DecrementCounterNumber
         });
     }
 }
