@@ -22,10 +22,12 @@ export class DataService {
 	}
 
     dispatch(action:any) {
+        console.log('Dispatching action:', action.type);
         this.store.dispatch(action);
     }
 
     getState() : any {
+        console.log('getState() invoked');
         return this.store.getState();
     }
 
