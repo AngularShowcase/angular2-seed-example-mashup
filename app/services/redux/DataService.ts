@@ -27,10 +27,8 @@ export class DataService {
     }
 
     getState() : any {
-        console.log('getState() invoked');
         return this.store.getState();
     }
-
 
     storeListener() {
         console.log('storeListener: State: ', this.store.getState());
