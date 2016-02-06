@@ -48,6 +48,7 @@ export const NPM_DEPENDENCIES = [
   { src: 'angular2/bundles/router.js', inject: 'libs', dest: LIB_DEST }, // use router.min.js with alpha47
   { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
   { src: 'ng2-material/dist/ng2-material.js', inject: 'libs', dest: LIB_DEST },
+  { src: 'redux/dist/redux.js', inject: 'libs', dest: LIB_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST },
   { src: 'ng2-material/dist/ng2-material.css', inject: true, dest: CSS_DEST },

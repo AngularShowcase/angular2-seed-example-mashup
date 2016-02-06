@@ -97,6 +97,9 @@
     },
     "jquery.dataTables/jquery.dataTables.d.ts": {
       "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
+    },
+    "redux/redux.d.ts": {
+      "commit": "221df9ad820d0b2aa010d328c4bab06c8d69ac1f"
     }
   }
 }
