@@ -1,9 +1,5 @@
 import {Injectable} from 'angular2/core';
-
-export class ActionNames {
-    static InitializeCounter = 'INITIALIZE_COUNTER';
-    static IncrementCounter = 'INCREMENT_COUNTER';
-}
+import {Counter} from '../components/redux/counter';
 
 @Injectable()
 export class DataService {
@@ -14,7 +10,7 @@ export class DataService {
         console.log('Constructing the data service.');
 
         let reducer = Redux.combineReducers({
-            counter: this.counterReducer
+            counter: Counter.counterReducer
         });
 
         this.store = Redux.createStore(reducer, {});
@@ -31,24 +27,6 @@ export class DataService {
         return this.store.getState();
     }
 
-    counterReducer(counter:number, action) {
-
-        if (counter === undefined) {
-            return 0;   // Return initial state
-        }
-        
-        switch(action.type) {
-
-            case 'INITIALIZE_COUNTER':
-                return action.initialValue;
-
-            case 'INCREMENT_COUNTER':
-                return counter + 1;
-
-            default:
-                return counter;
-        }
-    }
 
     storeListener() {
         console.log('storeListener: State: ', this.store.getState());

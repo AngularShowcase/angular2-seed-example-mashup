@@ -1,6 +1,11 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {ActionNames, DataService} from '../../services/DataService';
+import {DataService} from '../../services/DataService';
+
+class ActionNames {
+    static IncrementCounter = 'INCREMENT_COUNTER';
+    static DecrementCounter = 'DECREMENT_COUNTER';
+};
 
 @Component({
     selector: 'redux-counter',
@@ -14,30 +19,46 @@ export class Counter {
 
     constructor(public dataService:DataService) {
         console.log('Constructed the redux Counter component.');
-
-        this.initializeCounter(4);
-
         console.log('Initial data state is: ', this.dataService.getState());
 
         this.incrementCounter();
+        this.incrementCounter();
+    }
+
+    static counterReducer(counter:number, action) {
+
+        if (counter === undefined) {
+            return 0;   // Return initial state
+        }
+
+        switch(action.type) {
+
+            case ActionNames.IncrementCounter:
+                return counter + 1;
+
+            case ActionNames.DecrementCounter:
+                return counter - 1;
+
+            default:
+                return counter;
+        }
     }
 
     ngOnInit() {
         console.log('in ngOnInit');
-        this.incrementCounter();
+        this.decrementCounter();
         console.log('New data state is: ', this.dataService.getState());
     }
-    
+
     incrementCounter() {
         this.dataService.dispatch({
             type: ActionNames.IncrementCounter
         });
     }
 
-    initializeCounter(initialValue:number) {
+    decrementCounter() {
         this.dataService.dispatch({
-            type: ActionNames.InitializeCounter,
-            initialValue: initialValue
+            type: ActionNames.DecrementCounter
         });
     }
 }
