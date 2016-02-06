@@ -5,7 +5,8 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {Authentication} from './services/Authentication';
 import {AppCmp} from './components/app/app';
 import {MessageBroker} from './services/MessageBroker';
-import {DataService} from './services/DataService';
+import {DataService} from './services/redux/DataService';
+import {CounterService} from './services/redux/CounterService';
 
 bootstrap(AppCmp, [
   ROUTER_PROVIDERS,
@@ -13,5 +14,6 @@ bootstrap(AppCmp, [
   provide(LocationStrategy, {useClass: HashLocationStrategy}),
   Authentication,
   MessageBroker,
-  DataService
+  DataService,
+  CounterService
 ]);

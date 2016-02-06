@@ -1,2 +1,10 @@
 <h1>Redux Counter</h1>
 
+<h2>
+Current value of the counter is: {{counterService.getState()}}
+</h2>
+
+<div>
+<button (click)="counterService.incrementCounter()">Increment</button>
+<button (click)="counterService.decrementCounter()">Decrement</button>
+</div>

@@ -1,5 +1,7 @@
 import {Injectable} from 'angular2/core';
-import {Counter} from '../components/redux/counter';
+import {CounterService} from './CounterService';
+
+//declare let CounterService:any;
 
 @Injectable()
 export class DataService {
@@ -10,7 +12,7 @@ export class DataService {
         console.log('Constructing the data service.');
 
         let reducer = Redux.combineReducers({
-            counter: Counter.counterReducer
+            counter: CounterService.counterReducer
         });
 
         this.store = Redux.createStore(reducer, {});
