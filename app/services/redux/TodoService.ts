@@ -1,20 +1,27 @@
 import {Injectable} from 'angular2/core';
 import {DataService} from './DataService';
-import {Todo} from '../../models/Todo';
 
 class ActionNames {
     static AddTodo = 'ADD_TODO';
     static ToggleTodo = 'TOGGLE_TODO';
 };
 
-interface ITodoState {
+export interface ITodo {
+    id: number;
+    description: string;
+    done: boolean;
+}
 
-    todos:Todo[];
+export interface ITodoState {
+
+    todos:ITodo[];
     filter: string;
 }
 
 @Injectable()
 export class TodoService {
+
+    static nextId:number = 1;
 
     constructor(public dataService:DataService) {
     }
@@ -26,14 +33,19 @@ export class TodoService {
             return {
                 todos: [],
                 filter: ''
-            }
+            };
         }
 
         switch(action.type) {
 
             case ActionNames.AddTodo:
                 let description:string = action.description;
-                return Object.assign({}, state, {todos:[...state.todos, new Todo(description)]});
+                return Object.assign({}, state, {todos:[...state.todos,
+                    {
+                        id: TodoService.nextId++,
+                        description,
+                        done: false
+                    }]});
 
             case ActionNames.ToggleTodo:
                 return TodoService.toggleTodo(state, action);
@@ -45,14 +57,12 @@ export class TodoService {
 
     // private static methods used by the reducer function
 
-    static toggleTodo(state:ITodoState, action:{type:string, id: number}) : ITodoState {
+    private static toggleTodo(state:ITodoState, action:{type:string, id: number}) : ITodoState {
         return Object.assign({}, state,
             { todos: state.todos.map(todo => {
                 if (todo.id !== action.id) {
                     return todo;
-                }
-                else {
-                    let newTodo = new Todo(todo.description)
+                } else {
                     return Object.assign({}, todo, {done: !todo.done});
                 }
             })}
@@ -70,6 +80,13 @@ export class TodoService {
         this.dataService.dispatch({
             type: ActionNames.AddTodo,
             description
+        });
+    }
+
+    toggleTodo(id:number) {
+        this.dataService.dispatch({
+            type: ActionNames.ToggleTodo,
+            id
         });
     }
 }

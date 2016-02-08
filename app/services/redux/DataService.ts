@@ -1,7 +1,6 @@
 import {Injectable} from 'angular2/core';
-import {CounterService} from './CounterService';
-
-//declare let CounterService:any;
+//import {CounterService} from './CounterService';
+import {TodoService} from './TodoService';
 
 @Injectable()
 export class DataService {
@@ -12,7 +11,8 @@ export class DataService {
         console.log('Constructing the data service.');
 
         let reducer = Redux.combineReducers({
-            counter: CounterService.counterReducer
+            //counter: CounterService.counterReducer,
+            todos: TodoService.todoReducer
         });
 
         this.store = Redux.createStore(reducer, {});

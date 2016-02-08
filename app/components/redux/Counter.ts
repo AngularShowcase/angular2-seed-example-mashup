@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {CounterService} from '../../services/redux/CounterService';
+import {TodoService} from '../../services/redux/TodoService';
 
 @Component({
     selector: 'redux-counter',
@@ -9,8 +10,7 @@ import {CounterService} from '../../services/redux/CounterService';
     directives: [CORE_DIRECTIVES]
 })
 
-// Name this class RoleComponent to avoid a name collision with models Role object
 export class Counter {
-    constructor(public counterService:CounterService) {
+    constructor(public counterService:CounterService, public todoService:TodoService) {
     }
 }

@@ -44,7 +44,7 @@ import {Weather} from '../streaming/Weather';
 import {Chat} from '../streaming/Chat';
 import {QuizAdmin} from '../quiz/QuizAdmin';
 import {Admin} from '../admin/Admin';
-import {Counter} from '../redux/Counter';
+import {Todo} from '../redux/Todo';
 
 @Component({
   selector: 'app',
@@ -77,7 +77,8 @@ import {Counter} from '../redux/Counter';
   { path: '/quiz/user/review/...', component: UserReview, as: 'UserReview'},
   { path: '/weather', component: Weather, as: 'Weather'},
   { path: '/chat', component: Chat, as: 'Chat'},
-  { path: '/redux/counter', component: Counter, as: 'Counter'}
+  //{ path: '/redux/counter', component: Counter, as: 'Counter'}
+  { path: '/redux/todo', component: Todo, as: 'Todo'}
 ])
 export class AppCmp {
 
