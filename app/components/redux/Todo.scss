@@ -1,0 +1,17 @@
+li {
+    span {
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.active {
+            color: red;
+        }
+
+        &.complete {
+            color: green;
+            text-decoration: underline;
+        }
+    }
+}

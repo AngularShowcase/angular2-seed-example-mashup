@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, EventEmitter} from 'angular2/core';
 import {DataService} from './DataService';
 
 class ActionNames {
@@ -22,8 +22,15 @@ export interface ITodoState {
 export class TodoService {
 
     static nextId:number = 1;
+    public todoStateChanged: EventEmitter<ITodoState>;
 
     constructor(public dataService:DataService) {
+        this.todoStateChanged = new EventEmitter<ITodoState>();
+        this.dataService.store.subscribe(() => {
+            let todoState = this.dataService.getState().todos;
+            console.log(`TodoService publishing state change ${todoState}.`);
+            this.todoStateChanged.next(todoState);
+        });
     }
 
     // Reducer is static so that the data service can reference it without an object

@@ -1,2 +1,14 @@
 <h1>Todo</h1>
 
+<ol>
+    <li *ngFor="#todo of filteredTodos | async">
+        <span (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.description}}</span>
+    </li>
+
+    <div>
+        <h2>Add a todo</h2>
+        <label for="newTodo">Description:</label>
+        <input id="newTodo" #newTodo />
+        <button (click)="addTodo(newTodo)">Add</button>
+    </div>
+</ol>

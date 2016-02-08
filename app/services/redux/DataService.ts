@@ -33,4 +33,8 @@ export class DataService {
     storeListener() {
         console.log('storeListener: State: ', this.store.getState());
     }
+
+    subscribe(listener) : any {
+        return this.store.subscribe(listener);
+    }
 }

@@ -1,0 +1,9 @@
+li span:hover {
+  cursor: pointer; }
+
+li span.active {
+  color: red; }
+
+li span.complete {
+  color: green;
+  text-decoration: underline; }

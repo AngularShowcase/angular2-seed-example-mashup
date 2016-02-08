@@ -16,6 +16,6 @@ bootstrap(AppCmp, [
   Authentication,
   MessageBroker,
   TodoService,
-  //CounterService,
+  CounterService,
   DataService
 ]);
