@@ -1,9 +1,14 @@
-li span:hover {
-  cursor: pointer; }
+ul {
+  list-style: none; }
+  ul li span {
+    font-size: 18pt;
+    font-family: Arial, Helvetica, sans-serif; }
+    ul li span:hover {
+      cursor: pointer; }
+    ul li span.active {
+      color: red; }
+    ul li span.complete {
+      color: black; }
 
-li span.active {
-  color: red; }
-
-li span.complete {
-  color: green;
-  text-decoration: underline; }
+div#newTodoDiv {
+  font-size: 24pt; }

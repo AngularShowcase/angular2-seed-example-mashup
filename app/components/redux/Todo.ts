@@ -1,7 +1,7 @@
-import {Component, EventEmitter} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {TodoService, ITodoState, ITodo} from '../../services/redux/TodoService';
+import {TodoService, ITodo, FilterNames} from '../../services/redux/TodoService';
 
 @Component({
     selector: 'todo',
@@ -16,25 +16,29 @@ export class Todo {
 
     constructor(public todoService:TodoService) {
         this.filteredTodos = this.todoService.todoStateChanged
-            .map(state => state.todos);
+            .map(state => state.todos.filter(todo => {
+                return  state.filterName === FilterNames.All  ||
+                        state.filterName === FilterNames.Active && !todo.done ||
+                        state.filterName === FilterNames.Complete && todo.done;
+            }));
     }
 
-    ngOnInit() {
-        this.todoService.addTodo('This the first todo');
-        this.todoService.addTodo('This the second todo');
-    }
-
-    addTodo($event) {
-        let description = $event.value;
-        console.log('Adding a new todo: ', description);
+    addTodo(inputCtrl:HTMLInputElement) {
+        let description = inputCtrl.value;
         this.todoService.addTodo(description);
+        inputCtrl.value = '';   // Does this work
+        inputCtrl.focus();
     }
 
     getTodoClass(todo:ITodo) {
-        return todo.done ? "completed" : "active";
+        return todo.done ? 'completed' : 'active';
     }
 
     toggleTodo(todo:ITodo) {
         this.todoService.toggleTodo(todo.id);
+    }
+
+    filter(filterName:string) {
+        this.todoService.filterTodos(filterName);
     }
 }

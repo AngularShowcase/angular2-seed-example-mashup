@@ -4,7 +4,14 @@ import {DataService} from './DataService';
 class ActionNames {
     static AddTodo = 'ADD_TODO';
     static ToggleTodo = 'TOGGLE_TODO';
+    static FilterTodos = 'FILTER_TODOS';
 };
+
+export class FilterNames {
+    static All = 'ALL';
+    static Active = 'ACTIVE';
+    static Complete = 'COMPLETE';
+}
 
 export interface ITodo {
     id: number;
@@ -15,7 +22,7 @@ export interface ITodo {
 export interface ITodoState {
 
     todos:ITodo[];
-    filter: string;
+    filterName: string;
 }
 
 @Injectable()
@@ -39,7 +46,7 @@ export class TodoService {
         if (state === undefined) {      // Undefined state.  Return initial state
             return {
                 todos: [],
-                filter: ''
+                filterName: FilterNames.All
             };
         }
 
@@ -56,6 +63,9 @@ export class TodoService {
 
             case ActionNames.ToggleTodo:
                 return TodoService.toggleTodo(state, action);
+
+            case ActionNames.FilterTodos:
+                return Object.assign({}, state, { filterName: action.filterName });
 
             default:                        // Unknown action.  Don't change state
                 return state;
@@ -94,6 +104,13 @@ export class TodoService {
         this.dataService.dispatch({
             type: ActionNames.ToggleTodo,
             id
+        });
+    }
+
+    filterTodos(filterName:string) {
+        this.dataService.dispatch({
+            type: ActionNames.FilterTodos,
+            filterName
         });
     }
 }
