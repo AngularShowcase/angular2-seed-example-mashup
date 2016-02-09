@@ -32,16 +32,18 @@ section#filterDiv {
     margin-bottom: 10px;
 
     button {
-
+        background-color: black;
         font-size: 24pt;
         border-radius: 10px;
 
         &.active {
-            border: 3px solid black;
+            color: yellow;
+            border: 5px solid orangered;
         }
 
         &.inactive {
-            border: 3px solid gray;
+            color: white;
+            border: 5px solid gray;
         }
     }
 }

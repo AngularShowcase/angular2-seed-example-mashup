@@ -17,9 +17,12 @@ section#newTodoDiv {
 section#filterDiv {
   margin-bottom: 10px; }
   section#filterDiv button {
+    background-color: black;
     font-size: 24pt;
     border-radius: 10px; }
     section#filterDiv button.active {
-      border: 3px solid black; }
+      color: yellow;
+      border: 5px solid orangered; }
     section#filterDiv button.inactive {
-      border: 3px solid gray; }
+      color: white;
+      border: 5px solid gray; }

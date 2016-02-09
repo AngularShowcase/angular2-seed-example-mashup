@@ -28,6 +28,11 @@ export class Todo {
         this.todoService.addTodo(description);
         inputCtrl.value = '';   // Does this work
         inputCtrl.focus();
+
+        // If we are adding, make sure the user can see the result
+        if (this.todoService.getState().filterName === FilterNames.Complete) {
+            this.todoService.filterTodos(FilterNames.Active);
+        }
     }
 
     deleteTodo(todo:ITodo) {
