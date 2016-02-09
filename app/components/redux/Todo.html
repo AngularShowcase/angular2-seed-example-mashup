@@ -1,19 +1,22 @@
 <h1>Todo</h1>
 
-<div id="newTodoDiv">
+<section id="filterDiv">
+    <button [class]="getFilterClass('ALL')" (click)="filter('ALL')">All Todos</button>
+    <button [class]="getFilterClass('ACTIVE')" (click)="filter('ACTIVE')">Active Todos</button>
+    <button [class]="getFilterClass('COMPLETE')" (click)="filter('COMPLETE')">Complete Todos</button>
+</section>
+
+<section id="newTodoDiv">
     <label for="newTodo">Description:</label>
     <input id="newTodo" #newTodo />
     <button (click)="addTodo(newTodo)">Add</button>
-</div>
+</section>
 
-<ul>
-    <li *ngFor="#todo of filteredTodos | async">
-        <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
-    </li>
-</ul>
-
-<div id="filterDiv">
-    <button (click)="filter('ALL')">All Todos</button>
-    <button (click)="filter('ACTIVE')">Active Todos</button>
-    <button (click)="filter('COMPLETE')">Complete Todos</button>
-</div>
+<section id="todoList">
+    <ul>
+        <li *ngFor="#todo of filteredTodos | async">
+            <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
+            <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
+        </li>
+    </ul>
+</section>

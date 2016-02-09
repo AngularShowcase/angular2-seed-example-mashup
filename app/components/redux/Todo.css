@@ -1,14 +1,25 @@
-ul {
+section#todoList ul {
   list-style: none; }
-  ul li span {
+  section#todoList ul li span {
     font-size: 18pt;
     font-family: Arial, Helvetica, sans-serif; }
-    ul li span:hover {
+    section#todoList ul li span:hover {
       cursor: pointer; }
-    ul li span.active {
+    section#todoList ul li span.active {
       color: red; }
-    ul li span.complete {
+    section#todoList ul li span.complete {
       color: black; }
 
-div#newTodoDiv {
+section#newTodoDiv {
+  margin-bottom: 10px;
   font-size: 24pt; }
+
+section#filterDiv {
+  margin-bottom: 10px; }
+  section#filterDiv button {
+    font-size: 24pt;
+    border-radius: 10px; }
+    section#filterDiv button.active {
+      border: 3px solid black; }
+    section#filterDiv button.inactive {
+      border: 3px solid gray; }

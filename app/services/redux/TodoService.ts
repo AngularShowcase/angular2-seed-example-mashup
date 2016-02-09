@@ -3,6 +3,7 @@ import {DataService} from './DataService';
 
 class ActionNames {
     static AddTodo = 'ADD_TODO';
+    static DeleteTodo = 'DELETE_TODO';
     static ToggleTodo = 'TOGGLE_TODO';
     static FilterTodos = 'FILTER_TODOS';
 };
@@ -61,6 +62,14 @@ export class TodoService {
                         done: false
                     }]});
 
+            case ActionNames.DeleteTodo:
+
+                console.log(`Deleting todo ${action.id}.`);
+
+                return Object.assign({}, state, {
+                    todos: state.todos.filter(todo => todo.id !== action.id)
+                });
+
             case ActionNames.ToggleTodo:
                 return TodoService.toggleTodo(state, action);
 
@@ -97,6 +106,13 @@ export class TodoService {
         this.dataService.dispatch({
             type: ActionNames.AddTodo,
             description
+        });
+    }
+
+    deleteTodo(id:number) {
+        this.dataService.dispatch({
+            type: ActionNames.DeleteTodo,
+            id
         });
     }
 

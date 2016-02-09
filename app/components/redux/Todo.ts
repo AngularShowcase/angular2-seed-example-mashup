@@ -30,6 +30,10 @@ export class Todo {
         inputCtrl.focus();
     }
 
+    deleteTodo(todo:ITodo) {
+        this.todoService.deleteTodo(todo.id);
+    }
+
     getTodoClass(todo:ITodo) {
         return todo.done ? 'completed' : 'active';
     }
@@ -40,5 +44,10 @@ export class Todo {
 
     filter(filterName:string) {
         this.todoService.filterTodos(filterName);
+    }
+
+    getFilterClass(buttonFilterName:string) : string {
+        let currentFilterName = this.todoService.getState().filterName;
+        return buttonFilterName === currentFilterName ? 'active' : 'inactive';
     }
 }
