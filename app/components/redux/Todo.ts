@@ -1,4 +1,4 @@
-import {Component, EventEmitter} from 'angular2/core';
+import {Component, EventEmitter, ChangeDetectionStrategy} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {TodoService, ITodoState, ITodo, FilterNames} from '../../services/redux/TodoService';
@@ -7,23 +7,23 @@ import {TodoService, ITodoState, ITodo, FilterNames} from '../../services/redux/
     selector: 'todo',
     templateUrl: './components/redux/todo.html',
     styleUrls: ['./components/redux/todo.css'],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class Todo {
 
+    todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
-    filterName: Observable<string>;
 
     constructor(public todoService:TodoService) {
-        this.filterName = new EventEmitter<string>();
     }
 
     ngOnInit() {
-        this.filterName = this.todoService.todoStateChanged
-            .map(state => state.filterName);
 
-        this.filteredTodos = this.todoService.todoStateChanged
+        this.todoState = this.todoService.todoStateChanged;
+
+        this.filteredTodos = this.todoState
             .map(state => state.todos.filter(todo => {
                 return  state.filterName === FilterNames.All  ||
                         state.filterName === FilterNames.Active && !todo.done ||

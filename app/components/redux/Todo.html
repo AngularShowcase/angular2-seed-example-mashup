@@ -15,7 +15,7 @@
 </section>
 
 <section id="todoList">
-    <h2>{{filterName | async}}</h2>
+    <h2>{{(todoState | async)?.filterName}}</h2>
     <ul>
         <li *ngFor="#todo of filteredTodos | async">
             <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
