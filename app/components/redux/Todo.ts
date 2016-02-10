@@ -9,6 +9,9 @@ import {TodoService} from '../../services/redux/Todo/TodoService';
     templateUrl: './components/redux/todo.html',
     styleUrls: ['./components/redux/todo.css'],
     directives: [CORE_DIRECTIVES],
+
+    // If we only rely on immutable inputs and properties, we can get performance
+    // gains by telling angular to only check for changes when our inputs change.
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,14 +20,11 @@ export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
-    name = 'howard';
 
     constructor(public todoService:TodoService) {
     }
 
     ngOnInit() {
-
-        setTimeout(()=> this.name = 'David', 3000);
 
         this.todoState = this.todoService.todoStateChanged;
 
