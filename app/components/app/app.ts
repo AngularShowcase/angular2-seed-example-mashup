@@ -17,6 +17,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/range';
 
+import {DataService} from '../../services/redux/DataService';
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
@@ -86,7 +87,11 @@ export class AppCmp {
   socket: SocketIOClient.Socket;
   lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
 
-  constructor(public auth: Authentication, public router:Router, public messageBroker:MessageBroker) {
+  constructor(public dataService:DataService,
+              public auth: Authentication,
+              public router:Router,
+              public messageBroker:MessageBroker) {
+
       this.messageBroker.getChatMessages()
         .subscribe((msg:IChatMessage) => this.lastChatMessage = msg);
   }

@@ -1,13 +1,15 @@
-import {Component, EventEmitter, ChangeDetectionStrategy} from 'angular2/core';
+import {Component, ChangeDetectionStrategy} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {TodoService, ITodoState, ITodo, FilterNames} from '../../services/redux/TodoService';
+import {ITodoState, ITodo, FilterNames} from '../../services/redux/TodoReducer';
+import {TodoService} from '../../services/redux/TodoService';
 
 @Component({
     selector: 'todo',
     templateUrl: './components/redux/todo.html',
     styleUrls: ['./components/redux/todo.css'],
     directives: [CORE_DIRECTIVES],
+    // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
