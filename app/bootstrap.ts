@@ -6,7 +6,7 @@ import {Authentication} from './services/Authentication';
 import {AppCmp} from './components/app/app';
 import {MessageBroker} from './services/MessageBroker';
 import {DataService} from './services/redux/DataService';
-import {CounterService} from './services/redux/CounterService';
+import {CounterService} from './services/redux/Counter/CounterService';
 import {TodoService} from './services/redux/Todo/TodoService';
 
 bootstrap(AppCmp, [

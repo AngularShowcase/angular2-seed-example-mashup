@@ -10,7 +10,7 @@ export class TodoService {
     constructor(public dataService:DataService) {
 
         this.todoStateChanged = new EventEmitter<ITodoState>();
-        
+
         this.dataService.store.subscribe(() => {
             let todoState = this.dataService.getState().todos;
             console.log('TodoService publishing state change:', todoState);

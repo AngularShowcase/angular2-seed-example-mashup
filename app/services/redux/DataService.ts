@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-//import {CounterService} from './CounterService';
+import {CounterReducer} from './Counter/CounterReducer';
 import {TodoReducer} from './Todo/TodoReducer';
 
 @Injectable()
@@ -10,10 +10,17 @@ export class DataService {
 	constructor() {
         console.log('Constructing the data service.');
 
-        let reducer = Redux.combineReducers({
-            //counter: CounterService.counterReducer,
+        let reducers = {
+            counter: CounterReducer.reducer,
             todos: TodoReducer.reducer
-        });
+        };
+
+        let reducer = Redux.combineReducers(reducers);
+        console.log('Created a combined reducer with the following keys');
+
+        for (var key in reducers) {
+            console.log(`Reducer key ${key}.`);
+        }
 
         this.store = Redux.createStore(reducer, {});
 
@@ -22,7 +29,7 @@ export class DataService {
 	}
 
     dispatch(action:any) {
-        console.log('Dispatching action:', action.type);
+        console.log('Dispatching action:', action.type, action);
         this.store.dispatch(action);
     }
 
