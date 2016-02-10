@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 //import {CounterService} from './CounterService';
-import {TodoReducer} from './TodoReducer';
+import {TodoReducer} from './Todo/TodoReducer';
 
 @Injectable()
 export class DataService {

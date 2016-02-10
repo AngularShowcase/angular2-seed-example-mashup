@@ -7,7 +7,7 @@ import {AppCmp} from './components/app/app';
 import {MessageBroker} from './services/MessageBroker';
 import {DataService} from './services/redux/DataService';
 import {CounterService} from './services/redux/CounterService';
-import {TodoService} from './services/redux/TodoService';
+import {TodoService} from './services/redux/Todo/TodoService';
 
 bootstrap(AppCmp, [
   ROUTER_PROVIDERS,

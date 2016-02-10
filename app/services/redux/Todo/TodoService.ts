@@ -1,5 +1,5 @@
 import {Injectable, EventEmitter} from 'angular2/core';
-import {DataService} from './DataService';
+import {DataService} from '../DataService';
 import {ITodoState, ActionNames} from './TodoReducer';
 
 @Injectable()

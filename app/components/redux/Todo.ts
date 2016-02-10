@@ -1,8 +1,8 @@
 import {Component, ChangeDetectionStrategy} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {ITodoState, ITodo, FilterNames} from '../../services/redux/TodoReducer';
-import {TodoService} from '../../services/redux/TodoService';
+import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
+import {TodoService} from '../../services/redux/Todo/TodoService';
 
 @Component({
     selector: 'todo',
@@ -17,11 +17,14 @@ export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
+    name = 'howard';
 
     constructor(public todoService:TodoService) {
     }
 
     ngOnInit() {
+
+        setTimeout(()=> this.name = 'David', 3000);
 
         this.todoState = this.todoService.todoStateChanged;
 
