@@ -22,9 +22,10 @@ export class DataService {
             console.log(`Reducer key ${key}.`);
         }
 
-        this.store = Redux.createStore(reducer, {});
+        let savedState = this.getSavedStae();
+        console.log('Initializing store with state:', savedState);
+        this.store = Redux.createStore(reducer, savedState);
 
-        console.log('store constructed:', this.store);
         this.store.subscribe(this.storeListener.bind(this));
 	}
 
@@ -43,5 +44,20 @@ export class DataService {
 
     subscribe(listener) : any {
         return this.store.subscribe(listener);
+    }
+
+    saveState() {
+        let serialized:string = JSON.stringify(this.store.getState());
+        localStorage.setItem('state', serialized);
+    }
+
+    getSavedStae() {
+        let serialized = localStorage.getItem('state');
+        if (!serialized) {
+            return {};
+        }
+
+        let state = JSON.parse(serialized);
+        return state;
     }
 }

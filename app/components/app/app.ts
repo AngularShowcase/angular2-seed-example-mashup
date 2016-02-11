@@ -94,6 +94,8 @@ export class AppCmp {
 
       this.messageBroker.getChatMessages()
         .subscribe((msg:IChatMessage) => this.lastChatMessage = msg);
+
+      this.scheduleAutoSave();
   }
 
   getUser(): string {
@@ -133,5 +135,15 @@ export class AppCmp {
       } else {
           alert('You are not logged in.');
       }
+  }
+
+  scheduleAutoSave() {
+      const sleepTime = 30000;
+      setInterval(() => this.saveState(), sleepTime);
+  }
+
+  saveState() {
+      console.log('Saving state to local storage');
+      this.dataService.saveState();
   }
 }

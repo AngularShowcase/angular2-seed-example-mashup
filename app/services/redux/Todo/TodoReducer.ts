@@ -18,14 +18,12 @@ export interface ITodo {
 }
 
 export interface ITodoState {
-
+    nextId: number;
     todos:ITodo[];
     filterName: string;
 }
 
 export class TodoReducer {
-
-    static nextId:number = 1;
 
     // Reducer is static so that the data service can reference it without an object
     static reducer(state:ITodoState, action) : ITodoState {
@@ -33,7 +31,8 @@ export class TodoReducer {
         if (state === undefined) {      // Undefined state.  Return initial state
             return {
                 todos: [],
-                filterName: FilterNames.All
+                filterName: FilterNames.All,
+                nextId: 1
             };
         }
 
@@ -41,9 +40,11 @@ export class TodoReducer {
 
             case ActionNames.AddTodo:
                 let description:string = action.description;
-                return Object.assign({}, state, {todos:[...state.todos,
+                return Object.assign({}, state, {
+                    nextId: state.nextId + 1,
+                    todos:[...state.todos,
                     {
-                        id: TodoReducer.nextId++,
+                        id: state.nextId,
                         description,
                         done: false
                     }]});
