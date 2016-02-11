@@ -12,13 +12,17 @@ export class TodoService {
         this.todoStateChanged = new EventEmitter<ITodoState>();
 
         this.dataService.store.subscribe(() => {
-            let todoState = this.dataService.getState().todos;
-            console.log('TodoService publishing state change:', todoState);
-            this.todoStateChanged.next(todoState);
+            this.pushStateToSubscribers();
         });
     }
 
-    // Consumer methods to encapsulate DataService interaction
+    // This method can be called by subscribers to force a push.  Useful when a
+    // component is initialized.
+    pushStateToSubscribers() {
+        let todoState = this.getState();
+        console.log('TodoService publishing state change:', todoState);
+        this.todoStateChanged.next(todoState);
+    }
 
     getState() : ITodoState {
         return this.dataService.getState().todos;

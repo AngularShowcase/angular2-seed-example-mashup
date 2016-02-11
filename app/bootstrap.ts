@@ -15,7 +15,7 @@ bootstrap(AppCmp, [
   provide(LocationStrategy, {useClass: HashLocationStrategy}),
   Authentication,
   MessageBroker,
+  DataService,
   TodoService,
-  CounterService,
-  DataService
+  CounterService
 ]);

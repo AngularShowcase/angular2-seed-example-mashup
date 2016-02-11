@@ -1,6 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {CounterReducer} from './Counter/CounterReducer';
 import {TodoReducer} from './Todo/TodoReducer';
+import {PersistenceReducer} from './Persistence/PersistenceReducer';
 
 @Injectable()
 export class DataService {
@@ -11,6 +12,7 @@ export class DataService {
         console.log('Constructing the data service.');
 
         let reducers = {
+            persistence: PersistenceReducer.reducer,
             counter: CounterReducer.reducer,
             todos: TodoReducer.reducer
         };

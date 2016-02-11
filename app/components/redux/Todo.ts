@@ -8,12 +8,13 @@ import {TodoService} from '../../services/redux/Todo/TodoService';
     selector: 'todo',
     templateUrl: './components/redux/todo.html',
     styleUrls: ['./components/redux/todo.css'],
-    directives: [CORE_DIRECTIVES],
 
     // If we only rely on immutable inputs and properties, we can get performance
     // gains by telling angular to only check for changes when our inputs change.
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
-    changeDetection: ChangeDetectionStrategy.OnPush
+
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    directives: [CORE_DIRECTIVES]
 })
 
 export class Todo {
@@ -34,6 +35,8 @@ export class Todo {
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
             }));
+
+         this.todoService.pushStateToSubscribers();     // I'd like a better pattern than this
     }
 
     addTodo(inputCtrl:HTMLInputElement) {

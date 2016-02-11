@@ -1,6 +1,7 @@
 /// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {Observable} from 'rxjs/Observable';
 
 // Observable operators have to be imported explicitly -- but only once per app
 import 'rxjs/add/operator/map';
@@ -21,6 +22,8 @@ import {DataService} from '../../services/redux/DataService';
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
+import {PersistenceService} from '../../services/redux/persistence/PersistenceService';
+//import {IPersistenceState} from '../../services/redux/persistence/PersistenceReducer';
 
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
@@ -50,7 +53,7 @@ import {Counter} from '../redux/Counter';
 
 @Component({
   selector: 'app',
-  viewProviders: [NameList],
+  viewProviders: [NameList, PersistenceService],
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
   encapsulation: ViewEncapsulation.None,
@@ -86,8 +89,10 @@ export class AppCmp {
 
   socket: SocketIOClient.Socket;
   lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
+  persistenceState: Observable<any>;
 
   constructor(public dataService:DataService,
+              public persistenceService:PersistenceService,
               public auth: Authentication,
               public router:Router,
               public messageBroker:MessageBroker) {
@@ -95,6 +100,7 @@ export class AppCmp {
       this.messageBroker.getChatMessages()
         .subscribe((msg:IChatMessage) => this.lastChatMessage = msg);
 
+      this.persistenceState = this.persistenceService.persistenceStateChanged;
       this.scheduleAutoSave();
   }
 
@@ -138,12 +144,13 @@ export class AppCmp {
   }
 
   scheduleAutoSave() {
-      const sleepTime = 30000;
+      const sleepTime = 5000;
       setInterval(() => this.saveState(), sleepTime);
   }
 
   saveState() {
       console.log('Saving state to local storage');
       this.dataService.saveState();
+      this.persistenceService.savedState(new Date());
   }
 }

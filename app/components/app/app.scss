@@ -12,7 +12,19 @@
     }
 
     div#lastChat {
+        display: inline-block;
         color: yellow;
+        font-size: 10pt;
+        font-style: italic;
+        margin-right: 10px;
+        background: black;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+    div#savedState {
+        display: inline-block;
+        color: red;
         font-size: 10pt;
         font-style: italic;
         margin-right: 10px;

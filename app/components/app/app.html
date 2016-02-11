@@ -76,6 +76,9 @@
                     <div id="lastChat" *ngIf="lastChatMessage.username">
                         Last chat messgae from {{lastChatMessage.username}} at {{lastChatMessage.time | date:'hh:mm:ss'}}
                     </div>
+                    <div id="savedState">
+                        Saved: {{(persistenceState | async)?.saveTime | date:'hh:mm:ss tt'}}
+                    </div>
 
                     <button md-raised-button [disabled]="!isLoggedIn()" (click)="logout()">Logout</button>
                     <button md-raised-button [disabled]="isLoggedIn()" (click)="register()">Register</button>
