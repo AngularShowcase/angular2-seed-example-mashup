@@ -21,7 +21,7 @@ export class ObjectDisplay {
     objectProperties: string[] = [];
 
     constructor(parser: Parser) {
-        console.log('In ObjectDisplay constructor');
+        //console.log('In ObjectDisplay constructor');
         this.parser = parser;
         this.niceLabels = true;
         this.collapsed = false;
@@ -34,7 +34,7 @@ export class ObjectDisplay {
     }
 
     set collapsed(val:boolean) {
-        console.log(`Collapsed being set to ${val}`);
+        // console.log(`Collapsed being set to ${val}`);
         this._collapsed = val;
         this.objectProperties = this.getObjectProperties();
     }
@@ -44,7 +44,7 @@ export class ObjectDisplay {
     }
 
     set displayObject(val) {
-        console.log('Setting display object to: ', val);
+        // console.log('Setting display object to: ', val);
         this._displayObject = val;
         this.objectProperties = this.getObjectProperties();
     }
@@ -53,9 +53,17 @@ export class ObjectDisplay {
         if (Array.isArray(this._displayObject)) {
             return 'array';
         }
+
+        if (this._displayObject && this._displayObject.constructor &&
+            this._displayObject.constructor === Date) {
+                // console.log('Displaying a date: ', this._displayObject);
+                return 'date';
+            }
+
         return typeof (this._displayObject);
     }
 
+    // I don't think this is used
     getTheType(val: any) {
         return typeof (val);
     }
@@ -113,7 +121,7 @@ export class ObjectDisplay {
         }
 
         var result = (firstOnly) ? props.slice(0, 1) : props;
-        console.log(`getObjectProperties: ${result}`);
+        // console.log(`getObjectProperties: ${result}`);
         return result;
     }
 }

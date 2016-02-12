@@ -17,6 +17,10 @@
 			</li>
 		</ol>
 	</template>
+	<template ngSwitchWhen="date">
+        <span>{{displayObject | date:'MM/dd/yyyy'}} </span>
+        <span>{{displayObject | date:'hh:mm:ss tt'}}</span>
+	</template>
 	<template ngSwitchDefault>
 		<span class="clickable" (click)="objectClick($event)">{{displayObject}}</span>
 	</template>

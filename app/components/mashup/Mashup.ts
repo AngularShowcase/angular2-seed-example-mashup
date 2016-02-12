@@ -8,10 +8,6 @@ import {Http} from 'angular2/http';
 import {Subject} from 'rxjs/Subject';
 import {DataService} from '../../services/redux/DataService';
 
-// import 'rxjs/add/operators/map';
-// import 'rxjs/add/observable/interval';
-// import 'rxjs/add/operators/where';
-
 @Component({
     selector: 'mashup',
     providers: [GithubServices],
@@ -20,7 +16,6 @@ import {DataService} from '../../services/redux/DataService';
 })
 export class Mashup {
 
-    http:Http;
     userInfo: IGithubUser;
     nameUpdate: Subject<any>;
     userDisplayData: any;
@@ -28,10 +23,12 @@ export class Mashup {
     minNameLength: number = 8;
     currentNameLength: number = 0;
 
-    constructor(http:Http,
+    constructor(public http:Http,
                 public dataService:DataService,
                 public githubServices:GithubServices) {
-        this.http = http;
+    }
+
+    ngOnInit() {
         this.userInfo = new GithubUser();
         this.userDisplayData = {
             name: 'Howard',
@@ -56,10 +53,6 @@ export class Mashup {
         };
         this.reposDisplayData = {};
         this.setNameLookup();
-    }
-
-    ngOnInit() {
-        this.userDisplayData = this.dataService.getState();
     }
 
     setNameLookup() {

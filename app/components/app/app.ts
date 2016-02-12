@@ -50,6 +50,7 @@ import {QuizAdmin} from '../quiz/QuizAdmin';
 import {Admin} from '../admin/Admin';
 import {Todo} from '../redux/Todo';
 import {Counter} from '../redux/Counter';
+import {StateDisplay} from '../redux/StateDisplay/StateDisplay';
 
 @Component({
   selector: 'app',
@@ -82,6 +83,7 @@ import {Counter} from '../redux/Counter';
   { path: '/quiz/user/review/...', component: UserReview, as: 'UserReview'},
   { path: '/weather', component: Weather, as: 'Weather'},
   { path: '/chat', component: Chat, as: 'Chat'},
+  { path: '/redux/statedisplay', component: StateDisplay, as: 'StateDisplay'},
   { path: '/redux/counter', component: Counter, as: 'Counter'},
   { path: '/redux/todo', component: Todo, as: 'Todo'}
 ])
@@ -144,7 +146,7 @@ export class AppCmp {
   }
 
   scheduleAutoSave() {
-      const sleepTime = 5000;
+      const sleepTime = 10000;
       setInterval(() => this.saveState(), sleepTime);
   }
 
