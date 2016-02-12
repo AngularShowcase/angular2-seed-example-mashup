@@ -85,7 +85,7 @@
                     <button md-raised-button [disabled]="isLoggedIn()" (click)="register()">Register</button>
                     <button md-raised-button [disabled]="isLoggedIn()" (click)="login()">Login</button>
                     <button md-raised-button [disabled]="!isLoggedIn()" class="md-primary" (click)="userInfo()">{{getUser()}}</button>
-
+                    <button md-raised-button (click)="toggleLeftPanel()">Toggle Left</button>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -93,7 +93,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div id="leftPanel">
+    <div id="leftPanel" [hidden]="!showLeftPanel">
         <state-display></state-display>
     </div>
 

@@ -92,6 +92,7 @@ export class AppCmp {
   socket: SocketIOClient.Socket;
   lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
   persistenceState: Observable<any>;
+  showLeftPanel:boolean = false;
 
   constructor(public dataService:DataService,
               public persistenceService:PersistenceService,
@@ -126,6 +127,14 @@ export class AppCmp {
   register() {
       this.router.navigateByUrl('/register');
   }
+
+  toggleLeftPanel() {
+      this.showLeftPanel = !this.showLeftPanel;
+  }
+
+//   leftPanelDisplayValue() :string {
+//       return this.showLeftPanel ? 'block' : 'none';
+//   }
 
   userInfo() {
       if (this.auth.isLoggedIn()) {
