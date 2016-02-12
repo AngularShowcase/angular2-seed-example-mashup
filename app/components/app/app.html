@@ -93,6 +93,12 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <router-outlet></router-outlet>
+    <div id="leftPanel">
+        <state-display></state-display>
+    </div>
+
+    <div id="mainContent">
+        <router-outlet></router-outlet>
+    </div>
 
 </section>

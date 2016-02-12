@@ -29,8 +29,10 @@ export class ObjectDisplay {
         this.selectobject = new EventEmitter<any>();
     }
 
+    // If collapsed, an object will show only one propery (useful if displaying an array of properties)
     get collapsed() : boolean {
-        return this._collapsed;
+        return false;
+        //return this._collapsed;
     }
 
     set collapsed(val:boolean) {

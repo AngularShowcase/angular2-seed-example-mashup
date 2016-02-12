@@ -58,7 +58,7 @@ import {StateDisplay} from '../redux/StateDisplay/StateDisplay';
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
   encapsulation: ViewEncapsulation.None,
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, StateDisplay]
 })
 @RouteConfig([
   { path: '/', component: FrontPage, as: 'Home' },
