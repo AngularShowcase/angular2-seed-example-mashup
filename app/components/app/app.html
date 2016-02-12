@@ -93,11 +93,11 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div id="leftPanel" [hidden]="!showLeftPanel">
+    <div id="leftPanel" [ngStyle]="leftPanelStyle()">
         <state-display></state-display>
     </div>
 
-    <div id="mainContent">
+    <div id="mainContent" [ngStyle]="mainContentStyle()">
         <router-outlet></router-outlet>
     </div>
 

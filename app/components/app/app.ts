@@ -1,5 +1,6 @@
 /// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
 import {Component, ViewEncapsulation} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 
@@ -58,7 +59,7 @@ import {StateDisplay} from '../redux/StateDisplay/StateDisplay';
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
   encapsulation: ViewEncapsulation.None,
-  directives: [ROUTER_DIRECTIVES, StateDisplay]
+  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, StateDisplay]
 })
 @RouteConfig([
   { path: '/', component: FrontPage, as: 'Home' },
@@ -93,6 +94,33 @@ export class AppCmp {
   lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
   persistenceState: Observable<any>;
   showLeftPanel:boolean = false;
+
+  leftPanel = {
+      on: {
+          leftPanel: {
+            'float' : 'left',
+            'max-width' : '300px',
+            'max-height' : '600px',
+            'overflow-x' : 'scroll',
+            'overflow-y' : 'scroll',
+            'margin-right' : '10px',
+            'border-right' : '1px solid black',
+            'border-bottom' : '1px solid black'
+          },
+          mainContent : {
+            'float' : 'left'
+          }
+      },
+
+      off: {
+          leftPanel: {
+            'display' : 'none'
+          },
+          mainContent : {
+            'clear' : 'both'
+          }
+      }
+  };
 
   constructor(public dataService:DataService,
               public persistenceService:PersistenceService,
@@ -163,5 +191,13 @@ export class AppCmp {
       console.log('Saving state to local storage');
       this.dataService.saveState();
       this.persistenceService.savedState(new Date());
+  }
+
+  leftPanelStyle() {
+      return this.showLeftPanel ? this.leftPanel.on.leftPanel : this.leftPanel.off.leftPanel;
+  }
+
+  mainContentStyle() {
+      return this.showLeftPanel ? this.leftPanel.on.mainContent : this.leftPanel.off.mainContent;
   }
 }

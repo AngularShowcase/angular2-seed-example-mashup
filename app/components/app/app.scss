@@ -42,21 +42,4 @@
     .navbar {
         min-height:32px !important
     }
-
-    div#leftPanel {
-        max-width: 300px;
-        max-height: 600px;
-        float: left;
-        overflow-x: scroll;
-        overflow-y: scroll;
-        margin-right: 10px;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-    }
-
-    div#mainContent {
-        // min-width: 1000px;
-        // background-color: yellow!important;
-        float: left;
-    }
 }
