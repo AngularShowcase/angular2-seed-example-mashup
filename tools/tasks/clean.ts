@@ -46,5 +46,8 @@ function cleanTmp(done) {
   });
 }
 function cleanServer(done) {
-  del(SERVER_DEST, done);
+  del(SERVER_DEST).then((paths) => {
+    util.log('Deleted', chalk.yellow(paths && paths.join(', ') || '-'));
+    done();
+  });
 }
