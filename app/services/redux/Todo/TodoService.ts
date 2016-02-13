@@ -1,27 +1,27 @@
-import {Injectable, EventEmitter} from 'angular2/core';
+import {Injectable} from 'angular2/core';
 import {DataService} from '../DataService';
 import {ITodoState, ActionNames} from './TodoReducer';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
 
 @Injectable()
 export class TodoService {
 
-    public todoStateChanged: EventEmitter<ITodoState>;
+    public todoStateChanged: Subject<ITodoState>;
 
     constructor(public dataService:DataService) {
 
-        this.todoStateChanged = new EventEmitter<ITodoState>();
+        // We use a BehaviorSubject so that subscribers get the latest value right
+        // away.
 
+        this.todoStateChanged = new BehaviorSubject<ITodoState>(this.getState());
+
+        // Subscribe to store changes and publish just our state
         this.dataService.store.subscribe(() => {
-            this.pushStateToSubscribers();
+            let todoState = this.getState();
+            console.log('TodoService publishing state change:', todoState);
+            this.todoStateChanged.next(todoState);
         });
-    }
-
-    // This method can be called by subscribers to force a push.  Useful when a
-    // component is initialized.
-    pushStateToSubscribers() {
-        let todoState = this.getState();
-        console.log('TodoService publishing state change:', todoState);
-        this.todoStateChanged.next(todoState);
     }
 
     getState() : ITodoState {

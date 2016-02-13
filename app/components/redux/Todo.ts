@@ -23,20 +23,17 @@ export class Todo {
     filteredTodos: Observable<ITodo[]>;
 
     constructor(public todoService:TodoService) {
-    }
-
-    ngOnInit() {
-
         this.todoState = this.todoService.todoStateChanged;
-
         this.filteredTodos = this.todoState
             .map(state => state.todos.filter(todo => {
                 return  state.filterName === FilterNames.All  ||
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
             }));
+    }
 
-         this.todoService.pushStateToSubscribers();     // I'd like a better pattern than this
+    ngOnInit() {
+         // this.todoService.pushStateToSubscribers();     // I'd like a better pattern than this
     }
 
     addTodo(inputCtrl:HTMLInputElement) {
