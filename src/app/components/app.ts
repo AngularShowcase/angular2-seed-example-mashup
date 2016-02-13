@@ -1,4 +1,3 @@
-/// <reference path="../../../tools/typings/tsd/socket.io-client/socket.io-client.d.ts" />
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
@@ -24,9 +23,7 @@ import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
 import {PersistenceService} from '../../services/redux/persistence/PersistenceService';
-//import {IPersistenceState} from '../../services/redux/persistence/PersistenceReducer';
 
-import {HomeCmp} from '../../home/components/home';
 import {AboutCmp} from '../../about/components/about';
 import {NameList} from '../../shared/services/name_list';
 
