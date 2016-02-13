@@ -10,6 +10,8 @@ gulp.task('clean.tmp',   task('clean', 'tmp'));
 gulp.task('clean.server',   task('clean', 'server'));
 
 gulp.task('check.versions', task('check.versions'));
+gulp.task('build.docs', task('build.docs'));
+gulp.task('serve.docs', task('serve.docs'));
 
 // --------------
 // Postinstall.
@@ -24,10 +26,10 @@ gulp.task('build.dev', done =>
   runSequence('clean.dist',
               'clean.server',
               'tslint',
-              'build.sass.dev',
-              'build.img.dev',
+              'build.assets.dev',
               'build.js.dev',
-              'build.index',
+              'build.e2e_test',
+              'build.index.dev',
               'build.server',
               done));
 
@@ -38,13 +40,11 @@ gulp.task('build.prod', done =>
               'clean.tmp',
               'clean.server',
               'tslint',
-              'build.sass.dev',
-              'build.img.dev',
+              'build.assets.prod',
               'build.html_css.prod',
-              'build.deps',
               'build.js.prod',
               'build.bundles',
-              'build.index',
+              'build.index.prod',
               'build.server',
               done));
 
@@ -80,7 +80,7 @@ gulp.task('serve', done =>
 // --------------
 // Docs
 // Disabled until https://github.com/sebastian-lenz/typedoc/issues/162 gets resolved
-// gulp.task('docs', done =>
-//   runSequence('build.docs',
-//               'serve.docs',
-//               done));
+gulp.task('docs', done =>
+  runSequence('build.docs',
+              'serve.docs',
+              done));

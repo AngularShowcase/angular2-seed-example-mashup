@@ -26,11 +26,14 @@ import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
 import {PersistenceService} from '../../services/redux/persistence/PersistenceService';
 //import {IPersistenceState} from '../../services/redux/persistence/PersistenceReducer';
 
+import {HomeCmp} from '../../home/components/home';
+import {AboutCmp} from '../../about/components/about';
+import {NameList} from '../../shared/services/name_list';
+
+
 import {Login} from '../login/Login';
 import {Register} from '../register/Register';
-import {AboutCmp} from '../about/about';
 import {FrontPage} from '../home/FrontPage';
-import {NameList} from '../../services/name_list';
 import {Mashup} from '../mashup/Mashup';
 import {MousePlay} from '../mousePlay/MousePlay';
 import {People} from '../celldata/People';
@@ -56,8 +59,8 @@ import {StateDisplay} from '../redux/StateDisplay/StateDisplay';
 @Component({
   selector: 'app',
   viewProviders: [NameList, PersistenceService],
-  templateUrl: './components/app/app.html',
-  styleUrls: ['./components/app/app.css'],
+  templateUrl: './app/components/app.html',
+  styleUrls: ['./app/components/app.css'],
   encapsulation: ViewEncapsulation.None,
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, StateDisplay]
 })

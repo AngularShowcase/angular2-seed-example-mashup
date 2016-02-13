@@ -4,23 +4,23 @@ import {
   expect,
   injectAsync,
   it
-} from 'angular2/testing_internal';
-import {Component, View} from 'angular2/core';
+} from 'angular2/testing';
+import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {AboutCmp} from './about';
-import {NameList} from '../../services/name_list';
+import {NameList} from '../../shared/services/name_list';
+
 
 export function main() {
   describe('About component', () => {
     it('should work',
       injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.overrideTemplate(TestComponent, '<div><about></about></div>')
-          .createAsync(TestComponent)
-          .then((rootTC) => {
+        return tcb.createAsync(TestComponent)
+          .then(rootTC => {
             rootTC.detectChanges();
 
-            let aboutInstance = rootTC.debugElement.componentViewChildren[0].componentInstance;
-            let aboutDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+            let aboutInstance = rootTC.debugElement.children[0].componentInstance;
+            let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
             let nameListLen = function () {
               return aboutInstance.list.names.length;
             };
@@ -29,7 +29,8 @@ export function main() {
             expect(nameListLen()).toEqual(4);
             expect(DOM.querySelectorAll(aboutDOMEl, 'li').length).toEqual(nameListLen());
 
-            aboutInstance.addName({value: 'Minko'});
+            aboutInstance.newName = 'Minko';
+            aboutInstance.addName();
             rootTC.detectChanges();
 
             expect(nameListLen()).toEqual(5);
@@ -41,6 +42,10 @@ export function main() {
   });
 }
 
-@Component({providers: [NameList], selector: 'test-cmp'})
-@View({directives: [AboutCmp]})
+@Component({
+  providers: [NameList],
+  selector: 'test-cmp',
+  template: '<about></about>',
+  directives: [AboutCmp]
+})
 class TestComponent {}
