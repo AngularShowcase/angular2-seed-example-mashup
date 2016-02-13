@@ -105,7 +105,6 @@
     "mongoskin": "^1.4.13",
     "morgan": "^1.6.1",
     "multer": "^1.0.5",
-    "ng2-material": "^0.1.5",
     "q": "^1.4.1",
     "redux": "^3.3.0",
     "reflect-metadata": "0.1.2",
