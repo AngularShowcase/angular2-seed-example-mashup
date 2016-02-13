@@ -54,5 +54,15 @@
   </script>
   <% } %>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+        function googleChartsLoaded() {
+        console.log("Google charts loaded!");
+        }
+        google.load('visualization', '1', { packages: ['corechart', 'line', 'bar','gauge'] });
+        google.setOnLoadCallback(googleChartsLoaded);
+    </script>
+
 </body>
 </html>
