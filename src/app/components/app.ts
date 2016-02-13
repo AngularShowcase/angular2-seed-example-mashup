@@ -27,31 +27,30 @@ import {PersistenceService} from '../../services/redux/persistence/PersistenceSe
 import {AboutCmp} from '../../about/components/about';
 import {NameList} from '../../shared/services/name_list';
 
-
-import {Login} from '../login/Login';
-import {Register} from '../register/Register';
-import {FrontPage} from '../home/FrontPage';
-import {Mashup} from '../mashup/Mashup';
-import {MousePlay} from '../mousePlay/MousePlay';
-import {People} from '../celldata/People';
-import {UsageEntry} from '../celldata/UsageEntry';
-import {Usage} from '../celldata/Usage';
-import {HistoricUsage} from '../celldata/HistoricUsage';
-import {CycleEntry} from '../celldata/CycleEntry';
-import {AnimalGame} from '../animals/AnimalGame';
-import {AnimalAnalyze} from '../animals/AnimalAnalyze';
-import {QuestionEntry} from '../quiz/QuestionEntry';
-import {QuizCreation} from '../quiz/QuizCreation';
-import {ProctorExam} from '../quiz/ProctorExam';
-import {ReviewTest} from '../quiz/ReviewTest';
-import {UserReview} from '../quiz/UserReview';
-import {Weather} from '../streaming/Weather';
-import {Chat} from '../streaming/Chat';
-import {QuizAdmin} from '../quiz/QuizAdmin';
-import {Admin} from '../admin/Admin';
-import {Todo} from '../redux/Todo';
-import {Counter} from '../redux/Counter';
-import {StateDisplay} from '../redux/StateDisplay/StateDisplay';
+import {Login} from '../../login/Components/Login';
+import {Register} from '../../register/components/Register';
+import {FrontPage} from '../../home/components/FrontPage';
+import {Mashup} from '../../mashup/components/Mashup';
+import {MousePlay} from '../../mousePlay/components/MousePlay';
+import {People} from '../../celldata/components/People';
+import {UsageEntry} from '../../celldata/components/UsageEntry';
+import {Usage} from '../../celldata/components/Usage';
+import {HistoricUsage} from '../../celldata/components/HistoricUsage';
+import {CycleEntry} from '../../celldata/components/CycleEntry';
+import {AnimalGame} from '../../animals/components/AnimalGame';
+import {AnimalAnalyze} from '../../animals/components/AnimalAnalyze';
+import {QuestionEntry} from '../../quiz/components/QuestionEntry';
+import {QuizCreation} from '../../quiz/components/QuizCreation';
+import {ProctorExam} from '../../quiz/components/ProctorExam';
+import {ReviewTest} from '../../quiz/components/ReviewTest';
+import {UserReview} from '../../quiz/components/UserReview';
+import {Weather} from '../../streaming/components/Weather';
+import {Chat} from '../../streaming/components/Chat';
+import {QuizAdmin} from '../../quiz/components/QuizAdmin';
+import {Admin} from '../../admin/components/Admin';
+import {Todo} from '../../redux/components/Todo';
+import {Counter} from '../../redux/components/Counter';
+import {StateDisplay} from '../../redux/components/StateDisplay/StateDisplay';
 
 @Component({
   selector: 'app',
