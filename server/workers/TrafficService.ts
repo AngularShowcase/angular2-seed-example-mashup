@@ -10,7 +10,7 @@ import {Subject} from 'rxjs/Subject';
 
 export class TrafficService {
 
-	mapFile = './app/assets/data/maps/us.json';
+	mapFile = './src/assets/data/maps/us.json';
 	sleepTime = 2500;
 	accidentPub: Subject<IAccident>;
 	timer: any;
