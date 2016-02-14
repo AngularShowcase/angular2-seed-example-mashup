@@ -4,6 +4,7 @@ import {CellDataServices} from '../../services/CellDataServices';
 import {IUsage, ICycle, IPerson} from '../../../common/interfaces/CellDataInterfaces';
 import {UsageDetails} from './UsageDetails';
 import {UsageColumnChart} from '../../directives/UsageColumnChart';
+import * as moment from 'moment';
 
 interface IExtendedCycle extends ICycle {
     description:string;
