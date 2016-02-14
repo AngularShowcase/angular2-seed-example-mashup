@@ -18,6 +18,7 @@
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
     "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4",
     "glob": "github:DefinitelyTyped/DefinitelyTyped/glob/glob.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
+    "google.visualization": "github:DefinitelyTyped/DefinitelyTyped/google.visualization/google.visualization.d.ts#448bcc6e964f0f1c1ac87a6fb3ee0a4f186ec3b9",
     "gulp": "github:DefinitelyTyped/DefinitelyTyped/gulp/gulp.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
     "gulp-load-plugins": "github:DefinitelyTyped/DefinitelyTyped/gulp-load-plugins/gulp-load-plugins.d.ts#e081148d88b857d66509e3b46edbd08b3f75f96a",
     "gulp-shell": "github:DefinitelyTyped/DefinitelyTyped/gulp-shell/gulp-shell.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",

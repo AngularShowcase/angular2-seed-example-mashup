@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {ObjectDisplay} from '../objectDisplay/ObjectDisplay';
+import {ObjectDisplay} from '../../objectDisplay/components/ObjectDisplay';
 import {IGithubUser} from '../../services/ServiceInterfaces';
 import {GithubServices} from '../../services/GithubServices';
 import {GithubUser} from '../../models/GithubUser';

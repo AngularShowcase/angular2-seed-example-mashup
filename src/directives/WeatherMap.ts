@@ -1,4 +1,3 @@
-///<reference path="../../tools/typings/tsd/d3/d3.d.ts" />
 import {Directive, ElementRef, Renderer} from 'angular2/core';
 import {MapServices} from '../services/MapServices';
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';

@@ -1,4 +1,3 @@
-///<reference path="../../tools/typings/tsd/google.visualization/google.visualization.d.ts" />
 import {Directive, ElementRef, Renderer} from 'angular2/core';
 
 @Directive({

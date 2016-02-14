@@ -1,13 +1,15 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
+//import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Router} from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
 
 @Component({
     selector: 'login',
-    templateUrl: './components/login/login-material.html',
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES]
+    //templateUrl: './components/login/login-material.html',
+    templateUrl: './components/login/login.html',
+    //directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class Login {
 

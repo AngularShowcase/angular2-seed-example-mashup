@@ -1,4 +1,3 @@
-///<reference path="../tools/typings/tsd/socket.io/socket.io.d.ts" />
 import {WeatherService} from './workers/WeatherService';
 import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';

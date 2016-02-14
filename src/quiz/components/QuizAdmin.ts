@@ -5,7 +5,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder} fr
 import {QuizServices} from '../../services/QuizServices';
 import {Authentication} from '../../services/Authentication';
 import {IQuizQuestion} from '../../../common/interfaces/QuizInterfaces';
-import {EditableField} from '../common/EditableField';
+import {EditableField} from '../../common/components/EditableField';
 
 @Component({
     selector: 'quiz-admin',

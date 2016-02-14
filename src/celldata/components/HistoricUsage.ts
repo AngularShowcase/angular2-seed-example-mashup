@@ -1,6 +1,3 @@
-/// <reference path='../../../tools/typings/tsd/moment/moment.d.ts' />
-/// <reference path='../../../tools/typings/tsd/underscore/underscore.d.ts' />
-
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {CellDataServices} from '../../services/CellDataServices';

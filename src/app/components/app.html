@@ -81,11 +81,11 @@
                         Saved: {{(persistenceState | async)?.saveTime | date:'hh:mm:ss tt'}}
                     </div>
 
-                    <button md-raised-button [disabled]="!isLoggedIn()" (click)="logout()">Logout</button>
-                    <button md-raised-button [disabled]="isLoggedIn()" (click)="register()">Register</button>
-                    <button md-raised-button [disabled]="isLoggedIn()" (click)="login()">Login</button>
-                    <button md-raised-button [disabled]="!isLoggedIn()" class="md-primary" (click)="userInfo()">{{getUser()}}</button>
-                    <button md-raised-button (click)="toggleLeftPanel()">Toggle Left</button>
+                    <button [disabled]="!isLoggedIn()" (click)="logout()">Logout</button>
+                    <button [disabled]="isLoggedIn()" (click)="register()">Register</button>
+                    <button [disabled]="isLoggedIn()" (click)="login()">Login</button>
+                    <button [disabled]="!isLoggedIn()" (click)="userInfo()">{{getUser()}}</button>
+                    <button (click)="toggleLeftPanel()">Toggle Left</button>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

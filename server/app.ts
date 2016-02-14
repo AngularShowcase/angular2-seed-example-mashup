@@ -1,5 +1,3 @@
-/// <reference path="../tools/typings/tsd/body-parser/body-parser.d.ts" />
-/// <reference path="../tools/typings/tsd/morgan/morgan.d.ts" />
 import * as express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
