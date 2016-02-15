@@ -22,9 +22,9 @@ interface IModel {
 @Component({
     selector: 'animal-game',
     providers: [AnimalServices],
-    templateUrl: './components/animals/AnimalGame.html',
+    templateUrl: './animals/components/AnimalGame.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, AnimalList, AnimalPlay],
-    styleUrls: ['./components/animals/AnimalGame.css']
+    styleUrls: ['./animals/components/AnimalGame.css']
 })
 export class AnimalGame {
 

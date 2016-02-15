@@ -37,9 +37,9 @@ var noQuestion:IQuestion = {
     providers: [AnimalServices],
     inputs: ['currentQuestion:current-question','reloadFlag:reload-flag'],
     outputs: ['dbreloaded'],
-    templateUrl: './components/animals/AnimalList.html',
+    templateUrl: './animals/components/AnimalList.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, TreeDisplay, TreeDisplayControl],
-    styleUrls: ['./components/animals/AnimalList.css']
+    styleUrls: ['./animals/components/AnimalList.css']
 })
 export class AnimalList {
 

@@ -39,9 +39,9 @@ var noQuestion:IQuestion = {
     selector: 'animal-play',
     providers: [AnimalServices],
     outputs: ['questionchange:questionchange','dbupdated'],
-    templateUrl: './components/animals/AnimalPlay.html',
+    templateUrl: './animals/components/AnimalPlay.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, YesNo],
-    styleUrls: ['./components/animals/AnimalPlay.css']
+    styleUrls: ['./animals/components/AnimalPlay.css']
 })
 export class AnimalPlay {
 

@@ -8,8 +8,8 @@ enum InputMode {
 
 @Component({
     selector: 'editable-field',
-    templateUrl: './components/common/EditableField.html',
-    styleUrls: ['./components/common/EditableField.css'],
+    templateUrl: './common/components/EditableField.html',
+    styleUrls: ['./common/components/EditableField.css'],
     inputs: ['val', 'selectFrom:select-from', 'fontSize:font-size', 'inputControlType:input-control-type'],
     outputs: ['updates'],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

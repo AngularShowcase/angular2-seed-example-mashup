@@ -1,4 +1,5 @@
 import {Directive, ElementRef, Renderer} from 'angular2/core';
+import * as d3 from 'd3';
 
 export interface ITreeNode {
 	id: number;

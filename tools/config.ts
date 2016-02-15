@@ -93,9 +93,11 @@ const SYSTEM_CONFIG_DEV = {
   paths: {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
+    'd3' : `${APP_BASE}node_modules/d3/d3`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
     'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
     'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
+    'underscore' : `${APP_BASE}node_modules/underscore/underscore`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -104,7 +106,6 @@ const SYSTEM_CONFIG_DEV = {
   }
 };
 
-console.log('SYSTEM_CONFIG_DEV', SYSTEM_CONFIG_DEV);
 export const SYSTEM_CONFIG = SYSTEM_CONFIG_DEV;
 
 // --------------

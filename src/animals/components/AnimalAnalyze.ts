@@ -12,9 +12,9 @@ interface INodeAndPath {
 @Component({
     selector: 'animal-analyze',
     providers: [AnimalServices],
-    templateUrl: './components/animals/AnimalAnalyze.html',
+    templateUrl: './animals/components/AnimalAnalyze.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
-    styleUrls: ['./components/animals/AnimalAnalyze.css']
+    styleUrls: ['./animals/components/AnimalAnalyze.css']
 })
 export class AnimalAnalyze {
 

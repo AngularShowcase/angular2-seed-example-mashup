@@ -4,9 +4,9 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 @Component({
     selector: 'yes-no',
     outputs: ['yes','no','answer'],
-    templateUrl: './components/common/YesNo.html',
+    templateUrl: './common/components/YesNo.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
-    styleUrls: ['./components/common/YesNo.css']
+    styleUrls: ['./common/components/YesNo.css']
 })
 export class YesNo {
     yes:EventEmitter<string>;

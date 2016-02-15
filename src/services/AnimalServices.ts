@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {IQuestion, INewAnimalInfo} from '../../common/interfaces/AnimalInterfaces';
 import {ITreeNode} from '../directives/TreeDisplay';
+import * as _ from 'underscore';
 
 export interface IQuestionAndAnswer {
 	question:ITreeNode;
