@@ -95,6 +95,7 @@ const SYSTEM_CONFIG_DEV = {
     'angular2/*': `${APP_BASE}angular2/*`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
     'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
+    'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {

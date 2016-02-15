@@ -3,8 +3,8 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 
 @Component({
     selector: 'front-page',
-    templateUrl: './components/home/FrontPage.html',
-    styleUrls: ['./components/home/FrontPage.css'],
+    templateUrl: './home/components/FrontPage.html',
+    styleUrls: ['./home/components/FrontPage.css'],
 
     directives: [CORE_DIRECTIVES]
 })

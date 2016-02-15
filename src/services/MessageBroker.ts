@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from 'angular2/core';
 import {IWeatherUpdate} from '../../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../../common/interfaces/TrafficInterfaces';
 import {IChatMessage} from '../../common/interfaces/ChatInterfaces';
+import * as io from 'socket.io-client';
 
 @Injectable()
 export class MessageBroker {
