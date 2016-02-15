@@ -10,8 +10,8 @@ import {SortKey} from '../../directives/SortKey';
 import {Role} from '../../models/Role';
 
 @Component({
-    templateUrl: './components/admin/Roles.html',
-    styleUrls: ['./components/admin/Roles.css'],
+    templateUrl: './admin/components/Roles.html',
+    styleUrls: ['./admin/components/Roles.css'],
     directives: [CORE_DIRECTIVES, Sortable, SortKey],
     pipes: [FieldSortPipe]
 })

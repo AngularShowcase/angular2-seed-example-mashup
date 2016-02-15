@@ -9,8 +9,8 @@ import {Sortable} from '../../directives/Sortable';
 import {SortKey} from '../../directives/SortKey';
 
 @Component({
-    templateUrl: './components/admin/Users.html',
-    styleUrls: ['./components/admin/Users.css'],
+    templateUrl: './admin/components/Users.html',
+    styleUrls: ['./admin/components/Users.css'],
     directives: [CORE_DIRECTIVES, Sortable, SortKey],
     pipes: [FieldSortPipe]
 })

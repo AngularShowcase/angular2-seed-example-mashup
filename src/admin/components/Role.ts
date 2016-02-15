@@ -6,8 +6,8 @@ import {RouteParams} from 'angular2/router';
 import {UserPickList} from './UserPickList';
 
 @Component({
-    templateUrl: './components/admin/Role.html',
-    styleUrls: ['./components/admin/Role.css'],
+    templateUrl: './admin/components/Role.html',
+    styleUrls: ['./admin/components/Role.css'],
     directives: [CORE_DIRECTIVES, UserPickList]
 })
 

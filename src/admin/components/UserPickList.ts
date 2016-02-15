@@ -6,8 +6,8 @@ import {IUser} from '../../../common/interfaces/SecurityInterfaces';
 @Component({
     selector: 'userPickList',
     outputs: ['selectedUser'],
-    templateUrl: './components/admin/UserPickList.html',
-    styleUrls: ['./components/admin/UserPickList.css'],
+    templateUrl: './admin/components/UserPickList.html',
+    styleUrls: ['./admin/components/UserPickList.css'],
     directives: [CORE_DIRECTIVES]
 })
 

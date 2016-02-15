@@ -4,8 +4,8 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
     selector: 'admin-menu',
-    templateUrl: './components/admin/AdminMenu.html',
-    styleUrls: ['./components/admin/AdminMenu.css'],
+    templateUrl: './admin/components/AdminMenu.html',
+    styleUrls: ['./admin/components/AdminMenu.css'],
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class AdminMenu {

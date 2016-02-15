@@ -18,8 +18,8 @@ import {RoleComponent} from './Role';
 @Component({
     selector: 'admin',
     providers: [SecurityService],
-    templateUrl: './components/admin/Admin.html',
-    styleUrls: ['./components/admin/Admin.css'],
+    templateUrl: './admin/components/Admin.html',
+    styleUrls: ['./admin/components/Admin.css'],
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, AdminMenu]
 })
 export class Admin {
