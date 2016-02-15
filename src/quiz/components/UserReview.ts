@@ -15,8 +15,8 @@ import {UserCategoryReview} from './UserCategoryReview';
 ])
 @Component({
     selector: 'user-review',
-    templateUrl: './components/quiz/UserReview.html',
-    styleUrls: ['./components/quiz/UserReview.css'],
+    templateUrl: './quiz/components/UserReview.html',
+    styleUrls: ['./quiz/components/UserReview.css'],
 
     providers: [QuizServices],
     directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, UserCategoryReview, UserTestList]

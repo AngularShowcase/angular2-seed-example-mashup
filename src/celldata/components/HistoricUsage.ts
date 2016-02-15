@@ -19,9 +19,9 @@ interface IModel {
 @Component({
     selector: 'historic-usage',
     viewProviders: [CellDataServices],
-    templateUrl: './components/celldata/HistoricUsage.html',
+    templateUrl: './celldata/components/HistoricUsage.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageColumnChart, UsageDetails],
-    styleUrls: ['./components/celldata/HistoricUsage.css']
+    styleUrls: ['./celldata/components/HistoricUsage.css']
 })
 export class HistoricUsage implements IModel {
 

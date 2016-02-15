@@ -4,8 +4,8 @@ import {CounterService} from '../../services/redux/Counter/CounterService';
 
 @Component({
     selector: 'redux-counter',
-    templateUrl: './components/redux/Counter.html',
-    styleUrls: ['./components/redux/Counter.css'],
+    templateUrl: './redux/components/Counter.html',
+    styleUrls: ['./redux/components/Counter.css'],
     directives: [CORE_DIRECTIVES]
 })
 

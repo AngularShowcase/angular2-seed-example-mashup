@@ -8,9 +8,9 @@ import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
 
 @Component({
     selector: 'chat',
-    //templateUrl: './components/streaming/Chat-Material.html',
-    templateUrl: './components/streaming/Chat.html',
-    styleUrls: ['./components/streaming/Chat.css'],
+    //templateUrl: './streaming/components/Chat-Material.html',
+    templateUrl: './streaming/components/Chat.html',
+    styleUrls: ['./streaming/components/Chat.css'],
     pipes: [],
     // directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES]
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

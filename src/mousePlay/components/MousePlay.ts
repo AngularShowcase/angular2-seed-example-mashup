@@ -8,9 +8,9 @@ import {HpDrag} from '../../directives/HpDrag';
 
 @Component({
     selector: 'mouse-play',
-    templateUrl: './components/mousePlay/MousePlay.html',
+    templateUrl: './mousePlay/components/MousePlay.html',
     directives: [HpDrag],
-    styleUrls: ['./components/mousePlay/mousePlay.css']
+    styleUrls: ['./mousePlay/components/mousePlay.css']
 })
 export class MousePlay {
 

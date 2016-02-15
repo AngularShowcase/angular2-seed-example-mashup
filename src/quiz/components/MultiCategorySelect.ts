@@ -4,8 +4,8 @@ import {QuizServices} from '../../services/QuizServices';
 
 @Component({
     selector: 'multi-category-select',
-    templateUrl: './components/quiz/MultiCategorySelect.html',
-    styleUrls: ['./components/quiz/MultiCategorySelect.css'],
+    templateUrl: './quiz/components/MultiCategorySelect.html',
+    styleUrls: ['./quiz/components/MultiCategorySelect.css'],
     outputs: ['categories'],
     providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

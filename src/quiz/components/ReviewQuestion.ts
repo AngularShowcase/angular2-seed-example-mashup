@@ -5,8 +5,8 @@ import * as RouterMod from 'angular2/router';
 import {IQuiz, IUserQuestion} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
-    templateUrl: './components/quiz/ReviewQuestion.html',
-    styleUrls: ['./components/quiz/ReviewQuestion.css'],
+    templateUrl: './quiz/components/ReviewQuestion.html',
+    styleUrls: ['./quiz/components/ReviewQuestion.css'],
 
     providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, RouterMod.ROUTER_DIRECTIVES]

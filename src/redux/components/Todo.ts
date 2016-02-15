@@ -6,8 +6,8 @@ import {TodoService} from '../../services/redux/Todo/TodoService';
 
 @Component({
     selector: 'todo',
-    templateUrl: './components/redux/todo.html',
-    styleUrls: ['./components/redux/todo.css'],
+    templateUrl: './redux/components/todo.html',
+    styleUrls: ['./redux/components/todo.css'],
 
     // If we only rely on immutable inputs and properties, we can get performance
     // gains by telling angular to only check for changes when our inputs change.

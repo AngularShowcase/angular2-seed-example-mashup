@@ -4,8 +4,8 @@ import {ITest} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'test-score-summary',
-    templateUrl: './components/quiz/TestScoreSummary.html',
-    styleUrls: ['./components/quiz/TestScoreSummary.css'],
+    templateUrl: './quiz/components/TestScoreSummary.html',
+    styleUrls: ['./quiz/components/TestScoreSummary.css'],
     inputs: ['test'],
     outputs: ['selectedCategory'],
     providers: [],

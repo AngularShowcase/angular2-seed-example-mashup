@@ -10,8 +10,8 @@ import {SortKey} from '../../directives/SortKey';
 
 @Component({
     selector: 'user-test-list',
-    templateUrl: './components/quiz/UserTestList.html',
-    styleUrls: ['./components/quiz/UserTestList.css'],
+    templateUrl: './quiz/components/UserTestList.html',
+    styleUrls: ['./quiz/components/UserTestList.css'],
     inputs: ['username', 'filterCategory'],
     outputs: ['selectedTest'],
     pipes: [TestCategoryFilter, FieldSortPipe],

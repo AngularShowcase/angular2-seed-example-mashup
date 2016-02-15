@@ -15,8 +15,8 @@ enum ProctorState {
 
 @Component({
     selector: 'proctor-exam',
-    templateUrl: './components/quiz/ProctorExam.html',
-    styleUrls: ['./components/quiz/ProctorExam.css'],
+    templateUrl: './quiz/components/ProctorExam.html',
+    styleUrls: ['./quiz/components/ProctorExam.css'],
 
     providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

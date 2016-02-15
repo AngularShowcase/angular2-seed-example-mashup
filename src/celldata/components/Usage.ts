@@ -29,10 +29,10 @@ interface IModel {
 @Component({
     selector: 'usage',
     providers: [CellDataServices, Parser],
-    templateUrl: './components/celldata/Usage.html',
+    templateUrl: './celldata/components/Usage.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, UsageBarChart,
                  UsageLineChart, PeriodUsageChart, UsageDetails, UsageGauge],
-    styleUrls: ['./components/celldata/Usage.css']
+    styleUrls: ['./celldata/components/Usage.css']
 })
 export class Usage implements IModel {
 

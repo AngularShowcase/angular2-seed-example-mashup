@@ -6,7 +6,7 @@ import {IUsage} from '../../../common/interfaces/CellDataInterfaces';
 @Component({
 	selector: 'usage-details',
 	inputs: ['dataUsage:usage'],
-	templateUrl: './components/celldata/UsageDetails.html',
+	templateUrl: './celldata/components/UsageDetails.html',
 	directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 

@@ -9,8 +9,8 @@ import {StateStats} from './StateStats';
 
 @Component({
     selector: 'weather',
-    templateUrl: './components/streaming/Weather.html',
-    styleUrls: ['./components/streaming/Weather.css'],
+    templateUrl: './streaming/components/Weather.html',
+    styleUrls: ['./streaming/components/Weather.css'],
     pipes: [],
     directives: [CORE_DIRECTIVES, WeatherMap, StateStats]
 })

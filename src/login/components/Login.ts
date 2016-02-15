@@ -6,8 +6,8 @@ import {Authentication} from '../../services/Authentication';
 
 @Component({
     selector: 'login',
-    //templateUrl: './components/login/login-material.html',
-    templateUrl: './components/login/login.html',
+    //templateUrl: './login/components/login-material.html',
+    templateUrl: './login/components/login.html',
     //directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES]
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })

@@ -6,8 +6,8 @@ import {CategoryFilter} from './CategoryFilter';
 
 @Component({
     selector: 'test-score-detail',
-    templateUrl: './components/quiz/TestScoreDetail.html',
-    styleUrls: ['./components/quiz/TestScoreDetail.css'],
+    templateUrl: './quiz/components/TestScoreDetail.html',
+    styleUrls: ['./quiz/components/TestScoreDetail.css'],
     inputs: ['test', 'quiz', 'categoryFilter'],
     pipes: [CategoryFilter],
     providers: [],

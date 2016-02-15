@@ -5,7 +5,7 @@ import {CellDataServices} from '../../services/CellDataServices';
 @Component({
     selector: 'celldata-people',
     providers: [CellDataServices],
-    templateUrl: './components/celldata/People.html',
+    templateUrl: './celldata/components/People.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class People {

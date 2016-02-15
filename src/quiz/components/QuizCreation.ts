@@ -8,8 +8,8 @@ import {IQuiz, ITest} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'quiz-creation',
-    templateUrl: './components/quiz/QuizCreation.html',
-    styleUrls: ['./components/quiz/QuizCreation.css'],
+    templateUrl: './quiz/components/QuizCreation.html',
+    styleUrls: ['./quiz/components/QuizCreation.css'],
 
     viewProviders: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MultiCategorySelect]

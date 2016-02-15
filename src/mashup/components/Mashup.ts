@@ -11,7 +11,7 @@ import {DataService} from '../../services/redux/DataService';
 @Component({
     selector: 'mashup',
     providers: [GithubServices],
-    templateUrl: './components/mashup/Mashup.html',
+    templateUrl: './mashup/components/Mashup.html',
     directives: [CORE_DIRECTIVES, ObjectDisplay, FORM_DIRECTIVES]
 })
 export class Mashup {

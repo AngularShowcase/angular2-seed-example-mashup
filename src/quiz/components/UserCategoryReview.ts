@@ -5,8 +5,8 @@ import {ISectionResult} from '../../../common/interfaces/QuizInterfaces';
 
 @Component({
     selector: 'user-category-review',
-    templateUrl: './components/quiz/UserCategoryReview.html',
-    styleUrls: ['./components/quiz/UserCategoryReview.css'],
+    templateUrl: './quiz/components/UserCategoryReview.html',
+    styleUrls: ['./quiz/components/UserCategoryReview.css'],
     inputs: ['username'],
     outputs: ['selectedCategory'],
     providers: [QuizServices],

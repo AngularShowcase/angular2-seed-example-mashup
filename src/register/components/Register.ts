@@ -6,8 +6,8 @@ import {IRegistration} from '../../../common/interfaces/RegistrationInterfaces';
 
 @Component({
     selector: 'register',
-    templateUrl: './components/register/Register.html',
-    styleUrls: ['./components/register/Register.css'],
+    templateUrl: './register/components/Register.html',
+    styleUrls: ['./register/components/Register.css'],
 
     providers: [Authentication],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

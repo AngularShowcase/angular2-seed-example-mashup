@@ -6,7 +6,7 @@ import {Router} from 'angular2/router';
 @Component({
     selector: 'cycle-entry',
     providers: [CellDataServices],
-    templateUrl: './components/celldata/CycleEntry.html',
+    templateUrl: './celldata/components/CycleEntry.html',
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class CycleEntry {

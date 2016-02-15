@@ -9,8 +9,8 @@ import {Authentication} from '../../services/Authentication';
 
 @Component({
     selector: 'question-entry',
-    templateUrl: './components/quiz/QuestionEntry.html',
-    styleUrls: ['./components/quiz/QuestionEntry.css'],
+    templateUrl: './quiz/components/QuestionEntry.html',
+    styleUrls: ['./quiz/components/QuestionEntry.css'],
 
     viewProviders: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]

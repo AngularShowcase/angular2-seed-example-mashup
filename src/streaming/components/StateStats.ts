@@ -4,8 +4,8 @@ import {IStateAccidentStats} from './StateAccidentStats';
 
 @Component({
     selector: 'state-stats',
-    templateUrl: './components/streaming/StateStats.html',
-    styleUrls: ['./components/streaming/StateStats.css'],
+    templateUrl: './streaming/components/StateStats.html',
+    styleUrls: ['./streaming/components/StateStats.css'],
     inputs: ['stats'],
     directives: [CORE_DIRECTIVES]
 })

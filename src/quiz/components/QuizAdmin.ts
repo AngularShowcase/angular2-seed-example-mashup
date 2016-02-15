@@ -9,8 +9,8 @@ import {EditableField} from '../../common/components/EditableField';
 
 @Component({
     selector: 'quiz-admin',
-    templateUrl: './components/quiz/QuizAdmin.html',
-    styleUrls: ['./components/quiz/QuizAdmin.css'],
+    templateUrl: './quiz/components/QuizAdmin.html',
+    styleUrls: ['./quiz/components/QuizAdmin.css'],
 
     providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, EditableField]

@@ -16,9 +16,9 @@ interface IExtendedCycle extends ICycle {
 @Component({
     selector: 'usage-entry',
     providers: [CellDataServices],
-    templateUrl: './components/celldata/UsageEntry.html',
+    templateUrl: './celldata/components/UsageEntry.html',
     directives: [CORE_DIRECTIVES, UsageDetails, formDirectives],
-    styleUrls: ['./components/celldata/UsageEntry.css']
+    styleUrls: ['./celldata/components/UsageEntry.css']
 })
 export class UsageEntry {
     peopleObservable:Observable<IPerson[]>;

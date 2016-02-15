@@ -17,8 +17,8 @@ import {Test} from '../../models/Test';
 
 @Component({
     selector: 'review-test',
-    templateUrl: './components/quiz/ReviewTest.html',
-    styleUrls: ['./components/quiz/ReviewTest.css'],
+    templateUrl: './quiz/components/ReviewTest.html',
+    styleUrls: ['./quiz/components/ReviewTest.css'],
 
     providers: [QuizServices],
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES, TestScoreSummary, TestScoreDetail]
