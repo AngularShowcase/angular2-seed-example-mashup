@@ -2,11 +2,13 @@
     <h1>Chat</h1>
     <h2>{{user.username}}</h2>
     <section id="compose">
-        <div>Enter your message:</div>
-        <textarea id="messageEntry" #msg [(ngModel)]="message"></textarea>
-        <div>
-            <button (click)="sendMessage(msg.value)">Send</button>
-        </div>
+        <form>
+            <div>Enter your message:</div>
+            <textarea id="messageEntry" #msg [(ngModel)]="message"></textarea>
+            <div>
+                <button (click)="sendMessage(msg.value)">Send</button>
+            </div>
+        </form>
     </section>
 
     <section id="thread">

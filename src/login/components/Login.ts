@@ -1,22 +1,20 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-//import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Router} from 'angular2/router';
 import {Authentication} from '../../services/Authentication';
 
 @Component({
     selector: 'login',
-    //templateUrl: './login/components/login-material.html',
     templateUrl: './login/components/login.html',
-    //directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES]
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class Login {
 
-    username:string;
-    password:string;
+    username:string = '';
+    password:string = '';
 
     constructor(public auth:Authentication, public router:Router) {
+        console.log('login component constructed.');
     }
 
     register() {
@@ -30,6 +28,7 @@ export class Login {
     ngOnDestroy() {
         console.log('Login form destroyed');
     }
+
     login() {
         console.log('Last route in login() is: ', this.auth.getLastRoute());
 
@@ -39,6 +38,8 @@ export class Login {
                     alert('Login failed');
                     return;
                 }
+
+                console.log(`Login successful for user ${this.username}.`);
 
                 // Navigate to the last url now that we are logged in
                 var lastUrl = this.auth.getLastRoute();
