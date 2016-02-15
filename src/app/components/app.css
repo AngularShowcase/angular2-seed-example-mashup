@@ -1,3 +1,35 @@
 .app-content {
   font-family: Verdana;
-}
+  color: darkblue; }
+  .app-content .top-button {
+    border-radius: 5px;
+    margin-right: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    background: lightskyblue;
+    margin-top: 0px; }
+  .app-content ul div#savedState {
+    display: inline-block;
+    color: red;
+    font-size: 10pt;
+    font-style: italic;
+    margin-right: 10px;
+    background: black;
+    padding: 3px;
+    border-radius: 5px; }
+  .app-content .navbar-nav > li > a {
+    font-size: 18pt;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important; }
+  .app-content .navbar {
+    min-height: 32px !important; }
+
+#lastChat {
+  display: inline-block;
+  color: yellow;
+  font-size: 10pt;
+  font-style: italic;
+  margin-right: 10px;
+  background: black;
+  padding: 3px;
+  border-radius: 5px; }
