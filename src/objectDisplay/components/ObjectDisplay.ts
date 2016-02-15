@@ -7,8 +7,8 @@ import {Parser} from '../../services/Parser';
     providers: [Parser],
     inputs: ['displayObject:display-object', 'niceLabels:nice-labels', 'collapsed'],
     outputs: ['selectobject:selectobject'],
-    templateUrl: './components/objectDisplay/ObjectDisplay.html',
-    styleUrls: ['./components/objectDisplay/ObjectDisplay.css'],
+    templateUrl: './objectDisplay/components/ObjectDisplay.html',
+    styleUrls: ['./objectDisplay/components/ObjectDisplay.css'],
     directives: [CORE_DIRECTIVES, ObjectDisplay]
 })
 export class ObjectDisplay {

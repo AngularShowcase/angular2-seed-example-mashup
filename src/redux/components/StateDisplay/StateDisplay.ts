@@ -5,8 +5,8 @@ import {DataService} from '../../../services/redux/DataService';
 
 @Component({
     selector: 'state-display',
-    templateUrl: './components/redux/StateDisplay/StateDisplay.html',
-    styleUrls: ['./components/redux/StateDisplay/StateDisplay.css'],
+    templateUrl: './redux/components/StateDisplay/StateDisplay.html',
+    styleUrls: ['./redux/components/StateDisplay/StateDisplay.css'],
     directives: [CORE_DIRECTIVES, ObjectDisplay]
 })
 export class StateDisplay {

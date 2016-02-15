@@ -2,6 +2,7 @@ import {Injectable} from 'angular2/core';
 import {CounterReducer} from './Counter/CounterReducer';
 import {TodoReducer} from './Todo/TodoReducer';
 import {PersistenceReducer} from './Persistence/PersistenceReducer';
+import * as Redux from 'redux';
 
 @Injectable()
 export class DataService {

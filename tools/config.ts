@@ -94,6 +94,7 @@ const SYSTEM_CONFIG_DEV = {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
+    'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -102,6 +103,7 @@ const SYSTEM_CONFIG_DEV = {
   }
 };
 
+console.log('SYSTEM_CONFIG_DEV', SYSTEM_CONFIG_DEV);
 export const SYSTEM_CONFIG = SYSTEM_CONFIG_DEV;
 
 // --------------

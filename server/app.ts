@@ -31,7 +31,7 @@ console.log(`__dirname is ${__dirname}.`);
 
 // For the dev environment, we serve at a root where node_modules can be referenced.  Not so for production.
 if (env === 'dev') {
-    config.staticRoot = path.join(__dirname, '../..');
+    config.staticRoot = path.join(__dirname, '../dev');
 } else {
     config.staticRoot = path.join(__dirname, '..', env);
 }
@@ -42,7 +42,17 @@ console.log('Configuration: ', config);
 
 var app = express();
 
-app.use(express.static(config.staticRoot));
+if (env === 'dev') {
+    console.log('Configurating the dev environment');
+    app.use('/', express.static(config.staticRoot));
+    app.use('/dist/dev', express.static(config.staticRoot));
+    app.use('/node_modules', express.static(path.join(__dirname, '../../node_modules')));
+
+    console.log('app', app);
+} else {
+    console.log('Configurating the production environment');
+    app.use(express.static(config.staticRoot));
+}
 
 app.use(logger('dev'));
 app.use(bodyParser({
