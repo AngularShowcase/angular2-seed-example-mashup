@@ -99,6 +99,7 @@ const SYSTEM_CONFIG_DEV = {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
     'd3' : `${APP_BASE}node_modules/d3/d3`,
+    'moment' : `${APP_BASE}node_modules/moment/moment`,
     'rxjs/*': `${APP_BASE}rxjs/*`,
     'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
     'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
@@ -118,7 +119,12 @@ export const SYSTEM_BUILDER_CONFIG = {
   paths: {
     '*': `${TMP_DIR}/*`,
     'angular2/*': 'node_modules/angular2/*',
-    'rxjs/*': 'node_modules/rxjs/*'
+    'rxjs/*': 'node_modules/rxjs/*',
+    'd3' : 'node_modules/d3/d3',
+    'moment' : 'node_modules/moment/moment',
+    'redux' : 'node_modules/redux/dist/redux',
+    'socket.io-client' : 'node_modules/socket.io-client/socket.io',
+    'underscore' : 'node_modules/underscore/underscore'
   }
 };
 

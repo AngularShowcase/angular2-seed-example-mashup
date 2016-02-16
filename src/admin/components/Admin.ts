@@ -9,10 +9,10 @@ import {Roles} from './Roles';
 import {RoleComponent} from './Role';
 
 @RouteConfig([
-  { path: '/', component: Users, as: 'UsersDefault', useAsDefault: true },
-  { path: '/Users', component: Users, as: 'Users' },
-  { path: '/Roles', component: Roles, as: 'Roles' },
-  { path: '/Roles/:roleName', component: RoleComponent, as: 'Role' }
+  { path: '/', component: Users, name: 'UsersDefault', useAsDefault: true },
+  { path: '/Users', component: Users, name: 'Users' },
+  { path: '/Roles', component: Roles, name: 'Roles' },
+  { path: '/Roles/:roleName', component: RoleComponent, name: 'Role' }
 ])
 
 @Component({
