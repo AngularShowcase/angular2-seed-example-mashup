@@ -46,6 +46,7 @@ gulp.task('build.prod', done =>
               'build.html_css.prod',
               'build.js.prod',
               'build.bundles',
+              'build.bundles.app',
               'build.index.prod',
               'build.server',
               done));
