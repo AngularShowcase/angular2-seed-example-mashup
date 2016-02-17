@@ -27,7 +27,7 @@ import {PersistenceService} from '../../services/redux/Persistence/PersistenceSe
 import {AboutCmp} from '../../about/components/about';
 import {NameList} from '../../shared/services/name_list';
 
-import {Login} from '../../login/Components/Login';
+import {Login} from '../../login/components/Login';
 import {Register} from '../../register/components/Register';
 import {FrontPage} from '../../home/components/FrontPage';
 import {Mashup} from '../../mashup/components/Mashup';
