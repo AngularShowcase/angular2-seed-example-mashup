@@ -26,7 +26,7 @@ export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;
 export const BOOTSTRAP_MODULE     = ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main';
 export const ASSETS_SRC           = `${APP_SRC}/assets`;
-
+export const BOOTSTRAP_FONTS_SRC  = `node_modules/bootstrap/dist/fonts`;
 export const TOOLS_DIR            = 'tools';
 export const TMP_DIR              = 'tmp';
 export const TEST_SPEC_DEST       = 'dist/test/spec';
@@ -36,6 +36,7 @@ export const APP_DEST             = `dist/${ENV}`;
 export const SERVER_DEST          = `dist/server`;
 export const ASSETS_DEST          = `${APP_DEST}/assets`;
 export const CSS_DEST             = `${APP_DEST}/css`;
+export const BOOTSTRAP_FONTS_DEST = `${APP_DEST}/fonts`;  // used in prod to copy bootstrap fonts
 export const JS_DEST              = `${APP_DEST}/js`;
 export const APP_ROOT             = ENV === 'dev' ? `${APP_BASE}${APP_DEST}/` : `${APP_BASE}`;
 export const VERSION              = appVersion();

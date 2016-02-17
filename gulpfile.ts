@@ -48,6 +48,7 @@ gulp.task('build.prod', done =>
               'build.bundles',
               'build.bundles.app',
               'build.index.prod',
+              'copy.bootstrap.fonts.prod',
               'build.server',
               done));
 
