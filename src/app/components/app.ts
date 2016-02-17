@@ -22,7 +22,7 @@ import {DataService} from '../../services/redux/DataService';
 import {Authentication} from '../../services/Authentication';
 import {MessageBroker} from '../../services/MessageBroker';
 import {IChatMessage} from '../../../common/interfaces/ChatInterfaces';
-import {PersistenceService} from '../../services/redux/persistence/PersistenceService';
+import {PersistenceService} from '../../services/redux/Persistence/PersistenceService';
 
 import {AboutCmp} from '../../about/components/about';
 import {NameList} from '../../shared/services/name_list';

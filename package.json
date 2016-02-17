@@ -21,7 +21,7 @@
     "karma.start": "karma start",
     "postinstall": "typings install && gulp check.versions && gulp postinstall && gulp build.prod --env prod",
     "reinstall": "rimraf node_modules && npm cache clean && npm install",
-    "start": "node ./dist/server/app.js --env prod",
+    "start": "node dist/server/app.js --env prod",
     "serve.dev": "gulp serve --env dev",
     "tasks.list": "gulp --tasks-simple",
     "test": "gulp test",
