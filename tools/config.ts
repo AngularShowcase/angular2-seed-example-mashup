@@ -128,11 +128,11 @@ export const SYSTEM_BUILDER_CONFIG = {
     '*': `${TMP_DIR}/*`,
     'angular2/*': 'node_modules/angular2/*',
     'rxjs/*': 'node_modules/rxjs/*',
-    'd3' : 'node_modules/d3/d3',
-    'moment' : 'node_modules/moment/moment',
-    'redux' : 'node_modules/redux/dist/redux',
-    'socket.io-client' : 'node_modules/socket.io-client/socket.io',
-    'underscore' : 'node_modules/underscore/underscore'
+    'd3' : 'node_modules/d3/d3.js',     // For some reason on Heroku, the .js is required
+    'moment' : 'node_modules/moment/moment.js',
+    'redux' : 'node_modules/redux/dist/redux.js',
+    'socket.io-client' : 'node_modules/socket.io-client/socket.io.js',
+    'underscore' : 'node_modules/underscore/underscore.js'
   }
 };
 
