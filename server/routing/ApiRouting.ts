@@ -44,6 +44,7 @@ export class ApiRouting {
 	configBasicRoutes() {
 
 		this.router.get('/users', this.getUsers.bind(this));
+		this.router.post('/roles/:roleName/members', this.addRoleMembers.bind(this));
 		this.router.get('/roles/:roleName/members', this.getRoleMembers.bind(this));
 		this.router.get('/roles', this.getRoles.bind(this));
 		this.router.post('/roles', this.addRole.bind(this));
@@ -104,6 +105,13 @@ export class ApiRouting {
 		this.securityService.getRoleMembers(roleName)
 			.then(users => res.send(users))
 			.catch(err => next(err));
+    }
+
+    addRoleMembers(req, res, next) {
+        let roleName:string = req.params.roleName;
+        let usernames:string[] = req.body;
+
+        usernames.forEach(u => console.log(`Adding user ${u} to role ${roleName}.`));
     }
 
     // The security service add role method returns the revised, complete list of roles.

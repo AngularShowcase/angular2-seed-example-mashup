@@ -47,5 +47,7 @@ export class RoleComponent {
 
     addMember(member:IUser) {
         console.log(`Adding ${member.username} to role ${this.role.name}.`);
+        this.securityService.addRoleMebers(this.role.name, member.username)
+            .subscribe(res => console.log('addRoleMembers returned: ', res));
     }
 }

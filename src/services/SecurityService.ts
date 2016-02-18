@@ -45,6 +45,16 @@ export class SecurityService {
 		return result;
 	}
 
+    addRoleMebers(roleName:string, ...usernames:string[]) : Observable<any> {
+        var result = this.http.post(`/api/roles/${roleName}/members`,
+            JSON.stringify(usernames), this.getPostOptions())
+            .map(response => {
+                return response.json();
+            });
+
+        return result;
+    }
+
 	getPostOptions(): RequestOptions {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
