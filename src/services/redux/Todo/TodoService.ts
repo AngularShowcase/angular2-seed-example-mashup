@@ -51,6 +51,22 @@ export class TodoService {
         });
     }
 
+    addTag(id:number, tag:string) {
+        this.dataService.dispatch({
+            type: ActionNames.AddTag,
+            id,
+            tag
+        });
+    }
+
+    deleteTag(id:number, tag:string) {
+        this.dataService.dispatch({
+            type: ActionNames.DeleteTag,
+            id,
+            tag
+        });
+    }
+
     filterTodos(filterName:string) {
         this.dataService.dispatch({
             type: ActionNames.FilterTodos,

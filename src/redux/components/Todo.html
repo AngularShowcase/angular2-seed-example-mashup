@@ -31,8 +31,11 @@
                         <span *ngIf="!todo.done" style="font-size:12pt; font-style:italic; color:green">(open)</span>
                     </div>
                 </div>
-                <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
-
+                <div style="display:inline-block">
+                    <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
+                    <span style="margin-left:12px; color:green" *ngFor="#todoTag of todo.tags" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
+                    <input #tag type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
+                </div>
             </li>
         </ul>
     </section>

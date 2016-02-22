@@ -3,6 +3,8 @@ export class ActionNames {
     static DeleteTodo = 'DELETE_TODO';
     static ToggleTodo = 'TOGGLE_TODO';
     static FilterTodos = 'FILTER_TODOS';
+    static AddTag = 'ADD_TODO_TAG';
+    static DeleteTag = 'DELETE_TODO_TAG';
 };
 
 export class FilterNames {
@@ -16,6 +18,7 @@ export interface ITodo {
     description: string;
     created?: Date | string;
     completed?: Date | string;
+    tags?: string[];
     done: boolean;
 }
 
@@ -66,6 +69,12 @@ export class TodoReducer {
             case ActionNames.FilterTodos:
                 return Object.assign({}, state, { filterName: action.filterName });
 
+            case ActionNames.AddTag:
+                return TodoReducer.addTag(state, action);
+
+            case ActionNames.DeleteTag:
+                return TodoReducer.deleteTag(state, action);
+
             default:                        // Unknown action.  Don't change state
                 return state;
         }
@@ -87,6 +96,36 @@ export class TodoReducer {
                         }
 
                         return updatedTodo;
+                    }
+                })
+            }
+        );
+    }
+
+    private static addTag(state:ITodoState, action:{type:string, id: number, tag:string}) : ITodoState {
+        return Object.assign({}, state,
+            { todos: state.todos.map(todo => {
+                    if (todo.id !== action.id || !action.tag) {
+                        return todo;
+                    } else {
+                        return Object.assign({}, todo, {
+                            tags:[...(todo.tags ? todo.tags : []), action.tag.toUpperCase()]
+                        });
+                    }
+                })
+            }
+        );
+    }
+
+    private static deleteTag(state:ITodoState, action:{type:string, id: number, tag:string}) : ITodoState {
+        return Object.assign({}, state,
+            { todos: state.todos.map(todo => {
+                    if (todo.id !== action.id || !action.tag) {
+                        return todo;
+                    } else {
+                        return Object.assign({}, todo, {
+                            tags: todo.tags.filter(t => t !== action.tag)
+                        });
                     }
                 })
             }

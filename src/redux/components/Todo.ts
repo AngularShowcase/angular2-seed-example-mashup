@@ -68,4 +68,17 @@ export class Todo {
         let currentFilterName = this.todoService.getState().filterName;
         return buttonFilterName === currentFilterName ? 'active' : 'inactive';
     }
+
+    keydown(todo:ITodo,tag:HTMLInputElement, event:KeyboardEvent) {
+        event.shiftKey = true;
+        if (event.keyCode === 13) {
+            console.log(`Adding tag ${tag.value} to todo ${todo.description}.`);
+            this.todoService.addTag(todo.id, tag.value);
+            tag.value = '';
+        }
+    }
+
+    deleteTag(todo:ITodo, tag:string) {
+        this.todoService.deleteTag(todo.id, tag);
+    }
 }
