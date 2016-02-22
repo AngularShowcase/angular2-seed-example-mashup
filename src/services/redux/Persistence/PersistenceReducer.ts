@@ -3,7 +3,7 @@ export class ActionNames {
 };
 
 export interface IPersistenceState {
-    saveTime: Date;
+    saveTime: Date | string;
 }
 
 export interface IActionSavedState {

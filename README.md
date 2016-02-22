@@ -11,11 +11,13 @@ can be found [here](https://angular-mashup.herokuapp.com/).
 - Cellphone usage charts and graphs
 - *Guess the Animal* game with tree visualization
 - Quizes -- create, take, grade
+- Todo (Redux)
 
 #Technologies#
 
 ##Client##
 - Angular 2
+- Redux
 - D3 visualization library
 - Google charts
 - socket.io (client)
@@ -26,6 +28,10 @@ can be found [here](https://angular-mashup.herokuapp.com/).
 - mongodb
 - socket.io (server)
 - RxJs
+
+##Contact Info##
+- [Github](https://github.com/hpinsley)
+- [Email](mailto:hpinsley@gmail.com)
 
 Thanks to the members of the [angualar2-seed](https://github.com/mgechev/angular2-seed) team
 

@@ -1,8 +1,14 @@
 import {Injectable} from 'angular2/core';
-import {CounterReducer} from './Counter/CounterReducer';
-import {TodoReducer} from './Todo/TodoReducer';
-import {PersistenceReducer} from './Persistence/PersistenceReducer';
+import {CounterReducer, ICounterState} from './Counter/CounterReducer';
+import {TodoReducer, ITodoState} from './Todo/TodoReducer';
+import {PersistenceReducer, IPersistenceState} from './Persistence/PersistenceReducer';
 import * as Redux from 'redux';
+
+interface IDataState {
+    persistence: IPersistenceState;
+    todos: ITodoState;
+    counter: ICounterState;
+}
 
 @Injectable()
 export class DataService {
@@ -25,7 +31,7 @@ export class DataService {
             console.log(`Reducer key ${key}.`);
         }
 
-        let savedState = this.getSavedStae();
+        let savedState = this.getSavedState();
         console.log('Initializing store with state:', savedState);
         this.store = Redux.createStore(reducer, savedState);
 
@@ -51,10 +57,10 @@ export class DataService {
         localStorage.setItem('state', serialized);
     }
 
-    private getSavedStae() {
+    private getSavedState() : IDataState {
         let serialized = localStorage.getItem('state');
         if (!serialized) {
-            return {};
+            return <IDataState> {};
         }
 
         let state = JSON.parse(serialized);
@@ -70,14 +76,22 @@ export class DataService {
     // This is a real hack.  JSON doesn't serializes dates as strings but
     // deserializes back to string, not date.  There are better ways to do this.
     // As an example, see http://weblog.west-wind.com/posts/2014/Jan/06/JavaScript-JSON-Date-Parsing-and-real-Dates
+    // Note that we can mutate here because this is the object read in at from localstorage
+    // at startup.  NOT A PURE FUNCTION
+    private fixDates(state: IDataState) {
 
-    private fixDates(state) {
-        return {
-            persistence: {
-                saveTime: new Date(state.persistence.saveTime)
-            },
-            todos: state.todos,
-            counter: state.counter
-        };
+        state.persistence.saveTime = new Date(<string> state.persistence.saveTime);
+        state.todos.todos.forEach(todo => {
+            if (todo.completed) {
+                todo.completed = new Date(<string>todo.completed);
+            }
+            if (todo.created) {
+                todo.created = new Date(<string>todo.created);
+            } else {
+                todo.created = new Date();
+            }
+        });
+
+        return state;
     }
 }

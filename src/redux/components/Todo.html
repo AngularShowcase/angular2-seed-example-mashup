@@ -1,25 +1,39 @@
-<h1>Todo</h1>
+<div style="margin-left:50px">
+    <h1>Todo</h1>
+    <h2>To see Redux State, Click the <i>Toggle Left</i> Button, above</h2>
 
-<section id="filterDiv">
-    <button [class]="getFilterClass('ALL')" (click)="filter('ALL')">All Todos</button>
-    <button [class]="getFilterClass('ACTIVE')" (click)="filter('ACTIVE')">Active Todos</button>
-    <button [class]="getFilterClass('COMPLETE')" (click)="filter('COMPLETE')">Complete Todos</button>
-</section>
+    <section id="filterDiv">
+        <button [class]="getFilterClass('ALL')" (click)="filter('ALL')">All Todos</button>
+        <button [class]="getFilterClass('ACTIVE')" (click)="filter('ACTIVE')">Active Todos</button>
+        <button [class]="getFilterClass('COMPLETE')" (click)="filter('COMPLETE')">Complete Todos</button>
+    </section>
 
-<section id="newTodoDiv">
-    <form>
-        <label for="newTodo">Description:</label>
-        <input id="newTodo" #newTodo />
-        <button (click)="addTodo(newTodo)">Add</button>
-    </form>
-</section>
+    <section id="newTodoDiv">
+        <form>
+            <label for="newTodo">Description:</label>
+            <input id="newTodo" #newTodo />
+            <button (click)="addTodo(newTodo)">Add</button>
+        </form>
+    </section>
 
-<section id="todoList">
     <h2>{{(todoState | async)?.filterName}}</h2>
-    <ul>
-        <li *ngFor="#todo of filteredTodos | async">
-            <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
-            <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
-        </li>
-    </ul>
-</section>
+
+    <section id="todoList">
+        <ul>
+            <li *ngFor="#todo of filteredTodos | async">
+                <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
+                <div style="display:inline-block; margin-right: 20px; width: 200px; height:50px; border: 1px solid black; border-radius:5px; padding: 5px;">
+                    <div>
+                        <span style="font-size:12pt; font-style:italic; color:red">{{todo.created | date:'MM/dd/yyyy hh:mm:ss tt'}}</span>
+                    </div>
+                    <div>
+                        <span *ngIf="todo.done" style="font-size:12pt; font-style:italic; color:green">{{todo.completed | date:'MM/dd/yyyy hh:mm:ss tt'}}</span>
+                        <span *ngIf="!todo.done" style="font-size:12pt; font-style:italic; color:green">(open)</span>
+                    </div>
+                </div>
+                <span [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
+
+            </li>
+        </ul>
+    </section>
+</div>

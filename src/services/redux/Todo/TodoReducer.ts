@@ -14,6 +14,8 @@ export class FilterNames {
 export interface ITodo {
     id: number;
     description: string;
+    created?: Date | string;
+    completed?: Date | string;
     done: boolean;
 }
 
@@ -46,6 +48,7 @@ export class TodoReducer {
                     {
                         id: state.nextId,
                         description,
+                        created: new Date(),
                         done: false
                     }]});
 
@@ -73,12 +76,20 @@ export class TodoReducer {
     private static toggleTodo(state:ITodoState, action:{type:string, id: number}) : ITodoState {
         return Object.assign({}, state,
             { todos: state.todos.map(todo => {
-                if (todo.id !== action.id) {
-                    return todo;
-                } else {
-                    return Object.assign({}, todo, {done: !todo.done});
-                }
-            })}
+                    if (todo.id !== action.id) {
+                        return todo;
+                    } else {
+                        let updatedTodo = Object.assign({}, todo, {done: !todo.done});
+                        if (updatedTodo.done) {
+                            updatedTodo.completed = new Date();
+                        } else {
+                            delete updatedTodo.completed;
+                        }
+
+                        return updatedTodo;
+                    }
+                })
+            }
         );
     }
 }

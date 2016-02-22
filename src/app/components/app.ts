@@ -98,8 +98,8 @@ export class AppCmp {
       on: {
           leftPanel: {
             'float' : 'left',
-            'max-width' : '300px',
-            'max-height' : '600px',
+            'max-width' : '500px',
+            'max-height' : '650px',
             'overflow-x' : 'scroll',
             'overflow-y' : 'scroll',
             'margin-right' : '10px',
