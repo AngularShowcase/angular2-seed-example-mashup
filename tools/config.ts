@@ -112,6 +112,8 @@ const SYSTEM_CONFIG_DEV = {
     'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
     'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
     'underscore' : `${APP_BASE}node_modules/underscore/underscore`,
+    'jquery' : `${APP_BASE}node_modules/jquery/dist/jquery`,
+    'jquery-ui/autocomplete' : `${APP_BASE}node_modules/jquery-ui/autocomplete`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -132,7 +134,9 @@ export const SYSTEM_BUILDER_CONFIG = {
     'moment' : 'node_modules/moment/moment.js',
     'redux' : 'node_modules/redux/dist/redux.js',
     'socket.io-client' : 'node_modules/socket.io-client/socket.io.js',
-    'underscore' : 'node_modules/underscore/underscore.js'
+    'underscore' : 'node_modules/underscore/underscore.js',
+    'jquery' : 'node_modules/jquery/dist/jquery',
+    'jquery-ui/autocomplete' : 'node_modules/jquery-ui/autocomplete'
   }
 };
 

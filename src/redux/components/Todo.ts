@@ -3,7 +3,8 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
-import {AutoComplete, ITextCompletionChoices} from '../../directives/AutoComplete';
+import {autocomplete} from 'jquery-ui/autocomplete';
+import * as jQuery from 'jquery';
 
 declare let $:any;
 
@@ -17,14 +18,14 @@ declare let $:any;
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
 
     changeDetection: ChangeDetectionStrategy.OnPush,
-    directives: [CORE_DIRECTIVES, AutoComplete]
+    directives: [CORE_DIRECTIVES]
 })
 
 export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
-    textCompletionFunc:ITextCompletionChoices;
+    textCompletionFunc:(request:{term: string}, callback:string)=>void;
 
     constructor(public todoService:TodoService) {
         this.todoState = this.todoService.todoStateChanged;
@@ -36,6 +37,17 @@ export class Todo {
             }));
 
         this.textCompletionFunc = this.getTags.bind(this);
+        console.log('autocomplete func is', autocomplete);
+    }
+
+    ngAfterContentInit() {
+        console.log('ngAfterContentInit');
+    }
+
+    hookInputs() {
+        jQuery('input').autocomplete({
+            source: this.textCompletionFunc
+        });
     }
 
     addTodo(inputCtrl:HTMLInputElement) {
@@ -88,11 +100,19 @@ export class Todo {
     }
 
     todoInputLoad(input:HTMLInputElement) {
-        let id = input.id;
-        console.log(`Input ${id} loaded.`);
+        // let id = input.id;
+        // console.log(`Input ${id} loaded.`);
+        // jQuery(<any>input).autocomplete({
+        //     source: this.textCompletionFunc
+        // });
+
+        this.hookInputs();
     }
 
-    getTags() : string[] {
-        return this.todoService.getTags();
+    getTags(request:{term: string}, callback:(string)=>void)  {
+        let tags = this.todoService.getTags();
+        let instr = request.term.toLowerCase();
+        let matches = tags.filter(t => t.toLowerCase().indexOf(instr) >= 0);
+        callback(matches);
     }
 }

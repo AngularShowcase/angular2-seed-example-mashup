@@ -3,7 +3,7 @@ import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 export interface ITextCompletionChoices {
     () : string[];
 }
-
+// UNDER DEVELOPMENT
 @Directive({
 	selector: '[autocomplete]',		// Not sure why you need to put it in brackets
 	inputs: ['prompt', '[completion]:completionFunc'],
