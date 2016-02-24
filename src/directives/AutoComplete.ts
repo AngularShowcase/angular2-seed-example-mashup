@@ -9,6 +9,7 @@ export interface ITextCompletionChoices {
 	inputs: ['prompt', '[completion]:completionFunc'],
 	host: {
 		'(click)': 'onClick($event)',
+		'(input)': 'onInput($event)',
 		'(load)': 'onLoad($event)',
 		'(unload)': 'onUnload($event)',
         '(focus)' : 'onFocus($event)',
@@ -20,6 +21,7 @@ export class AutoComplete {
     prompt: string;
     listRoot: HTMLUListElement;
     allChoices:string[] = [];
+    body:HTMLBodyElement;
 
     @Input()
     completion: ITextCompletionChoices;
@@ -38,6 +40,7 @@ export class AutoComplete {
 
     onFocusOut($event) {
 		console.log('AutoComplete onFocusOut for ', $event);
+        this.removeUi();
     }
 
     onFocus($event: FocusEvent) {
@@ -50,8 +53,14 @@ export class AutoComplete {
 	}
 
     ngOnInit() {
-        console.log('AutoComplete ngOnInit with prompt: ', this.prompt);
-        console.log('AutoComplete with completion:', this.completion);
+        // console.log('AutoComplete ngOnInit with prompt: ', this.prompt);
+        // console.log('AutoComplete with completion:', this.completion);
+    }
+
+    onInput($event) {
+        let text:string = $event.srcElement.value.toLowerCase();
+        let matchingItems = this.allChoices.filter(choice => choice.toLowerCase().indexOf(text) >= 0);
+        this.createList(matchingItems);
     }
 
     buildUi(input:HTMLInputElement) {
@@ -61,19 +70,25 @@ export class AutoComplete {
         let x = r.left;
         let y = r.top;
 
-        let body = this.findBody(input);
+        this.body = this.findBody(input);
 
-        this.listRoot = this._renderer.createElement(body, 'ul');
+        this.listRoot = this._renderer.createElement(this.body, 'ul');
 
         this.listRoot.style.left = `${x}px`;
         this.listRoot.style.top = `${y+20}px`;
-        this.listRoot.style.fontSize = '18pt';
+        this.listRoot.style.fontSize = '12pt';
         this.listRoot.style.position = 'absolute';
-        this.listRoot.style.color = 'purple';
+        this.listRoot.style.color = 'black';
         this.listRoot.style.listStyle = 'none';
 
         this.allChoices = this.completion();
         this.createList(this.allChoices);
+    }
+
+    removeUi() {
+        if (this.body && this.listRoot) {
+            this.body.removeChild(this.listRoot);
+        }
     }
 
     createList(items:string[]) {
@@ -91,7 +106,10 @@ export class AutoComplete {
         }
 
         let listItem = this._renderer.createElement(this.listRoot, 'li');
-        this._renderer.createText(listItem, text);
+        let textElement:HTMLElement = this._renderer.createText(listItem, text);
+        textElement.onclick = (el) => {
+            console.log('You clicked on ', el);
+        };
     }
 
     clearList() {
@@ -102,13 +120,14 @@ export class AutoComplete {
         }
     }
 
-    findBody(from:HTMLElement) : HTMLElement {
+
+    findBody(from:HTMLElement) : HTMLBodyElement {
         if (!from) {
             throw Error('Cannot find the body tag');
         }
 
         if (from.tagName === 'BODY') {
-            return from;
+            return <HTMLBodyElement> from;
         }
 
         return this.findBody(from.parentElement);
