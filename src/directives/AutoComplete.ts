@@ -1,8 +1,12 @@
-import {Directive, ElementRef, Renderer} from 'angular2/core';
+import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
+
+export interface ITextCompletionChoices {
+    () : string[];
+}
 
 @Directive({
 	selector: '[autocomplete]',		// Not sure why you need to put it in brackets
-	inputs: ['prompt','container'],
+	inputs: ['prompt', '[completion]:completionFunc'],
 	host: {
 		'(click)': 'onClick($event)',
 		'(load)': 'onLoad($event)',
@@ -14,7 +18,11 @@ import {Directive, ElementRef, Renderer} from 'angular2/core';
 export class AutoComplete {
 
     prompt: string;
-    container: HTMLElement;
+    listRoot: HTMLUListElement;
+    allChoices:string[] = [];
+
+    @Input()
+    completion: ITextCompletionChoices;
 
 	constructor(public _element: ElementRef, public _renderer: Renderer) {
 		console.log('AutoComplete directive constructed.');
@@ -43,23 +51,66 @@ export class AutoComplete {
 
     ngOnInit() {
         console.log('AutoComplete ngOnInit with prompt: ', this.prompt);
-        console.log('AutoComplete ngOnInit with container: ', this.container);
+        console.log('AutoComplete with completion:', this.completion);
     }
 
     buildUi(input:HTMLInputElement) {
-        let x = input.offsetLeft;
-        let y = input.offsetTop;
 
-        let select:HTMLSelectElement = this._renderer.createElement(this.container, 'select');
-        let option1 = this._renderer.createElement(select, 'option');
-        this._renderer.createText(option1, 'my really good option one');
-        let option2 = this._renderer.createElement(select, 'option');
-        this._renderer.createText(option2, 'my really good option two');
+        let r = input.getBoundingClientRect();
 
-        select.style.left = `${x}px`;
-        select.style.top = `${y+10}px`;
-        select.style.fontSize = '18pt';
-        select.style.position = 'absolute';
-        select.style.color = 'purple';
+        let x = r.left;
+        let y = r.top;
+
+        let body = this.findBody(input);
+
+        this.listRoot = this._renderer.createElement(body, 'ul');
+
+        this.listRoot.style.left = `${x}px`;
+        this.listRoot.style.top = `${y+20}px`;
+        this.listRoot.style.fontSize = '18pt';
+        this.listRoot.style.position = 'absolute';
+        this.listRoot.style.color = 'purple';
+        this.listRoot.style.listStyle = 'none';
+
+        this.allChoices = this.completion();
+        this.createList(this.allChoices);
+    }
+
+    createList(items:string[]) {
+        if (!this.listRoot) {
+            return;
+        }
+
+        this.clearList();
+        items.forEach(item => this.addTextToList(item));
+    }
+
+    addTextToList(text:string) {
+        if (!this.listRoot) {
+            return;
+        }
+
+        let listItem = this._renderer.createElement(this.listRoot, 'li');
+        this._renderer.createText(listItem, text);
+    }
+
+    clearList() {
+        if (this.listRoot) {
+            while (this.listRoot.firstChild) {
+                this.listRoot.removeChild(this.listRoot.firstChild);
+            }
+        }
+    }
+
+    findBody(from:HTMLElement) : HTMLElement {
+        if (!from) {
+            throw Error('Cannot find the body tag');
+        }
+
+        if (from.tagName === 'BODY') {
+            return from;
+        }
+
+        return this.findBody(from.parentElement);
     }
 }

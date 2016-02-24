@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
-import {AutoComplete} from '../../directives/AutoComplete';
+import {AutoComplete, ITextCompletionChoices} from '../../directives/AutoComplete';
 
 declare let $:any;
 
@@ -24,6 +24,7 @@ export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
+    textCompletionFunc:ITextCompletionChoices;
 
     constructor(public todoService:TodoService) {
         this.todoState = this.todoService.todoStateChanged;
@@ -33,6 +34,8 @@ export class Todo {
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
             }));
+
+        this.textCompletionFunc = this.getTags.bind(this);
     }
 
     addTodo(inputCtrl:HTMLInputElement) {
@@ -87,5 +90,9 @@ export class Todo {
     todoInputLoad(input:HTMLInputElement) {
         let id = input.id;
         console.log(`Input ${id} loaded.`);
+    }
+
+    getTags() : string[] {
+        return this.todoService.getTags();
     }
 }
