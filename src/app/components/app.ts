@@ -182,7 +182,7 @@ export class AppCmp {
   }
 
   scheduleAutoSave() {
-      const sleepTime = 10000;
+      const sleepTime = 60000;
       setInterval(() => this.saveState(), sleepTime);
   }
 

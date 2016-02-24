@@ -1,4 +1,4 @@
-<div style="margin-left:50px">
+<div #myContainer style="margin-left:50px">
     <h1>Todo</h1>
     <h2>To see Redux State, Click the <i>Toggle Left</i> Button, above</h2>
 
@@ -20,7 +20,7 @@
 
     <section id="todoList">
         <ul>
-            <li *ngFor="#todo of filteredTodos | async">
+            <li *ngFor="#todo of filteredTodos | async; #index = index">
                 <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
                 <div style="display:inline-block; margin-right: 20px; width: 200px; height:50px; border: 1px solid black; border-radius:5px; padding: 5px;">
                     <div>
@@ -34,7 +34,7 @@
                 <div style="display:inline-block">
                     <span style="font-size:9pt" [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
                     <span style="margin-left:6px; color:green; font-size:7pt" *ngFor="#todoTag of todo.tags" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
-                    <input style="margin-left:12px" #tag type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
+                    <input #todoInput id="todo_input_{{index}}" [autocomplete] [container]="myContainer" prompt="Tag" (focus)="todoInputLoad(todoInput)" style="margin-left:12px" #tag type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
                 </div>
             </li>
         </ul>

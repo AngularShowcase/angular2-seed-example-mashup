@@ -29,7 +29,7 @@ gulp.task('build.dev', done =>
               'build.sass.dev',
               'build.assets.dev',
               'build.js.dev',
-              'build.e2e_test',
+              //'build.e2e_test',
               'build.index.dev',
               'build.server',
               done));

@@ -3,6 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
+import {AutoComplete} from '../../directives/AutoComplete';
+
+declare let $:any;
 
 @Component({
     selector: 'todo',
@@ -14,7 +17,7 @@ import {TodoService} from '../../services/redux/Todo/TodoService';
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
 
     changeDetection: ChangeDetectionStrategy.OnPush,
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, AutoComplete]
 })
 
 export class Todo {
@@ -30,10 +33,6 @@ export class Todo {
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
             }));
-    }
-
-    ngOnInit() {
-         // this.todoService.pushStateToSubscribers();     // I'd like a better pattern than this
     }
 
     addTodo(inputCtrl:HTMLInputElement) {
@@ -75,10 +74,18 @@ export class Todo {
             console.log(`Adding tag ${tag.value} to todo ${todo.description}.`);
             this.todoService.addTag(todo.id, tag.value);
             tag.value = '';
+
+            var tags = this.todoService.getTags();
+            console.log('tags: ', tags);
         }
     }
 
     deleteTag(todo:ITodo, tag:string) {
         this.todoService.deleteTag(todo.id, tag);
+    }
+
+    todoInputLoad(input:HTMLInputElement) {
+        let id = input.id;
+        console.log(`Input ${id} loaded.`);
     }
 }

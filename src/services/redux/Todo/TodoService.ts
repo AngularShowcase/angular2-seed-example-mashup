@@ -3,6 +3,7 @@ import {DataService} from '../DataService';
 import {ITodoState, ActionNames} from './TodoReducer';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
+import * as _ from 'underscore';
 
 @Injectable()
 export class TodoService {
@@ -26,6 +27,15 @@ export class TodoService {
 
     getState() : ITodoState {
         return this.dataService.getState().todos;
+    }
+
+    getTags() : string[] {
+        let tags:string[] = _.flatten(this.getState().todos.map(todo => todo.tags));
+        let nonBlank = tags.filter(t => !!t);
+        let sorted = _.sortBy(nonBlank);
+        let unique = _.uniq(sorted, true);
+
+        return unique;
     }
 
     // additional public methods for the consumer of the service
