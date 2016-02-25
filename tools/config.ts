@@ -73,8 +73,8 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
   { src: 'jquery/dist/jquery.js', inject: 'libs', dest: JS_DEST },
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
   { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: JS_DEST }
-
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
@@ -86,6 +86,7 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
   { src: 'jquery/dist/jquery.js', inject: 'libs', dest: JS_DEST },
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
   { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: JS_DEST }
 
 ]);
