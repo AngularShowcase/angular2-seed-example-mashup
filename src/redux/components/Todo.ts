@@ -89,7 +89,12 @@ export class Todo {
 
             console.log(`Setting focus to ${tag.id}.`);
             tag.focus();    // So we can add a new tag
+            console.log(`The active element is now ${document.activeElement.id}.`);
         }
+    }
+
+    tabLostFocus($event) {
+        console.log(`Tag ${$event.srcElement.id} lost focus. The active element is now ${document.activeElement.id}.`);
     }
 
     deleteTag(todo:ITodo, tag:string) {
