@@ -136,8 +136,8 @@ export const SYSTEM_BUILDER_CONFIG = {
     'redux' : 'node_modules/redux/dist/redux.js',
     'socket.io-client' : 'node_modules/socket.io-client/socket.io.js',
     'underscore' : 'node_modules/underscore/underscore.js',
-    'jquery' : 'node_modules/jquery/dist/jquery',
-    'jquery-ui/*' : 'node_modules/jquery-ui/*'
+    'jquery' : 'node_modules/jquery/dist/jquery.js',
+    'jquery-ui/*' : 'node_modules/jquery-ui/*.js'
   }
 };
 
