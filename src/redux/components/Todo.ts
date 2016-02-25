@@ -46,12 +46,6 @@ export class Todo {
         console.log('ngAfterContentInit');
     }
 
-    hookInputs() {
-        jQuery('input').autocomplete({
-            source: this.textCompletionFunc
-        });
-    }
-
     addTodo(inputCtrl:HTMLInputElement) {
         let description = inputCtrl.value;
         this.todoService.addTodo(description);
@@ -85,6 +79,7 @@ export class Todo {
         return buttonFilterName === currentFilterName ? 'active' : 'inactive';
     }
 
+    // Tag entry.
     keydown(todo:ITodo,tag:HTMLInputElement, event:KeyboardEvent) {
         event.shiftKey = true;
         if (event.keyCode === 13) {
@@ -92,8 +87,8 @@ export class Todo {
             this.todoService.addTag(todo.id, tag.value);
             tag.value = '';
 
-            var tags = this.todoService.getTags();
-            console.log('tags: ', tags);
+            console.log(`Setting focus to ${tag.id}.`);
+            tag.focus();    // So we can add a new tag
         }
     }
 
@@ -101,14 +96,12 @@ export class Todo {
         this.todoService.deleteTag(todo.id, tag);
     }
 
-    todoInputLoad(input:HTMLInputElement) {
-        // let id = input.id;
-        // console.log(`Input ${id} loaded.`);
-        // jQuery(<any>input).autocomplete({
-        //     source: this.textCompletionFunc
-        // });
+    tagFocus(input:HTMLInputElement) {
 
-        this.hookInputs();
+        // When we get the focus on a tag, hook it up with auto-complete
+        jQuery(input).autocomplete({
+            source: this.textCompletionFunc
+        });
     }
 
     getTags(request:{term: string}, callback:(string)=>void)  {
