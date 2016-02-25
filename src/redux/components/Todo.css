@@ -1,38 +1,3 @@
-div#myContainer {
-  /* workarounds */
-  /* without this, the menu expands to 100% in IE6 */ }
-  div#myContainer ui-autocomplete {
-    position: absolute;
-    cursor: default;
-    background: #CCC; }
-  div#myContainer html .ui-autocomplete {
-    width: 1px; }
-  div#myContainer .ui-menu {
-    list-style: none;
-    padding: 2px;
-    margin: 0;
-    display: block;
-    float: left; }
-  div#myContainer .ui-menu .ui-menu {
-    margin-top: -3px; }
-  div#myContainer .ui-menu .ui-menu-item {
-    margin: 0;
-    padding: 0;
-    zoom: 1;
-    float: left;
-    clear: left;
-    width: 100%; }
-  div#myContainer .ui-menu .ui-menu-item a {
-    text-decoration: none;
-    display: block;
-    padding: .2em .4em;
-    line-height: 1.5;
-    zoom: 1; }
-  div#myContainer .ui-menu .ui-menu-item a.ui-state-hover,
-  div#myContainer .ui-menu .ui-menu-item a.ui-state-active {
-    font-weight: normal;
-    margin: -1px; }
-
 section#todoList {
   height: 390px;
   width: 800px;
@@ -53,13 +18,14 @@ section#todoList {
 
 section#newTodoDiv {
   margin-bottom: 10px;
-  font-size: 24pt; }
+  font-size: 14pt; }
 
 section#filterDiv {
+  display: inline-block;
   margin-bottom: 10px; }
   section#filterDiv button {
     background-color: black;
-    font-size: 24pt;
+    font-size: 12pt;
     border-radius: 10px; }
     section#filterDiv button.active {
       color: yellow;

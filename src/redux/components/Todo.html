@@ -1,12 +1,13 @@
-<div id="myContainer" style="margin-left:50px">
-    <h1>Todo</h1>
-    <h2>To see Redux State, Click the <i>Toggle Left</i> Button, above</h2>
+<div style="margin-left:50px">
+    <span style="color:blue; font-size:14pt">Todo</span>
 
     <section id="filterDiv">
         <button [class]="getFilterClass('ALL')" (click)="filter('ALL')">All Todos</button>
         <button [class]="getFilterClass('ACTIVE')" (click)="filter('ACTIVE')">Active Todos</button>
         <button [class]="getFilterClass('COMPLETE')" (click)="filter('COMPLETE')">Complete Todos</button>
     </section>
+
+    <span style="color:green; font-size:10pt" class="pull-right">To see Redux State, Click the <i>Toggle Left</i> Button, above</span>
 
     <section id="newTodoDiv">
         <form>
