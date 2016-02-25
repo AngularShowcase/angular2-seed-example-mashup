@@ -113,8 +113,8 @@ const SYSTEM_CONFIG_DEV = {
     'redux' : `${APP_BASE}node_modules/redux/dist/redux`,
     'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
     'underscore' : `${APP_BASE}node_modules/underscore/underscore`,
-    'jquery' : `${APP_BASE}node_modules/jquery/dist/jquery`,
-    'jquery-ui/*' : `${APP_BASE}node_modules/jquery-ui/*`,
+    'jquery' : `${APP_BASE}node_modules/jquery/dist/jquery.js`,
+    'jquery-ui/*' : `${APP_BASE}node_modules/jquery-ui/*.js`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
