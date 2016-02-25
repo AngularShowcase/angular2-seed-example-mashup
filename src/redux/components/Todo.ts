@@ -93,7 +93,7 @@ export class Todo {
         }
     }
 
-    tabLostFocus($event) {
+    tagLostFocus($event) {
         console.log(`Tag ${$event.srcElement.id} lost focus. The active element is now ${document.activeElement.id}.`);
     }
 

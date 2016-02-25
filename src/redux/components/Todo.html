@@ -22,20 +22,17 @@
         <ul>
             <li *ngFor="#todo of filteredTodos | async; #index = index">
                 <button (click)="deleteTodo(todo)"><i class="glyphicon glyphicon-trash"></i></button>
-                <div style="display:inline-block; margin-right: 20px; width: 200px; height:50px; border: 1px solid black; border-radius:5px; padding: 5px;">
-                    <div>
-                        <span style="font-size:12pt; font-style:italic; color:red">{{todo.created | date:'MM/dd/yyyy hh:mm:ss tt'}}</span>
-                    </div>
-                    <div>
-                        <span *ngIf="todo.done" style="font-size:12pt; font-style:italic; color:green">{{todo.completed | date:'MM/dd/yyyy hh:mm:ss tt'}}</span>
-                        <span *ngIf="!todo.done" style="font-size:12pt; font-style:italic; color:green">(open)</span>
-                    </div>
+                <span title="{{todo.created | date:'MM/dd/yyyy hh:mm:ss tt'}}" style="font-size:12pt; font-style:italic; color:red">{{todo.created | date:'MM/dd'}}</span>
+                <span> | </span>
+                <span *ngIf="todo.done" title="{{todo.completed | date:'MM/dd/yyyy hh:mm:ss tt'}}" style="font-size:12pt; font-style:italic; color:green">{{todo.completed | date:'MM/dd'}}</span>
+                <span *ngIf="!todo.done" style="font-size:12pt; font-style:italic; color:green">(open)</span>
+                <span style="font-size:14pt" [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
+
+                <div style="display: inline-block; margin-left: 6px; background-color:black; padding: 3px">
+                    <span style="margin-left:6px; color:yellow; font-size:12pt" *ngFor="#todoTag of todo.tags" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
                 </div>
-                <div style="display:inline-block">
-                    <span style="font-size:9pt" [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
-                    <span style="margin-left:6px; color:green; font-size:7pt" *ngFor="#todoTag of todo.tags" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
-                    <input (blur)="tabLostFocus($event)" #tag id="todo_input_{{index}}" (focus)="tagFocus(tag)" style="margin-left:12px" type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
-                </div>
+
+                <input (blur)="tagLostFocus($event)" #tag id="todo_input_{{index}}" (focus)="tagFocus(tag)" style="margin-left:12px" type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
             </li>
         </ul>
     </section>

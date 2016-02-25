@@ -13,7 +13,7 @@ section#todoList {
         cursor: pointer; }
       section#todoList ul li span.active {
         color: red; }
-      section#todoList ul li span.complete {
+      section#todoList ul li span.completed {
         color: black; }
 
 section#newTodoDiv {
