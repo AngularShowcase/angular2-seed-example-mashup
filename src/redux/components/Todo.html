@@ -1,4 +1,4 @@
-<div style="margin-left:50px">
+<div style="margin-left:10px; margin-right:10px;">
     <span style="color:blue; font-size:14pt">Todo</span>
 
     <section id="filterDiv">
@@ -7,13 +7,12 @@
         <button [class]="getFilterClass('COMPLETE')" (click)="filter('COMPLETE')">Complete Todos</button>
     </section>
 
-    <span style="color:green; font-size:10pt" class="pull-right">To see Redux State, Click the <i>Toggle Left</i> Button, above</span>
+    <span style="color:green; font-size:10pt" class="pull-right">To see Redux State, Click the<br><i>Toggle Left</i> Button, above</span>
 
     <section id="newTodoDiv">
         <form>
-            <label for="newTodo">Description:</label>
-            <input id="newTodo" #newTodo />
-            <button (click)="addTodo(newTodo)">Add</button>
+            <input placeholder="New Todo" id="newTodo" #newTodo />
+            <button class="btn btn-small" (click)="addTodo(newTodo)">Add</button>
         </form>
     </section>
 

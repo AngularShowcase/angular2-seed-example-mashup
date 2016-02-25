@@ -29,12 +29,14 @@ export class Todo {
 
     constructor(public todoService:TodoService) {
         this.todoState = this.todoService.todoStateChanged;
+
+        // Filter and sort todos by descending date
         this.filteredTodos = this.todoState
-            .map(state => state.todos.filter(todo => {
+            .map(state => _.sortBy(state.todos.filter(todo => {
                 return  state.filterName === FilterNames.All  ||
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
-            }));
+            }), t => t.created ? -t.created.valueOf() : 0));
 
         this.textCompletionFunc = this.getTags.bind(this);
         console.log('autocomplete func is', autocomplete);
