@@ -113,7 +113,7 @@ const SYSTEM_CONFIG_DEV = {
     'socket.io-client' : `${APP_BASE}node_modules/socket.io-client/socket.io`,
     'underscore' : `${APP_BASE}node_modules/underscore/underscore`,
     'jquery' : `${APP_BASE}node_modules/jquery/dist/jquery`,
-    'jquery-ui/autocomplete' : `${APP_BASE}node_modules/jquery-ui/autocomplete`,
+    'jquery-ui/*' : `${APP_BASE}node_modules/jquery-ui/*`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -136,7 +136,7 @@ export const SYSTEM_BUILDER_CONFIG = {
     'socket.io-client' : 'node_modules/socket.io-client/socket.io.js',
     'underscore' : 'node_modules/underscore/underscore.js',
     'jquery' : 'node_modules/jquery/dist/jquery',
-    'jquery-ui/autocomplete' : 'node_modules/jquery-ui/autocomplete'
+    'jquery-ui/*' : 'node_modules/jquery-ui/*'
   }
 };
 
