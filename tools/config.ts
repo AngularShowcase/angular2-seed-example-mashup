@@ -72,7 +72,9 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
   { src: 'angular2/bundles/http.js', inject: 'libs', dest: JS_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
-  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST }
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
+  { src: 'intl/dist/Intl.js', inject: 'shims', dest: JS_DEST },  // Fixes Safari Intl support
+  { src: 'intl/locale-data/jsonp/en.js', inject: 'shims', dest: JS_DEST } // Need this too.
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
@@ -83,8 +85,9 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
-  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST }
-
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
+  { src: 'intl/dist/Intl.js', inject: 'shims'},  // Fixes Safari Intl support
+  { src: 'intl/locale-data/jsonp/en.js', inject: 'shims'} // Need this too.
 ]);
 
 // Declare local files that needs to be injected
