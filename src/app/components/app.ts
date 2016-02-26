@@ -93,6 +93,8 @@ import {StateDisplay} from '../../redux/components/StateDisplay/StateDisplay';
 ])
 export class AppCmp {
 
+  static SaveSleepTime:number = 15*1000;
+
   socket: SocketIOClient.Socket;
   lastChatMessage: IChatMessage = { username: '', time: new Date(), message: ''};
   persistenceState: Observable<any>;
@@ -186,8 +188,7 @@ export class AppCmp {
   }
 
   scheduleAutoSave() {
-      const sleepTime = 60000;
-      setInterval(() => this.saveState(), sleepTime);
+      setInterval(() => this.saveState(), AppCmp.SaveSleepTime);
   }
 
   saveState() {
