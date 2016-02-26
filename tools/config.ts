@@ -72,9 +72,7 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
   { src: 'angular2/bundles/http.js', inject: 'libs', dest: JS_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
-  { src: 'jquery/dist/jquery.js', inject: 'libs', dest: JS_DEST },
-  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
-  { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: JS_DEST }
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST }
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
@@ -85,9 +83,7 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
 
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
-  { src: 'jquery/dist/jquery.js', inject: 'libs', dest: JS_DEST },
-  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST },
-  { src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs', dest: JS_DEST }
+  { src: 'jquery-ui/themes/base/jquery-ui.css', inject: true, dest: CSS_DEST }
 
 ]);
 
@@ -104,6 +100,10 @@ export const PROD_DEPENDENCIES = PROD_NPM_DEPENDENCIES.concat(APP_ASSETS);
 // SystemsJS Configuration.
 const SYSTEM_CONFIG_DEV = {
   defaultJSExtensions: true,
+  shim : {
+        'bootstrap'     : { 'deps' :['jquery'] },
+        'jquery-ui/*'   : { 'deps' :['jquery'] }
+  },
   paths: {
     [BOOTSTRAP_MODULE]: `${APP_BASE}${BOOTSTRAP_MODULE}`,
     'angular2/*': `${APP_BASE}angular2/*`,
@@ -115,6 +115,7 @@ const SYSTEM_CONFIG_DEV = {
     'underscore' : `${APP_BASE}node_modules/underscore/underscore`,
     'jquery' : `${APP_BASE}node_modules/jquery/dist/jquery.js`,
     'jquery-ui/*' : `${APP_BASE}node_modules/jquery-ui/*.js`,
+    'bootstrap' : `${APP_BASE}node_modules/bootstrap/dist/js/bootstrap.js`,
     '*': `${APP_BASE}node_modules/*`
   },
   packages: {
@@ -127,6 +128,10 @@ export const SYSTEM_CONFIG = SYSTEM_CONFIG_DEV;
 
 export const SYSTEM_BUILDER_CONFIG = {
   defaultJSExtensions: true,
+  shim : {
+        'bootstrap'     : { 'deps' :['jquery'] },
+        'jquery-ui/*'   : { 'deps' :['jquery'] }
+  },
   paths: {
     '*': `${TMP_DIR}/*`,
     'angular2/*': 'node_modules/angular2/*',
@@ -137,7 +142,8 @@ export const SYSTEM_BUILDER_CONFIG = {
     'socket.io-client' : 'node_modules/socket.io-client/socket.io.js',
     'underscore' : 'node_modules/underscore/underscore.js',
     'jquery' : 'node_modules/jquery/dist/jquery.js',
-    'jquery-ui/*' : 'node_modules/jquery-ui/*.js'
+    'jquery-ui/*' : 'node_modules/jquery-ui/*.js',
+    'bootstrap' : 'node_modules/bootstrap/dist/js/bootstrap.js'
   }
 };
 

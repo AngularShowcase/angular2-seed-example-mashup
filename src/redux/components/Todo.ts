@@ -3,10 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
-import {autocomplete} from 'jquery-ui/autocomplete';
-import * as jQuery from 'jquery';
 
-declare let $:any;
+var autocomplete = require('jquery-ui/autocomplete');
+var jQuery = require('jquery');
 
 @Component({
     selector: 'todo',

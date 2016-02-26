@@ -3,6 +3,10 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 
+require('jquery');
+require('jquery-ui/autocomplete');
+require('bootstrap');     // Menus require bootstrap.js
+
 // Observable operators have to be imported explicitly -- but only once per app
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/combineLatest';
