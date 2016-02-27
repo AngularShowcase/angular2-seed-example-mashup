@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
+import {TodoTags} from './TodoTags/TodoTags';
 
 var autocomplete = require('jquery-ui/autocomplete');
 var jQuery = require('jquery');
@@ -17,13 +18,15 @@ var jQuery = require('jquery');
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
 
     changeDetection: ChangeDetectionStrategy.OnPush,
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, TodoTags]
 })
 
 export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
+    tags: Observable<string[]>;
+
     textCompletionFunc:(request:{term: string}, callback:string)=>void;
 
     constructor(public todoService:TodoService) {
@@ -36,6 +39,8 @@ export class Todo {
                         state.filterName === FilterNames.Active && !todo.done ||
                         state.filterName === FilterNames.Complete && todo.done;
             }), t => t.created ? -t.created.valueOf() : 0));
+
+        this.tags = this.todoState.map(state => this.todoService.getTagsFromState(state));
 
         this.textCompletionFunc = this.getTags.bind(this);
         console.log('autocomplete func is', autocomplete);

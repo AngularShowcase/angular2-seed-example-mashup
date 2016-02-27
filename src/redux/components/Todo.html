@@ -17,7 +17,7 @@
     </section>
 
     <h2>{{(todoState | async)?.filterName}}</h2>
-
+    <todo-tags [tags]="tags"></todo-tags>
     <section id="todoList">
         <ul>
             <li *ngFor="#todo of filteredTodos | async; #index = index">

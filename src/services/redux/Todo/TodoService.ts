@@ -30,7 +30,11 @@ export class TodoService {
     }
 
     getTags() : string[] {
-        let tags:string[] = _.flatten(this.getState().todos.map(todo => todo.tags));
+        return this.getTagsFromState(this.getState());
+    }
+
+    getTagsFromState(state:ITodoState) {
+        let tags:string[] = _.flatten(state.todos.map(todo => todo.tags));
         let nonBlank = tags.filter(t => !!t);
         let sorted = _.sortBy(nonBlank);
         let unique = _.uniq(sorted, true);
