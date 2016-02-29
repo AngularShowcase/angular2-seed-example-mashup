@@ -16,8 +16,13 @@
         </form>
     </section>
 
-    <h2>{{(todoState | async)?.filterName}}</h2>
-    <todo-tags [tags]="tags"></todo-tags>
+    <div>
+        <div style="display:inline_block; font-size:18pt; color:blue">{{(todoState | async)?.filterName}}</div>
+        <div style="display:inline-block">
+            <todo-tags (tagSelected)="filterOnTag($event)" [tags]="tags"></todo-tags>
+        </div>
+    </div>
+
     <section id="todoList">
         <ul>
             <li *ngFor="#todo of filteredTodos | async; #index = index">

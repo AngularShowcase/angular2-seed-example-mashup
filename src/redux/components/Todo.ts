@@ -78,6 +78,10 @@ export class Todo {
         this.todoService.filterTodos(filterName);
     }
 
+    filterOnTag(tag:string) {
+        console.log(`Filtering on tag ${tag}.`);
+    }
+
     getFilterClass(buttonFilterName:string) : string {
         let currentFilterName = this.todoService.getState().filterName;
         return buttonFilterName === currentFilterName ? 'active' : 'inactive';

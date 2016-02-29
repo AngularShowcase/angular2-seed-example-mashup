@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {Observable} from 'rxjs/Observable';
 import {TodoTag} from './TodoTag';
@@ -12,9 +12,10 @@ import {TodoTag} from './TodoTag';
 
 export class TodoTags {
 
-    @Input()
-    tags: Observable<string[]>;
+    @Input() tags: Observable<string[]>;
+    @Output() tagSelected: EventEmitter<string> = new EventEmitter<string>();
 
-
-
+    tagClicked(tag:string) {
+        this.tagSelected.next(tag);
+    }
 }
