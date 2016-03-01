@@ -13,6 +13,7 @@ import {TodoTag} from './TodoTag';
 export class TodoTags {
 
     @Input() tags: Observable<string[]>;
+    @Input() selectedTag: string;
     @Output() tagSelected: EventEmitter<string> = new EventEmitter<string>();
 
     tagClicked(tag:string) {

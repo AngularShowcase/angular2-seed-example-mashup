@@ -24,7 +24,7 @@
             </span>
         </div>
         <div style="display:inline-block">
-            <todo-tags (tagSelected)="filterOnTag($event)" [tags]="tags"></todo-tags>
+            <todo-tags (tagSelected)="filterOnTag($event)" [tags]="tags" [selectedTag]="tagFilter"></todo-tags>
         </div>
     </div>
 

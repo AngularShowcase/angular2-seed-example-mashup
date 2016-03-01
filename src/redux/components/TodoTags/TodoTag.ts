@@ -5,7 +5,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
     selector: 'todo-tag',
     template: `
     <div (click)="tagClick()" style="display:inline-block; cursor:pointer; border-radius:5px;
-        color:gold; background-color:black; padding:5px">{{tag}}</div>
+        color:gold; background-color:black; padding:5px">{{tag}} - {{isSelected}}</div>
     `,
     directives: [CORE_DIRECTIVES]
 })
@@ -13,6 +13,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 export class TodoTag {
 
     @Input() tag: string;
+    @Input() isSelected: boolean;
     @Output() tagClicked: EventEmitter<string> = new EventEmitter<string>();
 
     ngOnInit() {
