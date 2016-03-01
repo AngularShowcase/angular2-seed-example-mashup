@@ -4,6 +4,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
 import {TodoTags} from './TodoTags/TodoTags';
+import {TodoTag} from './TodoTags/TodoTag';
 
 var autocomplete = require('jquery-ui/autocomplete');
 var jQuery = require('jquery');
@@ -18,7 +19,7 @@ var jQuery = require('jquery');
     // See http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation
 
     changeDetection: ChangeDetectionStrategy.OnPush,
-    directives: [CORE_DIRECTIVES, TodoTags]
+    directives: [CORE_DIRECTIVES, TodoTags, TodoTag]
 })
 
 export class Todo {
@@ -26,7 +27,7 @@ export class Todo {
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
     tags: Observable<string[]>;
-    tagFilter: Observable<string>;
+    tagFilter: string = null;
 
     textCompletionFunc:(request:{term: string}, callback:string)=>void;
 
@@ -35,14 +36,26 @@ export class Todo {
 
         // Filter and sort todos by descending date
         this.filteredTodos = this.todoState
-            .map(state => _.sortBy(state.todos.filter(todo => {
-                return  state.filterName === FilterNames.All  ||
-                        state.filterName === FilterNames.Active && !todo.done ||
-                        state.filterName === FilterNames.Complete && todo.done;
-            }), t => t.created ? -t.created.valueOf() : 0));
+            .map(state =>
+                _.sortBy(
+                    state.todos
+                        .filter(todo => {
+                            return  state.filterName === FilterNames.All  ||
+                                    state.filterName === FilterNames.Active && !todo.done ||
+                                    state.filterName === FilterNames.Complete && todo.done;
+                        })
+
+                        .filter(todo => !this.tagFilter ||
+                                        todo.tags.indexOf(this.tagFilter) >= 0)
+
+                    , t => t.created ? -t.created.valueOf() : 0));
 
         this.tags = this.todoState.map(state => this.todoService.getTagsFromState(state));
-        this.tagFilter = this.todoState.map(state => state.tagFilter);
+
+        this.todoState.subscribe(state => {
+            this.tagFilter = state.tagFilter;
+        });
+
         this.textCompletionFunc = this.getTags.bind(this);
         console.log('autocomplete func is', autocomplete);
     }
@@ -82,6 +95,11 @@ export class Todo {
     filterOnTag(tag:string) {
         console.log(`Filtering on tag ${tag}.`);
         this.todoService.filterTodosByTag(tag);
+    }
+
+    filterTagClicked(tag:string) {
+        console.log('Please cancel todo tag filtering!');
+        this.todoService.filterTodosByTag(null);
     }
 
     getFilterClass(buttonFilterName:string) : string {
