@@ -45,8 +45,7 @@ export class Todo {
                                     state.filterName === FilterNames.Complete && todo.done;
                         })
 
-                        .filter(todo => !this.tagFilter ||
-                                        todo.tags.indexOf(this.tagFilter) >= 0)
+                        .filter(todo => !this.tagFilter || this.todoHasTag(todo, this.tagFilter))
 
                     , t => t.created ? -t.created.valueOf() : 0));
 
@@ -62,6 +61,10 @@ export class Todo {
 
     ngAfterContentInit() {
         console.log('ngAfterContentInit');
+    }
+
+    todoHasTag(todo:ITodo, tag:string) : boolean {
+        return todo.tags && (todo.tags.indexOf(tag) >= 0);
     }
 
     addTodo(inputCtrl:HTMLInputElement) {
@@ -92,9 +95,14 @@ export class Todo {
         this.todoService.filterTodos(filterName);
     }
 
-    filterOnTag(tag:string) {
-        console.log(`Filtering on tag ${tag}.`);
-        this.todoService.filterTodosByTag(tag);
+    filterTagClick(tag:string) {
+        if (tag !== this.tagFilter) {
+            console.log(`Filtering on tag ${tag}.`);
+            this.todoService.filterTodosByTag(tag);
+        } else {
+            console.log('Clearing tag filter');
+            this.todoService.filterTodosByTag(null);
+        }
     }
 
     filterTagClicked(tag:string) {

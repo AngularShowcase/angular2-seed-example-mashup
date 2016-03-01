@@ -4,8 +4,15 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 @Component({
     selector: 'todo-tag',
     template: `
-    <div (click)="tagClick()" style="display:inline-block; cursor:pointer; border-radius:5px;
-        color:gold; background-color:black; padding:5px">{{tag}} - {{isSelected}}</div>
+    <div
+        (click)="tagClick()"
+
+        style="display:inline-block; cursor:pointer; border-radius:5px;
+                color:gold; background-color:black; padding:5px"
+
+        [style.color]="isSelected ? 'red' : 'gold'">
+        {{tag}}
+    </div>
     `,
     directives: [CORE_DIRECTIVES]
 })

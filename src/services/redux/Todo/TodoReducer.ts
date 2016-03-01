@@ -55,7 +55,8 @@ export class TodoReducer {
                         id: state.nextId,
                         description,
                         created: new Date(),
-                        done: false
+                        done: false,
+                        tags: []
                     }]});
 
             case ActionNames.DeleteTodo:

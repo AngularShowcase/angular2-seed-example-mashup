@@ -19,12 +19,9 @@
     <div>
         <div style="display:inline_block; font-size:18pt; color:blue">
             {{(todoState | async)?.filterName}}
-            <span *ngIf="tagFilter"> - Tag:
-                <todo-tag (tagClicked)="filterTagClicked(tagFilter)" [tag]="tagFilter"></todo-tag>
-            </span>
         </div>
         <div style="display:inline-block">
-            <todo-tags (tagSelected)="filterOnTag($event)" [tags]="tags" [selectedTag]="tagFilter"></todo-tags>
+            <todo-tags (tagSelected)="filterTagClick($event)" [tags]="tags" [selectedTag]="tagFilter"></todo-tags>
         </div>
     </div>
 
