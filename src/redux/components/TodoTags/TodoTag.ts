@@ -6,14 +6,25 @@ import {CORE_DIRECTIVES} from 'angular2/common';
     template: `
     <div
         (click)="tagClick()"
-
-        style="display:inline-block; cursor:pointer; border-radius:5px;
-                color:gold; background-color:black; padding:5px"
-
-        [style.color]="isSelected ? 'red' : 'gold'">
+        style="display:inline-block; cursor:pointer; border-radius:5px; padding:5px"
+        [ngClass]="isSelected ? 'active' : 'inactive'">
         {{tag}}
     </div>
     `,
+    styles: [
+        `
+        .inactive {
+            background-color: black;
+            color: gold;
+
+        }
+        .active {
+            background-color: yellow;
+            border: 1px solid black;
+            color: red;
+        }
+        `
+    ],
     directives: [CORE_DIRECTIVES]
 })
 
