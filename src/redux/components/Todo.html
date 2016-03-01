@@ -1,5 +1,4 @@
 <div style="margin-left:10px; margin-right:10px;">
-    <span style="color:blue; font-size:14pt">Todo</span>
 
     <section id="filterDiv">
         <button [class]="getFilterClass('ALL')" (click)="filter('ALL')">All Todos</button>
@@ -16,15 +15,17 @@
         </form>
     </section>
 
-    <div>
-        <div style="display:inline_block; font-size:18pt; color:blue">
-            {{(todoState | async)?.filterName}}
+    <div style="font-size:12pt; color:black; margin-bottom:10px;">
+        <div style="display:inline_block; font-size:14pt; margin-bottom:5px">
+            <span style="color:tan">State: </span>
+            <span style="font-weight:bold">{{(todoState | async)?.filterName}}</span>
         </div>
         <div style="display:inline-block">
+            <span style="color:tan">Tag Filter: </span>
             <todo-tags (tagSelected)="filterTagClick($event)" [tags]="tags" [selectedTag]="tagFilter"></todo-tags>
         </div>
     </div>
-
+    <hr>
     <section id="todoList">
         <ul>
             <li *ngFor="#todo of filteredTodos | async; #index = index">
@@ -37,7 +38,7 @@
 
                 <span style="font-size:18pt" [style.text-decoration]="todo.done ? 'line-through' : 'none'" (click)="toggleTodo(todo)" [class]="getTodoClass(todo)">{{todo.id}} - {{todo.description}}</span>
 
-                <span *ngFor="#todoTag of todo.tags" style="margin-left:5px; padding:3px; border-radius:5px; background-color:black; color:yellow; font-size:12pt" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
+                <span *ngFor="#todoTag of todo.tags" style="margin-left:5px; padding:3px; border-radius:5px; background-color:black; color:yellow; font-size:12pt" title="Click to remove" (click)="deleteTag(todo, todoTag)">{{todoTag}}</span>
 
                 <input (blur)="tagLostFocus($event)" #tag id="todo_input_{{index}}" (focus)="tagFocus(tag)" style="margin-left:12px" type="text" placeholder="T A G" (keydown)="keydown(todo, tag, $event)" />
             </li>

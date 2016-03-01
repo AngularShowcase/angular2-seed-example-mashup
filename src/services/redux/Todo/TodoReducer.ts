@@ -56,7 +56,7 @@ export class TodoReducer {
                         description,
                         created: new Date(),
                         done: false,
-                        tags: []
+                        tags: state.tagFilter ? [state.tagFilter] : []  // If there is a filter, add new todos in that filter
                     }]});
 
             case ActionNames.DeleteTodo:
