@@ -87,4 +87,11 @@ export class TodoService {
             filterName
         });
     }
+
+    filterTodosByTag(tag:string) {
+        this.dataService.dispatch({
+            type: ActionNames.FilterTodosByTag,
+            tag
+        });
+    }
 }

@@ -17,7 +17,7 @@
     </section>
 
     <div>
-        <div style="display:inline_block; font-size:18pt; color:blue">{{(todoState | async)?.filterName}}</div>
+        <div style="display:inline_block; font-size:18pt; color:blue">{{(todoState | async)?.filterName}} <span *ngIf="tagFilter | async">Tag: {{tagFilter | async}}</span></div>
         <div style="display:inline-block">
             <todo-tags (tagSelected)="filterOnTag($event)" [tags]="tags"></todo-tags>
         </div>

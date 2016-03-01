@@ -5,6 +5,7 @@ export class ActionNames {
     static FilterTodos = 'FILTER_TODOS';
     static AddTag = 'ADD_TODO_TAG';
     static DeleteTag = 'DELETE_TODO_TAG';
+    static FilterTodosByTag = 'FILTER_TODOS_BY_TAG';
 };
 
 export class FilterNames {
@@ -26,6 +27,7 @@ export interface ITodoState {
     nextId: number;
     todos:ITodo[];
     filterName: string;
+    tagFilter: string;
 }
 
 export class TodoReducer {
@@ -37,7 +39,8 @@ export class TodoReducer {
             return {
                 todos: [],
                 filterName: FilterNames.All,
-                nextId: 1
+                nextId: 1,
+                tagFilter: null
             };
         }
 
@@ -68,6 +71,9 @@ export class TodoReducer {
 
             case ActionNames.FilterTodos:
                 return Object.assign({}, state, { filterName: action.filterName });
+
+            case ActionNames.FilterTodosByTag:
+                return Object.assign({}, state, { tagFilter: action.tag });
 
             case ActionNames.AddTag:
                 return TodoReducer.addTag(state, action);

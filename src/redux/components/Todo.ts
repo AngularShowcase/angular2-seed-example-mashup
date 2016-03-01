@@ -26,6 +26,7 @@ export class Todo {
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
     tags: Observable<string[]>;
+    tagFilter: Observable<string>;
 
     textCompletionFunc:(request:{term: string}, callback:string)=>void;
 
@@ -41,7 +42,7 @@ export class Todo {
             }), t => t.created ? -t.created.valueOf() : 0));
 
         this.tags = this.todoState.map(state => this.todoService.getTagsFromState(state));
-
+        this.tagFilter = this.todoState.map(state => state.tagFilter);
         this.textCompletionFunc = this.getTags.bind(this);
         console.log('autocomplete func is', autocomplete);
     }
@@ -80,6 +81,7 @@ export class Todo {
 
     filterOnTag(tag:string) {
         console.log(`Filtering on tag ${tag}.`);
+        this.todoService.filterTodosByTag(tag);
     }
 
     getFilterClass(buttonFilterName:string) : string {
