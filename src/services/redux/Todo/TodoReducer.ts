@@ -1,3 +1,7 @@
+import * as _ from 'underscore';
+
+type TodosByTag = Map<string, ITodo[]>;
+
 export class ActionNames {
     static AddTodo = 'ADD_TODO';
     static DeleteTodo = 'DELETE_TODO';
@@ -14,6 +18,13 @@ export class FilterNames {
     static Complete = 'COMPLETE';
 }
 
+export interface ITagSummary {
+    tag: string;
+    completed: number;
+    active: number;
+    total: number;
+}
+
 export interface ITodo {
     id: number;
     description: string;
@@ -28,19 +39,83 @@ export interface ITodoState {
     todos:ITodo[];
     filterName: string;
     tagFilter: string;
+    tagSummary: ITagSummary[];
 }
 
 export class TodoReducer {
 
-    // Reducer is static so that the data service can reference it without an object
     static reducer(state:ITodoState, action) : ITodoState {
+        let s1 = TodoReducer.action_reducer(state, action);
+        let s2 = TodoReducer.tag_summary_reducer(s1);
+
+        return s2;
+    }
+
+    private static tag_summary_reducer(state:ITodoState) : ITodoState {
+
+        let todosByTag:TodosByTag = TodoReducer.groupTodosByTag(state.todos);
+        let tagSummaries:ITagSummary[] = TodoReducer.createTagSummariesFromTodosGroupedByTag(todosByTag);
+
+        return Object.assign({}, state, { tagSummary: tagSummaries });
+    }
+
+    private static createTagSummariesFromTodosGroupedByTag(todosByTag:TodosByTag) : ITagSummary[] {
+
+        let tagSummaries:ITagSummary[] = _.map(Array.from(todosByTag.keys()), (tag:string) => {
+            let todos = todosByTag.get(tag);
+            let summary:ITagSummary = {
+                tag: tag,
+                active: 0,
+                completed: 0,
+                total: 0
+            };
+
+            let summaryForTag = _.reduce(todos, (acc:ITagSummary, todo:ITodo) => {
+                acc.total += 1;
+                if (todo.completed) {
+                    acc.completed += 1;
+                } else {
+                    acc.active += 1;
+                }
+
+                return acc;
+            }, summary);
+
+            return summaryForTag;
+        });
+
+        return tagSummaries;
+    }
+
+    private static groupTodosByTag(todos:ITodo[]) : TodosByTag {
+        let tagDict:TodosByTag = new Map<string, ITodo[]>();
+
+        tagDict = _.reduce(todos, (dict:TodosByTag, todo:ITodo) => {
+                    todo.tags.forEach(tag => {
+                        if (dict.has(tag)) {
+                            dict.get(tag).push(todo);
+                        } else {
+                            dict.set(tag, [todo]);
+                        }
+                    });
+
+                    return dict;
+                }
+                , tagDict);
+
+        return tagDict;
+    }
+
+    // Reducer is static so that the data service can reference it without an object
+    private static action_reducer(state:ITodoState, action) : ITodoState {
 
         if (state === undefined) {      // Undefined state.  Return initial state
             return {
                 todos: [],
                 filterName: FilterNames.All,
                 nextId: 1,
-                tagFilter: null
+                tagFilter: null,
+                tagSummary: []
             };
         }
 
