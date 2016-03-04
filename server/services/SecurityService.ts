@@ -3,7 +3,7 @@ import bcrypt = require('bcrypt');
 
 var mongoskin = require('mongoskin');
 import {IRegistration, IRegistrationResponse, IRegisteredUser, ILoginResult} from '../../common/interfaces/RegistrationInterfaces';
-import {IRole, IUser} from '../../common/interfaces/SecurityInterfaces';
+import {IRole, IUser, IAuditRecord, AuditDetails} from '../../common/interfaces/SecurityInterfaces';
 
 var config = {
 	mongo_url: process.env.SECURITYDATA_URL || 'mongodb://@localhost:27017/security'
@@ -16,11 +16,13 @@ export class SecurityService {
 	db: any;
 	usersCollection: any;
     rolesCollection: any;
+    auditCollection: any;
 
 	constructor() {
 		this.db = mongoskin.db(config.mongo_url, { safe: true });
 		this.usersCollection = this.db.collection('users');
 		this.rolesCollection = this.db.collection('roles');
+        this.auditCollection = this.db.collection('audit');
 	}
 
 	public getUsers(): Q.Promise<IUser[]> {
@@ -113,7 +115,7 @@ export class SecurityService {
         return defer.promise;
 	}
 
-	public login(username:string, password:string) : Q.Promise<ILoginResult> {
+	public login(username:string, password:string, req:any) : Q.Promise<ILoginResult> {
 
 		var defer = Q.defer<ILoginResult>();
 
@@ -124,7 +126,10 @@ export class SecurityService {
                 if (!registeredUser) {
                     defer.resolve({succeeded: false});
                 } else if (bcrypt.compareSync(password, registeredUser.hashedPassword)) {
-					defer.resolve({succeeded: true, userInfo: this.mapUser(registeredUser)});
+                    this.saveAuditRecord(username, 'login', { ip: req.ip})
+                        .then(auditRec => {
+        					defer.resolve({succeeded: true, userInfo: this.mapUser(registeredUser)});
+                         });
 				} else {
 					defer.resolve({succeeded: false});
 				}
@@ -161,7 +166,7 @@ export class SecurityService {
 					defer.resolve({ succeeded: false, failureReason: 'Username is not available.' });
 				} else {
 					var coll = this.usersCollection;
-					coll.find({}, { _id: 0, userId: 1 }).sort({ userId: -1 }).toArray(function(e, users: any[]) {
+					coll.find({}, { _id: 0, userId: 1 }).sort({ userId: -1 }).toArray((e, users: any[]) => {
 						if (e) {
 							defer.reject(e);
 						} else {
@@ -177,15 +182,19 @@ export class SecurityService {
 								hashedPassword: bcrypt.hashSync(registration.password, 10)
 							};
 
-							coll.insert(newUser, {}, function(e, results) {
+							coll.insert(newUser, {}, (e, results) => {
 								if (e) {
 									defer.reject(e);
 								} else {
 									newUser.hashedPassword = null;
-									defer.resolve({
-										succeeded: true,
-										failureReason: ''
-									});
+                                    this.saveAuditRecord(newUser.username, 'register', newUser)
+                                        .then(auditRec => {
+                                            defer.resolve({
+                                                succeeded: true,
+                                                failureReason: ''
+                                            });
+                                        });
+
 								}
 							});
 						}
@@ -208,6 +217,26 @@ export class SecurityService {
             lastName: registeredUser.lastName,
             roles: registeredUser.roles || []
         };
+    }
+
+    private saveAuditRecord(username:string, recType:string, details:AuditDetails) : Q.Promise<IAuditRecord> {
+		let defer = Q.defer<IAuditRecord>();
+        let auditRecord:IAuditRecord = {
+            username: username,
+            recType: recType,
+            time: new Date(),
+            details: details
+        };
+
+        this.auditCollection.insert(auditRecord, {}, function (e, inserted:IAuditRecord[]) {
+            if (e) {
+                defer.reject(e);
+            } else {
+                defer.resolve(inserted[0]);
+            }
+        });
+
+        return defer.promise;
     }
 
 	private getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {

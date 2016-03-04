@@ -11,3 +11,21 @@ export interface IUser {
 	lastName:string;
     roles: string[];
 }
+
+export interface ILoginAudit {
+    ip: string;
+}
+
+export interface IRegistrationAudit {
+    firstName: string;
+    lastName: string;
+}
+
+export type AuditDetails = ILoginAudit | IRegistrationAudit;
+
+export interface IAuditRecord {
+    username: string;
+    time: Date;
+    recType: string;
+    details: AuditDetails;
+}

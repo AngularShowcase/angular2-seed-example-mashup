@@ -128,7 +128,7 @@ export class ApiRouting {
 	// Login a user
 	login(req, res, next) {
 		var loginRequest:ILoginRequest = req.body;
-		this.securityService.login(loginRequest.username, loginRequest.password)
+		this.securityService.login(loginRequest.username, loginRequest.password, req)
 			.then(resp => res.send(resp))
 			.catch(err => next(err));
 	}
