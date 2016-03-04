@@ -5,6 +5,7 @@ import * as logger from 'morgan';
 import * as socketIO from 'socket.io';
 import {RtBroker} from './RtBroker';
 import {argv} from 'yargs';
+import {SecurityService} from './services/SecurityService';
 
 var env = argv['env'] || 'dev';
 
@@ -71,8 +72,8 @@ app.use(function(req, res, next){
     next();
 });
 
-
-var apiRouteCreator = new ApiRouting(app);
+let securityService = new SecurityService();
+var apiRouteCreator = new ApiRouting(app, securityService);
 app.use('/api', apiRouteCreator.getApiRoutingConfig());
 
 /// catch 404 and forwarding to error handler
@@ -108,5 +109,5 @@ http_server.listen(app.get('port'), function() {
 //     console.log('Express server listening on port ' + express_server.address().port);
 // });
 
-var broker = new RtBroker(io);
+var broker = new RtBroker(io, securityService);
 console.log(`Created real time broker ${broker}`);

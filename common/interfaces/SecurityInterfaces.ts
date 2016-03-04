@@ -21,7 +21,13 @@ export interface IRegistrationAudit {
     lastName: string;
 }
 
-export type AuditDetails = ILoginAudit | IRegistrationAudit;
+export interface IChatMessageAudit {
+    message: string;
+    messageTime: Date;
+    clientsOnline: number;
+}
+
+export type AuditDetails = ILoginAudit | IRegistrationAudit | IChatMessageAudit;
 
 export interface IAuditRecord {
     username: string;

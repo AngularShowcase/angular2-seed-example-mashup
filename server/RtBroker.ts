@@ -3,6 +3,7 @@ import {IWeatherUpdate} from '../common/interfaces/WeatherInterfaces';
 import {IAccident} from '../common/interfaces/TrafficInterfaces';
 import {TrafficService} from './workers/TrafficService';
 import {IChatMessage} from '../common/interfaces/ChatInterfaces';
+import {SecurityService} from './services/SecurityService';
 
 declare var Promise: any;
 import {Subject} from 'rxjs/Subject';
@@ -20,7 +21,7 @@ export class RtBroker {
 	accidentPub: Subject<IAccident>;
     online:number = 0;
 
-	constructor(public io:SocketIO.Server) {
+	constructor(public io:SocketIO.Server, public securityService:SecurityService) {
 
 		this.weatherService = new WeatherService();
 		this.trafficService = new TrafficService();
@@ -32,7 +33,12 @@ export class RtBroker {
 
             socket.on('chat', (msg:IChatMessage) => {
                 console.log(`Got chat message from ${socket.client.id} user ${msg.username}.  Msg: ${msg.message}`);
-                this.io.emit('usermessage', msg);
+                this.securityService.saveAuditRecord(msg.username, 'chat',
+                    { message: msg.message, messageTime: msg.time , clientsOnline: this.online})
+
+                    .then(audit => {
+                        this.io.emit('usermessage', msg);
+                    });
             });
 
             socket.on('disconnect',  (reason) => {

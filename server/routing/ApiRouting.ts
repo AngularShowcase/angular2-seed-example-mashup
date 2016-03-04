@@ -22,13 +22,11 @@ export class ApiRouting {
 	animalPersistenceService:AnimalPersistenceService;
 	cellDataPersistenceService:CellDataPersistenceService;
 	quizPersistenceService:QuizPersistenceService;
-	securityService:SecurityService;
 
-	constructor(public app) {
+	constructor(public app, public securityService:SecurityService) {
 		this.animalPersistenceService = new AnimalPersistenceService();
 		this.cellDataPersistenceService = new CellDataPersistenceService();
 		this.quizPersistenceService = new QuizPersistenceService();
-		this.securityService = new SecurityService();
 
 		this.uploadFolder = os.tmpdir();
 		console.log('Uploads will be placed in ' + this.uploadFolder);

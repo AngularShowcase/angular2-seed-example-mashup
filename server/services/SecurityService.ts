@@ -208,18 +208,10 @@ export class SecurityService {
 		return defer.promise;
 	}
 
-    private mapUser(registeredUser:any) : IUser {
-        return {
-            userId: registeredUser.userId,
-            username: registeredUser.username,
-            emailAddress: registeredUser.emailAddress,
-            firstName: registeredUser.firstName,
-            lastName: registeredUser.lastName,
-            roles: registeredUser.roles || []
-        };
-    }
+    public saveAuditRecord(username:string, recType:string, details:AuditDetails) : Q.Promise<IAuditRecord> {
 
-    private saveAuditRecord(username:string, recType:string, details:AuditDetails) : Q.Promise<IAuditRecord> {
+        console.info(`Audit: ${username}: ${recType}`, details);
+
 		let defer = Q.defer<IAuditRecord>();
         let auditRecord:IAuditRecord = {
             username: username,
@@ -237,6 +229,17 @@ export class SecurityService {
         });
 
         return defer.promise;
+    }
+
+    private mapUser(registeredUser:any) : IUser {
+        return {
+            userId: registeredUser.userId,
+            username: registeredUser.username,
+            emailAddress: registeredUser.emailAddress,
+            firstName: registeredUser.firstName,
+            lastName: registeredUser.lastName,
+            roles: registeredUser.roles || []
+        };
     }
 
 	private getUserByUsernameInternal(username: string): Q.Promise<IRegisteredUser> {
