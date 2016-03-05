@@ -33,10 +33,16 @@ export class DataService {
 
         let savedState = this.getSavedState();
         console.log('Initializing store with state:', savedState);
-        this.store = Redux.createStore(reducer, savedState);
 
+        // Create the store and hook up the Chrome dev tools if it exists.
+        // See https://github.com/zalmoxisus/redux-devtools-extension#implementation
+        this.store = Redux.createStore(reducer, savedState, window['devToolsExtension'] ? window['devToolsExtension']() : f => f);
         this.store.subscribe(this.storeListener.bind(this));
 	}
+
+    mySampleMiddleWare(state:any) : any {
+        return state;
+    }
 
     dispatch(action:any) {
         console.log('Dispatching action:', action.type, action);
