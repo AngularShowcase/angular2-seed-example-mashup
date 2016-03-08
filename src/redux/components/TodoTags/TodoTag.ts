@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
+import {ITagSummary} from '../../../services/redux/Todo/TodoReducer';
 
 @Component({
     selector: 'todo-tag',
@@ -8,7 +9,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
         (click)="tagClick()"
         style="display:inline-block; cursor:pointer; border-radius:5px; padding:5px"
         [ngClass]="isSelected ? 'active' : 'inactive'">
-        {{tag}}
+        {{tag.tag}} - {{tag.completed}}/{{tag.total}}
     </div>
     `,
     styles: [
@@ -30,9 +31,9 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 
 export class TodoTag {
 
-    @Input() tag: string;
+    @Input() tag: ITagSummary;
     @Input() isSelected: boolean;
-    @Output() tagClicked: EventEmitter<string> = new EventEmitter<string>();
+    @Output() tagClicked: EventEmitter<ITagSummary> = new EventEmitter<ITagSummary>();
 
     ngOnInit() {
         console.log('Initializing a todo tag');

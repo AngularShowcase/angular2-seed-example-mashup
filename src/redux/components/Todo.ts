@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {ITodoState, ITodo, FilterNames} from '../../services/redux/Todo/TodoReducer';
+import {ITodoState, ITodo, FilterNames, ITagSummary} from '../../services/redux/Todo/TodoReducer';
 import {TodoService} from '../../services/redux/Todo/TodoService';
 import {TodoTags} from './TodoTags/TodoTags';
 import {TodoTag} from './TodoTags/TodoTag';
@@ -26,7 +26,7 @@ export class Todo {
 
     todoState: Observable<ITodoState>;
     filteredTodos: Observable<ITodo[]>;
-    tags: Observable<string[]>;
+    tags: Observable<ITagSummary[]>;
     tagFilter: string = null;
 
     textCompletionFunc:(request:{term: string}, callback:string)=>void;
@@ -49,7 +49,7 @@ export class Todo {
 
                     , t => t.created ? -t.created.valueOf() : 0));
 
-        this.tags = this.todoState.map(state => this.todoService.getTagsFromState(state));
+        this.tags = this.todoState.map(state => state.tagSummary);
 
         this.todoState.subscribe(state => {
             this.tagFilter = state.tagFilter;
