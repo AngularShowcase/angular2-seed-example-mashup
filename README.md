@@ -17,9 +17,9 @@ can be found [here](https://angular-mashup.herokuapp.com/).
 - Quizes -- create, take, grade
 - Todo (Redux)
 
-#Technologies#
+# Technologies #
 
-##Client##
+## Client ##
 - Angular 2
 - Redux
 - D3 visualization library
@@ -27,13 +27,13 @@ can be found [here](https://angular-mashup.herokuapp.com/).
 - socket.io (client)
 - RxJs
 
-##Server##
+## Server ##
 - node/express
 - mongodb
 - socket.io (server)
 - RxJs
 
-##Contact Info##
+## Contact Info ##
 - [Github](https://github.com/hpinsley)
 - [Email](mailto:hpinsley@gmail.com)
 
